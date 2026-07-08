@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Compiled for campaign contributors" />
+  <meta name="dcterms.date" content="2026-07-08" />
+  <title>Hunter Gath's Campaign Developer Guide</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style>
+
+body { max-width: 980px; margin: 2rem auto; padding: 0 1.5rem; font-family: Georgia, 'Times New Roman', serif; line-height: 1.55; color: #241b12; background: #fbf7ed; }
+h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; color: #5b3516; }
+h1 { border-bottom: 2px solid #9a7b50; padding-bottom: .25rem; }
+h2 { margin-top: 2rem; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+pre { background: #f2ead8; border: 1px solid #d2c19d; padding: 1rem; overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { border: 1px solid #d2c19d; padding: .45rem .6rem; vertical-align: top; }
+th { background: #eadfc8; }
+a { color: #775000; }
+blockquote { border-left: 4px solid #b79b66; margin-left: 0; padding-left: 1rem; color: #4c4031; }
+
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Hunter Gath's Campaign Developer Guide</h1>
+<p class="subtitle">Creating, testing, and committing a new campaign on
+Xubuntu / Ubuntu 26.04 LTS</p>
+<p class="author">Hunter Gath</p>
+<p class="date">2026-07-08</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#table-of-contents" id="toc-table-of-contents">Table of
+Contents</a></li>
+<li><a href="#about-this-guide" id="toc-about-this-guide">About this
+guide</a>
+<ul>
+<li><a href="#assumptions" id="toc-assumptions">Assumptions</a></li>
+<li><a href="#add-on-first-mainline-later"
+id="toc-add-on-first-mainline-later">Add-on first, mainline
+later</a></li>
+</ul></li>
+<li><a href="#chapter-1-what-a-campaign-coder-works-with"
+id="toc-chapter-1-what-a-campaign-coder-works-with">Chapter 1: What a
+campaign coder works with</a>
+<ul>
+<li><a href="#repository-areas-you-should-recognize"
+id="toc-repository-areas-you-should-recognize">Repository areas you
+should recognize</a></li>
+<li><a href="#where-a-local-campaign-add-on-lives"
+id="toc-where-a-local-campaign-add-on-lives">Where a local campaign
+add-on lives</a></li>
+<li><a href="#campaign-development-languages"
+id="toc-campaign-development-languages">Campaign development
+languages</a>
+<ul>
+<li><a href="#wml" id="toc-wml">WML</a></li>
+<li><a href="#lua" id="toc-lua">Lua</a></li>
+<li><a href="#c" id="toc-c">C++</a></li>
+<li><a href="#gettext-style-translatable-strings"
+id="toc-gettext-style-translatable-strings">Gettext-style translatable
+strings</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#chapter-2-tools-languages-and-setup-on-xubuntu-26.04"
+id="toc-chapter-2-tools-languages-and-setup-on-xubuntu-26.04">Chapter 2:
+Tools, languages, and setup on Xubuntu 26.04</a>
+<ul>
+<li><a href="#install-basic-development-tools"
+id="toc-install-basic-development-tools">Install basic development
+tools</a></li>
+<li><a href="#install-wesnoth-source-build-dependencies"
+id="toc-install-wesnoth-source-build-dependencies">Install Wesnoth
+source-build dependencies</a></li>
+<li><a href="#install-or-run-wesnoth"
+id="toc-install-or-run-wesnoth">Install or run Wesnoth</a></li>
+<li><a href="#recommended-editor-setup"
+id="toc-recommended-editor-setup">Recommended editor setup</a></li>
+<li><a href="#learn-enough-of-these-tools"
+id="toc-learn-enough-of-these-tools">Learn enough of these
+tools</a></li>
+</ul></li>
+<li><a href="#chapter-3-campaign-anatomy"
+id="toc-chapter-3-campaign-anatomy">Chapter 3: Campaign anatomy</a>
+<ul>
+<li><a href="#minimal-campaign-directory"
+id="toc-minimal-campaign-directory">Minimal campaign directory</a></li>
+<li><a href="#main.cfg"
+id="toc-main.cfg"><code>_main.cfg</code></a></li>
+<li><a href="#scenarios"
+id="toc-scenarios"><code>scenarios/</code></a></li>
+<li><a href="#maps" id="toc-maps"><code>maps/</code></a></li>
+<li><a href="#units" id="toc-units"><code>units/</code></a></li>
+<li><a href="#utils" id="toc-utils"><code>utils/</code></a></li>
+<li><a href="#images-music-and-sounds"
+id="toc-images-music-and-sounds"><code>images/</code>,
+<code>music/</code>, and <code>sounds/</code></a></li>
+<li><a href="#server.pbl"
+id="toc-server.pbl"><code>_server.pbl</code></a></li>
+</ul></li>
+<li><a href="#chapter-4-tutorial-hunter-gath"
+id="toc-chapter-4-tutorial-hunter-gath">Chapter 4: Tutorial — Hunter
+Gath</a>
+<ul>
+<li><a href="#step-1-find-your-wesnoth-userdata-directory"
+id="toc-step-1-find-your-wesnoth-userdata-directory">Step 1: Find your
+Wesnoth userdata directory</a></li>
+<li><a href="#step-2-create-_main.cfg"
+id="toc-step-2-create-_main.cfg">Step 2: Create
+<code>_main.cfg</code></a></li>
+<li><a href="#step-3-create-utility-macros"
+id="toc-step-3-create-utility-macros">Step 3: Create utility
+macros</a></li>
+<li><a href="#step-4-create-a-custom-unit"
+id="toc-step-4-create-a-custom-unit">Step 4: Create a custom
+unit</a></li>
+<li><a href="#step-5-create-the-first-map"
+id="toc-step-5-create-the-first-map">Step 5: Create the first
+map</a></li>
+<li><a href="#step-6-create-the-first-scenario"
+id="toc-step-6-create-the-first-scenario">Step 6: Create the first
+scenario</a></li>
+<li><a href="#step-7-create-the-second-map"
+id="toc-step-7-create-the-second-map">Step 7: Create the second
+map</a></li>
+<li><a href="#step-8-create-the-second-scenario"
+id="toc-step-8-create-the-second-scenario">Step 8: Create the second
+scenario</a></li>
+<li><a href="#step-9-add-placeholder-images"
+id="toc-step-9-add-placeholder-images">Step 9: Add placeholder
+images</a></li>
+<li><a href="#step-10-add-add-on-metadata"
+id="toc-step-10-add-add-on-metadata">Step 10: Add add-on
+metadata</a></li>
+<li><a href="#step-11-run-the-campaign"
+id="toc-step-11-run-the-campaign">Step 11: Run the campaign</a></li>
+</ul></li>
+<li><a href="#chapter-5-testing-debugging-and-maintenance"
+id="toc-chapter-5-testing-debugging-and-maintenance">Chapter 5: Testing,
+debugging, and maintenance</a>
+<ul>
+<li><a href="#use-the-terminal-as-your-first-debugger"
+id="toc-use-the-terminal-as-your-first-debugger">Use the terminal as
+your first debugger</a></li>
+<li><a href="#format-wml-with-wmlindent"
+id="toc-format-wml-with-wmlindent">Format WML with
+<code>wmlindent</code></a></li>
+<li><a href="#run-maintenance-checks"
+id="toc-run-maintenance-checks">Run maintenance checks</a></li>
+<li><a href="#test-like-a-player-and-like-a-maintainer"
+id="toc-test-like-a-player-and-like-a-maintainer">Test like a player and
+like a maintainer</a></li>
+<li><a href="#common-campaign-bugs" id="toc-common-campaign-bugs">Common
+campaign bugs</a></li>
+</ul></li>
+<li><a
+href="#chapter-6-moving-from-an-add-on-to-a-forked-wesnoth-branch"
+id="toc-chapter-6-moving-from-an-add-on-to-a-forked-wesnoth-branch">Chapter
+6: Moving from an add-on to a forked Wesnoth branch</a>
+<ul>
+<li><a href="#step-1-sync-your-fork" id="toc-step-1-sync-your-fork">Step
+1: Sync your fork</a></li>
+<li><a href="#step-2-create-a-feature-branch"
+id="toc-step-2-create-a-feature-branch">Step 2: Create a feature
+branch</a></li>
+<li><a href="#step-3-copy-the-campaign-into-datacampaigns"
+id="toc-step-3-copy-the-campaign-into-datacampaigns">Step 3: Copy the
+campaign into <code>data/campaigns</code></a></li>
+<li><a href="#step-4-convert-add-on-include-paths-to-mainline-paths"
+id="toc-step-4-convert-add-on-include-paths-to-mainline-paths">Step 4:
+Convert add-on include paths to mainline paths</a></li>
+<li><a href="#step-5-format-and-inspect"
+id="toc-step-5-format-and-inspect">Step 5: Format and inspect</a></li>
+<li><a href="#step-6-build-and-run-from-the-branch"
+id="toc-step-6-build-and-run-from-the-branch">Step 6: Build and run from
+the branch</a></li>
+<li><a href="#step-7-commit" id="toc-step-7-commit">Step 7:
+Commit</a></li>
+<li><a href="#step-8-push-and-open-a-pull-request"
+id="toc-step-8-push-and-open-a-pull-request">Step 8: Push and open a
+pull request</a></li>
+<li><a href="#step-9-expect-review" id="toc-step-9-expect-review">Step
+9: Expect review</a></li>
+</ul></li>
+<li><a href="#appendix-a-complete-hunter-gath-file-listing"
+id="toc-appendix-a-complete-hunter-gath-file-listing">Appendix A:
+Complete Hunter Gath file listing</a>
+<ul>
+<li><a href="#main.cfg-1"
+id="toc-main.cfg-1"><code>_main.cfg</code></a></li>
+<li><a href="#utilshg-utils.cfg"
+id="toc-utilshg-utils.cfg"><code>utils/hg-utils.cfg</code></a></li>
+<li><a href="#unitshg_hunter.cfg"
+id="toc-unitshg_hunter.cfg"><code>units/HG_Hunter.cfg</code></a></li>
+<li><a href="#scenarios01_goblin_trail.cfg"
+id="toc-scenarios01_goblin_trail.cfg"><code>scenarios/01_Goblin_Trail.cfg</code></a></li>
+<li><a href="#scenarios02_river_poachers.cfg"
+id="toc-scenarios02_river_poachers.cfg"><code>scenarios/02_River_Poachers.cfg</code></a></li>
+<li><a href="#maps01_goblin_trail.map"
+id="toc-maps01_goblin_trail.map"><code>maps/01_Goblin_Trail.map</code></a></li>
+<li><a href="#maps02_river_poachers.map"
+id="toc-maps02_river_poachers.map"><code>maps/02_River_Poachers.map</code></a></li>
+<li><a href="#server.pbl-1"
+id="toc-server.pbl-1"><code>_server.pbl</code></a></li>
+</ul></li>
+<li><a href="#appendix-b-preflight-checklist"
+id="toc-appendix-b-preflight-checklist">Appendix B: Preflight
+checklist</a>
+<ul>
+<li><a href="#references" id="toc-references">References</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="table-of-contents">Table of Contents</h1>
+<ol type="1">
+<li><a href="#about-this-guide">About this guide</a></li>
+<li><a href="#chapter-1-what-a-campaign-coder-works-with">Chapter 1:
+What a campaign coder works with</a></li>
+<li><a
+href="#chapter-2-tools-languages-and-setup-on-xubuntu-2604">Chapter 2:
+Tools, languages, and setup on Xubuntu 26.04</a></li>
+<li><a href="#chapter-3-campaign-anatomy">Chapter 3: Campaign
+anatomy</a></li>
+<li><a href="#chapter-4-tutorial--hunter-gath">Chapter 4: Tutorial —
+Hunter Gath</a></li>
+<li><a href="#chapter-5-testing-debugging-and-maintenance">Chapter 5:
+Testing, debugging, and maintenance</a></li>
+<li><a
+href="#chapter-6-moving-from-an-add-on-to-a-forked-wesnoth-branch">Chapter
+6: Moving from an add-on to a forked Wesnoth branch</a></li>
+<li><a href="#appendix-a-complete-hunter-gath-file-listing">Appendix A:
+Complete Hunter Gath file listing</a></li>
+<li><a href="#appendix-b-preflight-checklist">Appendix B: Preflight
+checklist</a></li>
+<li><a href="#references">References</a></li>
+</ol>
+<h1 id="about-this-guide">About this guide</h1>
+<p>This document is a practical campaign-development manual for
+<strong>The Battle for Wesnoth</strong>, focused on one task: getting a
+new single-player campaign functional. It is written for <strong>Xubuntu
+/ Ubuntu 26.04 LTS</strong> and assumes you want to work against a fork
+of the official Wesnoth repository while also testing your campaign as a
+local add-on during development.</p>
+<p>The tutorial campaign is called <strong>Hunter Gath</strong>. It is
+intentionally small: two scenarios, two maps, one custom unit, a few
+utility macros, placeholder images, story screens, objectives, dialogue,
+music references, and add-on server metadata. That small scope is
+deliberate. A campaign coder needs to understand the whole pipeline
+before writing twenty scenarios.</p>
+<p>The layout mirrors the official manual style in a lightweight way:
+chapters first, tutorial second, appendices and references last. It does
+<strong>not</strong> replace the official wiki or repository
+documentation. Instead, it gives you a working path through the parts of
+the documentation that matter when you are creating a campaign.</p>
+<h2 id="assumptions">Assumptions</h2>
+<ul>
+<li>You are comfortable using a terminal.</li>
+<li>You can edit text files with VS Code, Vim, Kate, Mousepad, or
+another UTF-8 capable editor.</li>
+<li>You know basic Git: clone, branch, commit, push, and pull
+request.</li>
+<li>You are making a single-player campaign first. Multiplayer campaigns
+add more constraints and are outside the main path here.</li>
+</ul>
+<h2 id="add-on-first-mainline-later">Add-on first, mainline later</h2>
+<p>During early development, build the campaign as a <strong>user
+add-on</strong> under your Wesnoth userdata directory. This gives you
+quick load-test cycles and keeps the game repository clean. When the
+campaign is ready to propose for inclusion in the game tree, copy or
+move it to <code>data/campaigns/Hunter_Gath</code> in your fork and
+adjust include paths.</p>
+<h1 id="chapter-1-what-a-campaign-coder-works-with">Chapter 1: What a
+campaign coder works with</h1>
+<p>Wesnoth is not only a C++ game engine. It is also a large content
+platform. Campaign coders normally spend most of their time in
+<strong>WML</strong>, maps, data files, and asset directories rather
+than C++.</p>
+<h2 id="repository-areas-you-should-recognize">Repository areas you
+should recognize</h2>
+<p>A campaign contributor should know these parts of the repository:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Path</th>
+<th>What it is</th>
+<th>Why campaign coders care</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>src/</code></td>
+<td>C++ engine code</td>
+<td>Usually read-only for campaign work. You may inspect it when engine
+behavior is unclear.</td>
+</tr>
+<tr class="even">
+<td><code>data/core/</code></td>
+<td>Core units, macros, images, terrain, eras, help data</td>
+<td>Your campaign reuses core unit IDs, macros, terrain strings,
+attacks, sounds, and images.</td>
+</tr>
+<tr class="odd">
+<td><code>data/campaigns/</code></td>
+<td>Mainline campaign directories</td>
+<td>This is where a campaign goes when it is included in the game source
+tree. Study existing campaigns here.</td>
+</tr>
+<tr class="even">
+<td><code>data/tools/</code></td>
+<td>WML maintenance tools such as <code>wmlindent</code>,
+<code>wmllint</code>, <code>wmlscope</code>, and extraction tools</td>
+<td>Use these before committing. Wesnoth CI checks WML formatting.</td>
+</tr>
+<tr class="odd">
+<td><code>doc/manual/</code></td>
+<td>Official manual source and generated manual files</td>
+<td>Useful for style, organization, and user-facing language.</td>
+</tr>
+<tr class="even">
+<td><code>po/</code></td>
+<td>Translation catalogs</td>
+<td>You do not edit these for initial campaign prototyping, but your
+strings should be translation-ready.</td>
+</tr>
+<tr class="odd">
+<td><code>images/</code>, <code>music/</code>, <code>sounds/</code></td>
+<td>Shared game assets</td>
+<td>Campaigns may reference core assets or provide campaign-local
+assets.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="where-a-local-campaign-add-on-lives">Where a local campaign
+add-on lives</h2>
+<p>On Linux, Wesnoth uses a per-user data directory. The exact versioned
+directory depends on the Wesnoth build you are running. Confirm it
+with:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wesnoth</span> <span class="at">--config-path</span></span></code></pre></div>
+<p>A typical path is:</p>
+<pre class="text"><code>~/.local/share/wesnoth/&lt;version&gt;/data/add-ons/</code></pre>
+<p>For this guide, the local add-on directory is:</p>
+<pre class="text"><code>~/.local/share/wesnoth/&lt;version&gt;/data/add-ons/Hunter_Gath/</code></pre>
+<p>The same campaign, if moved into the game source tree for a fork,
+would live at:</p>
+<pre class="text"><code>wesnoth/data/campaigns/Hunter_Gath/</code></pre>
+<h2 id="campaign-development-languages">Campaign development
+languages</h2>
+<h3 id="wml">WML</h3>
+<p><strong>WML</strong> is the main campaign scripting language. You use
+it for campaign metadata, scenarios, sides, units, events, objectives,
+story screens, variables, and much of the glue between gameplay and
+assets.</p>
+<p>WML looks simple, but it is strict about tag structure, paths, IDs,
+and preprocessor macros. Most campaign bugs are not clever programming
+bugs; they are path mistakes, missing IDs, missing closing tags, wrong
+macro arguments, or side/team errors.</p>
+<h3 id="lua">Lua</h3>
+<p>Lua is available for advanced logic. You do not need it for Hunter
+Gath. Learn WML first; reach for Lua when WML becomes awkward, not as a
+default.</p>
+<h3 id="c">C++</h3>
+<p>The engine is C++17. Campaign coders rarely need C++, but source
+builds matter because you may need to run the latest development
+version, use the latest schema/tools, or test a branch exactly as CI
+will see it.</p>
+<h3 id="gettext-style-translatable-strings">Gettext-style translatable
+strings</h3>
+<p>User-facing campaign strings should be marked for translation with
+the <code>_</code> marker:</p>
+<pre class="wml"><code>name= _ &quot;Hunter Gath&quot;
+message= _ &quot;The trail goes dark.&quot;</code></pre>
+<p>Keep text in UTF-8 and use US English in this guide’s first pass.</p>
+<h1 id="chapter-2-tools-languages-and-setup-on-xubuntu-26.04">Chapter 2:
+Tools, languages, and setup on Xubuntu 26.04</h1>
+<p>This chapter gives you two setup tracks:</p>
+<ol type="1">
+<li><strong>Content-only track</strong> — install Wesnoth and build the
+add-on in your userdata directory.</li>
+<li><strong>Contributor track</strong> — clone your fork of the Wesnoth
+repository, build the game from source, and commit your campaign to a
+branch.</li>
+</ol>
+<p>For serious contribution work, use both.</p>
+<h2 id="install-basic-development-tools">Install basic development
+tools</h2>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="dt">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  build-essential git cmake ninja-build pkg-config gettext python3 python3-pip <span class="dt">\</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  python3-pil scons curl ca-certificates</span></code></pre></div>
+<h2 id="install-wesnoth-source-build-dependencies">Install Wesnoth
+source-build dependencies</h2>
+<p>The exact package set can change as Ubuntu packages move. On Ubuntu
+26.04, start with:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  libboost-all-dev <span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  libsdl3-dev libsdl3-image-dev libsdl3-mixer-dev <span class="dt">\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  libfontconfig1-dev libcairo2-dev libpango1.0-dev <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  libvorbis-dev libbz2-dev zlib1g-dev <span class="dt">\</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  libssl-dev libcurl4-openssl-dev <span class="dt">\</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  libdbus-1-dev libreadline-dev</span></code></pre></div>
+<p>If <code>apt</code> cannot find a package, search for its current
+name:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> search libsdl3</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> search libboost</span></code></pre></div>
+<p>The official <code>INSTALL.md</code> is the authority for required
+library versions. As of the referenced repository version, Wesnoth
+requires a C++17-capable compiler, Boost, SDL3, SDL3_image, SDL3_mixer,
+Fontconfig, Cairo, Pango, Vorbisfile, compression libraries, OpenSSL,
+libcurl, and gettext for translations.</p>
+<h2 id="install-or-run-wesnoth">Install or run Wesnoth</h2>
+<p>For add-on-only testing, the packaged game may be enough:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install wesnoth</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">wesnoth</span> <span class="at">--version</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">wesnoth</span> <span class="at">--config-path</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">wesnoth</span> <span class="at">--path</span></span></code></pre></div>
+<p>For repository work, clone your fork with submodules:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/src</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/src</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--recurse-submodules</span> git@github.com:YOUR-GITHUB-NAME/wesnoth.git</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> wesnoth</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add upstream https://github.com/wesnoth/wesnoth.git</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch upstream</span></code></pre></div>
+<p>Build with CMake and Ninja:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-S</span> . <span class="at">-B</span> build <span class="at">-G</span> Ninja <span class="at">-DCMAKE_BUILD_TYPE</span><span class="op">=</span>RelWithDebInfo</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--build</span> build</span></code></pre></div>
+<p>Run the binary from the build tree. Depending on the build
+configuration, this is usually:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./build/wesnoth</span> <span class="at">--version</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./build/wesnoth</span> <span class="at">--config-path</span></span></code></pre></div>
+<p>If the executable path differs, find it:</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> build <span class="at">-type</span> f <span class="at">-executable</span> <span class="at">-name</span> <span class="st">&#39;wesnoth*&#39;</span> <span class="at">-maxdepth</span> 3</span></code></pre></div>
+<h2 id="recommended-editor-setup">Recommended editor setup</h2>
+<p>Use any editor that preserves UTF-8 and Unix line endings.
+Recommended conveniences:</p>
+<ul>
+<li>Show whitespace and line endings.</li>
+<li>Use four spaces for WML indentation.</li>
+<li>Add syntax highlighting for <code>.cfg</code> files if your editor
+supports WML or INI-like highlighting.</li>
+<li>Keep a terminal open beside the editor to launch Wesnoth and read
+WML errors.</li>
+</ul>
+<h2 id="learn-enough-of-these-tools">Learn enough of these tools</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Minimum useful skill</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>git</code></td>
+<td>Fork, branch, commit, rebase or merge from upstream, push, open
+PR.</td>
+</tr>
+<tr class="even">
+<td><code>cmake</code> / <code>ninja</code></td>
+<td>Build the game from a clean checkout.</td>
+</tr>
+<tr class="odd">
+<td><code>wesnoth --config-path</code></td>
+<td>Locate your userdata directory.</td>
+</tr>
+<tr class="even">
+<td><code>wesnoth --path</code></td>
+<td>Locate the game data directory being used by this executable.</td>
+</tr>
+<tr class="odd">
+<td><code>data/tools/wmlindent</code></td>
+<td>Format WML before committing.</td>
+</tr>
+<tr class="even">
+<td><code>data/tools/wmllint</code></td>
+<td>Catch common WML maintenance issues.</td>
+</tr>
+<tr class="odd">
+<td>Wesnoth map editor</td>
+<td>Create <code>.map</code> files visually, then save them into
+<code>maps/</code>.</td>
+</tr>
+<tr class="even">
+<td>Image editor</td>
+<td>Crop/export PNGs for portraits, story art, icons, and unit art.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="chapter-3-campaign-anatomy">Chapter 3: Campaign anatomy</h1>
+<p>A campaign is a set of WML files and assets loaded through one entry
+file, <code>_main.cfg</code>.</p>
+<h2 id="minimal-campaign-directory">Minimal campaign directory</h2>
+<pre class="text"><code>Hunter_Gath/
+├── _main.cfg
+├── _server.pbl
+├── scenarios/
+│   ├── 01_Goblin_Trail.cfg
+│   └── 02_River_Poachers.cfg
+├── maps/
+│   ├── 01_Goblin_Trail.map
+│   └── 02_River_Poachers.map
+├── units/
+│   └── HG_Hunter.cfg
+├── utils/
+│   └── hg-utils.cfg
+├── images/
+│   ├── misc/
+│   │   └── hunter-gath-icon.png
+│   ├── portraits/
+│   │   └── hunter-gath.png
+│   └── story/
+│       └── hunter-gath-forest.png
+├── music/
+├── sounds/
+└── translations/</code></pre>
+<h2 id="main.cfg"><code>_main.cfg</code></h2>
+<p>The <code>_main.cfg</code> file is the add-on entry point. Without
+it, Wesnoth will not recognize the add-on.</p>
+<p>For a campaign, <code>_main.cfg</code> usually does these jobs:</p>
+<ol type="1">
+<li>Declares a textdomain for translatable strings.</li>
+<li>Defines the <code>[campaign]</code> menu entry.</li>
+<li>Provides a unique preprocessor symbol such as
+<code>CAMPAIGN_HUNTER_GATH</code>.</li>
+<li>Adds a <code>[binary_path]</code> so images, maps, music, and sounds
+can be found.</li>
+<li>Includes utility macros, units, and scenarios only when the campaign
+is selected.</li>
+</ol>
+<h2 id="scenarios"><code>scenarios/</code></h2>
+<p>Each scenario has an ID, a map, sides, objectives, events, and a next
+scenario. Scenario IDs are code identifiers; scenario names are
+user-facing strings.</p>
+<h2 id="maps"><code>maps/</code></h2>
+<p>Maps are usually created in the map editor. Scenario files reference
+maps with:</p>
+<pre class="wml"><code>map_file=01_Goblin_Trail.map</code></pre>
+<p>The engine finds the map through the campaign’s binary path.</p>
+<h2 id="units"><code>units/</code></h2>
+<p>Custom units are loaded inside a <code>[units]</code> block. For
+add-ons, do not include the <code>units/</code> directory with a plain
+include alone; wrap it:</p>
+<pre class="wml"><code>[units]
+    {~add-ons/Hunter_Gath/units}
+[/units]</code></pre>
+<h2 id="utils"><code>utils/</code></h2>
+<p>Put campaign-local macros here. Keep macros small, documented, and
+named with a campaign prefix to reduce collisions. Hunter Gath uses
+<code>HG_GOLD</code> and <code>HG_INCOME</code>.</p>
+<h2 id="images-music-and-sounds"><code>images/</code>,
+<code>music/</code>, and <code>sounds/</code></h2>
+<p>Images, music, and sounds do not need WML include lines in
+<code>_main.cfg</code>. They are referenced by path after
+<code>[binary_path]</code> is set.</p>
+<p>For example:</p>
+<pre class="wml"><code>image=&quot;portraits/hunter-gath.png&quot;
+background=&quot;story/hunter-gath-forest.png&quot;</code></pre>
+<h2 id="server.pbl"><code>_server.pbl</code></h2>
+<p>The <code>.pbl</code> file is add-on server metadata. It is needed if
+you upload the add-on through Wesnoth’s add-on publishing system. Keep
+the passphrase private. Do not commit real credentials into a public
+repository.</p>
+<h1 id="chapter-4-tutorial-hunter-gath">Chapter 4: Tutorial — Hunter
+Gath</h1>
+<p>This tutorial creates the campaign as a local add-on first. The
+sample ZIP that accompanies this guide already contains the finished
+version.</p>
+<h2 id="step-1-find-your-wesnoth-userdata-directory">Step 1: Find your
+Wesnoth userdata directory</h2>
+<p>Run:</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wesnoth</span> <span class="at">--config-path</span></span></code></pre></div>
+<p>Set a shell variable using your actual path:</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">WESNOTH_USERDATA</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/.local/share/wesnoth/&lt;version&gt;&quot;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ADDON</span><span class="op">=</span><span class="st">&quot;</span><span class="va">$WESNOTH_USERDATA</span><span class="st">/data/add-ons/Hunter_Gath&quot;</span></span></code></pre></div>
+<p>Create the directory tree:</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">&quot;</span><span class="va">$ADDON</span><span class="st">&quot;</span>/<span class="dt">{scenarios</span><span class="op">,</span><span class="dt">maps</span><span class="op">,</span><span class="dt">units</span><span class="op">,</span><span class="dt">utils</span><span class="op">,</span><span class="dt">music</span><span class="op">,</span><span class="dt">sounds</span><span class="op">,</span><span class="dt">translations</span><span class="op">,</span><span class="dt">tools}</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">&quot;</span><span class="va">$ADDON</span><span class="st">&quot;</span>/images/<span class="dt">{misc</span><span class="op">,</span><span class="dt">portraits</span><span class="op">,</span><span class="dt">story}</span></span></code></pre></div>
+<h2 id="step-2-create-_main.cfg">Step 2: Create
+<code>_main.cfg</code></h2>
+<p>Create:</p>
+<pre class="text"><code>$ADDON/_main.cfg</code></pre>
+<p>Use this content:</p>
+<pre class="wml"><code>#textdomain wesnoth-Hunter_Gath
+
+[textdomain]
+    name=&quot;wesnoth-Hunter_Gath&quot;
+    path=&quot;data/add-ons/Hunter_Gath/translations&quot;
+[/textdomain]
+
+[campaign]
+    id=Hunter_Gath
+    rank=999
+    type=sp
+    name= _ &quot;Hunter Gath&quot;
+    abbrev= _ &quot;HG&quot;
+    define=CAMPAIGN_HUNTER_GATH
+    icon=&quot;misc/hunter-gath-icon.png&quot;
+    image=&quot;portraits/hunter-gath.png&quot;
+    background=&quot;story/hunter-gath-forest.png&quot;
+    first_scenario=01_Goblin_Trail
+    description= _ &quot;A compact sample campaign for learning how Wesnoth campaigns are assembled: add-on metadata, WML, maps, custom units, events, objectives, images, and Git workflow.&quot;
+
+    [difficulty]
+        define=EASY
+        image=&quot;units/human-loyalists/bowman.png~RC(magenta&gt;green)&quot;
+        label= _ &quot;Tracker&quot;
+        description= _ &quot;Easy&quot;
+    [/difficulty]
+    [difficulty]
+        define=NORMAL
+        image=&quot;units/human-outlaws/trapper.png~RC(magenta&gt;green)&quot;
+        label= _ &quot;Hunter&quot;
+        description= _ &quot;Normal&quot;
+        default=yes
+    [/difficulty]
+    [difficulty]
+        define=HARD
+        image=&quot;units/orcs/goblin-spearman.png~RC(magenta&gt;green)&quot;
+        label= _ &quot;Stalker&quot;
+        description= _ &quot;Hard&quot;
+    [/difficulty]
+
+    [about]
+        title= _ &quot;Campaign design and WML&quot;
+        [entry]
+            name=&quot;Your Name&quot;
+            comment= _ &quot;Replace this credit before publishing or proposing the campaign.&quot;
+        [/entry]
+    [/about]
+[/campaign]
+
+#ifdef CAMPAIGN_HUNTER_GATH
+[binary_path]
+    path=data/add-ons/Hunter_Gath
+[/binary_path]
+
+{~add-ons/Hunter_Gath/utils}
+
+[units]
+    {~add-ons/Hunter_Gath/units}
+[/units]
+
+{~add-ons/Hunter_Gath/scenarios}
+#endif</code></pre>
+<p>Important pieces to notice:</p>
+<ul>
+<li><code>id=Hunter_Gath</code> is the internal campaign ID.</li>
+<li><code>define=CAMPAIGN_HUNTER_GATH</code> controls what loads after
+the campaign is selected.</li>
+<li><code>first_scenario=01_Goblin_Trail</code> must match the first
+scenario’s <code>id</code>.</li>
+<li><code>[binary_path] path=data/add-ons/Hunter_Gath</code> lets WML
+find local maps and images.</li>
+<li><code>{~add-ons/Hunter_Gath/scenarios}</code> includes all scenario
+files in that directory.</li>
+</ul>
+<h2 id="step-3-create-utility-macros">Step 3: Create utility macros</h2>
+<p>Create:</p>
+<pre class="text"><code>$ADDON/utils/hg-utils.cfg</code></pre>
+<p>Use this content:</p>
+<pre class="wml"><code>#textdomain wesnoth-Hunter_Gath
+
+# Small campaign-local helpers.
+# Keep utility macros in this file so scenarios stay readable.
+
+#define HG_GOLD EASY_AMOUNT NORMAL_AMOUNT HARD_AMOUNT
+#ifdef EASY
+    gold={EASY_AMOUNT}
+#endif
+#ifdef NORMAL
+    gold={NORMAL_AMOUNT}
+#endif
+#ifdef HARD
+    gold={HARD_AMOUNT}
+#endif
+#enddef
+
+#define HG_INCOME EASY_AMOUNT NORMAL_AMOUNT HARD_AMOUNT
+#ifdef EASY
+    income={EASY_AMOUNT}
+#endif
+#ifdef NORMAL
+    income={NORMAL_AMOUNT}
+#endif
+#ifdef HARD
+    income={HARD_AMOUNT}
+#endif
+#enddef</code></pre>
+<p>The macros expand to different <code>gold=</code> and
+<code>income=</code> keys depending on the selected difficulty. Keeping
+this logic in <code>utils/</code> makes scenario files easier to
+read.</p>
+<h2 id="step-4-create-a-custom-unit">Step 4: Create a custom unit</h2>
+<p>Create:</p>
+<pre class="text"><code>$ADDON/units/HG_Hunter.cfg</code></pre>
+<p>Use this content:</p>
+<pre class="wml"><code>#textdomain wesnoth-Hunter_Gath
+
+[unit_type]
+    id=HG Hunter
+    name= _ &quot;Hunter&quot;
+    race=human
+    image=&quot;units/human-outlaws/trapper.png&quot;
+    profile=&quot;portraits/hunter-gath.png&quot;
+    hitpoints=34
+    movement_type=woodland
+    movement=6
+    experience=44
+    level=1
+    alignment=neutral
+    advances_to=Ranger
+    cost=17
+    usage=archer
+    description= _ &quot;A Hunter knows how to read old tracks, find water in bad ground, and vanish before a patrol realizes it has been followed. This sample unit exists to show where custom campaign units go and how they are loaded.&quot;
+    die_sound={SOUND_LIST:HUMAN_DIE}
+    {DEFENSE_ANIM &quot;units/human-outlaws/trapper-defend.png&quot; &quot;units/human-outlaws/trapper.png&quot; {SOUND_LIST:HUMAN_HIT} }
+
+    [attack]
+        name=knife
+        description= _ &quot;knife&quot;
+        icon=&quot;attacks/dagger-human.png&quot;
+        type=blade
+        range=melee
+        damage=4
+        number=2
+    [/attack]
+    [attack]
+        name=bow
+        description= _ &quot;bow&quot;
+        icon=&quot;attacks/bow.png&quot;
+        type=pierce
+        range=ranged
+        damage=6
+        number=3
+    [/attack]
+[/unit_type]</code></pre>
+<p>Notes:</p>
+<ul>
+<li><code>id=HG Hunter</code> is the code ID used by scenarios.</li>
+<li><code>name= _ "Hunter"</code> is the translated display name.</li>
+<li><code>image=</code> uses a core Wesnoth unit image, so you do not
+need to draw unit sprites yet.</li>
+<li><code>profile=</code> points to a campaign-local portrait
+placeholder.</li>
+<li><code>attacks</code> define the unit’s melee and ranged
+options.</li>
+</ul>
+<h2 id="step-5-create-the-first-map">Step 5: Create the first map</h2>
+<p>Create:</p>
+<pre class="text"><code>$ADDON/maps/01_Goblin_Trail.map</code></pre>
+<p>Use this content:</p>
+<pre class="text"><code>border_size=1
+usage=map
+
+Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Hh, Hh, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Gg
+Gg, Ff, Ff, Gg, Gg, Gg, Hh, Hh, Hh, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Hh, Gg
+Gg, Ff, 1 Kh, Ch, Ch, Gg, Gg, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Hh, Gg, Gg
+Gg, Gg, Ch, Ch, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Ff, Gg, Hh, Hh, Gg, Gg, Gg
+Gg, Gg, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Gg, Gg, Gg, Gg, Ff, Ff, Gg, Gg
+Gg, Hh, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Hh, Gg, Gg, Ff, Ff, Ff, Gg, Gg, Gg
+Gg, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Hh, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Hh, Hh
+Gg, Gg, Gg, Gg, Gg, Gg, Hh, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Ch, Ch, Gg
+Gg, Gg, Hh, Hh, Gg, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Hh, Gg, Ch, 2 Kh, Ch
+Gg, Gg, Gg, Hh, Hh, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Hh, Gg, Gg, Gg, Ch, Gg
+Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Hh, Hh, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg
+Gg, Gg, Ff, Ff, Gg, Gg, Gg, Hh, Hh, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Gg</code></pre>
+<p>In real campaign work, create maps with the built-in map editor, then
+cleanly name them in <code>maps/</code>. Map start positions such as
+<code>1 Kh</code> and <code>2 Kh</code> correspond to side numbers.</p>
+<h2 id="step-6-create-the-first-scenario">Step 6: Create the first
+scenario</h2>
+<p>Create:</p>
+<pre class="text"><code>$ADDON/scenarios/01_Goblin_Trail.cfg</code></pre>
+<p>Use this content:</p>
+<pre class="wml"><code>#textdomain wesnoth-Hunter_Gath
+
+[scenario]
+    id=01_Goblin_Trail
+    name= _ &quot;Goblin Trail&quot;
+    map_file=01_Goblin_Trail.map
+    next_scenario=02_River_Poachers
+    turns=18
+    victory_when_enemies_defeated=yes
+
+    {DEFAULT_SCHEDULE}
+    {SCENARIO_MUSIC &quot;wanderer.ogg&quot;}
+    {EXTRA_SCENARIO_MUSIC &quot;knolls.ogg&quot;}
+
+    [story]
+        [part]
+            story= _ &quot;When smoke rose from the northern timberline, the village elders sent for Gath, a hunter who knew the old paths better than any mapmaker.&quot;
+            background=&quot;story/hunter-gath-forest.png&quot;
+        [/part]
+        [part]
+            story= _ &quot;The tracks were not human. Small feet, many of them, cut across the wet earth toward the river road.&quot;
+            background=&quot;story/hunter-gath-forest.png&quot;
+        [/part]
+    [/story]
+
+    [side]
+        side=1
+        controller=human
+        team_name=hunters
+        user_team_name= _ &quot;Hunters&quot;
+        id=Gath
+        name= _ &quot;Gath&quot;
+        type=HG Hunter
+        canrecruit=yes
+        recruit=Bowman,Spearman,Woodsman
+        {HG_GOLD 95 85 75}
+        {HG_INCOME 1 0 0}
+    [/side]
+
+    [side]
+        side=2
+        controller=ai
+        team_name=goblins
+        user_team_name= _ &quot;Goblins&quot;
+        id=Ruk
+        name= _ &quot;Ruk&quot;
+        type=Goblin Rouser
+        canrecruit=yes
+        recruit=Goblin Spearman,Goblin Impaler,Wolf Rider
+        {HG_GOLD 45 60 75}
+        {HG_INCOME 0 1 2}
+    [/side]
+
+    [event]
+        name=prestart
+
+        [objectives]
+            side=1
+            [objective]
+                description= _ &quot;Defeat Ruk, the goblin rouser&quot;
+                condition=win
+            [/objective]
+            [objective]
+                description= _ &quot;Death of Gath&quot;
+                condition=lose
+            [/objective]
+            [objective]
+                description= _ &quot;Turns run out&quot;
+                condition=lose
+            [/objective]
+            note= _ &quot;This first scenario demonstrates sides, recruits, objectives, story screens, music, and victory by defeating the enemy leader.&quot;
+        [/objectives]
+    [/event]
+
+    [event]
+        name=start
+
+        [message]
+            speaker=Gath
+            message= _ &quot;The raiders are close. Take the ridge, keep the trees at your back, and leave their chief to me.&quot;
+        [/message]
+        [message]
+            speaker=Ruk
+            message= _ &quot;Big hunter talks! Little blades answer!&quot;
+        [/message]
+    [/event]
+
+    [event]
+        name=moveto
+        first_time_only=yes
+        [filter]
+            side=1
+            x=12-15
+            y=2-5
+        [/filter]
+
+        [message]
+            speaker=unit
+            message= _ &quot;Fresh tracks turn east. They were not alone.&quot;
+        [/message]
+    [/event]
+
+    [event]
+        name=last breath
+        [filter]
+            id=Gath
+        [/filter]
+
+        [message]
+            speaker=Gath
+            message= _ &quot;The trail... goes dark.&quot;
+        [/message]
+        [endlevel]
+            result=defeat
+        [/endlevel]
+    [/event]
+
+    [event]
+        name=victory
+
+        [message]
+            speaker=Gath
+            message= _ &quot;Their camp is broken, but these tracks keep running toward the river. We move before dawn.&quot;
+        [/message]
+    [/event]
+[/scenario]</code></pre>
+<p>What this scenario teaches:</p>
+<ul>
+<li>A scenario connects to a map with <code>map_file=</code>.</li>
+<li><code>next_scenario=</code> creates campaign flow.</li>
+<li><code>[side]</code> blocks define leaders, teams, gold, income, and
+recruit lists.</li>
+<li><code>[objectives]</code> defines visible win/loss conditions.</li>
+<li><code>[story]</code> creates pre-scenario story screens.</li>
+<li><code>[event] name=start</code> runs opening dialogue.</li>
+<li><code>[event] name=moveto</code> reacts to unit movement.</li>
+<li><code>[event] name=last breath</code> handles the hero’s death.</li>
+</ul>
+<h2 id="step-7-create-the-second-map">Step 7: Create the second map</h2>
+<p>Create:</p>
+<pre class="text"><code>$ADDON/maps/02_River_Poachers.map</code></pre>
+<p>Use this content:</p>
+<pre class="text"><code>border_size=1
+usage=map
+
+Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Ww, Ww, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Gg, Gg, Gg
+Gg, Ff, Ff, Gg, Gg, Gg, Hh, Gg, Ww, Ww, Gg, Gg, Gg, Ff, Ff, Gg, Hh, Gg, Gg, Gg
+Gg, Ff, 1 Kh, Ch, Ch, Gg, Hh, Gg, Ww, Ww, Gg, Hh, Gg, Gg, Ff, Gg, Gg, Gg, Hh, Gg
+Gg, Gg, Ch, Ch, Gg, Gg, Gg, Gg, Ww, Ww, Gg, Gg, Hh, Gg, Ff, Ff, Gg, Hh, Hh, Gg
+Gg, Gg, Gg, Gg, Gg, Ff, Ff, Gg, Ww, Ww, Gg, Gg, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg
+Gg, Hh, Gg, Gg, Ff, Ff, Gg, Gg, Ww, Ww, Gg, Ff, Ff, Gg, Gg, Gg, Ff, Ff, Gg, Gg
+Gg, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Ww, Ww, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Ch, Ch, Gg
+Gg, Gg, Hh, Gg, Gg, Gg, Hh, Gg, Ww, Ww, Gg, Gg, Gg, Hh, Gg, Gg, Ch, 2 Kh, Ch, Gg
+Gg, Gg, Gg, Hh, Hh, Gg, Gg, Gg, Ww, Ww, Gg, Hh, Hh, Gg, Gg, Gg, Gg, Ch, Gg, Gg
+Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Ww, Ww, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Gg, Gg
+Gg, Ff, Ff, Gg, Gg, Gg, Hh, Gg, Ww, Ww, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Hh, Gg, Gg
+Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Ww, Ww, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg</code></pre>
+<h2 id="step-8-create-the-second-scenario">Step 8: Create the second
+scenario</h2>
+<p>Create:</p>
+<pre class="text"><code>$ADDON/scenarios/02_River_Poachers.cfg</code></pre>
+<p>Use this content:</p>
+<pre class="wml"><code>#textdomain wesnoth-Hunter_Gath
+
+[scenario]
+    id=02_River_Poachers
+    name= _ &quot;River Poachers&quot;
+    map_file=02_River_Poachers.map
+    next_scenario=null
+    turns=22
+    victory_when_enemies_defeated=yes
+
+    {DEFAULT_SCHEDULE}
+    {SCENARIO_MUSIC &quot;traveling_minstrels.ogg&quot;}
+    {EXTRA_SCENARIO_MUSIC &quot;the_city_falls.ogg&quot;}
+
+    [story]
+        [part]
+            story= _ &quot;At the river crossing, Gath found the goblins&#39; allies: poachers cutting the king&#39;s preserve and selling safe passage to anyone with coin.&quot;
+            background=&quot;story/hunter-gath-forest.png&quot;
+        [/part]
+    [/story]
+
+    [side]
+        side=1
+        controller=human
+        team_name=hunters
+        user_team_name= _ &quot;Hunters&quot;
+        id=Gath
+        name= _ &quot;Gath&quot;
+        type=HG Hunter
+        canrecruit=yes
+        recruit=Bowman,Spearman,Woodsman,Thief
+        {HG_GOLD 110 95 80}
+        {HG_INCOME 2 1 0}
+    [/side]
+
+    [side]
+        side=2
+        controller=ai
+        team_name=poachers
+        user_team_name= _ &quot;Poachers&quot;
+        id=Tharn
+        name= _ &quot;Tharn&quot;
+        type=Bandit
+        canrecruit=yes
+        recruit=Thug,Poacher,Thief,Footpad
+        {HG_GOLD 70 90 110}
+        {HG_INCOME 2 3 4}
+    [/side]
+
+    [event]
+        name=prestart
+
+        [objectives]
+            side=1
+            [objective]
+                description= _ &quot;Defeat Tharn, the poacher captain&quot;
+                condition=win
+            [/objective]
+            [objective]
+                description= _ &quot;Death of Gath&quot;
+                condition=lose
+            [/objective]
+            [objective]
+                description= _ &quot;Turns run out&quot;
+                condition=lose
+            [/objective]
+            note= _ &quot;This finale adds a second map, carryover from the campaign flow, a turn event, and a small ambush.&quot;
+        [/objectives]
+    [/event]
+
+    [event]
+        name=start
+
+        [message]
+            speaker=Tharn
+            message= _ &quot;You should have stayed in your trees, hunter. The river belongs to my knives now.&quot;
+        [/message]
+        [message]
+            speaker=Gath
+            message= _ &quot;A river belongs to itself. The rest is just men making noise.&quot;
+        [/message]
+    [/event]
+
+    [event]
+        name=turn 4
+
+        [unit]
+            side=2
+            type=Poacher
+            x=17
+            y=6
+        [/unit]
+        [unit]
+            side=2
+            type=Footpad
+            x=18
+            y=7
+        [/unit]
+        [message]
+            speaker=narrator
+            image=&quot;wesnoth-icon.png&quot;
+            message= _ &quot;More poachers slip from the reeds. Events can create units, change terrain, set variables, and alter objectives while a scenario is running.&quot;
+        [/message]
+    [/event]
+
+    [event]
+        name=last breath
+        [filter]
+            id=Gath
+        [/filter]
+
+        [message]
+            speaker=Gath
+            message= _ &quot;The river takes us all, in the end.&quot;
+        [/message]
+        [endlevel]
+            result=defeat
+        [/endlevel]
+    [/event]
+
+    [event]
+        name=victory
+
+        [message]
+            speaker=Gath
+            message= _ &quot;The road is clear. Tomorrow the village will have a safer river and a better story.&quot;
+        [/message]
+        [endlevel]
+            result=victory
+            linger_mode=yes
+            carryover_report=no
+            save=no
+        [/endlevel]
+    [/event]
+[/scenario]</code></pre>
+<p>What this scenario adds:</p>
+<ul>
+<li>A campaign finale using <code>next_scenario=null</code>.</li>
+<li>A timed event on turn 4.</li>
+<li>Units created by an event.</li>
+<li>A final <code>[endlevel]</code> with no next scenario.</li>
+</ul>
+<h2 id="step-9-add-placeholder-images">Step 9: Add placeholder
+images</h2>
+<p>The package accompanying this guide includes placeholder PNG files.
+To regenerate them, create:</p>
+<pre class="text"><code>$ADDON/tools/make_placeholder_assets.py</code></pre>
+<p>Use this content:</p>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;&quot;&quot;Regenerate the simple placeholder PNGs used by the Hunter Gath tutorial.&quot;&quot;&quot;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image, ImageDraw, ImageFont</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>ROOT <span class="op">=</span> Path(<span class="va">__file__</span>).resolve().parents[<span class="dv">1</span>]</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make(path, size, label):</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    path.parent.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> Image.new(<span class="st">&quot;RGB&quot;</span>, size, (<span class="dv">49</span>, <span class="dv">73</span>, <span class="dv">50</span>))</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    draw <span class="op">=</span> ImageDraw.Draw(img)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>    w, h <span class="op">=</span> size</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>    draw.rectangle([<span class="dv">10</span>, <span class="dv">10</span>, w <span class="op">-</span> <span class="dv">11</span>, h <span class="op">-</span> <span class="dv">11</span>], outline<span class="op">=</span>(<span class="dv">230</span>, <span class="dv">220</span>, <span class="dv">170</span>), width<span class="op">=</span><span class="bu">max</span>(<span class="dv">2</span>, w <span class="op">//</span> <span class="dv">80</span>))</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>    draw.line([<span class="dv">15</span>, h <span class="op">-</span> <span class="dv">20</span>, w <span class="op">-</span> <span class="dv">15</span>, <span class="dv">20</span>], fill<span class="op">=</span>(<span class="dv">180</span>, <span class="dv">140</span>, <span class="dv">80</span>), width<span class="op">=</span><span class="bu">max</span>(<span class="dv">2</span>, w <span class="op">//</span> <span class="dv">90</span>))</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>    draw.text((<span class="dv">20</span>, h <span class="op">//</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">10</span>), label, fill<span class="op">=</span>(<span class="dv">245</span>, <span class="dv">235</span>, <span class="dv">200</span>))</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>    img.save(path)</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>make(ROOT <span class="op">/</span> <span class="st">&quot;images/misc/hunter-gath-icon.png&quot;</span>, (<span class="dv">72</span>, <span class="dv">72</span>), <span class="st">&quot;HG&quot;</span>)</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>make(ROOT <span class="op">/</span> <span class="st">&quot;images/portraits/hunter-gath.png&quot;</span>, (<span class="dv">350</span>, <span class="dv">350</span>), <span class="st">&quot;Hunter Gath&quot;</span>)</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>make(ROOT <span class="op">/</span> <span class="st">&quot;images/story/hunter-gath-forest.png&quot;</span>, (<span class="dv">1024</span>, <span class="dv">768</span>), <span class="st">&quot;Northern Timberline&quot;</span>)</span></code></pre></div>
+<p>Run:</p>
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="st">&quot;</span><span class="va">$ADDON</span><span class="st">/tools/make_placeholder_assets.py&quot;</span></span></code></pre></div>
+<p>These placeholder images are scaffolding only. Before publishing or
+proposing mainline inclusion, replace them with art that has clear
+license provenance and matches Wesnoth’s art direction.</p>
+<h2 id="step-10-add-add-on-metadata">Step 10: Add add-on metadata</h2>
+<p>Create:</p>
+<pre class="text"><code>$ADDON/_server.pbl</code></pre>
+<p>Use this content:</p>
+<pre class="text"><code>title=&quot;Hunter Gath&quot;
+type=&quot;campaign&quot;
+icon=&quot;misc/hunter-gath-icon.png&quot;
+version=&quot;0.1.0&quot;
+author=&quot;Your Name&quot;
+email=&quot;you@example.com&quot;
+passphrase=&quot;replace-this-before-uploading&quot;
+description=&quot;A compact two-scenario campaign used as a development tutorial sample.&quot;</code></pre>
+<p>Before uploading, replace <code>author</code>, <code>email</code>,
+and <code>passphrase</code>. Do not commit a real private passphrase
+into a public repository.</p>
+<h2 id="step-11-run-the-campaign">Step 11: Run the campaign</h2>
+<p>Launch Wesnoth from a terminal so WML errors are visible:</p>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wesnoth</span></span></code></pre></div>
+<p>Open <strong>Campaigns</strong>, find <strong>Hunter Gath</strong>,
+choose a difficulty, and start the first scenario.</p>
+<p>If the campaign does not appear:</p>
+<ul>
+<li>Confirm <code>_main.cfg</code> is directly inside
+<code>Hunter_Gath/</code>.</li>
+<li>Confirm the add-on folder is under <code>data/add-ons/</code> in the
+userdata path printed by <code>wesnoth --config-path</code>.</li>
+<li>Confirm the folder is named <code>Hunter_Gath</code>, not
+<code>Hunter Gath</code>.</li>
+<li>Check the terminal output for WML parse errors.</li>
+</ul>
+<p>If the campaign appears but fails to start:</p>
+<ul>
+<li>Confirm <code>first_scenario=01_Goblin_Trail</code> matches the
+scenario <code>id</code> exactly.</li>
+<li>Confirm <code>map_file=01_Goblin_Trail.map</code> matches the map
+filename exactly.</li>
+<li>Confirm custom unit ID <code>HG Hunter</code> matches
+<code>type=HG Hunter</code> in the first <code>[side]</code>.</li>
+<li>Confirm every opening WML tag has a matching closing tag.</li>
+</ul>
+<h1 id="chapter-5-testing-debugging-and-maintenance">Chapter 5: Testing,
+debugging, and maintenance</h1>
+<h2 id="use-the-terminal-as-your-first-debugger">Use the terminal as
+your first debugger</h2>
+<p>Wesnoth reports WML errors on startup and scenario load. When
+something breaks, do not guess from the UI. Start the game from a
+terminal, reproduce the failure, and read the first error. The first
+error is usually more useful than the later cascade.</p>
+<h2 id="format-wml-with-wmlindent">Format WML with
+<code>wmlindent</code></h2>
+<p>From your Wesnoth repository checkout:</p>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/src/wesnoth</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> data/tools/wmlindent ~/.local/share/wesnoth/<span class="op">&lt;</span>version<span class="op">&gt;</span>/data/add-ons/Hunter_Gath</span></code></pre></div>
+<p>Or, after moving the campaign into the repository:</p>
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> data/tools/wmlindent data/campaigns/Hunter_Gath</span></code></pre></div>
+<p>Review the diff after formatting:</p>
+<div class="sourceCode" id="cb43"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--</span> data/campaigns/Hunter_Gath</span></code></pre></div>
+<h2 id="run-maintenance-checks">Run maintenance checks</h2>
+<p><code>wmllint</code> and related tools can produce noisy output,
+especially while content is incomplete. Treat them as maintenance
+assistants, not as a substitute for loading and playing the
+campaign.</p>
+<p>A typical later-stage check from the repository root is:</p>
+<div class="sourceCode" id="cb44"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> data/tools/wmllint data/core data/campaigns/Hunter_Gath</span></code></pre></div>
+<p>Use existing mainline campaigns as examples when a warning is
+unclear.</p>
+<h2 id="test-like-a-player-and-like-a-maintainer">Test like a player and
+like a maintainer</h2>
+<p>Player testing:</p>
+<ul>
+<li>Can each scenario be won and lost?</li>
+<li>Are objectives accurate after events fire?</li>
+<li>Does the turn limit create pressure without being arbitrary?</li>
+<li>Are recruit lists and gold fair on all difficulties?</li>
+<li>Are dialogue and story screens clear without being too long?</li>
+</ul>
+<p>Maintainer testing:</p>
+<ul>
+<li>Are IDs stable and consistently prefixed where needed?</li>
+<li>Are paths relative to the correct binary path?</li>
+<li>Are all strings intended for players marked with
+<code>_</code>?</li>
+<li>Are there unused images, maps, units, or macros?</li>
+<li>Is every asset license recorded?</li>
+<li>Does the campaign load from a clean checkout, not only from your own
+machine?</li>
+</ul>
+<h2 id="common-campaign-bugs">Common campaign bugs</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symptom</th>
+<th>Likely cause</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Campaign not listed</td>
+<td><code>_main.cfg</code> missing, wrong add-on directory, parse error
+before <code>[campaign]</code>.</td>
+</tr>
+<tr class="even">
+<td>Scenario not found</td>
+<td><code>first_scenario</code> or <code>next_scenario</code> does not
+match a scenario <code>id</code>.</td>
+</tr>
+<tr class="odd">
+<td>Map not found</td>
+<td>Wrong <code>map_file</code>, missing map, missing
+<code>[binary_path]</code>, or mainline/add-on path mismatch.</td>
+</tr>
+<tr class="even">
+<td>Unknown unit type</td>
+<td>Custom unit not inside <code>[units]</code>, typo in
+<code>type=</code>, or dependency on a unit not available in core.</td>
+</tr>
+<tr class="odd">
+<td>Image not found</td>
+<td>Wrong image path, missing <code>[binary_path]</code>, file name case
+mismatch.</td>
+</tr>
+<tr class="even">
+<td>Difficulty values wrong</td>
+<td>Macro not included before scenarios or difficulty symbol
+mismatch.</td>
+</tr>
+<tr class="odd">
+<td>Translation extraction misses strings</td>
+<td>Missing <code>_</code> marker or wrong textdomain.</td>
+</tr>
+</tbody>
+</table>
+<h1
+id="chapter-6-moving-from-an-add-on-to-a-forked-wesnoth-branch">Chapter
+6: Moving from an add-on to a forked Wesnoth branch</h1>
+<p>Once Hunter Gath works locally, commit it to your fork of the Wesnoth
+repository.</p>
+<h2 id="step-1-sync-your-fork">Step 1: Sync your fork</h2>
+<div class="sourceCode" id="cb45"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/src/wesnoth</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch upstream</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout master</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge upstream/master</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin master</span></code></pre></div>
+<h2 id="step-2-create-a-feature-branch">Step 2: Create a feature
+branch</h2>
+<div class="sourceCode" id="cb46"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> hunter-gath-campaign</span></code></pre></div>
+<h2 id="step-3-copy-the-campaign-into-datacampaigns">Step 3: Copy the
+campaign into <code>data/campaigns</code></h2>
+<div class="sourceCode" id="cb47"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> data/campaigns/Hunter_Gath</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-a</span> <span class="at">--delete</span> <span class="dt">\</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  ~/.local/share/wesnoth/<span class="op">&lt;</span>version<span class="op">&gt;</span>/data/add-ons/Hunter_Gath/ <span class="dt">\</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  data/campaigns/Hunter_Gath/</span></code></pre></div>
+<p>Do not copy private upload credentials. If <code>_server.pbl</code>
+contains a real passphrase, remove or sanitize it before committing.</p>
+<h2 id="step-4-convert-add-on-include-paths-to-mainline-paths">Step 4:
+Convert add-on include paths to mainline paths</h2>
+<p>For a local add-on, Hunter Gath uses:</p>
+<pre class="wml"><code>[binary_path]
+    path=data/add-ons/Hunter_Gath
+[/binary_path]
+
+{~add-ons/Hunter_Gath/utils}
+[units]
+    {~add-ons/Hunter_Gath/units}
+[/units]
+{~add-ons/Hunter_Gath/scenarios}</code></pre>
+<p>For a campaign inside the source tree, use:</p>
+<pre class="wml"><code>[binary_path]
+    path=data/campaigns/Hunter_Gath
+[/binary_path]
+
+{campaigns/Hunter_Gath/utils}
+[units]
+    {campaigns/Hunter_Gath/units}
+[/units]
+{campaigns/Hunter_Gath/scenarios}</code></pre>
+<p>Also update the textdomain path:</p>
+<pre class="wml"><code>[textdomain]
+    name=&quot;wesnoth-Hunter_Gath&quot;
+    path=&quot;data/campaigns/Hunter_Gath/translations&quot;
+[/textdomain]</code></pre>
+<p>Mainline campaigns are included through the game’s campaign data
+loading. Study nearby campaigns in <code>data/campaigns/</code> and
+match current conventions before opening a pull request.</p>
+<h2 id="step-5-format-and-inspect">Step 5: Format and inspect</h2>
+<div class="sourceCode" id="cb51"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> data/tools/wmlindent data/campaigns/Hunter_Gath</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--check</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--</span> data/campaigns/Hunter_Gath</span></code></pre></div>
+<h2 id="step-6-build-and-run-from-the-branch">Step 6: Build and run from
+the branch</h2>
+<div class="sourceCode" id="cb52"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--build</span> build</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./build/wesnoth</span></span></code></pre></div>
+<p>Load Hunter Gath from the campaign menu and play both scenarios. Fix
+every terminal error before committing.</p>
+<h2 id="step-7-commit">Step 7: Commit</h2>
+<div class="sourceCode" id="cb53"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add data/campaigns/Hunter_Gath</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Add Hunter Gath sample campaign&quot;</span></span></code></pre></div>
+<p>Good campaign commits are readable. If you are adding a large
+campaign, split work into meaningful commits:</p>
+<ol type="1">
+<li>Campaign scaffold and metadata.</li>
+<li>Maps and scenario WML.</li>
+<li>Units and macros.</li>
+<li>Art/music/sound assets with license notes.</li>
+<li>Balancing and text revisions.</li>
+</ol>
+<h2 id="step-8-push-and-open-a-pull-request">Step 8: Push and open a
+pull request</h2>
+<div class="sourceCode" id="cb54"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin hunter-gath-campaign</span></code></pre></div>
+<p>Open a pull request from your fork to the official repository. In the
+PR description, include:</p>
+<ul>
+<li>What the campaign adds.</li>
+<li>How many scenarios are playable.</li>
+<li>How it was tested.</li>
+<li>Known missing assets or balance concerns.</li>
+<li>Licensing notes for all new assets.</li>
+<li>Any design discussion links from forums, Discord, or issue
+threads.</li>
+</ul>
+<h2 id="step-9-expect-review">Step 9: Expect review</h2>
+<p>Wesnoth is a volunteer project. Make the review easy:</p>
+<ul>
+<li>Keep formatting clean.</li>
+<li>Explain unusual WML.</li>
+<li>Do not mix unrelated engine changes into a campaign PR.</li>
+<li>Respond politely and specifically to review comments.</li>
+<li>If generated or assisted code is involved, be ready to explain what
+it does and why.</li>
+</ul>
+<h1 id="appendix-a-complete-hunter-gath-file-listing">Appendix A:
+Complete Hunter Gath file listing</h1>
+<p>The accompanying ZIP includes this file tree:</p>
+<pre class="text"><code>ART_LICENSE
+COPYING.txt
+README.md
+_main.cfg
+_server.pbl
+images/misc/hunter-gath-icon.png
+images/portraits/hunter-gath.png
+images/story/hunter-gath-forest.png
+maps/01_Goblin_Trail.map
+maps/02_River_Poachers.map
+music/.keep
+scenarios/01_Goblin_Trail.cfg
+scenarios/02_River_Poachers.cfg
+sounds/.keep
+tools/make_placeholder_assets.py
+translations/.keep
+units/HG_Hunter.cfg
+utils/hg-utils.cfg</code></pre>
+<h2 id="main.cfg-1"><code>_main.cfg</code></h2>
+<pre class="wml"><code>#textdomain wesnoth-Hunter_Gath
+
+[textdomain]
+    name=&quot;wesnoth-Hunter_Gath&quot;
+    path=&quot;data/add-ons/Hunter_Gath/translations&quot;
+[/textdomain]
+
+[campaign]
+    id=Hunter_Gath
+    rank=999
+    type=sp
+    name= _ &quot;Hunter Gath&quot;
+    abbrev= _ &quot;HG&quot;
+    define=CAMPAIGN_HUNTER_GATH
+    icon=&quot;misc/hunter-gath-icon.png&quot;
+    image=&quot;portraits/hunter-gath.png&quot;
+    background=&quot;story/hunter-gath-forest.png&quot;
+    first_scenario=01_Goblin_Trail
+    description= _ &quot;A compact sample campaign for learning how Wesnoth campaigns are assembled: add-on metadata, WML, maps, custom units, events, objectives, images, and Git workflow.&quot;
+
+    [difficulty]
+        define=EASY
+        image=&quot;units/human-loyalists/bowman.png~RC(magenta&gt;green)&quot;
+        label= _ &quot;Tracker&quot;
+        description= _ &quot;Easy&quot;
+    [/difficulty]
+    [difficulty]
+        define=NORMAL
+        image=&quot;units/human-outlaws/trapper.png~RC(magenta&gt;green)&quot;
+        label= _ &quot;Hunter&quot;
+        description= _ &quot;Normal&quot;
+        default=yes
+    [/difficulty]
+    [difficulty]
+        define=HARD
+        image=&quot;units/orcs/goblin-spearman.png~RC(magenta&gt;green)&quot;
+        label= _ &quot;Stalker&quot;
+        description= _ &quot;Hard&quot;
+    [/difficulty]
+
+    [about]
+        title= _ &quot;Campaign design and WML&quot;
+        [entry]
+            name=&quot;Your Name&quot;
+            comment= _ &quot;Replace this credit before publishing or proposing the campaign.&quot;
+        [/entry]
+    [/about]
+[/campaign]
+
+#ifdef CAMPAIGN_HUNTER_GATH
+[binary_path]
+    path=data/add-ons/Hunter_Gath
+[/binary_path]
+
+{~add-ons/Hunter_Gath/utils}
+
+[units]
+    {~add-ons/Hunter_Gath/units}
+[/units]
+
+{~add-ons/Hunter_Gath/scenarios}
+#endif</code></pre>
+<h2 id="utilshg-utils.cfg"><code>utils/hg-utils.cfg</code></h2>
+<pre class="wml"><code>#textdomain wesnoth-Hunter_Gath
+
+# Small campaign-local helpers.
+# Keep utility macros in this file so scenarios stay readable.
+
+#define HG_GOLD EASY_AMOUNT NORMAL_AMOUNT HARD_AMOUNT
+#ifdef EASY
+    gold={EASY_AMOUNT}
+#endif
+#ifdef NORMAL
+    gold={NORMAL_AMOUNT}
+#endif
+#ifdef HARD
+    gold={HARD_AMOUNT}
+#endif
+#enddef
+
+#define HG_INCOME EASY_AMOUNT NORMAL_AMOUNT HARD_AMOUNT
+#ifdef EASY
+    income={EASY_AMOUNT}
+#endif
+#ifdef NORMAL
+    income={NORMAL_AMOUNT}
+#endif
+#ifdef HARD
+    income={HARD_AMOUNT}
+#endif
+#enddef</code></pre>
+<h2 id="unitshg_hunter.cfg"><code>units/HG_Hunter.cfg</code></h2>
+<pre class="wml"><code>#textdomain wesnoth-Hunter_Gath
+
+[unit_type]
+    id=HG Hunter
+    name= _ &quot;Hunter&quot;
+    race=human
+    image=&quot;units/human-outlaws/trapper.png&quot;
+    profile=&quot;portraits/hunter-gath.png&quot;
+    hitpoints=34
+    movement_type=woodland
+    movement=6
+    experience=44
+    level=1
+    alignment=neutral
+    advances_to=Ranger
+    cost=17
+    usage=archer
+    description= _ &quot;A Hunter knows how to read old tracks, find water in bad ground, and vanish before a patrol realizes it has been followed. This sample unit exists to show where custom campaign units go and how they are loaded.&quot;
+    die_sound={SOUND_LIST:HUMAN_DIE}
+    {DEFENSE_ANIM &quot;units/human-outlaws/trapper-defend.png&quot; &quot;units/human-outlaws/trapper.png&quot; {SOUND_LIST:HUMAN_HIT} }
+
+    [attack]
+        name=knife
+        description= _ &quot;knife&quot;
+        icon=&quot;attacks/dagger-human.png&quot;
+        type=blade
+        range=melee
+        damage=4
+        number=2
+    [/attack]
+    [attack]
+        name=bow
+        description= _ &quot;bow&quot;
+        icon=&quot;attacks/bow.png&quot;
+        type=pierce
+        range=ranged
+        damage=6
+        number=3
+    [/attack]
+[/unit_type]</code></pre>
+<h2
+id="scenarios01_goblin_trail.cfg"><code>scenarios/01_Goblin_Trail.cfg</code></h2>
+<pre class="wml"><code>#textdomain wesnoth-Hunter_Gath
+
+[scenario]
+    id=01_Goblin_Trail
+    name= _ &quot;Goblin Trail&quot;
+    map_file=01_Goblin_Trail.map
+    next_scenario=02_River_Poachers
+    turns=18
+    victory_when_enemies_defeated=yes
+
+    {DEFAULT_SCHEDULE}
+    {SCENARIO_MUSIC &quot;wanderer.ogg&quot;}
+    {EXTRA_SCENARIO_MUSIC &quot;knolls.ogg&quot;}
+
+    [story]
+        [part]
+            story= _ &quot;When smoke rose from the northern timberline, the village elders sent for Gath, a hunter who knew the old paths better than any mapmaker.&quot;
+            background=&quot;story/hunter-gath-forest.png&quot;
+        [/part]
+        [part]
+            story= _ &quot;The tracks were not human. Small feet, many of them, cut across the wet earth toward the river road.&quot;
+            background=&quot;story/hunter-gath-forest.png&quot;
+        [/part]
+    [/story]
+
+    [side]
+        side=1
+        controller=human
+        team_name=hunters
+        user_team_name= _ &quot;Hunters&quot;
+        id=Gath
+        name= _ &quot;Gath&quot;
+        type=HG Hunter
+        canrecruit=yes
+        recruit=Bowman,Spearman,Woodsman
+        {HG_GOLD 95 85 75}
+        {HG_INCOME 1 0 0}
+    [/side]
+
+    [side]
+        side=2
+        controller=ai
+        team_name=goblins
+        user_team_name= _ &quot;Goblins&quot;
+        id=Ruk
+        name= _ &quot;Ruk&quot;
+        type=Goblin Rouser
+        canrecruit=yes
+        recruit=Goblin Spearman,Goblin Impaler,Wolf Rider
+        {HG_GOLD 45 60 75}
+        {HG_INCOME 0 1 2}
+    [/side]
+
+    [event]
+        name=prestart
+
+        [objectives]
+            side=1
+            [objective]
+                description= _ &quot;Defeat Ruk, the goblin rouser&quot;
+                condition=win
+            [/objective]
+            [objective]
+                description= _ &quot;Death of Gath&quot;
+                condition=lose
+            [/objective]
+            [objective]
+                description= _ &quot;Turns run out&quot;
+                condition=lose
+            [/objective]
+            note= _ &quot;This first scenario demonstrates sides, recruits, objectives, story screens, music, and victory by defeating the enemy leader.&quot;
+        [/objectives]
+    [/event]
+
+    [event]
+        name=start
+
+        [message]
+            speaker=Gath
+            message= _ &quot;The raiders are close. Take the ridge, keep the trees at your back, and leave their chief to me.&quot;
+        [/message]
+        [message]
+            speaker=Ruk
+            message= _ &quot;Big hunter talks! Little blades answer!&quot;
+        [/message]
+    [/event]
+
+    [event]
+        name=moveto
+        first_time_only=yes
+        [filter]
+            side=1
+            x=12-15
+            y=2-5
+        [/filter]
+
+        [message]
+            speaker=unit
+            message= _ &quot;Fresh tracks turn east. They were not alone.&quot;
+        [/message]
+    [/event]
+
+    [event]
+        name=last breath
+        [filter]
+            id=Gath
+        [/filter]
+
+        [message]
+            speaker=Gath
+            message= _ &quot;The trail... goes dark.&quot;
+        [/message]
+        [endlevel]
+            result=defeat
+        [/endlevel]
+    [/event]
+
+    [event]
+        name=victory
+
+        [message]
+            speaker=Gath
+            message= _ &quot;Their camp is broken, but these tracks keep running toward the river. We move before dawn.&quot;
+        [/message]
+    [/event]
+[/scenario]</code></pre>
+<h2
+id="scenarios02_river_poachers.cfg"><code>scenarios/02_River_Poachers.cfg</code></h2>
+<pre class="wml"><code>#textdomain wesnoth-Hunter_Gath
+
+[scenario]
+    id=02_River_Poachers
+    name= _ &quot;River Poachers&quot;
+    map_file=02_River_Poachers.map
+    next_scenario=null
+    turns=22
+    victory_when_enemies_defeated=yes
+
+    {DEFAULT_SCHEDULE}
+    {SCENARIO_MUSIC &quot;traveling_minstrels.ogg&quot;}
+    {EXTRA_SCENARIO_MUSIC &quot;the_city_falls.ogg&quot;}
+
+    [story]
+        [part]
+            story= _ &quot;At the river crossing, Gath found the goblins&#39; allies: poachers cutting the king&#39;s preserve and selling safe passage to anyone with coin.&quot;
+            background=&quot;story/hunter-gath-forest.png&quot;
+        [/part]
+    [/story]
+
+    [side]
+        side=1
+        controller=human
+        team_name=hunters
+        user_team_name= _ &quot;Hunters&quot;
+        id=Gath
+        name= _ &quot;Gath&quot;
+        type=HG Hunter
+        canrecruit=yes
+        recruit=Bowman,Spearman,Woodsman,Thief
+        {HG_GOLD 110 95 80}
+        {HG_INCOME 2 1 0}
+    [/side]
+
+    [side]
+        side=2
+        controller=ai
+        team_name=poachers
+        user_team_name= _ &quot;Poachers&quot;
+        id=Tharn
+        name= _ &quot;Tharn&quot;
+        type=Bandit
+        canrecruit=yes
+        recruit=Thug,Poacher,Thief,Footpad
+        {HG_GOLD 70 90 110}
+        {HG_INCOME 2 3 4}
+    [/side]
+
+    [event]
+        name=prestart
+
+        [objectives]
+            side=1
+            [objective]
+                description= _ &quot;Defeat Tharn, the poacher captain&quot;
+                condition=win
+            [/objective]
+            [objective]
+                description= _ &quot;Death of Gath&quot;
+                condition=lose
+            [/objective]
+            [objective]
+                description= _ &quot;Turns run out&quot;
+                condition=lose
+            [/objective]
+            note= _ &quot;This finale adds a second map, carryover from the campaign flow, a turn event, and a small ambush.&quot;
+        [/objectives]
+    [/event]
+
+    [event]
+        name=start
+
+        [message]
+            speaker=Tharn
+            message= _ &quot;You should have stayed in your trees, hunter. The river belongs to my knives now.&quot;
+        [/message]
+        [message]
+            speaker=Gath
+            message= _ &quot;A river belongs to itself. The rest is just men making noise.&quot;
+        [/message]
+    [/event]
+
+    [event]
+        name=turn 4
+
+        [unit]
+            side=2
+            type=Poacher
+            x=17
+            y=6
+        [/unit]
+        [unit]
+            side=2
+            type=Footpad
+            x=18
+            y=7
+        [/unit]
+        [message]
+            speaker=narrator
+            image=&quot;wesnoth-icon.png&quot;
+            message= _ &quot;More poachers slip from the reeds. Events can create units, change terrain, set variables, and alter objectives while a scenario is running.&quot;
+        [/message]
+    [/event]
+
+    [event]
+        name=last breath
+        [filter]
+            id=Gath
+        [/filter]
+
+        [message]
+            speaker=Gath
+            message= _ &quot;The river takes us all, in the end.&quot;
+        [/message]
+        [endlevel]
+            result=defeat
+        [/endlevel]
+    [/event]
+
+    [event]
+        name=victory
+
+        [message]
+            speaker=Gath
+            message= _ &quot;The road is clear. Tomorrow the village will have a safer river and a better story.&quot;
+        [/message]
+        [endlevel]
+            result=victory
+            linger_mode=yes
+            carryover_report=no
+            save=no
+        [/endlevel]
+    [/event]
+[/scenario]</code></pre>
+<h2
+id="maps01_goblin_trail.map"><code>maps/01_Goblin_Trail.map</code></h2>
+<pre class="text"><code>border_size=1
+usage=map
+
+Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Hh, Hh, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Gg
+Gg, Ff, Ff, Gg, Gg, Gg, Hh, Hh, Hh, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Hh, Gg
+Gg, Ff, 1 Kh, Ch, Ch, Gg, Gg, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Hh, Gg, Gg
+Gg, Gg, Ch, Ch, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Ff, Gg, Hh, Hh, Gg, Gg, Gg
+Gg, Gg, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Gg, Gg, Gg, Gg, Ff, Ff, Gg, Gg
+Gg, Hh, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Hh, Gg, Gg, Ff, Ff, Ff, Gg, Gg, Gg
+Gg, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Hh, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Hh, Hh
+Gg, Gg, Gg, Gg, Gg, Gg, Hh, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Ch, Ch, Gg
+Gg, Gg, Hh, Hh, Gg, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Hh, Gg, Ch, 2 Kh, Ch
+Gg, Gg, Gg, Hh, Hh, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Hh, Gg, Gg, Gg, Ch, Gg
+Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Hh, Hh, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg
+Gg, Gg, Ff, Ff, Gg, Gg, Gg, Hh, Hh, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Gg</code></pre>
+<h2
+id="maps02_river_poachers.map"><code>maps/02_River_Poachers.map</code></h2>
+<pre class="text"><code>border_size=1
+usage=map
+
+Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Ww, Ww, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Gg, Gg, Gg
+Gg, Ff, Ff, Gg, Gg, Gg, Hh, Gg, Ww, Ww, Gg, Gg, Gg, Ff, Ff, Gg, Hh, Gg, Gg, Gg
+Gg, Ff, 1 Kh, Ch, Ch, Gg, Hh, Gg, Ww, Ww, Gg, Hh, Gg, Gg, Ff, Gg, Gg, Gg, Hh, Gg
+Gg, Gg, Ch, Ch, Gg, Gg, Gg, Gg, Ww, Ww, Gg, Gg, Hh, Gg, Ff, Ff, Gg, Hh, Hh, Gg
+Gg, Gg, Gg, Gg, Gg, Ff, Ff, Gg, Ww, Ww, Gg, Gg, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg
+Gg, Hh, Gg, Gg, Ff, Ff, Gg, Gg, Ww, Ww, Gg, Ff, Ff, Gg, Gg, Gg, Ff, Ff, Gg, Gg
+Gg, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Ww, Ww, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Ch, Ch, Gg
+Gg, Gg, Hh, Gg, Gg, Gg, Hh, Gg, Ww, Ww, Gg, Gg, Gg, Hh, Gg, Gg, Ch, 2 Kh, Ch, Gg
+Gg, Gg, Gg, Hh, Hh, Gg, Gg, Gg, Ww, Ww, Gg, Hh, Hh, Gg, Gg, Gg, Gg, Ch, Gg, Gg
+Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Ww, Ww, Gg, Gg, Gg, Ff, Ff, Gg, Gg, Gg, Gg, Gg
+Gg, Ff, Ff, Gg, Gg, Gg, Hh, Gg, Ww, Ww, Gg, Gg, Ff, Ff, Gg, Gg, Hh, Hh, Gg, Gg
+Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Ww, Ww, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg, Gg</code></pre>
+<h2 id="server.pbl-1"><code>_server.pbl</code></h2>
+<pre class="text"><code>title=&quot;Hunter Gath&quot;
+type=&quot;campaign&quot;
+icon=&quot;misc/hunter-gath-icon.png&quot;
+version=&quot;0.1.0&quot;
+author=&quot;Your Name&quot;
+email=&quot;you@example.com&quot;
+passphrase=&quot;replace-this-before-uploading&quot;
+description=&quot;A compact two-scenario campaign used as a development tutorial sample.&quot;</code></pre>
+<h1 id="appendix-b-preflight-checklist">Appendix B: Preflight
+checklist</h1>
+<p>Before local testing:</p>
+<ul class="task-list">
+<li><label><input type="checkbox" /><code>_main.cfg</code> exists
+directly inside <code>Hunter_Gath/</code>.</label></li>
+<li><label><input type="checkbox" />The directory is under
+<code>data/add-ons/</code> in the userdata path printed by
+<code>wesnoth --config-path</code>.</label></li>
+<li><label><input type="checkbox" />The folder and include paths use
+<code>Hunter_Gath</code>, not <code>Hunter Gath</code>.</label></li>
+<li><label><input
+type="checkbox" /><code>[campaign] first_scenario=</code> matches the
+first scenario <code>id</code>.</label></li>
+<li><label><input type="checkbox" />Every scenario’s
+<code>map_file=</code> exists in <code>maps/</code>.</label></li>
+<li><label><input type="checkbox" />Custom units are included inside
+<code>[units]</code>.</label></li>
+<li><label><input type="checkbox" />Images referenced by campaign
+metadata exist under <code>images/</code> or in core.</label></li>
+</ul>
+<p>Before committing:</p>
+<ul class="task-list">
+<li><label><input type="checkbox" />WML is formatted with
+<code>wmlindent</code>.</label></li>
+<li><label><input type="checkbox" /><code>git diff --check</code> is
+clean.</label></li>
+<li><label><input type="checkbox" />The campaign works from a clean
+checkout or clean userdata directory.</label></li>
+<li><label><input type="checkbox" />No private <code>_server.pbl</code>
+passphrase is committed.</label></li>
+<li><label><input type="checkbox" />Placeholder art is replaced or
+clearly marked as placeholder.</label></li>
+<li><label><input type="checkbox" />Asset licenses are
+documented.</label></li>
+<li><label><input type="checkbox" />All user-facing strings are marked
+for translation.</label></li>
+<li><label><input type="checkbox" />US English spelling and punctuation
+are consistent.</label></li>
+<li><label><input type="checkbox" />The PR description explains testing
+and known limitations.</label></li>
+</ul>
+<h2 id="references">References</h2>
+<p>Official Wesnoth references used while compiling this guide:</p>
+<ul>
+<li>Project / developers entry point:
+https://wiki.wesnoth.org/Project#Developers</li>
+<li>Wesnoth repository: https://github.com/wesnoth/wesnoth</li>
+<li>Source build instructions:
+https://github.com/wesnoth/wesnoth/blob/master/INSTALL.md</li>
+<li>Contribution guidelines:
+https://github.com/wesnoth/wesnoth/blob/master/CONTRIBUTING.md</li>
+<li>Official manual sources:
+https://github.com/wesnoth/wesnoth/tree/master/doc/manual</li>
+<li>Add-on structure: https://wiki.wesnoth.org/AddonStructure</li>
+<li>Editing Wesnoth / paths:
+https://wiki.wesnoth.org/EditingWesnoth</li>
+<li>WML reference index: https://wiki.wesnoth.org/ReferenceWML</li>
+<li>Campaign WML: https://wiki.wesnoth.org/CampaignWML</li>
+<li>Scenario WML: https://wiki.wesnoth.org/ScenarioWML</li>
+<li>Side WML: https://wiki.wesnoth.org/SideWML</li>
+<li>Event WML: https://wiki.wesnoth.org/EventWML</li>
+<li>Unit type WML: https://wiki.wesnoth.org/UnitTypeWML</li>
+<li>Preprocessor reference:
+https://wiki.wesnoth.org/PreprocessorRef</li>
+<li>Maps / map editor: https://wiki.wesnoth.org/BuildingMaps</li>
+<li>Distributing content:
+https://wiki.wesnoth.org/Distributing_content</li>
+<li>PBL / add-on server metadata: https://wiki.wesnoth.org/PBLWML</li>
+<li>Maintenance tools: https://wiki.wesnoth.org/Maintenance_tools</li>
+<li>Gettext for Wesnoth developers:
+https://wiki.wesnoth.org/GettextForWesnothDevelopers</li>
+<li>Typography style guide:
+https://wiki.wesnoth.org/Typography_Style_Guide</li>
+</ul>
+</body>
+</html>
