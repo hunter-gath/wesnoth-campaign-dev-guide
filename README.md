@@ -303,7 +303,7 @@ The `.pbl` file is add-on server metadata. It is needed if you upload the add-on
 
 # Chapter 4: Tutorial — Hunter Gath
 
-This tutorial creates the campaign as a local add-on first. The sample ZIP that accompanies this guide already contains the finished version.
+This tutorial creates the campaign as a local add-on first. The sample code that accompanies this guide already contains the finished version.
 
 ## Step 1: Find your Wesnoth userdata directory
 
@@ -1167,7 +1167,7 @@ Wesnoth is a volunteer project. Make the review easy:
 
 # Appendix A: Complete Hunter Gath file listing
 
-The accompanying ZIP includes this file tree:
+The accompanying code includes this file tree:
 
 ```text
 ART_LICENSE
