@@ -1,0 +1,8 @@
+title="Hunter Gath"
+type="campaign"
+icon="misc/hunter-gath-icon.png"
+version="0.1.0"
+author="Your Name"
+email="you@example.com"
+passphrase="replace-this-before-uploading"
+description="A compact two-scenario campaign used as a development tutorial sample."

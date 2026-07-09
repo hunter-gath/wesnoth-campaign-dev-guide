@@ -1,0 +1,5 @@
+This sample campaign is provided as tutorial scaffolding.
+
+Wesnoth itself is GPL-licensed; follow the Battle for Wesnoth project's license and contribution requirements before proposing any work for mainline inclusion or uploading derived content.
+
+Replace placeholder artwork and update this file with the final license provenance for every asset before publishing.
