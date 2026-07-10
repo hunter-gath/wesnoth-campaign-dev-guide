@@ -21,7 +21,7 @@ This document is a practical campaign-development manual for **The Battle for We
 
 The tutorial campaign is called **Hunter Gath**. It is intentionally small: two scenarios, two maps, one custom unit, a few utility macros, placeholder images, story screens, objectives, dialogue, music references, and add-on server metadata. That small scope is deliberate. A campaign coder needs to understand the whole pipeline before writing twenty scenarios.
 
-The layout mirrors the official manual style in a lightweight way: chapters first, tutorial second, appendices and references last. It does **not** replace the official wiki or repository documentation. Instead, it gives you a working path through the parts of the documentation that matter when you are creating a campaign.
+The layout mirrors the official manual style in a lightweight way: chapters first, tutorial second, appendices and references last. It does **not** replace the official wiki or repository documentation. Instead, it gives you a working path through the parts of the documentation that matter when you are creating a campaign. For the code examples, visit the [GitHub page](https://github.com/hunter-gath/wesnoth-campaign-dev-guide/tree/main/Hunter_Gath) for this project.
 
 ## Assumptions
 
