@@ -1,10 +1,6 @@
----
-title: "Hunter Gath's Campaign Developer Guide for The Battle for Wesnoth"
-subtitle: "Creating, testing, and committing a new campaign on Xubuntu / Ubuntu 26.04 LTS"
-author: "Hunter Gath"
-lang: en-US
-date: "2026-07-08"
----
+# Hunter Gath's Campaign Developer Guide for The Battle for Wesnoth
+
+## Creating, testing, and committing a new campaign on Xubuntu / Ubuntu 26.04 LTS
 
 # Table of Contents
 
