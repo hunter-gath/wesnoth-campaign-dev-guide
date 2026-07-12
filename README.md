@@ -23,7 +23,7 @@ The tutorial campaign is called **Hunter Gath**. It is intentionally small: two 
 
 The layout mirrors the official manual style in a lightweight way: chapters first, tutorial second, appendices and references last. It does **not** replace the official wiki or repository documentation. Instead, it gives you a working path through the parts of the documentation that matter when you are creating a campaign. For the code examples, visit the [GitHub page](https://github.com/hunter-gath/wesnoth-campaign-dev-guide/tree/main/Hunter_Gath) for this project.
 
-Prefer a web page? You can view this guide at <a href=https://hunter-gath.github.io/wesnoth-campaign-dev-guide/">Hunter Gath's Campaign Developer Guide</a>. Additionally, if you prefer to dig into an existing campaign and **source-first** reverse engineer, you can read the [Hunter Gath Developer Reference](https://hunter-gath.github.io/wesnoth-campaign-dev-guide/The_Rise_of_Wesnoth/index.html) for **The Rise of Wesnoth**.
+Prefer a web page? You can view this guide at [Hunter Gath's Campaign Developer Guide](href=https://hunter-gath.github.io/wesnoth-campaign-dev-guide). Additionally, if you prefer to dig into an existing campaign and **source-first** reverse engineer, you can read the [Hunter Gath Developer Reference](https://hunter-gath.github.io/wesnoth-campaign-dev-guide/The_Rise_of_Wesnoth/index.html) for **The Rise of Wesnoth**.
 
 ## Assumptions
 
