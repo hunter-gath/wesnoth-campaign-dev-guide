@@ -1,0 +1,187 @@
+{
+  "repository": "wesnoth/wesnoth",
+  "branch_observed": "master",
+  "commit": "6ab3fc1af3e259515c9558564accd16c69800d62",
+  "commit_short": "6ab3fc1",
+  "commit_date": "2026-07-03",
+  "accessed": "July 12, 2026",
+  "scope": "The 14 campaign unit definitions, the campaign distract ability, two inherited core base units, and the core macro files reached by their transitive symbol closure.",
+  "file_count": 25,
+  "files": [
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg",
+      "sha256": "f288991fb26d20b2d655081c2051f943184c05751a1112f1588f339ee3965cb5",
+      "bytes": 544,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg",
+      "sha256": "fdcdad5bd035e8a077de1c2d9e7f0f0685f29fb44ef8bfc0bbd0d3c32e67925b",
+      "bytes": 2350,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg",
+      "sha256": "1a23dbb1f33b23acba40677259bcd9c3aeff12f9c8f93a1ad51da71b9c7fa4f1",
+      "bytes": 5382,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan_Cloaked.cfg",
+      "sha256": "7ffe1d163fa6ed8035ada7381983745db7adb03958053129662dfe04e3d1e88f",
+      "bytes": 328,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan_Cloaked.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan_Cloaked.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Kalian.cfg",
+      "sha256": "d7bba4b3dc8d6efef1322fe5ebdc648fadb8f733b31c08ac103c883c02b7a678",
+      "bytes": 239,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Kalian.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Kalian.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg",
+      "sha256": "ba9aab14953d20b8c302c8606ec34fbb577b5d6f9a83714a354b626b5ff70caa",
+      "bytes": 2848,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg",
+      "sha256": "dacbfdafc26dbc766cade3a2a2919fca60764f588bda6f4a56bcbc9f467ac47d",
+      "bytes": 1416,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg",
+      "sha256": "05cf0348ac2931b9c0f5ece533fdc528c0e9df348e34492a2df257b032335d0b",
+      "bytes": 2704,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg",
+      "sha256": "114a9ba239b6254d8a52fefe490f600dcee04ac13aeac86461c89b28488d52a5",
+      "bytes": 1157,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg",
+      "sha256": "917752a29d0720fecde74fb4d256551faf708c36b96c28ca738261eea3e43f52",
+      "bytes": 2381,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg",
+      "sha256": "adab7d55bcd2e4d9f0dffb4830f37045ef825ececf1a2770aeec2bef03f2f0f5",
+      "bytes": 813,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg",
+      "sha256": "04f98772fa7abe3c5bd295b1ecddf9d185039323604178f6dade25588d2be390",
+      "bytes": 6297,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg",
+      "sha256": "a30acc6257e5535e1b319f994c2796b45a1442f406cf8956c18623d05f38de92",
+      "bytes": 6388,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg",
+      "sha256": "d28de4db213d0e088096b0dbe9ef987d9011838a69ff6bd991c1c7b57b2c0df2",
+      "bytes": 6397,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg"
+    },
+    {
+      "repository_path": "data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg",
+      "sha256": "74b082df34f4d533e2ac9b342510d3452d83a3a19d70219e49119931e733bee4",
+      "bytes": 471,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg"
+    },
+    {
+      "repository_path": "data/core/macros/abilities.cfg",
+      "sha256": "04e36aecefbe147c52cd2b3f6e73662dac28820bb715697bf1b72c9bb1c1c7a3",
+      "bytes": 15446,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/abilities.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/abilities.cfg"
+    },
+    {
+      "repository_path": "data/core/macros/amla.cfg",
+      "sha256": "9e07c80bb15f2ecbc133db1f035e492eb4d01382e3aa51c8661d317b98cfb946",
+      "bytes": 854,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/amla.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/amla.cfg"
+    },
+    {
+      "repository_path": "data/core/macros/animation-utils.cfg",
+      "sha256": "3dbe385afd94faa80f099f2473a40311c95765ea382cac003a20e2839c79b813",
+      "bytes": 43233,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/animation-utils.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/animation-utils.cfg"
+    },
+    {
+      "repository_path": "data/core/macros/animation-utils2.cfg",
+      "sha256": "8b7b628f21410a80a6b95a89ada0dffd8f24cbbb275c21f19d49d3804e8b64e0",
+      "bytes": 8583,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/animation-utils2.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/animation-utils2.cfg"
+    },
+    {
+      "repository_path": "data/core/macros/movetypes.cfg",
+      "sha256": "78327cccd1376a513c3c0140d4da2f092344238e2987104c71b24c8b2083e14c",
+      "bytes": 3489,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/movetypes.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/movetypes.cfg"
+    },
+    {
+      "repository_path": "data/core/macros/sound-utils.cfg",
+      "sha256": "a4c4f93ecda8774fd5d581acff69857cd5732478772c4fdcca825c7fa38151ea",
+      "bytes": 14309,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/sound-utils.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/sound-utils.cfg"
+    },
+    {
+      "repository_path": "data/core/macros/special-notes.cfg",
+      "sha256": "fd74838fa2f85874f6a64245d3d1ed3c8f72cfa429980365647ddb517e604c49",
+      "bytes": 9643,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/special-notes.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/special-notes.cfg"
+    },
+    {
+      "repository_path": "data/core/macros/weapon_specials.cfg",
+      "sha256": "41b0f0c313a2ade0c4145b20a15577eca3a4e83617c9406aa54166ba446b6777",
+      "bytes": 9271,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/weapon_specials.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/macros/weapon_specials.cfg"
+    },
+    {
+      "repository_path": "data/core/units/elves/Champion.cfg",
+      "sha256": "24a6751cce57c09778228d1746fb495391cbdbe8e484dc57f749b87b2c2c2175",
+      "bytes": 2929,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/units/elves/Champion.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/units/elves/Champion.cfg"
+    },
+    {
+      "repository_path": "data/core/units/humans/Royal_Warrior.cfg",
+      "sha256": "d638fe67532436149718af2d90b3754887c57b3ce1937fdfbee5903170180477",
+      "bytes": 1979,
+      "source_url": "https://github.com/wesnoth/wesnoth/blob/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/units/humans/Royal_Warrior.cfg",
+      "raw_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/6ab3fc1af3e259515c9558564accd16c69800d62/data/core/units/humans/Royal_Warrior.cfg"
+    }
+  ]
+}

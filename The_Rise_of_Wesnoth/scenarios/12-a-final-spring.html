@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>12 — A Final Spring</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>12 — A Final Spring</h1><p>The final Green Isle battle: Haldric gains the permanent Ruby attack, Lord Typhon unlocks merfolk recruitment, Jevyan reveals himself, and Southbay’s allied AI defends layered river and wall positions.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html" aria-current="page">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 12</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>12_A_Final_Spring</code></td></tr>
+<tr><th>Next scenario</th><td><code>13_Peoples_in_Decline</code></td></tr>
+<tr><th>Map</th><td><code>12_A_Final_Spring.map</code>, 47 × 47 hexes</td></tr>
+<tr><th>Turns</th><td>39 / 36 / 33</td></tr>
+<tr><th>Schedule</th><td>Default, plus local lighthouse schedule</td></tr>
+<tr><th>Carryover</th><td>40%, early-finish bonus</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Final homeland defense / coalition battle</td></tr>
+<tr><th>Story importance</th><td>Critical</td></tr>
+<tr><th>WML complexity</th><td>Very high</td></tr>
+<tr><th>AI complexity</th><td>Very high allied defense</td></tr>
+<tr><th>Major unlocks</th><td>Ruby attack and merfolk recruitment</td></tr></table></div>
+</div>
+</section>
+
+<section><h2>Story and dialogue</h2>
+<p>Several months pass while Jessene translates the Book and Haldric experiments with the Ruby. The scenario opens by turning the artifact from a plot object into a permanent attack, then immediately interrupts the experiment with news that the orcs have seized Southbay’s frontier.</p>
+<p>Turn 4 reveals the larger antagonist: Lich-Lord Jevyan arrives with his Familiar and Addroran’s undead son, the Fool Prince. Jevyan announces his alliance with the orcs and senses the Ruby. Turn 5 brings Lord Typhon, whose earlier agreement with the elder prince becomes a new alliance with Haldric’s refugees. Merfolk recruitment is unlocked, linking sea travel, diplomacy, and roster progression.</p>
+<table><tr><th>Story beat</th><th>Mechanical consequence</th></tr>
+<tr><td>Ruby translation completed</td><td>Haldric receives a permanent magical fire attack.</td></tr>
+<tr><td>Orcs seize the frontier</td><td>Main objective becomes defeating all enemy leaders.</td></tr>
+<tr><td>Jevyan reveals the Fool Prince</td><td>Personalizes the undead threat and establishes Jevyan as long-term antagonist.</td></tr>
+<tr><td>Typhon renews the pact</td><td>Merman Fighter and Merman Hunter become recruitable.</td></tr>
+<tr><td>Victory at Southbay</td><td>The fleet departs on the newly named <em>Eldaric</em>.</td></tr></table>
+</section>
+
+<section><h2>Map description</h2>
+<p>The 47 × 47 map is the campaign’s largest documented battlefield so far. Southbay’s city and harbor occupy the central-southern region, with northern bridge castles, a river defense, western coast and lighthouse, multiple galleons, roads to the Midlands and Clearwater, and broad eastern and northern frontier terrain.</p>
+<table><tr><th>Map element</th><th>Design role</th></tr>
+<tr><td>Northern bridge castles</td><td>Give Addroran’s AI an exposed first defense line.</td></tr>
+<tr><td>Southern riverbank</td><td>Provides a fallback line when the bridge is overwhelmed.</td></tr>
+<tr><td>Main city walls</td><td>Remain defended in every allied-AI posture.</td></tr>
+<tr><td>Harbor ships and “New Southbay” sign</td><td>Turn victory into an immediate evacuation plan.</td></tr>
+<tr><td>Closed sewer trapdoor</td><td>Shows that the previous infiltration route has been sealed.</td></tr>
+<tr><td>Lighthouse time area</td><td>Reuses the local illumination technique from Clearwater Port.</td></tr></table>
+</section>
+
+<section><h2>Objectives and sides</h2>
+<table><tr><th>Victory</th><th>Defeat all enemy leaders.</th></tr>
+<tr><td>Defeat</td><td>Death of Haldric, Jessene, King Addroran IX, or Lord Typhon if he has appeared; turns expire.</td></tr>
+<tr><td>Carryover</td><td>40%, with early-finish bonus.</td></tr></table>
+<table><tr><th>Side</th><th>Leader / roster</th><th>Gold and income</th><th>Role</th></tr>
+<tr><td>1 — Haldric</td><td>Noble Commander; campaign roster</td><td>220 / 200 / 180</td><td>Human-controlled offensive force</td></tr>
+<tr><td>2 — Southbay</td><td>King Addroran IX, Grand Knight; heavy loyalist roster</td><td>200; income 13</td><td>State-responsive allied city defense</td></tr>
+<tr><td>3 — Orcs</td><td>Tan-Harak, Orcish Warlord</td><td>210 / 250 / 290; income 4 / 6 / 8</td><td>Night-aggressive land army</td></tr>
+<tr><td>4 — Orcs</td><td>Tan-Hork, Orcish Warlord</td><td>210 / 250 / 290; income 4 / 6 / 8</td><td>Second land army</td></tr>
+<tr><td>5 — Orcs</td><td>Tan-Gulo, Orcish Warlord; Naga and bats</td><td>120 / 180 / 200; income 2 / 3 / 4</td><td>Water-and-scout pressure</td></tr>
+<tr><td>6 — Jevyan’s intelligence force</td><td>No recruit leader; hidden</td><td>No normal economy</td><td>Scripted Familiar, undead prince, and reinforcements</td></tr></table>
+</section>
+
+<section><h2>Permanent Ruby of Fire object</h2>
+<p><code>prestart</code> attaches a silent, forever-duration object to Haldric:</p>
+<table><tr><th>Attack field</th><th>Value</th></tr>
+<tr><td>Name</td><td><code>ruby of fire</code></td></tr>
+<tr><td>Damage</td><td>14 × 4</td></tr>
+<tr><td>Type and range</td><td>Fire, ranged</td></tr>
+<tr><td>Special</td><td>Magical</td></tr>
+<tr><td>Icon / projectile</td><td><code>attacks/fireball.png</code> and core fireball missile frame</td></tr>
+<tr><td>Sound</td><td><code>fire.wav</code></td></tr></table>
+<p>The opening animation immediately demonstrates the attack and provides comic feedback about wielding an unsocketed magical gemstone.</p>
+</section>
+
+<section><h2>King Addroran’s allied AI</h2>
+<p>Side 2 is reset every turn. Unlike Clearwater’s four-state variable machine, this scenario derives its posture directly from unit positions:</p>
+<table><tr><th>Condition</th><th>Response</th></tr>
+<tr><td>Northern bridge not overrun</td><td>Defend two northern castle positions and the main city walls.</td></tr>
+<tr><td>At least five enemy units near the bridge, fewer than two Southbay units there, and no player units supporting it</td><td>Avoid the north and reposition toward weighted southern-riverbank goals.</td></tr>
+<tr><td>All conditions</td><td>Always maintain weighted goal locations along the main wall.</td></tr></table>
+<p>The scenario also removes the <code>leader_shares_keep</code> candidate action, limits Addroran to one move, and gives him shallow-water movement cost 1 so he can reach a nearby healing oasis if poisoned.</p>
+</section>
+
+<section><h2>Turn-based coalition events</h2>
+<table><tr><th>Turn</th><th>Event</th><th>Mechanical effect</th></tr>
+<tr><td>4</td><td>Jevyan, Familiar, and Fool Prince appear.</td><td>Creates scripted undead units; Normal/Hard add Chocobones, Hard adds Necrophages.</td></tr>
+<tr><td>5</td><td>Lord Typhon arrives with two merfolk.</td><td>Typhon receives a permanent Storm Trident; Merman Fighter and Hunter recruitment unlocks.</td></tr>
+<tr><td>30</td><td>Addroran urges haste.</td><td>Late-game deadline reminder.</td></tr></table>
+</section>
+
+<section><h2>Lord Typhon and the Storm Trident</h2>
+<p>Typhon is created as a Merman Warrior hero, then receives a permanent object copied from the core storm-trident implementation:</p>
+<table><tr><th>Attack</th><th>Value</th></tr>
+<tr><td>Name</td><td><code>storm trident</code></td></tr>
+<tr><td>Damage</td><td>14 × 2</td></tr>
+<tr><td>Type / range</td><td>Fire, ranged</td></tr>
+<tr><td>Special</td><td>Magical</td></tr>
+<tr><td>Presentation</td><td>Lightning icon and three directional lightning animations</td></tr></table>
+<p>The object is embedded directly in the newly created hero rather than placed as a pickup, guaranteeing that Typhon always arrives with his signature weapon.</p>
+</section>
+
+<section><h2>Jevyan’s scripted intelligence visit</h2>
+<p>Jevyan’s party does not behave like a conventional enemy leader. The hidden side exists for a scripted dramatic entrance:</p>
+<ol>
+<li>Familiar flies in as a messenger and observer.</li>
+<li>Jevyan Cloaked enters, speaks, and senses the Ruby.</li>
+<li>The Fool Prince is shown as a Death Knight.</li>
+<li>Jevyan leaves the map.</li>
+<li>Revenant and Bone Shooter remain, with more undead on higher difficulties.</li>
+<li>Familiar also departs.</li>
+</ol>
+<p>This separates antagonist exposition from normal recruitment and pathfinding.</p>
+</section>
+
+<section><h2>Special events</h2>
+<table><tr><th>Trigger</th><th>Behavior</th></tr>
+<tr><td><code>prestart</code></td><td>Places ships, lighthouse, signs, sealed sewer, recalls companions, grants Ruby attack, and installs objectives.</td></tr>
+<tr><td><code>start</code></td><td>Demonstrates the Ruby and begins the frontier battle.</td></tr>
+<tr><td>Turn 4</td><td>Jevyan intelligence scene and difficulty-scaled undead deployment.</td></tr>
+<tr><td>Turn 5</td><td>Typhon alliance, two loyal merfolk, permanent trident, and recruit unlock.</td></tr>
+<tr><td>Signpost movement</td><td>Displays Southbay, Clearwater, Midlands, Northrun, New Southbay, and sealed-sewer text; permits undo.</td></tr>
+<tr><td>Addroran last breath</td><td>Immediate defeat.</td></tr>
+<tr><td>Fool Prince dies</td><td>Addroran mourns his son.</td></tr>
+<tr><td>Addroran attacks</td><td>Plays a Southbay battle cry.</td></tr>
+<tr><td>Enemies defeated</td><td>Names the flagship <em>Eldaric</em>, confirms Jevyan’s threat, and ends with 40% carryover.</td></tr>
+<tr><td>Time over</td><td>Jessene reports that enemy reserves have arrived.</td></tr></table>
+</section>
+
+<section><h2>Assets and reuse</h2>
+<table><tr><th>Resource</th><th>Origin</th><th>Use</th></tr>
+<tr><td>Haldric and Burin expression portraits; Addroran and Typhon portraits</td><td><span class="badge campaign">Campaign</span></td><td>Ruby experiment, coalition dialogue, and hero identity</td></tr>
+<tr><td>Jevyan, Familiar, and campaign-specific unit sprites</td><td><span class="badge campaign">Campaign</span></td><td>Long-term antagonist intelligence scene</td></tr>
+<tr><td>Fool Prince Death Knight portrait</td><td><span class="badge core">Core/shared</span></td><td>Undead son reveal</td></tr>
+<tr><td>Lighthouse, ships, trapdoor, signs, fireball and lightning art</td><td><span class="badge core">Core/shared</span></td><td>Map staging and artifact attacks</td></tr>
+<tr><td><code>elvish-theme.ogg</code>, <code>undead_siege.ogg</code>, <code>battle.ogg</code>, <code>fire.wav</code>, lightning sounds</td><td><span class="badge core">Core/shared</span></td><td>Score and magical attacks</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/12_A_Final_Spring.map">Map source</a> · <a href="../reference/artifact-index.html">Artifact index</a> · <a href="../reference/ai-index.html">AI index</a></p>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Translate an artifact across several scenarios before activating it</td><td>Delay mechanical payoff to make the item feel researched and consequential.</td></tr>
+<tr><td>Permanent object on a hero</td><td>Add a new attack without creating another unit type or advancement branch.</td></tr>
+<tr><td>Roster unlock through returning diplomacy</td><td>Make an earlier worldbuilding agreement produce a later recruit list.</td></tr>
+<tr><td>Position-derived allied AI</td><td>A posture variable is unnecessary when current battlefield state is sufficient.</td></tr>
+<tr><td>Script the villain’s visit separately from battle AI</td><td>Guarantee timing, dialogue, and exit while leaving a smaller combat consequence.</td></tr></table>
+<div class="prev-next"><a href="11-southbay-in-winter.html">← 11 — Southbay in Winter</a><a href="13-peoples-in-decline.html">13 — Peoples in Decline →</a></div>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

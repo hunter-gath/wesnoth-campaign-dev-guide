@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>20 — Return of the Fleet</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>20 — Return of the Fleet</h1><p>A large coastal rendezvous battle where Jevyan imposes fog, Jessene returns from cross-scenario storage, optional regions create aquatic and Saurian threats, and the refugee fleet becomes the strategic prize.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html" aria-current="page">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 20</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>20_Return_of_the_Fleet</code></td></tr>
+<tr><th>Next scenario</th><td><code>21_The_Plan</code></td></tr>
+<tr><th>Map</th><td><code>20_Return_of_the_Fleet.map</code>, 42 × 42 hexes</td></tr>
+<tr><th>Turns</th><td>47 / 44 / 41</td></tr>
+<tr><th>Visibility</th><td>Normal initially; fog imposed on turn 5</td></tr>
+<tr><th>Carryover</th><td>40%, early-finish bonus</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Fleet-rendezvous defense / invasion battle</td></tr>
+<tr><th>Story importance</th><td>Critical</td></tr>
+<tr><th>WML complexity</th><td>High</td></tr>
+<tr><th>AI complexity</th><td>Moderate declarative AI plus scripted encounters</td></tr>
+<tr><th>Party transition</th><td>Jessene returns on turn 7</td></tr></table></div>
+</div></section>
+
+<section><h2>Story and strategic premise</h2>
+<p>Haldric reaches the fleet’s return site. Several damaged ships have docked, while most remain offshore after seeing smoke from the orc invasion. The refugees must clear the frontier before their people starve at sea or Jevyan arrives with his own fleet.</p>
+<p>On turn 5, Jevyan and his Familiar appear. Jevyan realizes that Haldric has concealed the Ruby’s power but remains confident that Haldric’s corpse will lead him to it. He curses the battlefield with darkness, departs, and leaves Chocobone reinforcements behind. Jessene returns on turn 7 after successfully hiding the artifact.</p>
+</section>
+
+<section><h2>Map description</h2>
+<p>The 42 × 42 battlefield combines a broad northern land frontier with a large western and southern coastal zone. Haldric begins in the south at 28,37. Two orc chiefs occupy northern keeps at 14,7 and 36,7, while undead General Heravan holds the western-central keep at 5,21. Four red refugee galleons are staged along the southwestern coast.</p>
+<table><tr><th>Map element</th><th>Design role</th></tr>
+<tr><td>Four docked ships</td><td>Make the returning fleet a visible strategic asset.</td></tr>
+<tr><td>Large water and coast region</td><td>Supports the Cuttle Fish encounter and maritime stakes.</td></tr>
+<tr><td>Two northern orc fronts</td><td>Create paired leader funding and a Saurian reinforcement opportunity.</td></tr>
+<tr><td>Western undead keep</td><td>Separates Jevyan’s organized undead from his orc allies.</td></tr>
+<tr><td>Southern player keep</td><td>Places the refugees between the coast they must protect and the northern invasion.</td></tr></table>
+</section>
+
+<section><h2>Objectives and sides</h2>
+<table><tr><th>Victory</th><th>Defeat all three enemy leaders.</th></tr>
+<tr><td>Defeat</td><td>Death of Haldric, Aethyr, or Jessene after she has returned; turns expire.</td></tr>
+<tr><td>Carryover</td><td>40%, with early-finish bonus.</td></tr></table>
+<table><tr><th>Side</th><th>Leader / roster</th><th>Gold and income</th><th>AI</th></tr>
+<tr><td>1 — Refugees</td><td>Haldric and available companions; Jessene absent until turn 7</td><td>280 / 250 / 220; income 2 / 1 / 0</td><td>Human controlled</td></tr>
+<tr><td>2 — Undead</td><td>General Heravan, Draug</td><td>120 / 160 / 200; income 6 / 9 / 12</td><td>Passive leader; aggression 0.4, rising to 0.7 at night</td></tr>
+<tr><td>3 — Orcs</td><td>Tan-Halg, Orcish Warlord</td><td>200 / 250 / 300; income 6 / 10 / 14</td><td>Night aggression 0.75; zero caution; no grouping</td></tr>
+<tr><td>4 — Orcs</td><td>Tan-Rinak, Orcish Warlord</td><td>200 / 250 / 300; income 6 / 10 / 14</td><td>Mirrors side 3</td></tr></table>
+<p>The Jessene defeat objective is wrapped in <code>[show_if][have_unit]</code>, so it is not displayed while she remains off-map.</p>
+</section>
+
+<section><h2>Turn-5 Jevyan intervention</h2>
+<ol>
+<li>Familiar and Jevyan Cloaked enter through fake movement.</li>
+<li>Jevyan observes that the Ruby’s magical power has been concealed.</li>
+<li>Haldric condemns Jevyan’s use of both orcs and humans as disposable pawns.</li>
+<li>Jevyan departs rather than fighting.</li>
+<li>Three Chocobones appear for side 4; Normal adds one for side 3, Hard adds two.</li>
+<li>Side 1 is changed to <code>fog=yes</code> and the map redraws.</li>
+</ol>
+<div class="callout"><strong>Scenario-wide curse.</strong> Fog is introduced in the middle of a previously visible battle, making Jevyan’s spell mechanically alter information rather than merely adding dialogue.</div>
+</section>
+
+<section><h2>Jessene’s return</h2>
+<p>On turn 7, the scenario animates the unit type stored in <code>jessica_store</code>, unstores Lady Jessene near 14,38, clears the stored variable, and runs the reunion dialogue.</p>
+<p>This completes a cross-scenario stored-unit lifecycle:</p>
+<div class="flow">19 The Vanguard
+   └── Lady Jessene stored with kill=yes in jessica_store
+
+20 Return of the Fleet, turn 7
+   ├── fake movement uses $jessica_store.type
+   ├── unit unstored into a vacant nearby hex
+   └── jessica_store cleared</div>
+</section>
+
+<section><h2>Geographic encounter triggers</h2>
+<table><tr><th>Region approached</th><th>Encounter</th><th>Difficulty scaling</th></tr>
+<tr><td>Within radius 10 of 11,17</td><td>Cuttle Fish appears for side 3.</td><td>1 / 2 / 3 Cuttle Fish</td></tr>
+<tr><td>Within radius 10 of 34,15</td><td>Flixta and Saurian allies appear for side 4.</td><td>Three core leaders/healers, plus 0 / 2 / 3 Skirmishers</td></tr></table>
+<p>The Saurian event also unlocks Saurian Skirmisher recruitment for both orc sides; Hard additionally unlocks Saurian Ambushers. Flixta explicitly frames the attack as revenge for Shek’kahan and the Naga alliance, tying an optional Ka’lian branch back into the linear campaign.</p>
+</section>
+
+<section><h2>Leader-economy link</h2>
+<table><tr><th>Leader killed by side 1</th><th>Surviving orc side receives</th></tr>
+<tr><td>Tan-Halg</td><td>Side 4 gains 60 / 70 / 80 gold.</td></tr>
+<tr><td>Tan-Rinak</td><td>Side 3 gains 60 / 70 / 80 gold.</td></tr></table>
+</section>
+
+<section><h2>Special events</h2>
+<table><tr><th>Trigger</th><th>Behavior</th></tr>
+<tr><td><code>prestart</code></td><td>Places four ships and a signpost, recalls companions except Jessene, and installs objectives.</td></tr>
+<tr><td><code>start</code></td><td>Explains the damaged fleet and the need to clear the frontier.</td></tr>
+<tr><td>Turn 5</td><td>Jevyan scene, Chocobones, and battlefield fog.</td></tr>
+<tr><td>Turn 7</td><td>Jessene returns from <code>jessica_store</code>.</td></tr>
+<tr><td>Signpost movement</td><td>Displays evacuation instructions and permits undo.</td></tr>
+<tr><td>Cuttle Fish region</td><td>Creates 1 / 2 / 3 aquatic monsters.</td></tr>
+<tr><td>Saurian region</td><td>Creates revenge force and extends enemy recruit lists.</td></tr>
+<tr><td>Enemies defeated</td><td>Begins a private discussion of the plan to confront Jevyan.</td></tr>
+<tr><td>Time over</td><td>Aethyr sees Jevyan’s fleet on the horizon.</td></tr></table>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Add fog during play</td><td>Let a villain’s magic change the player’s information model.</td></tr>
+<tr><td>Hide a defeat objective until the unit exists</td><td>Keep objectives accurate during delayed recalls and stored-unit absences.</td></tr>
+<tr><td>Use stored type for entrance animation</td><td>Animate a returning unit correctly even if it advanced before storage.</td></tr>
+<tr><td>Reconnect optional branch history to the main path</td><td>Use a later encounter to make earlier side quests feel consequential.</td></tr>
+<tr><td>Add enemies through geographic exploration</td><td>Make a large map’s peripheral regions tactically meaningful.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/20_Return_of_the_Fleet.map">Map source</a> · <a href="../reference/jevyan-invasion-opening.html">Arc study</a></p>
+<div class="prev-next"><a href="19-the-vanguard.html">← 19 — The Vanguard</a><a href="../reference/jevyan-invasion-opening.html">Invasion-opening study →</a></div>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

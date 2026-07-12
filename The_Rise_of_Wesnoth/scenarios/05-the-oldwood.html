@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>05 — The Oldwood</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>05 — The Oldwood</h1><p>A branch-convergence alliance battle that introduces the treefolk, protects an autonomous allied leader, and unlocks the Ruby of Fire quest.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html" aria-current="page">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 05</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>05_The_Oldwood</code></td></tr>
+<tr><th>Next scenario</th><td><code>06_Temple_in_the_Deep</code></td></tr>
+<tr><th>Map</th><td><code>05_The_Oldwood.map</code>, 32 × 32 hexes</td></tr>
+<tr><th>Turns</th><td>35 / 32 / 29</td></tr>
+<tr><th>Schedule</th><td>Default</td></tr>
+<tr><th>Carryover</th><td>40%, early-finish bonus</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Alliance battle / protect-the-ally</td></tr>
+<tr><th>Story importance</th><td>Critical</td></tr>
+<tr><th>WML complexity</th><td>Moderate</td></tr>
+<tr><th>AI customization</th><td>Light declarative tuning</td></tr>
+<tr><th>Campaign function</th><td>Branch convergence and quest handoff</td></tr></table></div>
+</div>
+</section>
+
+<section><h2>Story & dialogue</h2>
+<p>Both Scenario 04 routes converge in the Oldwood without a separate story panel. Haldric’s party enters under fog and immediately encounters Elilmaldur-Rithrandil, an Ancient Wose who initially treats all humans as habitual tree-cutters. The orcs’ indiscriminate destruction gives Haldric an opportunity to prove that the refugees are “tree-friends.”</p>
+<p>After the orc leaders fall, the Wose explains that an earlier human king imprisoned Lich-Lord Lenvan beneath the forest temple. The lich possesses a powerful artifact, which Lady Outlaw identifies as the Ruby of Fire. The Oldwood cannot accompany Haldric beyond its borders, but it can open the magically sealed catacombs.</p>
+<table><tr><th>Dialogue phase</th><th>Function</th></tr>
+<tr><td>Forest unease</td><td>Uses Burin and Lady Outlaw to contrast fear, humor, and familiarity.</td></tr>
+<tr><td>First Wose contact</td><td>Turns an apparent hostile encounter into a conditional alliance.</td></tr>
+<tr><td>Orc turn lines</td><td>Reinforce that the enemy is burning and cutting the forest for sport.</td></tr>
+<tr><td>Post-battle diplomacy</td><td>Rewards military aid with trust and access rather than a new recruit list.</td></tr>
+<tr><td>Ruby revelation</td><td>Introduces the campaign’s central artifact and the next scenario’s quest.</td></tr>
+<tr><td>Lady Outlaw objection</td><td>Deepens Wesfolk history and temporarily removes her from the party.</td></tr></table>
+</section>
+
+<section><h2>Map description</h2>
+<p>The 32 × 32 forest map contains four keeps, extensive deciduous, mixed, pine, and great-tree terrain, swamp pockets, water, villages, roads, and ruined settlement clusters. Haldric and the two orc forces approach a central Wose-held region. The temple at hex 23,22 is visible as a point of interest but remains sealed until the battle is won.</p>
+<table><tr><th>Map element</th><th>Design role</th></tr>
+<tr><td>Fog on side 1</td><td>Makes the forest feel enclosed and lets the Wose reveal land through shared vision.</td></tr>
+<tr><td>Four-side layout</td><td>Creates two hostile orc armies, a human refugee force, and an allied autonomous Wose force.</td></tr>
+<tr><td>Ruined castle images</td><td>Visualize earlier human occupation being reclaimed by the forest.</td></tr>
+<tr><td>Central temple</td><td>Foreshadows the next scenario before it becomes accessible.</td></tr>
+<tr><td>Dense mixed forest</td><td>Gives the Wose faction a strong environmental identity.</td></tr></table>
+</section>
+
+<section><h2>Objectives and sides</h2>
+<table><tr><th>Type</th><th>Condition</th></tr>
+<tr><td>Victory</td><td>Defeat both orc leaders.</td></tr>
+<tr><td>Defeat</td><td>Death of Prince Haldric or Elilmaldur-Rithrandil; turns expire.</td></tr></table>
+<table><tr><th>Side</th><th>Leader / roster</th><th>Gold and income</th><th>AI or alliance role</th></tr>
+<tr><td>1 — Refugees</td><td>Haldric; all available branch companions recalled</td><td>160 / 140 / 120</td><td>Human controlled; fog enabled</td></tr>
+<tr><td>2 — Orcs</td><td>Tan-Gralg, Orcish Warlord</td><td>160 / 220 / 280</td><td><code>NO_SCOUTS</code>; difficulty-dependent roster and role pattern</td></tr>
+<tr><td>3 — Orcs</td><td>Tan-Rugar, Orcish Warlord</td><td>160 / 220 / 280</td><td>Mirrors side 2</td></tr>
+<tr><td>4 — Treefolk</td><td>Elilmaldur-Rithrandil, Ancient Wose; recruits Wose Saplings</td><td>160 / 130 / 100; income 7 / 5 / 3</td><td>Allied autonomous side, with more resources on easier settings</td></tr></table>
+</section>
+
+<section><h2>Difficulty scaling</h2>
+<table><tr><th>Element</th><th>Easy</th><th>Normal</th><th>Hard</th></tr>
+<tr><td>Turns</td><td>35</td><td>32</td><td>29</td></tr>
+<tr><td>Player gold</td><td>160</td><td>140</td><td>120</td></tr>
+<tr><td>Each orc side’s gold</td><td>160</td><td>220</td><td>280</td></tr>
+<tr><td>Orc recruit ceiling</td><td>Grunts and Pillagers</td><td>Crossbowmen replace Grunts</td><td>Adds Orcish Slayers</td></tr>
+<tr><td>Wose starting gold / income</td><td>160 / 7</td><td>130 / 5</td><td>100 / 3</td></tr>
+<tr><td>Preplaced Elder Wose guardians</td><td>6</td><td>4</td><td>2</td></tr></table>
+<div class="callout"><strong>Balance lesson.</strong> Difficulty is adjusted on both sides of the alliance: harder modes strengthen the orcs while simultaneously reducing allied Wose resources and fixed defenders.</div>
+</section>
+
+<section><h2>Special events and state transitions</h2>
+<table><tr><th>Trigger</th><th>Behavior</th></tr>
+<tr><td><code>prestart</code></td><td>Clears <code>last_done</code> and <code>escape_choice</code>, places temple and ruins, recalls all possible companions, creates difficulty-scaled Elder Wose guardians, and installs objectives.</td></tr>
+<tr><td><code>start</code></td><td>Temporarily clears fog around the Wose leader for dialogue, then restores normal fog.</td></tr>
+<tr><td>Move to temple</td><td>Reports that it is looted and protected by a magical barrier; permits undo.</td></tr>
+<tr><td>Turn 4 / turn 6</td><td>Orc leaders deliver forest-destruction lines.</td></tr>
+<tr><td>Elilmaldur dies</td><td>Immediate defeat.</td></tr>
+<tr><td>Enemies defeated</td><td>Gives the allied Wose side fog and full shared vision, runs the Ruby quest dialogue, and ends in victory.</td></tr>
+<tr><td><code>victory</code></td><td>If Lady Outlaw is currently in the party, stores her into <code>lady_store</code> and removes her from the map for the scouting interlude.</td></tr></table>
+</section>
+
+<section><h2>Convergence-state cleanup</h2>
+<p>The first action in <code>prestart</code> is:</p>
+<pre>{CLEAR_VARIABLE last_done,escape_choice}</pre>
+<p>This establishes an important distinction:</p>
+<table><tr><th>Variable</th><th>Actual scope</th></tr>
+<tr><td><code>escape_choice</code></td><td>Selects which Scenario 04 file loads.</td></tr>
+<tr><td><code>last_done</code></td><td>Short-lived route-completion metadata available during transition.</td></tr>
+<tr><td>After Scenario 05 begins</td><td>Both are deliberately discarded because the branches have reconverged.</td></tr></table>
+<div class="callout warn"><strong>Correction from release 0.4.3.</strong> Earlier text described <code>last_done</code> too broadly as a persistent route-history marker. The source shows that it is cleared at Oldwood <code>prestart</code>.</div>
+</section>
+
+<section><h2>Assets and units</h2>
+<table><tr><th>Resource</th><th>Origin</th><th>Use</th></tr>
+<tr><td>No story panel</td><td>—</td><td>Branch convergence moves directly into the forest encounter.</td></tr>
+<tr><td><code>portraits/rithrandil.webp</code>; Haldric and Burin variants</td><td><span class="badge campaign">Campaign</span></td><td>Wose leader and party dialogue</td></tr>
+<tr><td>Temple and three castle-ruin images</td><td><span class="badge core">Core/shared</span></td><td>Map-level environmental storytelling</td></tr>
+<tr><td><code>suspense.ogg</code>, <code>nunc_dimittis.ogg</code></td><td><span class="badge core">Core/shared</span></td><td>Forest battle score</td></tr>
+<tr><td>Ancient Wose, Elder Wose, Wose Sapling</td><td><span class="badge core">Core</span></td><td>Complete treefolk faction presentation without custom unit types</td></tr>
+<tr><td>Orcish Warlord and difficulty-scaled orc recruits</td><td><span class="badge core">Core</span></td><td>Enemy armies</td></tr></table>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<div class="callout"><strong>Design interpretation.</strong> The scenario makes alliance-building the reward structure. Haldric does not recruit Woses afterward; instead, their trust unlocks a location and artifact quest that advances the campaign.</div>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Allied AI faction with protected leader</td><td>Create cooperation without transferring every allied unit to the player.</td></tr>
+<tr><td>Difficulty scales allied help downward</td><td>Balance can change the strength of support, not only opposition.</td></tr>
+<tr><td>Point of interest shown before it opens</td><td>Foreshadow the next scenario inside the current map.</td></tr>
+<tr><td>Clear branch variables at convergence</td><td>Prevent obsolete path state from leaking into unrelated later logic.</td></tr>
+<tr><td>Store a companion for an off-screen task</td><td>Make temporary absence preserve level, experience, and identity.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/05_The_Oldwood.map">Map source</a> · <a href="../reference/oldwood-arc.html">Oldwood arc study</a></p>
+</section>
+<div class="prev-next"><a href="../reference/branch-comparison-04.html">← Scenario 04 comparison</a><a href="06-temple-in-the-deep.html">06 — Temple in the Deep →</a></div>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

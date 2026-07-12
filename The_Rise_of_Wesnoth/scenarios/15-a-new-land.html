@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>15 — A New Land</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>15 — A New Land</h1><p>A nonlethal survival scenario ending on the first death, powered by a custom Lua AI that attacks aggressively only when the attacker has zero chance of dying.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html" aria-current="page">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 15</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>15_A_New_Land</code></td></tr>
+<tr><th>Next scenario</th><td><code>16_The_Kalian</code></td></tr>
+<tr><th>Map</th><td><code>15_A_New_Land.map</code>, 41 × 42 hexes</td></tr>
+<tr><th>Turns</th><td>Unlimited until the first death</td></tr>
+<tr><th>Automatic enemy victory</th><td>Disabled</td></tr>
+<tr><th>Carryover</th><td>20%, with a custom survival-duration bonus</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Nonlethal survival / diplomatic misunderstanding</td></tr>
+<tr><th>Story importance</th><td>Critical</td></tr>
+<tr><th>WML complexity</th><td>Very high</td></tr>
+<tr><th>AI complexity</th><td>Very high; custom Lua candidate action</td></tr>
+<tr><th>End trigger</th><td>Any non-protected unit dies</td></tr></table></div>
+</div>
+</section>
+
+<section><h2>Story and dialogue</h2>
+<p>After the fleet finally reaches the Great Continent, the refugees land in the middle of an elven–dwarven territorial dispute. The elves accuse dwarven colonists of violating an ancient treaty; Dursil argues that the dwarves have outgrown their northern mines and rejects elven control over southern forest resources.</p>
+<p>The arrival of many human ships temporarily unites the continental factions against the refugees. Haldric repeatedly attempts his practiced peace speech, but the situation becomes violent before diplomacy can begin. The first death brings Lady Dionli, who stops the battle, recognizes the newcomers as kin to the earlier Prince of Southbay, orders the dwarves north, and summons Haldric to the Ka’lian.</p>
+<table><tr><th>Dialogue beat</th><th>Function</th></tr>
+<tr><td>Elven–dwarven treaty dispute</td><td>Introduces the continent’s existing political and resource tensions.</td></tr>
+<tr><td>Fleet mistaken for invasion</td><td>Places the refugees into conflict without making either local people inherently villainous.</td></tr>
+<tr><td>Burin’s realization</td><td>Reveals that he traveled all the way around the world.</td></tr>
+<tr><td>Dionli’s intervention</td><td>Ends the battle at the first death and redirects the story toward diplomacy.</td></tr>
+<tr><td>Typhon’s departure</td><td>Closes the merfolk escort relationship and changes roster access by difficulty.</td></tr>
+<tr><td>Fleet sent back west</td><td>Shows Haldric continuing to search for Green Isle survivors.</td></tr></table>
+</section>
+
+<section><h2>Map description</h2>
+<p>The 41 × 42 coastal map places the refugee landing among ocean, beaches, grassland, forest, villages, roads, hills, mountains, water channels, and three continental keeps. Glimir and Eowarar command elven forces while Dursil commands dwarves. Their shared team makes them temporary allies against Haldric despite their opening argument.</p>
+<table><tr><th>Map system</th><th>Design role</th></tr>
+<tr><td>Large coast and visible fleet</td><td>Makes the locals’ invasion interpretation understandable.</td></tr>
+<tr><td>Three continental recruitment centers</td><td>Creates pressure from distinct elven and dwarven rosters.</td></tr>
+<tr><td>Elven villages and forest</td><td>Supports healers, archers, and woodland fighters.</td></tr>
+<tr><td>Dwarven hill and mountain access</td><td>Supports guardsmen, fighters, thunderers, and pathfinders.</td></tr></table>
+</section>
+
+<section><h2>Objectives and unusual reward model</h2>
+<table><tr><th>Success condition</th><th>Avoid deaths for as long as possible; the scenario ends when any ordinary unit dies.</th></tr>
+<tr><td>Defeat</td><td>Death of Haldric, Lady Jessene, or Lord Typhon.</td></tr>
+<tr><td>Turn limit</td><td>Unlimited while no death occurs.</td></tr>
+<tr><td>Carryover</td><td>20% of finishing gold.</td></tr>
+<tr><td>Bonus</td><td>Calculated to equal an early-finish bonus for the number of turns survived.</td></tr></table>
+<p>When the terminating death occurs, the scenario sets the turn limit to the current turn and then adds the current turn again. The resulting total is twice the survived turn count, leaving an equal number of “remaining” turns for Wesnoth’s early-finish calculation.</p>
+<div class="callout"><strong>Design inversion.</strong> Ordinary campaigns reward finishing faster. This scenario uses the same engine bonus system to reward surviving longer without a death.</div>
+</section>
+
+<section><h2>Sides and recruitment</h2>
+<table><tr><th>Side</th><th>Leader / roster</th><th>Gold</th><th>Starting villages</th></tr>
+<tr><td>1 — Refugees</td><td>Haldric and full party</td><td>100</td><td>Campaign state</td></tr>
+<tr><td>2 — Elves</td><td>Glimir, Elvish Marshal; fighters, archers, shamans and selected level-2 units</td><td>150 / 220 / 300</td><td>8</td></tr>
+<tr><td>3 — Dwarves</td><td>Dursil, Dwarvish Lord; fighters, thunderers, guardsmen and selected level-2 units</td><td>150 / 220 / 300</td><td>14</td></tr>
+<tr><td>4 — Elves</td><td>Eowarar, Elvish Champion; fighters, archers and selected level-2 units</td><td>150 / 220 / 300</td><td>8</td></tr></table>
+<p>Recruitment instructions require at least one prioritized advanced unit before continuing with cheaper base troops. This ensures the three local forces visibly include their distinctive higher-level roles.</p>
+</section>
+
+<section><h2>Custom Lua AI: aggressive attack without suicide</h2>
+<p>Each continental side replaces the normal combat, high-XP attack, and poison-spreading candidate actions with <code>ca_aggressive_attack_no_suicide.lua</code>. The scenario’s objective note explicitly tells the player that enemies will not initiate an attack if they risk dying.</p>
+<p>The candidate action:</p>
+<ol>
+<li>Gets every unit able to attack.</li>
+<li>Enumerates possible attacks, including occupied destinations.</li>
+<li>Simulates each combat.</li>
+<li>Rejects any attack where the attacker has a nonzero chance of death.</li>
+<li>Rates the survivors by defender kill chance, expected defender damage, low expected attacker damage, and stronger attacker HP.</li>
+<li>Moves and attacks with the highest-rated option.</li>
+</ol>
+<table><tr><th>Rating component</th><th>Effect</th></tr>
+<tr><td>Defender death chance × 100</td><td>Strongly favors possible kills.</td></tr>
+<tr><td>Expected defender damage</td><td>Rewards useful nonlethal attacks.</td></tr>
+<tr><td>Expected attacker damage ÷ 10</td><td>Penalizes self-harm.</td></tr>
+<tr><td>Attacker HP ÷ 10</td><td>Breaks ties toward stronger attackers.</td></tr></table>
+</section>
+
+<section><h2>Escalating income</h2>
+<p>At every new turn, sides 2–4 receive base income equal to <code>$turn_number - 1</code>. The scenario therefore becomes progressively harder even though it has no fixed deadline.</p>
+<table><tr><th>Turn</th><th>Continental base income</th></tr>
+<tr><td>1</td><td>0</td></tr>
+<tr><td>5</td><td>4</td></tr>
+<tr><td>10</td><td>9</td></tr>
+<tr><td>20</td><td>19</td></tr></table>
+<p>This prevents an indefinitely passive strategy and makes every additional deathless turn increasingly valuable.</p>
+</section>
+
+<section><h2>Landing and first-death event</h2>
+<table><tr><th>Phase</th><th>Behavior</th></tr>
+<tr><td><code>prestart</code></td><td>Stores and removes Haldric so the landing can be animated.</td></tr>
+<tr><td><code>start</code></td><td>Runs the local-faction dispute, animates the fleet, unstores Haldric, recalls the party, and starts the failed peace attempt.</td></tr>
+<tr><td>Turn 3</td><td>Jessene comments on the hostile welcome.</td></tr>
+<tr><td>Every new turn</td><td>Raises all three continental sides’ base income.</td></tr>
+<tr><td>First non-protected death</td><td>Lady Dionli arrives, stops the battle, redirects Haldric to the Ka’lian, resolves Typhon’s departure, initializes hub variables, converts survival time into a finish bonus, and ends with 20% carryover.</td></tr></table>
+</section>
+
+<section><h2>Difficulty-dependent merfolk transition</h2>
+<table><tr><th>Difficulty</th><th>After Lord Typhon leaves</th></tr>
+<tr><td>Easy</td><td>Merman Fighter and Merman Hunter remain recruitable.</td></tr>
+<tr><td>Normal / Hard</td><td>Further merfolk recruitment is disabled; existing merfolk units remain available through the recall roster.</td></tr></table>
+<p>The dialogue reflects this distinction: on harder settings, Typhon says the warriors who already fought beside Haldric wish to remain.</p>
+</section>
+
+<section><h2>Quest-hub initialization</h2>
+<p>Before leaving for the Ka’lian, Scenario 15 initializes the complete hub state:</p>
+<table><tr><th>Variable</th><th>Initial value</th><th>Meaning</th></tr>
+<tr><td><code>num_done</code></td><td>0</td><td>Number of Ka’lian quests completed</td></tr>
+<tr><td><code>a_beach</code></td><td>0</td><td>Lizard Beach incomplete</td></tr>
+<tr><td><code>cursed_isle</code></td><td>0</td><td>Cursed Isle incomplete</td></tr>
+<tr><td><code>the_dragon</code></td><td>0</td><td>Dragon quest incomplete</td></tr>
+<tr><td><code>troll_hole</code></td><td>0</td><td>Troll Hole incomplete</td></tr>
+<tr><td><code>last_done</code></td><td><code>"none"</code></td><td>No returning quest to greet yet</td></tr></table>
+</section>
+
+<section><h2>Assets and custom content</h2>
+<table><tr><th>Resource</th><th>Origin</th><th>Use</th></tr>
+<tr><td><code>story/trow_story_15-A_New_Land.webp</code></td><td><span class="badge campaign">Campaign</span></td><td>First sight of the Great Continent</td></tr>
+<tr><td>Lady Dionli portrait and Autumn Shyde sprite</td><td><span class="badge campaign">Campaign</span></td><td>Diplomatic intervention</td></tr>
+<tr><td>Familiar portrait and unit</td><td><span class="badge campaign">Campaign</span></td><td>Jevyan surveillance</td></tr>
+<tr><td>Elvish and dwarvish factions, fleet ships, terrain and music</td><td><span class="badge core">Core/shared</span></td><td>Most tactical and visual content</td></tr>
+<tr><td><code>ca_aggressive_attack_no_suicide.lua</code></td><td><span class="badge campaign">Campaign AI</span></td><td>Scenario-specific no-suicide combat behavior</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/15_A_New_Land.map">Map source</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/ai/ca_aggressive_attack_no_suicide.lua">Lua candidate action</a> · <a href="../reference/ai-index.html">AI index</a></p>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>End on the first death</td><td>Build a battle around restraint rather than conquest.</td></tr>
+<tr><td>Custom AI matching the objective</td><td>When ordinary combat logic would undermine the premise, replace only the necessary candidate action.</td></tr>
+<tr><td>Unlimited time plus escalating income</td><td>Create pressure without a hard deadline.</td></tr>
+<tr><td>Repurpose early-finish bonus</td><td>Manipulate the final turn limit to reward survival duration.</td></tr>
+<tr><td>Initialize an entire branch state in one transition</td><td>Keep the following hub file focused on presentation and routing.</td></tr></table>
+<div class="prev-next"><a href="14-rough-landing.html">← 14 — Rough Landing</a><a href="16-the-kalian.html">16 — The Ka’lian →</a></div>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>16 — The Ka’lian</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>16 — The Ka’lian</h1><p>A reusable diplomatic quest hub that renders different dialogue and destination menus from a completion counter, four quest flags, and a last-completed marker.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html" aria-current="page">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 16</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>16_The_Kalian</code></td></tr>
+<tr><th>Default next scenario</th><td><code>18_A_Spy_in_the_Woods</code></td></tr>
+<tr><th>Quest overrides</th><td><code>17a</code>, <code>17b</code>, <code>17c</code>, or <code>17d</code></td></tr>
+<tr><th>Map</th><td><code>16_The_Kalian.map</code>, 27 × 27 hexes</td></tr>
+<tr><th>Theme / schedule</th><td><code>Cutscene_Minimal</code>, afternoon</td></tr>
+<tr><th>Carryover</th><td>100% through every hub departure</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Reusable quest hub / diplomatic council</td></tr>
+<tr><th>Story importance</th><td>Critical</td></tr>
+<tr><th>WML complexity</th><td>Very high state-driven dialogue</td></tr>
+<tr><th>Combat</th><td>None intended</td></tr>
+<tr><th>Number of visits</th><td>Initial visit plus one return after each quest</td></tr></table></div>
+</div>
+</section>
+
+<section><h2>Purpose of the scenario</h2>
+<p>The Ka’lian is one scenario file used repeatedly as the campaign’s four-quest hub. On the first visit, the elven lords debate whether the refugees should be granted land. They agree to offer the plains north and south of the Great River only after Haldric completes four tasks.</p>
+<p>After each quest, the campaign returns to the same map and file. The hub greets the player according to the quest just completed, summarizes only unfinished work, hides completed destinations from the choice menu, and changes the council’s evaluation according to <code>num_done</code>.</p>
+</section>
+
+<section><h2>Map and council staging</h2>
+<p>The 27 × 27 map is a forest council clearing built from deciduous woodland, grass, villages, water, bridges, and a central elven castle arrangement. Haldric’s party is teleported into a compact audience formation, with Lady Dionli, Lord Logalmier, Lord Aryad, and Lord El’Isomithir positioned as the governing council.</p>
+<table><tr><th>Character</th><th>Unit implementation</th><th>Council role</th></tr>
+<tr><td>Lady Dionli</td><td>Campaign Autumn Shyde</td><td>Advocate for using and admitting the refugees</td></tr>
+<tr><td>Lord Logalmier</td><td>Campaign cutscene wrapper around Elvish Champion</td><td>Skeptical senior lord; assigns dragon quest</td></tr>
+<tr><td>Lord Aryad</td><td>Core Elvish Sharpshooter</td><td>Assigns troll-hole quest</td></tr>
+<tr><td>Lord El’Isomithir</td><td>Core Elvish Marshal created as hero</td><td>Assigns cursed-isle quest</td></tr>
+<tr><td>Prince Haldric</td><td>Noble Commander</td><td>Petitioner and quest chooser</td></tr></table>
+</section>
+
+<section><h2>The four quests</h2>
+<table><thead><tr><th>Flag</th><th>Scenario</th><th>Quest giver</th><th>Task premise</th></tr></thead><tbody>
+<tr><td><code>the_dragon</code></td><td>17a — The Dragon</td><td>Lord Logalmier</td><td>Defeat the Dragon of the Green Swamp and its saurian minions.</td></tr>
+<tr><td><code>a_beach</code></td><td>17b — Lizard Beach</td><td>Lady Dionli</td><td>Stop Saurian–Naga metal trading on a nearby beach.</td></tr>
+<tr><td><code>troll_hole</code></td><td>17c — Troll Hole</td><td>Lord Aryad</td><td>Clear a troll nest in the Brown Hills.</td></tr>
+<tr><td><code>cursed_isle</code></td><td>17d — Cursed Isle</td><td>Lord El’Isomithir</td><td>Release the cursed souls of an elven clan on the Isle of Tears.</td></tr></tbody></table>
+</section>
+
+<section><h2>Local option macros</h2>
+<p>Each quest option is defined once as a local macro. The option:</p>
+<ol>
+<li>Uses <code>[show_if]</code> to appear only while its completion flag is 0.</li>
+<li>Plays Haldric’s acceptance line.</li>
+<li>Ends the hub with no bonus and 100% carryover.</li>
+<li>Suppresses carryover report, linger mode, and replay save.</li>
+<li>Overrides <code>next_scenario</code> to the selected quest file.</li>
+</ol>
+<pre>#define DRAGON
+    [option]
+        label= _ "I think I’ll fight the dragon!"
+        [show_if]
+            [variable]
+                name=the_dragon
+                numerical_equals=0
+            [/variable]
+        [/show_if]
+        [command]
+            ...
+            [endlevel]
+                result=victory
+                bonus=no
+                {NEW_GOLD_CARRYOVER 100}
+                carryover_report=no
+                linger_mode=no
+                next_scenario=17a_The_Dragon
+                replay_save=no
+            [/endlevel]
+        [/command]
+    [/option]
+#enddef</pre>
+</section>
+
+<section><h2>Reusable hub macros</h2>
+<table><tr><th>Macro</th><th>Responsibility</th></tr>
+<tr><td><code>DRAGON</code>, <code>BEACH</code>, <code>HOLE</code>, <code>ISLE</code></td><td>Define individual destination options.</td></tr>
+<tr><td><code>QUEST_CHOICES</code></td><td>Places all currently available options into one Haldric message.</td></tr>
+<tr><td><code>QUESTS</code></td><td>Has each lord describe only quests whose completion flag is still 0.</td></tr>
+<tr><td><code>GREET</code></td><td>Uses <code>last_done</code> to play a quest-specific return greeting.</td></tr></table>
+<p>All seven local macros are undefined after the scenario file, preventing them from leaking into later preprocessor scope.</p>
+</section>
+
+<section><h2>Visit progression</h2>
+<table><thead><tr><th><code>num_done</code></th><th>Council behavior</th></tr></thead><tbody>
+<tr><td>0</td><td>Full first council: refugee petition, land debate, four-quest agreement, complete quest list and menu.</td></tr>
+<tr><td>1</td><td>Quest-specific greeting, cautious praise, remaining quest descriptions and menu.</td></tr>
+<tr><td>2</td><td>Quest-specific greeting, stronger approval, remaining quests and menu.</td></tr>
+<tr><td>3</td><td>Quest-specific greeting, near-acceptance, final remaining quest and menu.</td></tr>
+<tr><td>4</td><td>Land grant, Pact of Mutual Aid, Commander Aethyr’s return, cleanup, and transition to Scenario 18.</td></tr></tbody></table>
+</section>
+
+<section><h2>Final council outcome</h2>
+<p>After four quests, the lords grant the refugees the plains north of the Great River and the plains and hills to its south. Haldric establishes a Pact of Mutual Aid. The council warns that the new lands must be guarded and suggests future trade.</p>
+<p>Commander Aethyr then arrives with Clearwater survivors and news that “old friends” have appeared. The hub clears all quest-state variables and moves to <code>18_A_Spy_in_the_Woods</code> with 100% carryover.</p>
+</section>
+
+<section><h2>State model</h2>
+<div class="flow">Initialized in Scenario 15:
+num_done = 0
+the_dragon = 0
+a_beach = 0
+troll_hole = 0
+cursed_isle = 0
+last_done = "none"
+
+Each Scenario 17 quest:
+   ├── marks its own flag complete
+   ├── increments num_done
+   ├── sets last_done
+   └── returns to Scenario 16
+
+Scenario 16:
+   ├── GREET uses last_done
+   ├── QUESTS describes flags still equal to 0
+   ├── QUEST_CHOICES shows flags still equal to 0
+   └── num_done = 4 clears all hub state and advances</div>
+<p>The exact writes performed by all four quests are catalogued in the <a href="../reference/kalian-quest-branches.html">Ka’lian quest comparison</a>.</p>
+</section>
+
+<section><h2>Why the default next scenario is 18</h2>
+<p>The scenario header declares <code>next_scenario=18_A_Spy_in_the_Woods</code>, but every incomplete-quest menu option overrides the destination inside its own <code>[endlevel]</code>. The default becomes relevant only for the completed-hub exit, where the source also states the Scenario 18 destination explicitly.</p>
+</section>
+
+<section><h2>Custom council unit types</h2>
+<table><tr><th>Type</th><th>Implementation</th><th>Reason</th></tr>
+<tr><td>Autumn Shyde</td><td>Campaign level-3 elf: 46 HP, 6 movement, neutral, healer usage, custom autumn sprite and Dionli portrait</td><td>Distinctive named council leader hidden from ordinary help listings</td></tr>
+<tr><td>Elvish Champion Kalian</td><td>Inherits the complete core Elvish Champion and changes only the image</td><td>Cutscene-only visual identity for Lord Logalmier without duplicated stats or animations</td></tr></table>
+</section>
+
+<section><h2>Assets and reuse</h2>
+<table><tr><th>Resource</th><th>Origin</th><th>Use</th></tr>
+<tr><td>Dionli, Logalmier, Aryad, Isomithir, and Aethyr portraits</td><td><span class="badge campaign">Campaign</span></td><td>Council identity and final messenger</td></tr>
+<tr><td>Autumn Shyde and Kalian Champion sprites</td><td><span class="badge campaign">Campaign</span></td><td>Distinctive council staging</td></tr>
+<tr><td>Core Elvish Champion, Sharpshooter, Marshal behavior; forest terrain and villages</td><td><span class="badge core">Core/shared</span></td><td>Most unit mechanics and the entire council environment</td></tr>
+<tr><td><code>traveling_minstrels.ogg</code></td><td><span class="badge core">Core/shared</span></td><td>Hub music</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/16_The_Kalian.map">Map source</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg">Autumn Shyde</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/units/Kalian.cfg">Kalian Champion wrapper</a> · <a href="../reference/great-continent-arrival.html">Arc study</a></p>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<div class="callout"><strong>Design interpretation.</strong> The Ka’lian is not four separate council scenes. It is a compact state-rendering system: the same map and dialogue file displays a different interface and political response according to campaign progress.</div>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>One scenario reused as a quest hub</td><td>Centralize branching, return dialogue, and final convergence.</td></tr>
+<tr><td>Separate completion count from individual flags</td><td>Use the count for broad progression and flags for menu visibility and detailed text.</td></tr>
+<tr><td>Use <code>last_done</code> for return acknowledgement</td><td>Keep greetings specific without inspecting every quest’s internal variables.</td></tr>
+<tr><td>100% carryover through hub visits</td><td>Do not alter economy when the player is only selecting the next chapter.</td></tr>
+<tr><td>Undefine local macros</td><td>Prevent scenario-local preprocessor helpers from polluting later files.</td></tr></table>
+<div class="prev-next"><a href="15-a-new-land.html">← 15 — A New Land</a><a href="../reference/great-continent-arrival.html">Great Continent arc study →</a></div>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

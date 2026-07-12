@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Achievements Surface</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>Achievements Surface</h1><p>The currently empty achievement file, its independent loading boundary, a safe extension template, and reliable places to attach future achievements.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html" aria-current="page">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Achievements Surface</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Current source status</h2>
+<div class="grid">
+<div class="card metric"><strong>1</strong>line in <code>achievements.cfg</code></div>
+<div class="card metric"><strong>0</strong>achievement groups</div>
+<div class="card metric"><strong>0</strong>current achievements</div>
+</div>
+<p>The current file contains only:</p>
+<pre>#textdomain wesnoth-trow</pre>
+<p>No scenario currently calls <code>[set_achievement]</code>, <code>[progress_achievement]</code>, or <code>[set_sub_achievement]</code>. The file is therefore a prepared extension surface rather than an active feature.</p>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/achievements.cfg">Current achievements.cfg</a></p>
+</section>
+
+<section><h2>Independent loading rules</h2>
+<p>Achievement definitions are loaded independently of the campaign’s normal WML. They cannot assume that <code>_main.cfg</code> has established the campaign binary path or loaded utility macros.</p>
+<table><tr><th>Consequence</th><th>Safe practice</th></tr>
+<tr><td>No campaign utility macros</td><td>Define any achievement-only helper in <code>achievements.cfg</code> itself.</td></tr>
+<tr><td>No active campaign binary path</td><td>Use full data paths for achievement icons and completion sounds.</td></tr>
+<tr><td>Separate identity namespace</td><td>Use a stable <code>content_for</code> value and unique achievement IDs.</td></tr></table>
+</section>
+
+<section><h2>Minimal extension template</h2>
+<div class="callout warn"><strong>Illustrative only.</strong> The following is a maintainable template, not content currently present in the campaign.</div>
+<pre>#textdomain wesnoth-trow
+
+[achievement_group]
+    content_for=The_Rise_of_Wesnoth
+    display_name= _ "The Rise of Wesnoth"
+
+    [achievement]
+        id=example_clearwater
+        name= _ "Hold the Harbor"
+        description= _ "Complete Clearwater Port with the heroic outcome."
+        icon="data/campaigns/The_Rise_Of_Wesnoth/images/portraits/aethyr-first.webp"
+    [/achievement]
+[/achievement_group]</pre>
+<p>A scenario would complete it with:</p>
+<pre>[set_achievement]
+    content_for=The_Rise_of_Wesnoth
+    id=example_clearwater
+[/set_achievement]</pre>
+</section>
+
+<section><h2>Good achievement boundaries for this campaign</h2>
+<table><tr><th>Candidate type</th><th>Reliable trigger</th><th>Why it is robust</th></tr>
+<tr><td>Outcome achievement</td><td>Existing heroic branch or bonus-victory event</td><td>No new combat-state tracking is required.</td></tr>
+<tr><td>Route achievement</td><td>End of 04a or 04b</td><td>The route is already explicit in scenario identity.</td></tr>
+<tr><td>Quest-set achievement</td><td>Ka’lian final visit when <code>num_done=4</code></td><td>Completion is already centralized.</td></tr>
+<tr><td>Optional-boss achievement</td><td>Midnight Queen death or Dragon full clear</td><td>Existing boss events provide unambiguous hooks.</td></tr>
+<tr><td>Campaign completion</td><td>Scenario 23 start or final endlevel</td><td>The epilogue is reached only after successful final deception.</td></tr></table>
+</section>
+
+<section><h2>Compatibility rules</h2>
+<ul class="compact">
+<li>Never rename a published achievement ID after release.</li>
+<li>Keep achievement actions outside branches that can fire repeatedly unless completion is intentionally idempotent.</li>
+<li>Use <code>progress_achievement</code> only where a stable maximum and replay behavior are clearly defined.</li>
+<li>Do not gate campaign progression on local achievement state; achievement completion can differ between installations.</li>
+</ul>
+<p class="source-note"><a href="https://wiki.wesnoth.org/AchievementsWML">AchievementsWML reference</a> · <a href="https://wiki.wesnoth.org/DirectActionsWML">Achievement action tags</a></p>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

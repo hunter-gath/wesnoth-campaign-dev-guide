@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>17a — The Dragon</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>17a — The Dragon</h1><p>A swamp boss quest with five Saurian screening sides, player- or timer-triggered Dragon awakening, cave treasure, and a choice between immediate return and full-clear bonus.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html" aria-current="page">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 17a</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>17a_The_Dragon</code></td></tr>
+<tr><th>Returns to</th><td><code>16_The_Kalian</code></td></tr>
+<tr><th>Map</th><td><code>17a_The_Dragon.map</code>, 37 × 38 hexes</td></tr>
+<tr><th>Turns</th><td>33 / 30 / 27</td></tr>
+<tr><th>Schedule</th><td>Default</td></tr>
+<tr><th>Automatic enemy victory</th><td>Disabled</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Boss hunt with optional full-clear bonus</td></tr>
+<tr><th>Story importance</th><td>Moderate</td></tr>
+<tr><th>WML complexity</th><td>High</td></tr>
+<tr><th>AI complexity</th><td>Moderate multi-side defense</td></tr>
+<tr><th>Signature system</th><td>Delayed Dragon awakening</td></tr></table></div>
+</div></section>
+
+<section><h2>Story and premise</h2>
+<p>Haldric enters a vast swamp dominated by a mountain island that can only be the Dragon’s lair. Four Saurian factions and one more aggressive Saurian force defend the region. The Dragon, Shek’kahan, is not present at scenario start: the party may awaken it by approaching its cave, or it awakens automatically late in the scenario.</p>
+<p>The dialogue keeps the premise knowingly heroic. Haldric imagines the title “Dragonbane”; Jessene refuses to indulge him even after victory.</p>
+</section>
+
+<section><h2>Map description</h2>
+<p>The 37 × 38 map moves from wooded and grassy northern ground into a broad swamp-and-water basin with bridges, villages, several Saurian keeps, and the Dragon’s mountain cave at 20,27. Haldric begins in the north. The five Saurian leaders surround or screen the southern objective, while Shek’kahan appears from a hidden sixth side.</p>
+<table><tr><th>Map element</th><th>Design role</th></tr>
+<tr><td>Dragon cave at 20,27</td><td>Boss spawn point, treasure site, and visual destination.</td></tr>
+<tr><td>Five Saurian sides</td><td>Creates layered screening forces around one boss objective.</td></tr>
+<tr><td>Swamp and shallow-water basin</td><td>Favors Saurian mobility and slows ordinary human troops.</td></tr>
+<tr><td>Approach trigger region, x 12–26 / y 24–30</td><td>Lets player movement awaken the boss before the fallback turn.</td></tr></table>
+</section>
+
+<section><h2>Objectives and two victory grades</h2>
+<table><tr><th>Outcome</th><th>Requirement</th><th>Bonus</th></tr>
+<tr><td>Standard</td><td>Slay Shek’kahan and leave immediately.</td><td>No early-finish bonus</td></tr>
+<tr><td>Bonus</td><td>Slay Shek’kahan and defeat all enemy leaders.</td><td>Early-finish bonus</td></tr>
+<tr><td>Defeat</td><td>Haldric or Jessene dies; turns expire before the Dragon is slain.</td><td>—</td></tr></table>
+<p>If the Dragon dies while Saurian leaders remain, Haldric receives a menu choice: return immediately or finish the remaining enemies. If the Saurians fall first, the scenario reminds the player that the Dragon is still alive. If time expires after the Dragon has already died, the party simply stops chasing the remaining Saurians and receives bonus victory.</p>
+</section>
+
+<section><h2>Sides and AI</h2>
+<table><tr><th>Side</th><th>Leader / role</th><th>Gold / income</th><th>AI emphasis</th></tr>
+<tr><td>1</td><td>Haldric</td><td>270 / 220 / 170</td><td>Human controlled</td></tr>
+<tr><td>2–4</td><td>Irix, Vriss, Axiz — Saurian Flankers</td><td>80 / 100 / 120; income 3 / 6 / 9</td><td>Protect the cave area at 20,23; scout/archer/healer recruitment pattern</td></tr>
+<tr><td>5</td><td>Satras — Saurian Flanker</td><td>80 / 100 / 120; income 3 / 6 / 9</td><td>Explicitly targets Haldric with difficulty-scaled value</td></tr>
+<tr><td>6</td><td>Hidden Dragon side</td><td>No normal economy</td><td>Hosts Shek’kahan when awakened</td></tr></table>
+<p>Above Easy, the Saurian rosters add Ambushers, Oracles, and Soothsayers. All sides also use Mudcrawlers, Giant Mudcrawlers, Vampire Bats, Skirmishers, and Augurs.</p>
+</section>
+
+<section><h2>Delayed boss awakening</h2>
+<table><tr><th>Trigger</th><th>Awakening turn / condition</th></tr>
+<tr><td>Player approach</td><td>A side-1 unit enters the cave region.</td></tr>
+<tr><td>Fallback timer</td><td>Turn 17 / 16 / 15 on Easy / Normal / Hard.</td></tr></table>
+<p>Both paths create Shek’kahan as a named loyal Fire Dragon at 20,27, set <code>dragon_awake=1</code>, run dialogue, and fund the Saurians:</p>
+<table><tr><th>Recipients</th><th>Gold injection</th></tr>
+<tr><td>Sides 2–4</td><td>30 / 35 / 40 each</td></tr>
+<tr><td>Side 5</td><td>40 / 50 / 60</td></tr></table>
+<div class="callout"><strong>Design effect.</strong> Approaching the objective early creates the boss and strengthens every screening army. Waiting avoids the trigger temporarily, but the automatic timer prevents indefinite preparation.</div>
+</section>
+
+<section><h2>Treasure and event state</h2>
+<table><tr><th>Variable</th><th>Meaning</th></tr>
+<tr><td><code>dragon_awake</code></td><td>Prevents duplicate boss creation.</td></tr>
+<tr><td><code>dragon_dead</code></td><td>Distinguishes boss completion from Saurian cleanup.</td></tr>
+<tr><td><code>got_enemies</code></td><td>Records whether all ordinary enemy leaders are gone.</td></tr>
+<tr><td><code>got_treasure</code></td><td>Records whether the cave’s gold has been collected.</td></tr></table>
+<p>Moving onto the cave grants 225 / 200 / 175 gold. If the player completes the bonus condition without visiting the cave, the scenario awards the same treasure automatically before ending.</p>
+</section>
+
+<section><h2>Mudcrawler split</h2>
+<p>Every Giant Mudcrawler death creates one loyal Mudcrawler for side 2 and one for side 3 at the death hex. A separate first-only event warns the player about the division. This makes a familiar core-unit property into a scenario-wide reinforcement rule.</p>
+</section>
+
+<section><h2>Hub-state write</h2>
+<pre>{VARIABLE_OP num_done add 1}
+[set_variable]
+    name=the_dragon
+    value=1
+[/set_variable]
+[set_variable]
+    name=last_done
+    value="Dragon"
+[/set_variable]</pre>
+<p>The victory event also clears all four local Dragon-state variables before returning to the Ka’lian.</p>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Boss absent until approached</td><td>Let the player see a destination before committing to the boss phase.</td></tr>
+<tr><td>Fallback awakening timer</td><td>Prevent trigger avoidance from becoming an exploit.</td></tr>
+<tr><td>Boss completion plus optional army cleanup</td><td>Support a thematic minimum victory and a tactical mastery reward.</td></tr>
+<tr><td>Automatic unclaimed treasure</td><td>Avoid punishing bonus completion because the player missed one pickup hex.</td></tr>
+<tr><td>Local state cleared before hub return</td><td>Keep branch implementation details out of campaign-global state.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/17a_The_Dragon.map">Map source</a> · <a href="../reference/kalian-quest-branches.html">Quest comparison</a></p>
+<div class="prev-next"><a href="16-the-kalian.html">← 16 — The Ka’lian</a><a href="17b-lizard-beach.html">17b — Lizard Beach →</a></div>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

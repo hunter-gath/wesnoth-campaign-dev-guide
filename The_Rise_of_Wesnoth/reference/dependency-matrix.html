@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Dependency &amp; Call-site Matrix</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>Dependency & Call-site Matrix</h1><p>How the root loader, utility macros, local macros, core item helpers, and the single Lua candidate action connect to the campaign’s scenario files.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html" aria-current="page">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Dependency &amp; Call-site Matrix</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Load-time dependency graph</h2>
+<div class="flow">_main.cfg
+├── [binary_path] campaign images and sounds
+├── {utils/}
+│   ├── bigmap.cfg
+│   ├── trow-abilities.cfg
+│   ├── trow-ai.cfg
+│   ├── trow-deaths.cfg
+│   ├── trow-macros.cfg
+│   └── trow-nlmsg.cfg
+├── [units] {units/} [/units]
+├── {scenarios/}
+└── Scenario 15 → ai/ca_aggressive_attack_no_suicide.lua</div>
+</section>
+
+<section><h2>Campaign-defined macro call sites</h2>
+<table><thead><tr><th>Definition</th><th>Confirmed call sites</th><th>Contract</th></tr></thead><tbody>
+<tr><td><code>TROW_GI_TRACK</code> / Green Isle journey macros</td><td>Opening through the ocean departure sequence</td><td>Builds the completed and current journey on <code>green_isle.webp</code>.</td></tr>
+<tr><td><code>TROW_GC_TRACK</code> / Great Continent journey macros</td><td>15–23 and all Scenario 17 branches</td><td>Builds hub-aware routes on <code>great_continent.webp</code>.</td></tr>
+<tr><td><code>TROW_DEATHS</code></td><td>Most tactical chapters; omitted from pure cutscenes</td><td>Standard Haldric/Jessene defeat and companion death behavior.</td></tr>
+<tr><td><code>HERO</code></td><td>03, 05, 08, 12, 15, 16, 21 and other named-allied staging</td><td>Creates loyal named heroes with stable IDs and portraits.</td></tr>
+<tr><td><code>GUARD_UNIT</code></td><td>02, 03, 05, 06, 17c</td><td>Creates fixed loyal guardian units with guardian AI.</td></tr>
+<tr><td><code>UNDEAD_INTEL</code></td><td>09, 12, 17d, 20, 22</td><td>Creates named undead story/intelligence units.</td></tr>
+<tr><td><code>LIVING_INTEL</code></td><td>12, 15, 20, 22</td><td>Creates named living or Familiar-style scripted units.</td></tr>
+<tr><td><code>RISE_UP_RISE_UP</code></td><td>06 and 22</td><td>Turns allied casualties into hostile corpses.</td></tr>
+<tr><td><code>ABILITY_DISTRACT</code></td><td>Wesfolk Outcast/Lady/Leader unit definitions</td><td>Adjacent allies ignore enemy Zones of Control.</td></tr>
+</tbody></table>
+</section>
+
+<section><h2>AI helper usage</h2>
+<table><tr><th>Helper family</th><th>Primary scenarios</th><th>Use</th></tr>
+<tr><td><code>GOAL_LOCATION</code>, <code>RESET_SIDE_AI</code>, attack toggles</td><td>08 — Clearwater Port</td><td>Stateful forward defense, retreat, wall holding, and offensive support.</td></tr>
+<tr><td><code>RESET_SIDE_AI</code>, weighted goals, leader move limits</td><td>12 — A Final Spring</td><td>Recomputed northern-castle, riverbank, and city-wall defense.</td></tr>
+<tr><td>Candidate-action add/delete core macros</td><td>15 — A New Land</td><td>Installs the custom no-suicide Lua attack selector.</td></tr>
+</table>
+</section>
+
+<section><h2>Direct includes outside the root loader</h2>
+<table><tr><th>Dependency</th><th>Call sites</th><th>Reason</th></tr>
+<tr><td><code>utils/trow-nlmsg.cfg</code></td><td>17a, 17b, 17c, 17d</td><td>Injects branch-order reminder events into each quest scenario.</td></tr>
+<tr><td><code>ai/ca_aggressive_attack_no_suicide.lua</code></td><td>15, once for each continental AI side</td><td>Replaces only the incompatible attack-selection candidate action.</td></tr>
+<tr><td>Core <code>OBJ_POTION_HOLY_ALT</code></td><td>06 and 17d</td><td>Reusable holy-water pickup.</td></tr>
+<tr><td>Core <code>OBJ_TRIDENT_STORM</code></td><td>13</td><td>Reusable permanent merfolk weapon pickup.</td></tr>
+</table>
+</section>
+
+<section><h2>Local macro lifecycle</h2>
+<table><tr><th>Scenario</th><th>Local definitions</th><th>Cleanup</th></tr>
+<tr><td>02</td><td><code>NORTH_GUARD</code></td><td>Scenario-local preprocessing scope.</td></tr>
+<tr><td>03</td><td><code>ESCAPE_VICTORY</code></td><td>Scenario-local preprocessing scope.</td></tr>
+<tr><td>08</td><td><code>BOARDING_EVENT</code></td><td>Used for three ship windows.</td></tr>
+<tr><td>09</td><td><code>PETRIFIED</code>, <code>PETRIFIED_UNIT</code></td><td>Visible dormant undead faction.</td></tr>
+<tr><td>14</td><td><code>POSSIBLE_SERPENT_SPAWN_LOCS_SLF</code></td><td>Shared location filter for check and storage.</td></tr>
+<tr><td>16</td><td>Seven hub option/rendering macros</td><td>All explicitly <code>#undef</code> after the scenario.</td></tr>
+<tr><td>17a</td><td><code>GOLD_TO_BADDIES</code></td><td>Explicitly undefined.</td></tr>
+<tr><td>17c</td><td><code>SPIDER_TRAIT</code></td><td>Explicitly undefined after random setup.</td></tr>
+<tr><td>17d</td><td><code>TEMP_LOOT</code>, <code>TEMP_QUEEN</code>, <code>TEMP_EMPTY</code></td><td>Explicitly undefined.</td></tr>
+</table>
+</section>
+
+<section><h2>Maintenance rules demonstrated</h2>
+<div class="callout"><strong>Small shared surface, rich local composition.</strong> Stable cross-campaign behavior lives in six utilities. Scenario-specific repetition is refactored locally and, where appropriate, explicitly undefined. One specialized behavior crosses into Lua only because ordinary WML AI configuration cannot express the required combat simulation gate.</div>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/_main.cfg">Root loader</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/utils">Utilities</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/ai/ca_aggressive_attack_no_suicide.lua">Lua candidate action</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios">Scenario call sites</a></p>
+</section>
+
+<section id="release-100-closure"><h2>Machine-resolved custom-unit graph</h2>
+<p>The <a href="core-dependency-closure.html">Core Dependency Closure</a> resolves 31 transitive symbols with zero unresolved definitions and supplies a reusable local-checkout audit script.</p></section>
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

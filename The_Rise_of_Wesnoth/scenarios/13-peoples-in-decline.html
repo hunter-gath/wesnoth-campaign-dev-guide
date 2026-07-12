@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>13 — Peoples in Decline</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>13 — Peoples in Decline</h1><p>The first overseas resupply battle, fought against three drake chiefs on a slowly sinking volcanic island, with an optional Storm Trident and delayed Sea Serpent encounter.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html" aria-current="page">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 13</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>13_Peoples_in_Decline</code></td></tr>
+<tr><th>Next scenario</th><td><code>14_Rough_Landing</code></td></tr>
+<tr><th>Map</th><td><code>13_Peoples_in_Decline.map</code>, 32 × 33 hexes</td></tr>
+<tr><th>Turns</th><td>33 / 30 / 27</td></tr>
+<tr><th>Schedule</th><td>Default</td></tr>
+<tr><th>Carryover</th><td>40%, early-finish bonus</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Island resupply / three-leader assault</td></tr>
+<tr><th>Story importance</th><td>High</td></tr>
+<tr><th>WML complexity</th><td>Moderate</td></tr>
+<tr><th>AI complexity</th><td>Moderate symmetric drake sides</td></tr>
+<tr><th>Optional item</th><td>Storm Trident at 17,18</td></tr></table></div>
+</div>
+</section>
+
+<section><h2>Story and dialogue</h2>
+<p>The refugees leave the Green Isle permanently aboard the <em>Eldaric</em>. The story panels describe a stormy eastern voyage and a slowly sinking volcanic island where Southbay’s elder prince once established a foothold among belligerent drakes.</p>
+<p>The port appears deserted, but Jessene recognizes the island and warns that its inhabitants have rearmed. Haldric attempts peaceful resupply; the drakes answer in the name of Morogor. After the battle, the refugees replenish the fleet, while Jessene notes that the drakes will resume guarding the island and eventually face evacuation themselves.</p>
+<table><tr><th>Story beat</th><th>Function</th></tr>
+<tr><td>Permanent departure</td><td>Closes the Green Isle phase of the campaign.</td></tr>
+<tr><td>Sinking volcanic island</td><td>Mirrors the refugees’ decline with another displaced people.</td></tr>
+<tr><td>Failed diplomacy</td><td>Introduces drakes through territorial hostility rather than exposition alone.</td></tr>
+<tr><td>Familiar observes victory</td><td>Shows Jevyan’s continuing surveillance without a direct confrontation.</td></tr></table>
+</section>
+
+<section><h2>Map description</h2>
+<p>The 32 × 33 map is almost entirely surrounded by deep ocean. A compact central island combines beaches, sand, scrub, swamp, tropical forest, villages, rough roads, caves, volcanic terrain, and three drake keeps. Haldric’s red galleon is staged at the crude port near the upper-left interior.</p>
+<table><tr><th>Map element</th><th>Design role</th></tr>
+<tr><td>Ocean border</td><td>Makes the island feel isolated and turns re-provisioning into a hard requirement.</td></tr>
+<tr><td>Three dispersed drake keeps</td><td>Creates multiple fronts on a compact map.</td></tr>
+<tr><td>Storm Trident at 17,18</td><td>Rewards sending a merfolk unit into central water.</td></tr>
+<tr><td>Serpent spawn near the trident</td><td>Makes the item’s region an encounter rather than free loot.</td></tr>
+<tr><td>Deserted crude port</td><td>Connects the map to the elder prince’s failed foothold.</td></tr></table>
+</section>
+
+<section><h2>Objectives and sides</h2>
+<table><tr><th>Victory</th><th>Defeat all enemy leaders.</th></tr>
+<tr><td>Defeat</td><td>Death of Haldric, Jessene, or Lord Typhon; turns expire.</td></tr>
+<tr><td>Carryover</td><td>40%, with early-finish bonus.</td></tr></table>
+<table><tr><th>Side</th><th>Leader / roster</th><th>Gold and income</th><th>AI</th></tr>
+<tr><td>1 — Refugees</td><td>Haldric and all available companions</td><td>210 / 180 / 150</td><td>Human controlled</td></tr>
+<tr><td>2 — Drakes</td><td>Kegrid, Drake Flameheart</td><td>80 / 110 / 140; income 2 / 4 / 6</td><td>Aggression 0.75; no scouts; advanced roster above Easy</td></tr>
+<tr><td>3 — Drakes</td><td>Garash, Drake Flameheart</td><td>80 / 110 / 140; income 2 / 4 / 6</td><td>Similar, with Drake Flare available above Easy</td></tr>
+<tr><td>4 — Drakes</td><td>Merkush, Drake Flameheart</td><td>80 / 110 / 140; income 2 / 4 / 6</td><td>Similar, with Drake Thrasher available above Easy</td></tr>
+<tr><td>5 — Sea creature</td><td>No initial leader; hidden</td><td>No village economy</td><td>Hosts the scripted Sea Serpent</td></tr></table>
+</section>
+
+<section><h2>Difficulty scaling</h2>
+<table><tr><th>Element</th><th>Easy</th><th>Normal / Hard</th></tr>
+<tr><td>Turns</td><td>33</td><td>30 / 27</td></tr>
+<tr><td>Player gold</td><td>210</td><td>180 / 150</td></tr>
+<tr><td>Each drake leader’s gold</td><td>80</td><td>110 / 140</td></tr>
+<tr><td>Each drake leader’s income</td><td>2</td><td>4 / 6</td></tr>
+<tr><td>Drake recruit tiers</td><td>Level-1 Burner, Clasher, Glider, Fighter</td><td>Adds selected level-2 Fire Drake, Arbiter/Flare/Thrasher, and Drake Warrior</td></tr></table>
+</section>
+
+<section><h2>Storm Trident pickup</h2>
+<p><code>OBJ_TRIDENT_STORM 17 18 (trident)</code> uses the core item macro. Only a merfolk unit without an existing storm-trident attack can take it.</p>
+<table><tr><th>Attack field</th><th>Value</th></tr>
+<tr><td>Damage</td><td>14 × 2</td></tr>
+<tr><td>Type / range</td><td>Fire, ranged</td></tr>
+<tr><td>Special</td><td>Magical</td></tr>
+<tr><td>Duration</td><td>Forever</td></tr>
+<tr><td>Art and audio</td><td>Storm-trident image, lightning icon, directional lightning animations and sounds</td></tr></table>
+<p>Unlike Typhon’s guaranteed trident in Scenario 12, this is a normal optional pickup. The same core effect is therefore demonstrated in two authoring contexts.</p>
+</section>
+
+<section><h2>Bitey the Serpent event</h2>
+<p>The first side-1 unit to enter the trident hex schedules a nested <code>new turn</code> event. On the following turn:</p>
+<ol>
+<li>Random x and y coordinates are selected near the item.</li>
+<li>A named loyal Sea Serpent, “Bitey the Serpent,” is created for hidden side 5.</li>
+<li>A nearby side-1 unit warns the player.</li>
+<li>The camera scrolls to Bitey.</li>
+<li>The temporary coordinate variables are cleared.</li>
+</ol>
+<p>Delaying the spawn until the next turn prevents the creature from interrupting the pickup interaction itself.</p>
+</section>
+
+<section><h2>Special events</h2>
+<table><tr><th>Trigger</th><th>Behavior</th></tr>
+<tr><td><code>prestart</code></td><td>Places the core Storm Trident, recalls all possible companions including Typhon, stages the <em>Eldaric</em>, and installs objectives.</td></tr>
+<tr><td><code>start</code></td><td>Introduces the island, failed diplomacy, and drake hostility.</td></tr>
+<tr><td>Move to 17,18</td><td>Schedules Bitey’s random nearby arrival on the next turn.</td></tr>
+<tr><td>Enemies defeated</td><td>Confirms fleet resupply, compares drake decline to human migration, stages Familiar’s surveillance, and ends with 40% carryover.</td></tr>
+<tr><td>Time over</td><td>The fleet begins starving before the island can be pacified.</td></tr></table>
+</section>
+
+<section><h2>Assets and reuse</h2>
+<table><tr><th>Resource</th><th>Origin</th><th>Use</th></tr>
+<tr><td><code>story/trow_story_13-Peoples_in_Decline.webp</code></td><td><span class="badge campaign">Campaign</span></td><td>Sinking-island story panel</td></tr>
+<tr><td>Familiar portrait and unit</td><td><span class="badge campaign">Campaign</span></td><td>Jevyan’s post-battle observer</td></tr>
+<tr><td>Red galleon and Storm Trident item</td><td><span class="badge core">Core/shared</span></td><td>Fleet staging and optional permanent weapon</td></tr>
+<tr><td><code>knalgan_theme.ogg</code>, <code>wanderer.ogg</code>, <code>underground.ogg</code></td><td><span class="badge core">Core/shared</span></td><td>Scenario and story music</td></tr>
+<tr><td>All Drake and Sea Serpent types</td><td><span class="badge core">Core</span></td><td>Entire combat faction set</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/13_Peoples_in_Decline.map">Map source</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/core/macros/items.cfg">Core Storm Trident macro</a> · <a href="../reference/artifact-index.html">Artifact index</a></p>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<div class="callout"><strong>Design interpretation.</strong> The first overseas battle introduces a new faction and environment without introducing new campaign-specific units. Its custom identity comes from the sinking-island story, map composition, and a small optional encounter around a core item.</div>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Resupply as a victory premise</td><td>Give a conventional leader-defeat battle logistical stakes.</td></tr>
+<tr><td>Use another displaced people as thematic mirror</td><td>Make a new faction reinforce the campaign’s central theme.</td></tr>
+<tr><td>Core item plus scripted guardian</td><td>Turn an existing pickup into a scenario-specific encounter.</td></tr>
+<tr><td>Three similar enemy sides with distinct advanced recruits</td><td>Create subtle tactical differences without custom AI.</td></tr>
+<tr><td>Villain surveillance after victory</td><td>Maintain antagonist continuity without interrupting the current battle.</td></tr></table>
+<div class="prev-next"><a href="12-a-final-spring.html">← 12 — A Final Spring</a><a href="../reference/southbay-departure-arc.html">Arc study →</a></div>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

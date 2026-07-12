@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>04a — The Swamp of Esten</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>04a — The Swamp of Esten</h1><p>The river-road branch: fog, undead cultists, adaptive scorpion ambushes, randomized temples, Minister Edren, and Sir Ruddry.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html" aria-current="page">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 04a</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>04a_The_Swamp_of_Esten</code></td></tr>
+<tr><th>Previous branch</th><td><code>escape_choice=1</code> from Scenario 03</td></tr>
+<tr><th>Next scenario</th><td><code>05_The_Oldwood</code></td></tr>
+<tr><th>Map</th><td><code>04a_The_Swamp_of_Esten.map</code>, 37 × 42 hexes</td></tr>
+<tr><th>Turns</th><td>39 / 36 / 33</td></tr>
+<tr><th>Carryover</th><td>40%, early-finish bonus</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Fog exploration / multi-leader purge</td></tr>
+<tr><th>Story importance</th><td>High</td></tr>
+<tr><th>WML complexity</th><td>High</td></tr>
+<tr><th>AI customization</th><td>Light declarative AI; heavy event-driven ecology</td></tr>
+<tr><th>New companions</th><td>Minister Edren; Sir Ruddry at victory</td></tr></table></div>
+</div>
+<div class="callout"><strong>Derived map dimensions.</strong> The map source contains 42 terrain rows, each with 37 hex entries.</div>
+</section>
+
+<section><h2>Story & dialogue</h2>
+<p>The shared first story panel closes the Stormvale arc by emphasizing Eldaric’s sacrifice and Haldric’s permanent exile. The route-specific panel explains that the river road leads toward Clearwater Port through land polluted during the Wesfolk War and now occupied by an undead-imitation cult.</p>
+<p>The playable opening establishes a deliberately uneasy atmosphere. Fog conceals the swamp, Haldric remembers that local forces once cleared it twice yearly, Burin complains about the smell, and Lady Outlaw senses an ambush. Victory brings Sir Ruddry, sole survivor of a Clearwater Port expeditionary force, who warns that the direct river road is blocked by an immense orc army. Haldric therefore redirects the refugees through Oldwood.</p>
+<table><tr><th>Dialogue phase</th><th>Function</th></tr>
+<tr><td>Shared exile panel</td><td>Connects both branches to the same emotional transition.</td></tr>
+<tr><td>Swamp-history panel</td><td>Links geography, the Wesfolk War, and current enemy identity.</td></tr>
+<tr><td>Opening unease</td><td>Prepares the player for fog, traps, and surprise spawns.</td></tr>
+<tr><td>Temple encounter</td><td>Introduces Minister Edren with humor and campaign context.</td></tr>
+<tr><td>Cultist death lines</td><td>Characterize the cult through obsession with undeath.</td></tr>
+<tr><td>Ruddry’s warning</td><td>Converges the branch on Oldwood and adds a loyal knight.</td></tr></table>
+</section>
+
+<section><h2>Map description</h2>
+<p>The 37 × 42 map is a long wetland journey composed primarily of swamp, shallow and deep water, wooded grassland, rough roads, hills, villages, and scattered castle/keep structures. Haldric begins near a castle in the upper-left portion, while the three cult leaders occupy separated positions across the map. Five temple images and one eastern signpost turn otherwise ordinary hexes into exploration nodes.</p>
+<table><tr><th>Spatial system</th><th>Design function</th></tr>
+<tr><td>Fog on the player side</td><td>Makes route planning uncertain and supports hidden-edge ambushes.</td></tr>
+<tr><td>Three distributed cult keeps</td><td>Forces broad exploration rather than a single assault line.</td></tr>
+<tr><td>Five temple locations</td><td>Create optional risk/reward detours with randomized identities.</td></tr>
+<tr><td>Three scorpion trigger regions</td><td>Divide the map into exploration danger zones.</td></tr>
+<tr><td>Eastern signpost at 34,12</td><td>Foreshadows Oldwood and rewards geographical inspection.</td></tr></table>
+</section>
+
+<section><h2>Objectives and sides</h2>
+<table><tr><th>Type</th><th>Condition</th></tr>
+<tr><td>Victory</td><td>Defeat all three enemy leaders.</td></tr>
+<tr><td>Defeat</td><td>Death of Prince Haldric; turns expire.</td></tr></table>
+<table><tr><th>Side</th><th>Leader / roster</th><th>Gold</th><th>Notes</th></tr>
+<tr><td>1 — Refugees</td><td>Haldric, Noble Commander; Lady Outlaw and Burin recalled</td><td>160 / 140 / 120</td><td>Fog enabled; recruit list carried from campaign state</td></tr>
+<tr><td>2 — Cultists</td><td>Cleon, Dark Sorcerer; Bat, Walking Corpse, Dark Adept</td><td>80 / 120 / 160</td><td>Nearest and intentionally softer leader</td></tr>
+<tr><td>3 — Cultists</td><td>Lollyra, Dark Sorcerer</td><td>130 / 170 / 210</td><td>Difficulty-dependent undead and mudcrawler roster</td></tr>
+<tr><td>4 — Cultists</td><td>Clurka, Dark Sorcerer</td><td>130 / 170 / 210</td><td>Same broad scaling pattern as side 3</td></tr></table>
+<p>All cult sides use <code>NO_SCOUTS</code> and the recruitment pattern <code>scout,fighter,fighter,fighter,archer</code>. On higher difficulties, sides 3 and 4 replace many level-0/1 recruits with stronger forms such as Necrophage, Wraith, Shadow, Revenant, Deathblade, and Bone Shooter.</p>
+</section>
+
+<section><h2>Special events</h2>
+<table><tr><th>Trigger</th><th>Behavior</th></tr>
+<tr><td><code>prestart</code></td><td>Places five temples and a signpost, creates difficulty-scaled guard scorpions, recalls Lady Outlaw and Burin, and sets objectives.</td></tr>
+<tr><td><code>start</code></td><td>Runs the swamp-ambience conversation.</td></tr>
+<tr><td>Move near one of three trigger centers</td><td>Records the region and creates a delayed new-turn scorpion ambush near the current edge of player vision.</td></tr>
+<tr><td>Move onto randomized help temple</td><td>Creates Minister Edren as a loyal, strong White Mage.</td></tr>
+<tr><td>Move onto trap temple</td><td>Spawns hostile bats/corpses; Hard also adds a Ghost.</td></tr>
+<tr><td>Move onto loot temple</td><td>Grants 50 gold.</td></tr>
+<tr><td>Move to signpost</td><td>Displays the Oldwood warning and permits undo.</td></tr>
+<tr><td>Cult leader last breath</td><td>Each leader speaks a distinct line about immortal undeath.</td></tr>
+<tr><td>Enemies defeated</td><td>Ends with victory and 40% carryover.</td></tr>
+<tr><td><code>victory</code></td><td>Creates Sir Ruddry, redirects the party through Oldwood, sets <code>last_done="River"</code>, and clears temporary variables.</td></tr></table>
+</section>
+
+<section><h2>Visibility-aware scorpion ambush</h2>
+<p>The scenario’s most advanced system is not AI code; it is an event-driven ambush algorithm:</p>
+<ol>
+<li>A side-1 unit enters within radius 4 of one of three centers.</li>
+<li>The region is added to <code>triggered_scorpion_locs</code> so it cannot trigger again.</li>
+<li>A nested <code>new turn</code> event searches terrain at the boundary between visible and unseen hexes.</li>
+<li>The search starts at radius 5 around the triggering unit and expands until a valid location is found or the radius reaches 20.</li>
+<li>A loyal Giant Scorpion for side 2 is animated into that location.</li>
+<li>Search variables are cleared.</li>
+</ol>
+<div class="callout"><strong>Why this is notable.</strong> The ambush appears near the player’s current vision edge rather than at a fixed coordinate. The same authored event therefore adapts to different movement paths.</div>
+</section>
+
+<section><h2>Randomized temple system</h2>
+<p>Three local macros define temple outcomes:</p>
+<table><tr><th>Macro</th><th>Outcome</th></tr>
+<tr><td><code>TEMPLE_HELP X Y</code></td><td>Creates Minister Edren and recruitment-style dialogue.</td></tr>
+<tr><td><code>TEMPLE_TRAP X Y</code></td><td>Spawns hostile units belonging to multiple cult sides.</td></tr>
+<tr><td><code>TEMPLE_LOOT X Y</code></td><td>Grants 50 gold.</td></tr></table>
+<p>A random value from 1 to 3 assigns help, trap, and loot among three temples. The temple at 34,36 is always a trap; the temple at 30,10 is always loot. This mixes reliable knowledge with replay variation.</p>
+</section>
+
+<section><h2>Difficulty scaling</h2>
+<table><tr><th>Element</th><th>Easy</th><th>Normal</th><th>Hard</th></tr>
+<tr><td>Turns</td><td>39</td><td>36</td><td>33</td></tr>
+<tr><td>Player gold</td><td>160</td><td>140</td><td>120</td></tr>
+<tr><td>Fixed guard scorpions</td><td>3</td><td>6</td><td>9</td></tr>
+<tr><td>Sides 3–4 roster</td><td>Mostly level-0/1 undead and Mudcrawlers</td><td>Stronger bats, Soulless, Necrophages, Giant Mudcrawlers</td><td>Level-2 undead including Wraith, Shadow, Revenant, Deathblade, Bone Shooter</td></tr>
+<tr><td>Temple traps</td><td>Bat and corpses</td><td>Bat and corpses</td><td>Also a Ghost</td></tr></table>
+</section>
+
+<section><h2>Units and assets</h2>
+<table><tr><th>Resource</th><th>Origin</th><th>Use</th></tr>
+<tr><td><code>trow_story_04-Fall_of_Eldaric.jpg</code></td><td><span class="badge campaign">Campaign</span></td><td>Shared branch-opening story panel</td></tr>
+<tr><td><code>trow_story_04a-The_Swamp_of_Esten.jpg</code></td><td><span class="badge campaign">Campaign</span></td><td>Route-specific swamp panel</td></tr>
+<tr><td>Haldric and Burin portrait variants; Ruddry portrait</td><td><span class="badge campaign">Campaign</span></td><td>Character dialogue and new knight</td></tr>
+<tr><td><code>portraits/edmond.webp</code>, signpost, temple image</td><td><span class="badge core">Core/shared</span></td><td>Minister Edren and map scenery</td></tr>
+<tr><td><code>wanderer.ogg</code>, <code>knolls.ogg</code>, <code>underground.ogg</code>, horse canter</td><td><span class="badge core">Core/shared</span></td><td>Story/game score and victory entrance</td></tr>
+<tr><td>Dark Sorcerer, undead roster, Giant Scorpion, White Mage, Knight</td><td><span class="badge core">Core</span></td><td>All route-specific combat and companion unit types</td></tr></table>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<div class="callout"><strong>Design interpretation.</strong> The swamp route makes uncertainty the central mechanic. Fog, randomized temples, distributed leaders, and adaptive ambush placement all reinforce the fiction that the region has not been safely patrolled.</div>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Adaptive spawn at vision edge</td><td>Use player perception, not only coordinates, to place fair-feeling ambushes.</td></tr>
+<tr><td>Randomized points of interest</td><td>Give repeat players uncertainty while preserving some fixed anchors.</td></tr>
+<tr><td>One scenario, several exploration rewards</td><td>Optional companions, loot, and traps make detours meaningful.</td></tr>
+<tr><td>Difficulty changes unit tier, not merely quantity</td><td>Higher levels can alter tactical texture, not just numbers.</td></tr>
+<tr><td>Temporary variables explicitly cleared</td><td>Keep save-state hygiene visible in complex event scripting.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/04a_The_Swamp_of_Esten.map">Map source</a> · <a href="../reference/branch-comparison-04.html">Compare both routes</a></p>
+</section>
+<div class="prev-next"><a href="03-a-harrowing-escape.html">← 03 — A Harrowing Escape</a><a href="04b-the-midlands.html">04b — The Midlands →</a></div>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

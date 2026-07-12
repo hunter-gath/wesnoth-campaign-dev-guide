@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>02 — The Fall</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>02 — The Fall</h1><p>A four-side evacuation battle, race for the southern pass, Lady Outlaw decision, and the transfer of leadership from Eldaric to Haldric.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html" aria-current="page">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 02</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>02_The_Fall</code></td></tr>
+<tr><th>Next scenario</th><td><code>03_A_Harrowing_Escape</code></td></tr>
+<tr><th>Map</th><td><code>02_The_Fall.map</code>, 37 × 27 hexes</td></tr>
+<tr><th>Turns</th><td>23 / 20 / 17</td></tr>
+<tr><th>Carryover</th><td>40%, early-finish bonus</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Evacuation battle / three-faction race</td></tr>
+<tr><th>Story importance</th><td>Critical</td></tr>
+<tr><th>WML complexity</th><td>Moderate–high</td></tr>
+<tr><th>AI customization</th><td>Moderate declarative tuning</td></tr>
+<tr><th>Persistent state</th><td><code>have_lady</code>, <code>lady_store</code>, recruit access</td></tr></table></div>
+</div></section>
+<section><h2>Story & dialogue</h2>
+<p>Summer gives way to fall, Eldaric fortifies the frontier, and the orc invasion reaches Stormvale. The opening scene immediately reframes the campaign: the human kingdom can no longer defend its home, the only escape is the southern pass, and the Wesfolk occupy that pass.</p>
+<p>The scenario’s climax is not merely the Wesfolk leader’s defeat. Haldric must decide whether to accept her surrender and skills or reject her. Accepting creates Lady Outlaw as a loyal hero and grants access to outlaw recruits. Rejecting grants an immediate gold reward while allowing her to escape for later use. Eldaric then remains behind to cover the refugees’ retreat.</p>
+<table><tr><th>Dialogue phase</th><th>Function</th></tr>
+<tr><td>Story panel</td><td>Compresses the passage of time and announces war.</td></tr>
+<tr><td>Opening exchange</td><td>Defines the scenario as evacuation, not territorial defense.</td></tr>
+<tr><td>Turn 14 reminder</td><td>Reasserts urgency before the deadline.</td></tr>
+<tr><td>Surrender choice</td><td>Turns a defeated antagonist into a persistent party and roster decision.</td></tr>
+<tr><td>Farewell</td><td>Removes the mentor and transfers leadership to Haldric.</td></tr></table>
+</section>
+<section><h2>Map description</h2>
+<p>The map is a 37 × 27 return to the Stormvale region, now configured as a four-side crisis. Orc leaders occupy northern and northeastern keeps, Haldric begins around the southeastern settlement, and the Wesfolk block the southern escape route. A central water system, bridges, roads, swamp, and mountain belts shape movement between these fronts.</p>
+<table><tr><th>Spatial element</th><th>Implementation effect</th></tr>
+<tr><td>Two northern orc keeps</td><td>Creates a pincer and makes fighting both orc leaders optional but tempting.</td></tr>
+<tr><td>Wesfolk southern keep</td><td>Places the victory target directly on the route of escape.</td></tr>
+<tr><td>Player settlement near water</td><td>Creates a defensible home that the narrative says must be abandoned.</td></tr>
+<tr><td>Mountain guards in the north</td><td>Visualizes Eldaric’s failing defensive line.</td></tr>
+<tr><td>Orc home-entry trigger at x 26–30, y 13–15</td><td>Connects enemy movement into the settlement with bespoke dialogue.</td></tr></table>
+</section>
+<section><h2>Objectives and side economy</h2>
+<table><tr><th>Type</th><th>Condition</th></tr>
+<tr><td>Victory</td><td>Defeat the Wesfolk Leader with a side-1 unit.</td></tr>
+<tr><td>Defeat</td><td>Death of Haldric or Eldaric; orcs kill the Wesfolk Leader; turns expire.</td></tr>
+<tr><td>Optional reward</td><td>Each orc leader killed by side 1 yields 75 gold.</td></tr></table>
+<table><tr><th>Side</th><th>Leader / roster</th><th>Gold</th><th>Income and AI</th></tr>
+<tr><td>1 — Stormvale</td><td>Haldric, Noble Fighter; campaign recruit state carried forward</td><td>140 / 120 / 100</td><td>Human controlled; six starting villages</td></tr>
+<tr><td>2 — Wesfolk</td><td>Wesfolk Outcast; Footpad, Poacher, Thief, Thug</td><td>90 / 120 / 150</td><td>Aggression .15, caution .5, defensive grouping, passive leader; seven starting villages</td></tr>
+<tr><td>3 — Orcs</td><td>Tan-Rarbag, Orcish Warlord</td><td>120 / 160 / 200</td><td>Income 6 / 9 / 12; passive leader; highly aggressive at night</td></tr>
+<tr><td>4 — Orcs</td><td>Tan-Erang, Orcish Warrior</td><td>160 / 200 / 240</td><td>Income 4 / 6 / 8; highly aggressive at night</td></tr></table>
+<div class="callout"><strong>Implementation note.</strong> The player side does not redefine <code>recruit=</code> in this scenario. The campaign relies on the carried side state, then conditionally extends it with outlaw recruits if the surrender is accepted.</div>
+</section>
+<section><h2>Special events and state transitions</h2>
+<table><tr><th>Trigger</th><th>Behavior</th></tr>
+<tr><td><code>prestart</code></td><td>Restores the Wesfolk leader’s experience, creates difficulty-scaled Wesfolk guardians, recalls Eldaric, creates three loyal northern guards, and installs objectives.</td></tr>
+<tr><td><code>start</code></td><td>Explains the collapse of the northern defense and the blocked southern pass.</td></tr>
+<tr><td>Turn 14</td><td>Eldaric warns that only death remains in the valley.</td></tr>
+<tr><td>Orc leader death by side 1</td><td>Applies <code>LOOT 75 1</code>.</td></tr>
+<tr><td>Wesfolk last breath by side 1</td><td>Opens the accept/reject choice and then ends the scenario.</td></tr>
+<tr><td>Wesfolk death by an orc side</td><td>Immediate defeat because the escape route is lost.</td></tr>
+<tr><td>Orc enters home trigger area</td><td>Haldric grieves; Eldaric insists on retreat.</td></tr>
+<tr><td><code>victory</code></td><td>Removes Eldaric, clears temporary storage, and prepares escaped Lady Outlaw state if necessary.</td></tr></table>
+<h3>The Lady Outlaw decision</h3>
+<table><tr><th>Choice</th><th>Immediate result</th><th>Persistent result</th></tr>
+<tr><td>Accept surrender</td><td>Wesfolk leader is recreated on side 1 as loyal hero Lady Outlaw.</td><td><code>have_lady=1</code>; Thief, Thug, Poacher, and Footpad become recruitable.</td></tr>
+<tr><td>Reject surrender</td><td>She vanishes; player gains 300 / 250 / 200 gold.</td><td><code>have_lady=0</code>; her converted state is prepared in <code>lady_store</code> for later campaign logic.</td></tr></table>
+</section>
+<section><h2>Local macro: <code>NORTH_GUARD</code></h2>
+<p>The scenario defines a short helper macro to create named loyal guards. On Easy they are Shock Troopers; on Normal and Hard they are Heavy Infantrymen. Parameters supply coordinates, ID, display name, and a second trait.</p>
+<pre>#define NORTH_GUARD X Y ID_STRING NAME_STRING SECOND_TRAIT_WML
+    [unit]
+        type=(difficulty-dependent heavy infantry)
+        side=1
+        id={ID_STRING}
+        x={X}
+        y={Y}
+        [modifications]
+            {TRAIT_LOYAL}
+            {SECOND_TRAIT_WML}
+        [/modifications]
+    [/unit]
+#enddef</pre>
+<p>This is a good example of a <em>scenario-local abstraction</em>: it removes repetition without promoting a one-off pattern into the campaign-wide utility layer.</p>
+</section>
+<section><h2>AI analysis</h2>
+<table><tr><th>AI technique</th><th>Purpose</th></tr>
+<tr><td>Wesfolk low aggression, high caution, defensive grouping</td><td>Keeps the objective force concentrated around the escape route.</td></tr>
+<tr><td>Passive Wesfolk leader</td><td>Reduces the chance that the target abandons the southern position.</td></tr>
+<tr><td>Orc night-only aggressive facet</td><td>Makes time of day alter strategic pressure without custom Lua.</td></tr>
+<tr><td>Difficulty-scaled income and gold</td><td>Increases sustained recruitment pressure on higher difficulties.</td></tr>
+<tr><td>Optional loot</td><td>Tempts the player to fight the flanking armies despite the evacuation deadline.</td></tr></table>
+</section>
+<section><h2>Assets and units</h2>
+<table><tr><th>Resource</th><th>Origin</th><th>Use</th></tr>
+<tr><td><code>story/trow_story_02-The_Fall.jpg</code></td><td><span class="badge campaign">Campaign</span></td><td>Single transition story panel</td></tr>
+<tr><td>Haldric surprise/annoyed portraits</td><td><span class="badge campaign">Campaign</span></td><td>Fear and deliberation</td></tr>
+<tr><td><code>portraits/lady_outlaw.webp</code>, orc portraits</td><td><span class="badge core">Core/shared</span></td><td>Wesfolk and orc leaders</td></tr>
+<tr><td><code>the_dangerous_symphony.ogg</code>, <code>undead_siege.ogg</code>, <code>battle.ogg</code></td><td><span class="badge core">Core/shared</span></td><td>Scenario music rotation</td></tr>
+<tr><td>Noble Fighter, Warrior King, Wesfolk Outcast</td><td><span class="badge campaign">Campaign</span></td><td>Named campaign cast</td></tr>
+<tr><td>Orcish leaders and recruits; outlaw recruits; heavy infantry guards</td><td><span class="badge core">Core</span></td><td>Battle factions</td></tr></table>
+</section>
+<section><h2>Lessons for authors</h2>
+<div class="callout"><strong>Design interpretation.</strong> The scenario creates urgency through objective competition rather than a special countdown mechanic: the player must reach the Wesfolk before the orcs do, while optional loot rewards risky counterattacks.</div>
+<table><tr><th>Pattern</th><th>Why it matters</th></tr>
+<tr><td>Objective can be “stolen” by a third faction</td><td>Transforms a standard leader kill into a race.</td></tr>
+<tr><td>Choice bundles story, unit, roster, and economy effects</td><td>Makes the decision mechanically legible and memorable.</td></tr>
+<tr><td>Mentor exits after the choice</td><td>Marks the protagonist’s transition into command.</td></tr>
+<tr><td>Scenario-local helper macro</td><td>Reduces repetition without polluting global namespace.</td></tr>
+<tr><td>Night aggression facet</td><td>Uses core AI configuration to create behavioral rhythm.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/02_The_Fall.map">Map source</a> · <a href="../reference/state-index.html">State index</a></p>
+</section>
+<div class="prev-next"><a href="01-a-summer-of-storms.html">← 01 — A Summer of Storms</a><a href="03-a-harrowing-escape.html">03 — A Harrowing Escape →</a></div>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

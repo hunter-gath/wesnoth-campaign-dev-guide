@@ -1,0 +1,1089 @@
+{
+  "scope": "Campaign-defined unit files plus base_unit closure for Elvish Champion and Royal Warrior",
+  "units": {
+    "Autumn Shyde": {
+      "source_files": [
+        "campaign/units/Autumn_Shyde.cfg"
+      ],
+      "base_units": [],
+      "root_symbols": [
+        "AMLA_DEFAULT"
+      ],
+      "resolved_symbols": [
+        "AMLA_DEFAULT",
+        "AMLA_EFFECTS_HEAL_AND_RAISE_XP"
+      ],
+      "unresolved_symbols": [],
+      "edges": [
+        [
+          "AMLA_DEFAULT",
+          "AMLA_EFFECTS_HEAL_AND_RAISE_XP"
+        ]
+      ]
+    },
+    "Familiar": {
+      "source_files": [
+        "campaign/units/Familiar.cfg"
+      ],
+      "base_units": [],
+      "root_symbols": [
+        "AMLA_DEFAULT",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:MISS"
+      ],
+      "resolved_symbols": [
+        "AMLA_DEFAULT",
+        "AMLA_EFFECTS_HEAL_AND_RAISE_XP",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:MISS"
+      ],
+      "unresolved_symbols": [],
+      "edges": [
+        [
+          "AMLA_DEFAULT",
+          "AMLA_EFFECTS_HEAL_AND_RAISE_XP"
+        ]
+      ]
+    },
+    "Jevyan": {
+      "source_files": [
+        "campaign/units/Jevyan.cfg"
+      ],
+      "base_units": [],
+      "root_symbols": [
+        "ABILITY_SUBMERGE",
+        "AMLA_DEFAULT",
+        "DEFENSE_ANIM",
+        "MISSILE_FRAME_CHILL_TEMPEST",
+        "MISSILE_FRAME_SHADOW_WAVE",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:LICH_HIT",
+        "SOUND_LIST:MISS",
+        "WEAPON_SPECIAL_DRAIN",
+        "WEAPON_SPECIAL_MAGICAL"
+      ],
+      "resolved_symbols": [
+        "ABILITY_SUBMERGE",
+        "AMLA_DEFAULT",
+        "AMLA_EFFECTS_HEAL_AND_RAISE_XP",
+        "DEFENSE_ANIM",
+        "INTERNAL:SPECIAL_NOTES_DRAIN",
+        "INTERNAL:SPECIAL_NOTES_MAGICAL",
+        "INTERNAL:SPECIAL_NOTES_SUBMERGE",
+        "MISSILE_FRAME_CHILL_TEMPEST",
+        "MISSILE_FRAME_SHADOW_WAVE",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:LICH_HIT",
+        "SOUND_LIST:MISS",
+        "WEAPON_SPECIAL_DRAIN",
+        "WEAPON_SPECIAL_MAGICAL"
+      ],
+      "unresolved_symbols": [],
+      "edges": [
+        [
+          "ABILITY_SUBMERGE",
+          "INTERNAL:SPECIAL_NOTES_SUBMERGE"
+        ],
+        [
+          "AMLA_DEFAULT",
+          "AMLA_EFFECTS_HEAL_AND_RAISE_XP"
+        ],
+        [
+          "WEAPON_SPECIAL_DRAIN",
+          "INTERNAL:SPECIAL_NOTES_DRAIN"
+        ],
+        [
+          "WEAPON_SPECIAL_MAGICAL",
+          "INTERNAL:SPECIAL_NOTES_MAGICAL"
+        ]
+      ]
+    },
+    "Jevyan Cloaked": {
+      "source_files": [
+        "campaign/units/Jevyan_Cloaked.cfg"
+      ],
+      "base_units": [],
+      "root_symbols": [
+        "AMLA_DEFAULT"
+      ],
+      "resolved_symbols": [
+        "AMLA_DEFAULT",
+        "AMLA_EFFECTS_HEAL_AND_RAISE_XP"
+      ],
+      "unresolved_symbols": [],
+      "edges": [
+        [
+          "AMLA_DEFAULT",
+          "AMLA_EFFECTS_HEAL_AND_RAISE_XP"
+        ]
+      ]
+    },
+    "Elvish Champion Kalian": {
+      "source_files": [
+        "campaign/units/Kalian.cfg",
+        "core/units/elves/Champion.cfg"
+      ],
+      "base_units": [
+        "Elvish Champion"
+      ],
+      "root_symbols": [
+        "AMLA_DEFAULT",
+        "DEFENSE_ANIM_RANGE",
+        "LESS_NIMBLE_ELF",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:ELF_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "resolved_symbols": [
+        "AMLA_DEFAULT",
+        "AMLA_EFFECTS_HEAL_AND_RAISE_XP",
+        "DEFENSE_ANIM_RANGE",
+        "LESS_NIMBLE_ELF",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:ELF_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "unresolved_symbols": [],
+      "edges": [
+        [
+          "AMLA_DEFAULT",
+          "AMLA_EFFECTS_HEAL_AND_RAISE_XP"
+        ]
+      ]
+    },
+    "Noble Commander": {
+      "source_files": [
+        "campaign/units/Noble_Commander.cfg"
+      ],
+      "base_units": [],
+      "root_symbols": [
+        "ABILITY_LEADERSHIP",
+        "DEFENSE_ANIM",
+        "DEFENSE_ANIM_FILTERED",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "resolved_symbols": [
+        "ABILITY_LEADERSHIP",
+        "DEFENSE_ANIM",
+        "DEFENSE_ANIM_FILTERED",
+        "INTERNAL:SPECIAL_NOTES_LEADERSHIP",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "unresolved_symbols": [],
+      "edges": [
+        [
+          "ABILITY_LEADERSHIP",
+          "INTERNAL:SPECIAL_NOTES_LEADERSHIP"
+        ]
+      ]
+    },
+    "Noble Fighter": {
+      "source_files": [
+        "campaign/units/Noble_Fighter.cfg"
+      ],
+      "base_units": [],
+      "root_symbols": [
+        "DEFENSE_ANIM",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "resolved_symbols": [
+        "DEFENSE_ANIM",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "unresolved_symbols": [],
+      "edges": []
+    },
+    "Noble Lord": {
+      "source_files": [
+        "campaign/units/Noble_Lord.cfg"
+      ],
+      "base_units": [],
+      "root_symbols": [
+        "ABILITY_LEADERSHIP",
+        "AMLA_DEFAULT",
+        "DEFENSE_ANIM",
+        "DEFENSE_ANIM_FILTERED",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "resolved_symbols": [
+        "ABILITY_LEADERSHIP",
+        "AMLA_DEFAULT",
+        "AMLA_EFFECTS_HEAL_AND_RAISE_XP",
+        "DEFENSE_ANIM",
+        "DEFENSE_ANIM_FILTERED",
+        "INTERNAL:SPECIAL_NOTES_LEADERSHIP",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "unresolved_symbols": [],
+      "edges": [
+        [
+          "ABILITY_LEADERSHIP",
+          "INTERNAL:SPECIAL_NOTES_LEADERSHIP"
+        ],
+        [
+          "AMLA_DEFAULT",
+          "AMLA_EFFECTS_HEAL_AND_RAISE_XP"
+        ]
+      ]
+    },
+    "Noble Youth": {
+      "source_files": [
+        "campaign/units/Noble_Youth.cfg"
+      ],
+      "base_units": [],
+      "root_symbols": [
+        "DEFENSE_ANIM",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "resolved_symbols": [
+        "DEFENSE_ANIM",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "unresolved_symbols": [],
+      "edges": []
+    },
+    "Vampire Lady": {
+      "source_files": [
+        "campaign/units/Vampire_Lady.cfg"
+      ],
+      "base_units": [],
+      "root_symbols": [
+        "AMLA_DEFAULT",
+        "DEFENSE_ANIM",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_FEMALE_DIE",
+        "SOUND_LIST:HUMAN_FEMALE_HIT",
+        "SOUND_LIST:MISS",
+        "WEAPON_SPECIAL_DRAIN"
+      ],
+      "resolved_symbols": [
+        "AMLA_DEFAULT",
+        "AMLA_EFFECTS_HEAL_AND_RAISE_XP",
+        "DEFENSE_ANIM",
+        "INTERNAL:SPECIAL_NOTES_DRAIN",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_FEMALE_DIE",
+        "SOUND_LIST:HUMAN_FEMALE_HIT",
+        "SOUND_LIST:MISS",
+        "WEAPON_SPECIAL_DRAIN"
+      ],
+      "unresolved_symbols": [],
+      "edges": [
+        [
+          "AMLA_DEFAULT",
+          "AMLA_EFFECTS_HEAL_AND_RAISE_XP"
+        ],
+        [
+          "WEAPON_SPECIAL_DRAIN",
+          "INTERNAL:SPECIAL_NOTES_DRAIN"
+        ]
+      ]
+    },
+    "Warrior King": {
+      "source_files": [
+        "campaign/units/Warrior_King.cfg",
+        "core/units/humans/Royal_Warrior.cfg"
+      ],
+      "base_units": [
+        "Royal Warrior"
+      ],
+      "root_symbols": [
+        "ABILITY_LEADERSHIP",
+        "AMLA_DEFAULT",
+        "DEFENSE_ANIM",
+        "LEADING_ANIM",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:HUMAN_OLD_DIE",
+        "SOUND_LIST:HUMAN_OLD_HIT"
+      ],
+      "resolved_symbols": [
+        "ABILITY_LEADERSHIP",
+        "AMLA_DEFAULT",
+        "AMLA_EFFECTS_HEAL_AND_RAISE_XP",
+        "DEFENSE_ANIM",
+        "INTERNAL:SPECIAL_NOTES_LEADERSHIP",
+        "LEADING_ANIM",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:HUMAN_OLD_DIE",
+        "SOUND_LIST:HUMAN_OLD_HIT"
+      ],
+      "unresolved_symbols": [],
+      "edges": [
+        [
+          "ABILITY_LEADERSHIP",
+          "INTERNAL:SPECIAL_NOTES_LEADERSHIP"
+        ],
+        [
+          "AMLA_DEFAULT",
+          "AMLA_EFFECTS_HEAL_AND_RAISE_XP"
+        ]
+      ]
+    },
+    "Wesfolk Lady": {
+      "source_files": [
+        "campaign/units/Wesfolk_Lady.cfg"
+      ],
+      "base_units": [],
+      "root_symbols": [
+        "ABILITY_DISTRACT",
+        "ABILITY_LEADERSHIP",
+        "MISSILE_FRAME_STONE_HIT",
+        "MISSILE_FRAME_STONE_MISS",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_FEMALE_DIE",
+        "SOUND_LIST:HUMAN_FEMALE_HIT"
+      ],
+      "resolved_symbols": [
+        "ABILITY_DISTRACT",
+        "ABILITY_LEADERSHIP",
+        "INTERNAL:SPECIAL_NOTES_LEADERSHIP",
+        "MISSILE_FRAME_STONE_HIT",
+        "MISSILE_FRAME_STONE_MISS",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_FEMALE_DIE",
+        "SOUND_LIST:HUMAN_FEMALE_HIT"
+      ],
+      "unresolved_symbols": [],
+      "edges": [
+        [
+          "ABILITY_LEADERSHIP",
+          "INTERNAL:SPECIAL_NOTES_LEADERSHIP"
+        ]
+      ]
+    },
+    "Wesfolk Leader": {
+      "source_files": [
+        "campaign/units/Wesfolk_Leader.cfg"
+      ],
+      "base_units": [],
+      "root_symbols": [
+        "ABILITY_DISTRACT",
+        "ABILITY_LEADERSHIP",
+        "AMLA_DEFAULT",
+        "MISSILE_FRAME_STONE_HIT",
+        "MISSILE_FRAME_STONE_MISS",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_FEMALE_DIE",
+        "SOUND_LIST:HUMAN_FEMALE_HIT"
+      ],
+      "resolved_symbols": [
+        "ABILITY_DISTRACT",
+        "ABILITY_LEADERSHIP",
+        "AMLA_DEFAULT",
+        "AMLA_EFFECTS_HEAL_AND_RAISE_XP",
+        "INTERNAL:SPECIAL_NOTES_LEADERSHIP",
+        "MISSILE_FRAME_STONE_HIT",
+        "MISSILE_FRAME_STONE_MISS",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_FEMALE_DIE",
+        "SOUND_LIST:HUMAN_FEMALE_HIT"
+      ],
+      "unresolved_symbols": [],
+      "edges": [
+        [
+          "ABILITY_LEADERSHIP",
+          "INTERNAL:SPECIAL_NOTES_LEADERSHIP"
+        ],
+        [
+          "AMLA_DEFAULT",
+          "AMLA_EFFECTS_HEAL_AND_RAISE_XP"
+        ]
+      ]
+    },
+    "Wesfolk Outcast": {
+      "source_files": [
+        "campaign/units/Wesfolk_Outcast.cfg"
+      ],
+      "base_units": [],
+      "root_symbols": [
+        "ABILITY_DISTRACT",
+        "ABILITY_LEADERSHIP",
+        "MISSILE_FRAME_STONE_HIT",
+        "MISSILE_FRAME_STONE_MISS",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_FEMALE_DIE",
+        "SOUND_LIST:HUMAN_FEMALE_HIT"
+      ],
+      "resolved_symbols": [
+        "ABILITY_DISTRACT",
+        "ABILITY_LEADERSHIP",
+        "INTERNAL:SPECIAL_NOTES_LEADERSHIP",
+        "MISSILE_FRAME_STONE_HIT",
+        "MISSILE_FRAME_STONE_MISS",
+        "SOUND:HIT_AND_MISS",
+        "SOUND_LIST:HUMAN_FEMALE_DIE",
+        "SOUND_LIST:HUMAN_FEMALE_HIT"
+      ],
+      "unresolved_symbols": [],
+      "edges": [
+        [
+          "ABILITY_LEADERSHIP",
+          "INTERNAL:SPECIAL_NOTES_LEADERSHIP"
+        ]
+      ]
+    }
+  },
+  "audio": {
+    "Autumn Shyde": {
+      "direct_patterns": [],
+      "direct_expanded": [],
+      "sound_list_macros": [],
+      "expanded_audio": [],
+      "campaign_local": [],
+      "shared_core": []
+    },
+    "Familiar": {
+      "direct_patterns": [
+        "bat-flapping.wav",
+        "bite-small.ogg",
+        "familiar-teeth.ogg"
+      ],
+      "direct_expanded": [
+        "bat-flapping.wav",
+        "bite-small.ogg",
+        "familiar-teeth.ogg"
+      ],
+      "sound_list_macros": [
+        "SOUND_LIST:MISS"
+      ],
+      "expanded_audio": [
+        "bat-flapping.wav",
+        "bite-small.ogg",
+        "familiar-teeth.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg"
+      ],
+      "campaign_local": [
+        "familiar-teeth.ogg"
+      ],
+      "shared_core": [
+        "bat-flapping.wav",
+        "bite-small.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg"
+      ]
+    },
+    "Jevyan": {
+      "direct_patterns": [
+        "magic-dark-big-miss.ogg",
+        "magic-dark-big.ogg",
+        "wail-sml.wav"
+      ],
+      "direct_expanded": [
+        "magic-dark-big-miss.ogg",
+        "magic-dark-big.ogg",
+        "wail-sml.wav"
+      ],
+      "sound_list_macros": [
+        "SOUND_LIST:LICH_HIT",
+        "SOUND_LIST:MISS"
+      ],
+      "expanded_audio": [
+        "lich-hit-1.ogg",
+        "lich-hit-2.ogg",
+        "magic-dark-big-miss.ogg",
+        "magic-dark-big.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg",
+        "wail-sml.wav"
+      ],
+      "campaign_local": [],
+      "shared_core": [
+        "lich-hit-1.ogg",
+        "lich-hit-2.ogg",
+        "magic-dark-big-miss.ogg",
+        "magic-dark-big.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg",
+        "wail-sml.wav"
+      ]
+    },
+    "Jevyan Cloaked": {
+      "direct_patterns": [],
+      "direct_expanded": [],
+      "sound_list_macros": [],
+      "expanded_audio": [],
+      "campaign_local": [],
+      "shared_core": []
+    },
+    "Elvish Champion Kalian": {
+      "direct_patterns": [
+        "bow-miss.ogg",
+        "bow.ogg"
+      ],
+      "direct_expanded": [
+        "bow-miss.ogg",
+        "bow.ogg"
+      ],
+      "sound_list_macros": [
+        "SOUND_LIST:ELF_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "expanded_audio": [
+        "bow-miss.ogg",
+        "bow.ogg",
+        "elf-hit-1.ogg",
+        "elf-hit-2.ogg",
+        "human-hit-1.ogg",
+        "human-hit-2.ogg",
+        "human-hit-3.ogg",
+        "human-hit-4.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg",
+        "sword-1.ogg"
+      ],
+      "campaign_local": [],
+      "shared_core": [
+        "bow-miss.ogg",
+        "bow.ogg",
+        "elf-hit-1.ogg",
+        "elf-hit-2.ogg",
+        "human-hit-1.ogg",
+        "human-hit-2.ogg",
+        "human-hit-3.ogg",
+        "human-hit-4.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg",
+        "sword-1.ogg"
+      ]
+    },
+    "Noble Commander": {
+      "direct_patterns": [
+        "bow-miss.ogg",
+        "bow.ogg"
+      ],
+      "direct_expanded": [
+        "bow-miss.ogg",
+        "bow.ogg"
+      ],
+      "sound_list_macros": [
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "expanded_audio": [
+        "bow-miss.ogg",
+        "bow.ogg",
+        "human-die-1.ogg",
+        "human-die-2.ogg",
+        "human-die-3.ogg",
+        "human-hit-1.ogg",
+        "human-hit-2.ogg",
+        "human-hit-3.ogg",
+        "human-hit-4.ogg",
+        "human-hit-5.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg",
+        "sword-1.ogg"
+      ],
+      "campaign_local": [],
+      "shared_core": [
+        "bow-miss.ogg",
+        "bow.ogg",
+        "human-die-1.ogg",
+        "human-die-2.ogg",
+        "human-die-3.ogg",
+        "human-hit-1.ogg",
+        "human-hit-2.ogg",
+        "human-hit-3.ogg",
+        "human-hit-4.ogg",
+        "human-hit-5.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg",
+        "sword-1.ogg"
+      ]
+    },
+    "Noble Fighter": {
+      "direct_patterns": [],
+      "direct_expanded": [],
+      "sound_list_macros": [
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "expanded_audio": [
+        "human-die-1.ogg",
+        "human-die-2.ogg",
+        "human-die-3.ogg",
+        "human-hit-1.ogg",
+        "human-hit-2.ogg",
+        "human-hit-3.ogg",
+        "human-hit-4.ogg",
+        "human-hit-5.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg",
+        "sword-1.ogg"
+      ],
+      "campaign_local": [],
+      "shared_core": [
+        "human-die-1.ogg",
+        "human-die-2.ogg",
+        "human-die-3.ogg",
+        "human-hit-1.ogg",
+        "human-hit-2.ogg",
+        "human-hit-3.ogg",
+        "human-hit-4.ogg",
+        "human-hit-5.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg",
+        "sword-1.ogg"
+      ]
+    },
+    "Noble Lord": {
+      "direct_patterns": [
+        "bow-miss.ogg",
+        "bow.ogg"
+      ],
+      "direct_expanded": [
+        "bow-miss.ogg",
+        "bow.ogg"
+      ],
+      "sound_list_macros": [
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "expanded_audio": [
+        "bow-miss.ogg",
+        "bow.ogg",
+        "human-die-1.ogg",
+        "human-die-2.ogg",
+        "human-die-3.ogg",
+        "human-hit-1.ogg",
+        "human-hit-2.ogg",
+        "human-hit-3.ogg",
+        "human-hit-4.ogg",
+        "human-hit-5.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg",
+        "sword-1.ogg"
+      ],
+      "campaign_local": [],
+      "shared_core": [
+        "bow-miss.ogg",
+        "bow.ogg",
+        "human-die-1.ogg",
+        "human-die-2.ogg",
+        "human-die-3.ogg",
+        "human-hit-1.ogg",
+        "human-hit-2.ogg",
+        "human-hit-3.ogg",
+        "human-hit-4.ogg",
+        "human-hit-5.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg",
+        "sword-1.ogg"
+      ]
+    },
+    "Noble Youth": {
+      "direct_patterns": [],
+      "direct_expanded": [],
+      "sound_list_macros": [
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:MISS",
+        "SOUND_LIST:SWORD_SWISH"
+      ],
+      "expanded_audio": [
+        "human-die-1.ogg",
+        "human-die-2.ogg",
+        "human-die-3.ogg",
+        "human-hit-1.ogg",
+        "human-hit-2.ogg",
+        "human-hit-3.ogg",
+        "human-hit-4.ogg",
+        "human-hit-5.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg",
+        "sword-1.ogg"
+      ],
+      "campaign_local": [],
+      "shared_core": [
+        "human-die-1.ogg",
+        "human-die-2.ogg",
+        "human-die-3.ogg",
+        "human-hit-1.ogg",
+        "human-hit-2.ogg",
+        "human-hit-3.ogg",
+        "human-hit-4.ogg",
+        "human-hit-5.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg",
+        "sword-1.ogg"
+      ]
+    },
+    "Vampire Lady": {
+      "direct_patterns": [
+        "bite-small.ogg",
+        "magic-dark-miss.ogg",
+        "magic-dark.ogg"
+      ],
+      "direct_expanded": [
+        "bite-small.ogg",
+        "magic-dark-miss.ogg",
+        "magic-dark.ogg"
+      ],
+      "sound_list_macros": [
+        "SOUND_LIST:HUMAN_FEMALE_DIE",
+        "SOUND_LIST:HUMAN_FEMALE_HIT",
+        "SOUND_LIST:MISS"
+      ],
+      "expanded_audio": [
+        "bite-small.ogg",
+        "human-female-die-1.ogg",
+        "human-female-die-2.ogg",
+        "human-female-die-3.ogg",
+        "human-female-hit-1.ogg",
+        "human-female-hit-2.ogg",
+        "human-female-hit-3.ogg",
+        "magic-dark-miss.ogg",
+        "magic-dark.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg"
+      ],
+      "campaign_local": [],
+      "shared_core": [
+        "bite-small.ogg",
+        "human-female-die-1.ogg",
+        "human-female-die-2.ogg",
+        "human-female-die-3.ogg",
+        "human-female-hit-1.ogg",
+        "human-female-hit-2.ogg",
+        "human-female-hit-3.ogg",
+        "magic-dark-miss.ogg",
+        "magic-dark.ogg",
+        "miss-1.ogg",
+        "miss-2.ogg",
+        "miss-3.ogg"
+      ]
+    },
+    "Warrior King": {
+      "direct_patterns": [
+        "mace-miss.ogg",
+        "mace.ogg"
+      ],
+      "direct_expanded": [
+        "mace-miss.ogg",
+        "mace.ogg"
+      ],
+      "sound_list_macros": [
+        "SOUND_LIST:HUMAN_DIE",
+        "SOUND_LIST:HUMAN_HIT",
+        "SOUND_LIST:HUMAN_OLD_DIE",
+        "SOUND_LIST:HUMAN_OLD_HIT"
+      ],
+      "expanded_audio": [
+        "human-die-1.ogg",
+        "human-die-2.ogg",
+        "human-die-3.ogg",
+        "human-hit-1.ogg",
+        "human-hit-2.ogg",
+        "human-hit-3.ogg",
+        "human-hit-4.ogg",
+        "human-hit-5.ogg",
+        "human-old-die-1.ogg",
+        "human-old-die-2.ogg",
+        "human-old-die-3.ogg",
+        "human-old-hit-1.ogg",
+        "human-old-hit-2.ogg",
+        "human-old-hit-3.ogg",
+        "human-old-hit-4.ogg",
+        "mace-miss.ogg",
+        "mace.ogg"
+      ],
+      "campaign_local": [],
+      "shared_core": [
+        "human-die-1.ogg",
+        "human-die-2.ogg",
+        "human-die-3.ogg",
+        "human-hit-1.ogg",
+        "human-hit-2.ogg",
+        "human-hit-3.ogg",
+        "human-hit-4.ogg",
+        "human-hit-5.ogg",
+        "human-old-die-1.ogg",
+        "human-old-die-2.ogg",
+        "human-old-die-3.ogg",
+        "human-old-hit-1.ogg",
+        "human-old-hit-2.ogg",
+        "human-old-hit-3.ogg",
+        "human-old-hit-4.ogg",
+        "mace-miss.ogg",
+        "mace.ogg"
+      ]
+    },
+    "Wesfolk Lady": {
+      "direct_patterns": [
+        "sling-miss.ogg",
+        "sling.ogg",
+        "staff-miss.ogg",
+        "staff.ogg"
+      ],
+      "direct_expanded": [
+        "sling-miss.ogg",
+        "sling.ogg",
+        "staff-miss.ogg",
+        "staff.ogg"
+      ],
+      "sound_list_macros": [
+        "SOUND_LIST:HUMAN_FEMALE_DIE",
+        "SOUND_LIST:HUMAN_FEMALE_HIT"
+      ],
+      "expanded_audio": [
+        "human-female-die-1.ogg",
+        "human-female-die-2.ogg",
+        "human-female-die-3.ogg",
+        "human-female-hit-1.ogg",
+        "human-female-hit-2.ogg",
+        "human-female-hit-3.ogg",
+        "sling-miss.ogg",
+        "sling.ogg",
+        "staff-miss.ogg",
+        "staff.ogg"
+      ],
+      "campaign_local": [],
+      "shared_core": [
+        "human-female-die-1.ogg",
+        "human-female-die-2.ogg",
+        "human-female-die-3.ogg",
+        "human-female-hit-1.ogg",
+        "human-female-hit-2.ogg",
+        "human-female-hit-3.ogg",
+        "sling-miss.ogg",
+        "sling.ogg",
+        "staff-miss.ogg",
+        "staff.ogg"
+      ]
+    },
+    "Wesfolk Leader": {
+      "direct_patterns": [
+        "sling-miss.ogg",
+        "sling.ogg",
+        "staff-miss.ogg",
+        "staff.ogg"
+      ],
+      "direct_expanded": [
+        "sling-miss.ogg",
+        "sling.ogg",
+        "staff-miss.ogg",
+        "staff.ogg"
+      ],
+      "sound_list_macros": [
+        "SOUND_LIST:HUMAN_FEMALE_DIE",
+        "SOUND_LIST:HUMAN_FEMALE_HIT"
+      ],
+      "expanded_audio": [
+        "human-female-die-1.ogg",
+        "human-female-die-2.ogg",
+        "human-female-die-3.ogg",
+        "human-female-hit-1.ogg",
+        "human-female-hit-2.ogg",
+        "human-female-hit-3.ogg",
+        "sling-miss.ogg",
+        "sling.ogg",
+        "staff-miss.ogg",
+        "staff.ogg"
+      ],
+      "campaign_local": [],
+      "shared_core": [
+        "human-female-die-1.ogg",
+        "human-female-die-2.ogg",
+        "human-female-die-3.ogg",
+        "human-female-hit-1.ogg",
+        "human-female-hit-2.ogg",
+        "human-female-hit-3.ogg",
+        "sling-miss.ogg",
+        "sling.ogg",
+        "staff-miss.ogg",
+        "staff.ogg"
+      ]
+    },
+    "Wesfolk Outcast": {
+      "direct_patterns": [
+        "sling-miss.ogg",
+        "sling.ogg",
+        "staff-miss.ogg",
+        "staff.ogg"
+      ],
+      "direct_expanded": [
+        "sling-miss.ogg",
+        "sling.ogg",
+        "staff-miss.ogg",
+        "staff.ogg"
+      ],
+      "sound_list_macros": [
+        "SOUND_LIST:HUMAN_FEMALE_DIE",
+        "SOUND_LIST:HUMAN_FEMALE_HIT"
+      ],
+      "expanded_audio": [
+        "human-female-die-1.ogg",
+        "human-female-die-2.ogg",
+        "human-female-die-3.ogg",
+        "human-female-hit-1.ogg",
+        "human-female-hit-2.ogg",
+        "human-female-hit-3.ogg",
+        "sling-miss.ogg",
+        "sling.ogg",
+        "staff-miss.ogg",
+        "staff.ogg"
+      ],
+      "campaign_local": [],
+      "shared_core": [
+        "human-female-die-1.ogg",
+        "human-female-die-2.ogg",
+        "human-female-die-3.ogg",
+        "human-female-hit-1.ogg",
+        "human-female-hit-2.ogg",
+        "human-female-hit-3.ogg",
+        "sling-miss.ogg",
+        "sling.ogg",
+        "staff-miss.ogg",
+        "staff.ogg"
+      ]
+    }
+  },
+  "global": {
+    "campaign_unit_files": 14,
+    "core_base_units": 2,
+    "resolved_symbols": 31,
+    "resolved_symbol_names": [
+      "ABILITY_DISTRACT",
+      "ABILITY_LEADERSHIP",
+      "ABILITY_SUBMERGE",
+      "AMLA_DEFAULT",
+      "AMLA_EFFECTS_HEAL_AND_RAISE_XP",
+      "DEFENSE_ANIM",
+      "DEFENSE_ANIM_FILTERED",
+      "DEFENSE_ANIM_RANGE",
+      "INTERNAL:SPECIAL_NOTES_DRAIN",
+      "INTERNAL:SPECIAL_NOTES_LEADERSHIP",
+      "INTERNAL:SPECIAL_NOTES_MAGICAL",
+      "INTERNAL:SPECIAL_NOTES_SUBMERGE",
+      "LEADING_ANIM",
+      "LESS_NIMBLE_ELF",
+      "MISSILE_FRAME_CHILL_TEMPEST",
+      "MISSILE_FRAME_SHADOW_WAVE",
+      "MISSILE_FRAME_STONE_HIT",
+      "MISSILE_FRAME_STONE_MISS",
+      "SOUND:HIT_AND_MISS",
+      "SOUND_LIST:ELF_HIT",
+      "SOUND_LIST:HUMAN_DIE",
+      "SOUND_LIST:HUMAN_FEMALE_DIE",
+      "SOUND_LIST:HUMAN_FEMALE_HIT",
+      "SOUND_LIST:HUMAN_HIT",
+      "SOUND_LIST:HUMAN_OLD_DIE",
+      "SOUND_LIST:HUMAN_OLD_HIT",
+      "SOUND_LIST:LICH_HIT",
+      "SOUND_LIST:MISS",
+      "SOUND_LIST:SWORD_SWISH",
+      "WEAPON_SPECIAL_DRAIN",
+      "WEAPON_SPECIAL_MAGICAL"
+    ],
+    "unresolved_symbols": [],
+    "unique_expanded_audio": 45,
+    "expanded_audio": [
+      "bat-flapping.wav",
+      "bite-small.ogg",
+      "bow-miss.ogg",
+      "bow.ogg",
+      "elf-hit-1.ogg",
+      "elf-hit-2.ogg",
+      "familiar-teeth.ogg",
+      "human-die-1.ogg",
+      "human-die-2.ogg",
+      "human-die-3.ogg",
+      "human-female-die-1.ogg",
+      "human-female-die-2.ogg",
+      "human-female-die-3.ogg",
+      "human-female-hit-1.ogg",
+      "human-female-hit-2.ogg",
+      "human-female-hit-3.ogg",
+      "human-hit-1.ogg",
+      "human-hit-2.ogg",
+      "human-hit-3.ogg",
+      "human-hit-4.ogg",
+      "human-hit-5.ogg",
+      "human-old-die-1.ogg",
+      "human-old-die-2.ogg",
+      "human-old-die-3.ogg",
+      "human-old-hit-1.ogg",
+      "human-old-hit-2.ogg",
+      "human-old-hit-3.ogg",
+      "human-old-hit-4.ogg",
+      "lich-hit-1.ogg",
+      "lich-hit-2.ogg",
+      "mace-miss.ogg",
+      "mace.ogg",
+      "magic-dark-big-miss.ogg",
+      "magic-dark-big.ogg",
+      "magic-dark-miss.ogg",
+      "magic-dark.ogg",
+      "miss-1.ogg",
+      "miss-2.ogg",
+      "miss-3.ogg",
+      "sling-miss.ogg",
+      "sling.ogg",
+      "staff-miss.ogg",
+      "staff.ogg",
+      "sword-1.ogg",
+      "wail-sml.wav"
+    ]
+  }
+}

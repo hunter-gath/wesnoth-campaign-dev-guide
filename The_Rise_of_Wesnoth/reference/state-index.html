@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>State &amp; Variable Index</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>State & Variable Index</h1><p>How unit storage, party flags, recruit changes, and route choices persist across the opening arc.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html" aria-current="page">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / State & variables</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Persistent and temporary state</h2>
+<table><thead><tr><th>Name</th><th>Introduced/read</th><th>Meaning</th><th>Lifecycle</th></tr></thead><tbody>
+<tr><td><code>wesfolk_leader_store</code></td><td>Written in 01; read and cleared in 02</td><td>Preserves the Wesfolk leader’s unit state, especially experience, across the transition.</td><td>Temporary cross-scenario storage.</td></tr>
+<tr><td><code>have_lady</code></td><td>Written in 02; also changed by <code>TROW_DEATHS</code></td><td>Whether Lady Outlaw is currently part of the refugee party.</td><td>Persistent campaign decision/state flag.</td></tr>
+<tr><td><code>lady_store</code></td><td>Prepared in 02 when the rejected leader still exists</td><td>Converted Lady Outlaw identity and side metadata for later campaign logic.</td><td>Persistent stored-unit data.</td></tr>
+<tr><td><code>escape_choice</code></td><td>Written at the end of 03</td><td>Records the selected route: 1 for Swamp of Esten, 2 for Midlands.</td><td>Persistent branch flag.</td></tr>
+</tbody></table>
+</section>
+<section><h2>State-machine view of Lady Outlaw</h2>
+<div class="flow">Wesfolk Leader stored after Scenario 01
+        │
+        ▼
+experience restored in Scenario 02
+        │
+        ├── accepted ──► recreated as side-1 Lady Outlaw ──► have_lady = 1
+        │
+        └── rejected ──► escapes / stored for later logic ──► have_lady = 0
+
+TROW_DEATHS can later set have_lady = 0 and store her if she vanishes on last breath.</div>
+</section>
+<section><h2>Authoring lessons</h2>
+<table><tr><th>Practice</th><th>Why it helps</th></tr>
+<tr><td>Use explicit scalar flags for major choices</td><td>Easy to filter later dialogue, recalls, and branches.</td></tr>
+<tr><td>Use stored units when experience and other unit fields matter</td><td>A boolean alone cannot preserve advancement state.</td></tr>
+<tr><td>Clear temporary storage when consumed</td><td>Reduces accidental reuse and save-file clutter.</td></tr>
+<tr><td>Keep route state separate from party state</td><td>Independent choices remain composable.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg">Scenario 02 source</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg">Scenario 03 source</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg">Death utility</a></p>
+</section>
+
+
+<section id="release-043-state"><h2>Scenario 04 state additions</h2>
+<table><tr><th>Name</th><th>Route</th><th>Purpose</th><th>Lifecycle</th></tr>
+<tr><td><code>last_done</code></td><td>Both</td><td>Records <code>"River"</code> or <code>"Midlands"</code> after branch completion.</td><td>Short-lived route-transition marker; cleared at Scenario 05 prestart.</td></tr>
+<tr><td><code>random</code></td><td>Swamp</td><td>Selects one of three temple-role arrangements.</td><td>Temporary; cleared at victory.</td></tr>
+<tr><td><code>triggered_scorpion_locs</code></td><td>Swamp</td><td>Tracks which ambush regions have fired.</td><td>Scenario temporary; cleared at victory.</td></tr>
+<tr><td><code>player_vision_edge</code>, <code>possible_scorpion_locs</code>, <code>search_radius</code>, <code>temp</code></td><td>Swamp</td><td>Working variables for adaptive ambush placement.</td><td>Cleared after each spawn search.</td></tr></table>
+<p>The route flag <code>escape_choice</code> chooses which scenario loads; <code>last_done</code> records which route was actually completed after both branches converge.</p></section>
+
+
+<section id="release-044-state"><h2>Oldwood arc state lifecycle</h2>
+<table><thead><tr><th>Name</th><th>Used in</th><th>Purpose</th><th>Cleanup</th></tr></thead><tbody>
+<tr><td><code>escape_choice</code></td><td>03 → 04 route selection</td><td>Loads Swamp or Midlands.</td><td>Cleared at Scenario 05 <code>prestart</code>.</td></tr>
+<tr><td><code>last_done</code></td><td>04 victory transition</td><td>Labels the branch just completed.</td><td>Cleared at Scenario 05 <code>prestart</code>.</td></tr>
+<tr><td><code>Have_Ruby</code></td><td>06 only</td><td>Joins the lich-kill and chest objectives.</td><td>Cleared at Scenario 06 victory.</td></tr>
+<tr><td><code>lady_store</code></td><td>02/05 → 07</td><td>Preserves the Wesfolk companion’s type, experience, facing, and position through absence.</td><td>Cleared after Lady Jessene is reconstructed.</td></tr>
+<tr><td><code>have_lady</code></td><td>02 → 07</td><td>Controls dialogue and whether outlaw recruitment needs repair.</td><td>Cleared after the identity reveal.</td></tr></tbody></table>
+<div class="callout"><strong>State-design contrast.</strong> The Ruby uses a temporary boolean because successful scenario completion guarantees later possession. Jessene uses stored-unit state because later code must preserve variable progression data.</div></section>
+
+
+<section id="release-045-state"><h2>Scenarios 08–10 state</h2>
+<table><thead><tr><th>Name or query</th><th>Scenario</th><th>Purpose</th><th>Lifecycle</th></tr></thead><tbody>
+<tr><td><code>previous_ai_position</code></td><td>08</td><td>Tracks allied garrison posture.</td><td>Cleared at victory.</td></tr>
+<tr><td><code>First_Ship</code>, <code>Second_Ship</code>, <code>Third_Ship</code></td><td>08</td><td>Marks each ship’s boarding window.</td><td>Cleared on departure, boarding, or victory.</td></tr>
+<tr><td><code>lich_free</code></td><td>09</td><td>Prevents repeat release choices and represents undead activation.</td><td>Cleared at scenario end.</td></tr>
+<tr><td><code>have_book</code></td><td>09</td><td>Gates the sewer exit.</td><td>Cleared at scenario end because victory guarantees possession.</td></tr>
+<tr><td><code>Killed_an_Orc</code></td><td>09</td><td>Temporary scenario bookkeeping declared elsewhere in the file.</td><td>Cleared at scenario end.</td></tr>
+<tr><td>Leader-existence query</td><td>10</td><td>Determines standard versus bonus exit.</td><td>No stored variable required.</td></tr></tbody></table>
+<div class="callout"><strong>State-economy lesson.</strong> Scenario 10 derives its reward directly from living leader units. This is preferable to maintaining redundant kill flags when current game state already answers the question.</div></section>
+
+
+<section id="release-046-state"><h2>Southbay departure state design</h2>
+<table><tr><th>Mechanic</th><th>State approach</th><th>Why</th></tr>
+<tr><td>Book translation</td><td>No new variable in Scenario 11</td><td>The dialogue establishes a guaranteed process before Scenario 12.</td></tr>
+<tr><td>Ruby possession and attack</td><td>Permanent unit object on Haldric</td><td>The mechanical fact belongs to the unit, not global campaign state.</td></tr>
+<tr><td>Merfolk alliance</td><td>Persistent recruit-list modification</td><td>Recruit access itself is the required future state.</td></tr>
+<tr><td>Addroran’s defensive posture</td><td>No variable</td><td>Recalculated from current unit positions each side-2 turn.</td></tr>
+<tr><td>Optional Storm Trident</td><td>Core pickup state plus permanent unit object</td><td>Core macro manages one-use interaction and bearer modification.</td></tr>
+<tr><td>Bitey coordinates</td><td><code>xx1</code>, <code>yy1</code></td><td>Temporary random spawn coordinates, cleared after creation.</td></tr></table></section>
+
+
+<section id="release-047-state"><h2>Ka’lian hub state</h2>
+<table><thead><tr><th>Name</th><th>Initialized</th><th>Read by Scenario 16</th><th>Final cleanup</th></tr></thead><tbody>
+<tr><td><code>num_done</code></td><td>15: 0</td><td>Selects initial, intermediate, or final council dialogue.</td><td>16 when value reaches 4</td></tr>
+<tr><td><code>the_dragon</code></td><td>15: 0</td><td>Shows Dragon description and option while incomplete.</td><td>16 final visit</td></tr>
+<tr><td><code>a_beach</code></td><td>15: 0</td><td>Shows Lizard Beach description and option while incomplete.</td><td>16 final visit</td></tr>
+<tr><td><code>troll_hole</code></td><td>15: 0</td><td>Shows Troll Hole description and option while incomplete.</td><td>16 final visit</td></tr>
+<tr><td><code>cursed_isle</code></td><td>15: 0</td><td>Shows Cursed Isle description and option while incomplete.</td><td>16 final visit</td></tr>
+<tr><td><code>last_done</code></td><td>15: <code>"none"</code></td><td>Selects the quest-specific return greeting.</td><td>16 final visit</td></tr></tbody></table>
+<h3>Rough Landing temporary state</h3>
+<table><tr><th>Name</th><th>Purpose</th></tr>
+<tr><td><code>side_2_serpent_triggered</code>, <code>side_3_serpent_triggered</code>, <code>side_4_serpent_triggered</code></td><td>Guarantee at most one casualty-triggered serpent per enemy side.</td></tr>
+<tr><td><code>serpent_spawn_delay</code></td><td>Spaces scheduled spawns according to trigger order.</td></tr>
+<tr><td><code>possible_serpent_locs</code>, <code>serpent_loc_i</code></td><td>Temporary candidate list and selected random location.</td></tr></table></section>
+
+
+<section id="release-048-state"><h2>Scenario 17 branch state contract</h2>
+<table><tr><th>Branch</th><th>Persistent writes</th><th>Local temporary state</th></tr>
+<tr><td>17a Dragon</td><td><code>num_done+=1</code>, <code>the_dragon=1</code>, <code>last_done="Dragon"</code></td><td><code>dragon_awake</code>, <code>dragon_dead</code>, <code>got_enemies</code>, <code>got_treasure</code>; all cleared</td></tr>
+<tr><td>17b Beach</td><td><code>num_done+=1</code>, <code>a_beach=1</code>, <code>last_done="Beach"</code></td><td>No branch-specific scalar state required</td></tr>
+<tr><td>17c Hole</td><td><code>num_done+=1</code>, <code>troll_hole=1</code>, <code>last_done="Hole"</code></td><td><code>random</code>; cleared at victory</td></tr>
+<tr><td>17d Isle</td><td><code>num_done+=1</code>, <code>cursed_isle=1</code>, <code>last_done="Isle"</code></td><td><code>random</code> and <code>queen_awake</code>; cleared during setup/victory</td></tr></table>
+<div class="callout"><strong>Contract lesson.</strong> Every branch exposes the same three-field interface to the hub even though its internal implementation state differs substantially.</div></section>
+
+
+<section id="release-049-state"><h2>Scenarios 18–20 state lifecycle</h2>
+<table><tr><th>Name</th><th>Scenario</th><th>Purpose</th><th>Cleanup</th></tr>
+<tr><td><code>stored_Jessene</code></td><td>18</td><td>Temporary duplicate renamed “Jessene in Hiding.”</td><td>Cleared before cutscene ends.</td></tr>
+<tr><td><code>jessica_store</code></td><td>19 → 20</td><td>Canonical Lady Jessene removed and preserved across scenarios.</td><td>Cleared after turn-7 unstore.</td></tr>
+<tr><td><code>xx1</code>, <code>yy1</code>, <code>chest_obtained</code></td><td>19</td><td>Random chest location and collection state.</td><td>Cleared at victory.</td></tr>
+<tr><td><code>side_N_undead_backup_triggered</code></td><td>19</td><td>One proportional reinforcement trigger per enemy front.</td><td>Cleared after enemies are defeated.</td></tr>
+<tr><td><code>side_N_top_enemy_count</code></td><td>19</td><td>Approximate peak size used for the half-strength threshold.</td><td>Cleared after that side triggers.</td></tr>
+<tr><td><code>undead_spawns_so_far</code></td><td>19</td><td>Selects first, second, or third global wave composition.</td><td>Cleared after victory.</td></tr></table></section>
+
+
+<section id="release-050-state"><h2>Endgame temporary state</h2>
+<table><tr><th>Name / representation</th><th>Purpose</th><th>Lifecycle</th></tr>
+<tr><td><code>aethyr_store</code></td><td>Stores Aethyr’s current type for his Scenario 21 fake entrance.</td><td>Cleared immediately.</td></tr>
+<tr><td>Treaty unit overlay</td><td>Marks Aethyr as the forged-document carrier.</td><td>Lives on Aethyr until his required death.</td></tr>
+<tr><td><code>last_orc_leader</code></td><td>Stores the one surviving orc for escape routing.</td><td>Used at final victory.</td></tr>
+<tr><td><code>escape_boat</code></td><td>Stores side-specific ship coordinates.</td><td>Used during final escape.</td></tr>
+<tr><td><code>next_corpse_spawn_turn</code>, <code>next_skeleton_spawn_turn</code></td><td>Randomize recurring pressure windows.</td><td>Cleared after each scheduled spawn.</td></tr>
+<tr><td><code>wc_loc</code>, <code>skele_loc</code>, <code>skele_from</code>, <code>skele_type</code></td><td>Working state for random undead placement.</td><td>Cleared after each spawn event.</td></tr>
+<tr><td><code>haldric_s</code></td><td>Preserves Haldric’s current type for the epilogue entrance.</td><td>Cleared after unstore.</td></tr></table>
+</section>
+
+
+<section id="release-080-atlas"><h2>Lifecycle-oriented view</h2>
+<p>The <a href="state-lifecycle-atlas.html">State Lifecycle Atlas</a> reorganizes these scenario notes by persistence mechanism, representation, ownership, and cleanup contract.</p></section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

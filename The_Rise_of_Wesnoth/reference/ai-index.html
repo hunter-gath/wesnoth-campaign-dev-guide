@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>AI Index</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>AI Index</h1><p>A campaign-wide index of declarative AI tuning, scripted reinforcements, autonomous allies, dormant factions, and Clearwater Port’s posture-based defense system.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html" aria-current="page">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / AI index</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>AI usage through Scenario 10</h2>
+<table><thead><tr><th>Scenario</th><th>AI level</th><th>Notable behavior</th></tr></thead><tbody>
+<tr><td>01</td><td>Light</td><td>Core AI, no scouts, role-based recruitment.</td></tr>
+<tr><td>02</td><td>Moderate</td><td>Defensive Wesfolk, passive target leader, night-aggressive orcs.</td></tr>
+<tr><td>03</td><td>Moderate</td><td>Symmetric passive orc leaders, night aggression, scripted post-kill reinforcements.</td></tr>
+<tr><td>04a</td><td>Light AI / high event logic</td><td>Cult sides use ordinary AI; adaptive ambushes are event-driven.</td></tr>
+<tr><td>04b</td><td>Moderate</td><td>Night-aggressive orcs plus attack-triggered reserves and survivor funding.</td></tr>
+<tr><td>05</td><td>Moderate alliance</td><td>Autonomous Wose side; difficulty scales allied gold and guardians downward.</td></tr>
+<tr><td>06</td><td>Simple aggressive</td><td>Lenvan uses aggression 1.0; dungeon events provide most complexity.</td></tr>
+<tr><td>07</td><td>None intended</td><td>One-turn cutscene with no tactical AI requirement.</td></tr>
+<tr><td>08</td><td>Very high</td><td>Stateful allied defense, withdrawal, wall holding, offensive support, and dynamic recruits.</td></tr>
+<tr><td>09</td><td>Moderate multi-faction</td><td>Night-aggressive orcs, dormant petrified undead, hidden no-economy Yeti side.</td></tr>
+<tr><td>10</td><td>Moderate symmetric</td><td>Two matching wizard AIs; event logic funds the surviving twin.</td></tr>
+</tbody></table>
+</section>
+
+<section><h2>Clearwater Port state machine</h2>
+<div class="flow">previous_ai_position
+        │
+        ├── "forward"
+        │      ├── player commits west ──► "attacking"
+        │      └── orcs overwhelm castle ─► "retreat firstturn"
+        │
+        ├── "retreat firstturn" ─────────► "retreat secondturn"
+        │
+        ├── "retreat secondturn" ────────► "defending"
+        │
+        ├── "defending" ─────────────────► holds city walls
+        │
+        └── "attacking" ─────────────────► offensive support until conditions change</div>
+<table><tr><th>Signal</th><th>Threshold</th><th>Response</th></tr>
+<tr><td>Orcs near outer castle</td><td>10 or more side-4/5/6 units within radius 6 of 22,20</td><td>Withdraw unless the player has at least four units in front of the walls.</td></tr>
+<tr><td>Player far forward</td><td>At least four side-1 units with x in 0–20</td><td>Switch allied garrison to offensive support.</td></tr>
+<tr><td>Allied reserve gold</td><td>More than 60</td><td>Enable level-2 extra recruits.</td></tr>
+<tr><td>Retreat mode</td><td>Attacking disabled</td><td>Temporary side-3 transfer permits attacks against adjacent enemies without renewed advance.</td></tr></table>
+</section>
+
+<section><h2>Declarative AI versus scripted behavior</h2>
+<table><tr><th>Technique</th><th>Examples</th><th>Use when</th></tr>
+<tr><td>Static AI attributes</td><td>Aggression, caution, grouping, village value</td><td>A faction should have one broad personality.</td></tr>
+<tr><td>Time-of-day AI facets</td><td>Orc aggression at dusk and night</td><td>Behavior should change predictably with the schedule.</td></tr>
+<tr><td>Goal and avoid locations</td><td>Clearwater forward castle and city wall</td><td>Specific map positions define the faction’s job.</td></tr>
+<tr><td>AI reset by event</td><td>Clearwater posture changes</td><td>The faction must change military doctrine during play.</td></tr>
+<tr><td>Fixed scripted units</td><td>Midlands reserves, sewer guardians</td><td>Composition and timing must be guaranteed.</td></tr>
+<tr><td>Event-driven ecology</td><td>Swamp scorpion ambushes</td><td>The effect should respond to player location or vision rather than AI planning.</td></tr></table>
+</section>
+
+<section><h2>AI design lessons</h2>
+<table><tr><th>Lesson</th><th>Evidence in the campaign</th></tr>
+<tr><td>Do not customize AI unless the scenario needs readable behavior.</td><td>Most early enemies use core AI plus a few role or time-of-day settings.</td></tr>
+<tr><td>Use events for guaranteed dramatic beats.</td><td>Assassins, Naga, reserves, and guardian creatures do not depend on recruitment luck.</td></tr>
+<tr><td>Allied AI requires more care than enemy AI.</td><td>Clearwater must look competent, avoid suicide, preserve wall positions, and support the player.</td></tr>
+<tr><td>Difficulty may scale allies as well as enemies.</td><td>Oldwood reduces Wose resources and defenders at higher difficulty.</td></tr>
+<tr><td>Current unit state can replace extra variables.</td><td>Sewer bonus checks whether wizard leaders remain rather than maintaining kill flags.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg">Clearwater AI source</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg">Fallen Lich Point source</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer_of_Southbay.cfg">Sewer source</a></p>
+</section>
+
+
+<section id="release-046-ai"><h2>AI additions in Scenarios 11–13</h2>
+<table><tr><th>Scenario</th><th>AI architecture</th><th>Key lesson</th></tr>
+<tr><td>11 — Southbay in Winter</td><td>No tactical AI required</td><td>A scenario can use normal sides and units purely for cutscene staging.</td></tr>
+<tr><td>12 — A Final Spring</td><td>Allied side recalculates northern-castle, riverbank, and wall goals each turn; three night-aggressive enemy leaders; scripted hidden Jevyan side</td><td>Use direct battlefield queries when posture can be derived without a state variable.</td></tr>
+<tr><td>13 — Peoples in Decline</td><td>Three broadly symmetric drake sides with different advanced roster options; hidden serpent side</td><td>Faction and roster differences may provide enough identity without custom AI.</td></tr></table>
+<h3>Clearwater versus Southbay allied defense</h3>
+<table><tr><th>Feature</th><th>Clearwater Port</th><th>A Final Spring</th></tr>
+<tr><td>State method</td><td>Explicit <code>previous_ai_position</code></td><td>Recomputed from current unit counts and locations</td></tr>
+<tr><td>Postures</td><td>Forward, retreat 1, retreat 2, wall defense, attack</td><td>Northern castles or southern riverbank, plus permanent wall goals</td></tr>
+<tr><td>Special workaround</td><td>Temporary helper side during withdrawal</td><td>No helper-side retreat sequence</td></tr>
+<tr><td>Use case</td><td>Readable multi-turn tactical transition</td><td>Responsive static-defense allocation</td></tr></table></section>
+
+
+<section id="release-047-ai"><h2>Scenario 15 Lua candidate action</h2>
+<p><code>ca_aggressive_attack_no_suicide.lua</code> is added to all three continental sides at a maximum score of 100000. The standard combat, high-XP attack, and poison-spreading candidate actions are removed.</p>
+<table><tr><th>Evaluation step</th><th>Behavior</th></tr>
+<tr><td>Enumerate attacks</td><td>Uses the campaign’s AI-helper dependency to find all possible attacks.</td></tr>
+<tr><td>Simulate combat</td><td>Clones the attacker at the destination and calls <code>wesnoth.simulate_combat</code>.</td></tr>
+<tr><td>Safety gate</td><td>Considers only attacks where <code>att_stats.hp_chance[0] == 0</code>.</td></tr>
+<tr><td>Rating</td><td>Defender kill chance × 100 + expected defender damage − attacker damage/10 + attacker HP/10.</td></tr>
+<tr><td>Execution</td><td>Uses <code>robust_move_and_attack</code> on the highest-rated safe attack.</td></tr></table>
+<div class="callout"><strong>Technical lesson.</strong> The campaign does not build a whole AI. It replaces one decision point—the attack selector—because that is the only default behavior incompatible with a deathless scenario.</div>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/ai/ca_aggressive_attack_no_suicide.lua">Lua source</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg">Scenario integration</a></p></section>
+
+
+<section id="release-048-ai"><h2>AI across the Ka’lian quests</h2>
+<table><tr><th>Branch</th><th>AI design</th></tr>
+<tr><td>Dragon</td><td>Three Saurian sides defend the cave region, one targets Haldric, and a hidden Dragon side is event-created. Boss awakening funds every Saurian army.</td></tr>
+<tr><td>Lizard Beach</td><td>Two passive leaders anchor the trade site; progress creates fixed Naga reinforcements; first leader death funds the survivor.</td></tr>
+<tr><td>Troll Hole</td><td>Four symmetric Troll sides are declared, but random setup removes two leaders. Aggression scales modestly by difficulty; recruit limits control regenerating unit density.</td></tr>
+<tr><td>Cursed Isle</td><td>Two Spectre sides protect the island center, remain cautious by day, and become aggressive at night. The Queen is event-created and her death deletes the remaining faction.</td></tr></table>
+<p>The branch set shows a recurring campaign principle: ordinary AI handles movement and combat, while WML events guarantee the scenario-defining phase changes.</p></section>
+
+
+<section id="release-049-ai"><h2>AI and scripted escalation in Scenarios 18–20</h2>
+<table><tr><th>Scenario</th><th>AI architecture</th><th>Scenario-defining scripting</th></tr>
+<tr><td>18</td><td>No tactical AI needed.</td><td>Temporary unit double moves through the council cutscene.</td></tr>
+<tr><td>19</td><td>Night-aggressive orcs, conventional Troll AI, hidden no-economy undead side.</td><td>Each front’s proportional losses trigger one spatially searched undead wave.</td></tr>
+<tr><td>20</td><td>Passive undead leader, night-aggressive orcs.</td><td>Turn-5 fog curse and Chocobones; exploration-triggered Cuttle Fish and Saurians.</td></tr></table>
+<p>Scenario 19 is a useful boundary case: the enemy sides themselves use ordinary AI, while the reinforcement director monitors army strength and map geometry outside the AI system.</p></section>
+
+
+<section id="release-050-ai"><h2>Final-battle AI boundary</h2>
+<table><tr><th>Layer</th><th>Responsibility</th></tr>
+<tr><td>Jevyan AI</td><td>Passive leader, castle protection, night aggression, undead recruitment.</td></tr>
+<tr><td>Orc AI</td><td>Maritime, defensive, and night-aggressive ordinary battlefield pressure.</td></tr>
+<tr><td>Event director</td><td>Required killer, survivor count, boat escape, bridges, Naga arrival, random undead schedules, and faction reinforcement economy.</td></tr></table>
+<p>The final scenario demonstrates why objective logic should remain outside AI: the computer-controlled factions fight normally, while the event layer evaluates the player’s strategic deception contract.</p>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

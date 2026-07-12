@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>22 — The Rise of Wesnoth</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>22 — The Rise of Wesnoth</h1><p>The final battle: Aethyr must die by Jevyan’s hand, Jevyan must then be destroyed, and exactly one orc leader must survive to carry the forged Ruby treaty back to the Green Isle.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html" aria-current="page">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 22</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>22_The_Rise_of_Wesnoth</code></td></tr>
+<tr><th>Next scenario</th><td><code>23_Epilogue</code></td></tr>
+<tr><th>Map</th><td><code>22_The_Rise_of_Wesnoth.map</code>, 52 × 47 hexes</td></tr>
+<tr><th>Turns</th><td>Unlimited</td></tr>
+<tr><th>Automatic enemy victory</th><td>Disabled</td></tr>
+<tr><th>Campaign role</th><td>Final tactical scenario</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Constrained assassination and controlled escape</td></tr>
+<tr><th>Story importance</th><td>Climactic</td></tr>
+<tr><th>WML complexity</th><td>Extremely high</td></tr>
+<tr><th>AI complexity</th><td>Moderate AI plus extensive event direction</td></tr>
+<tr><th>Signature system</th><td>Victory requires leaving one enemy leader alive</td></tr></table></div>
+</div></section>
+
+<section><h2>The inverse victory contract</h2>
+<table><thead><tr><th>Required result</th><th>Failure case</th></tr></thead><tbody>
+<tr><td>Aethyr is killed by Jevyan.</td><td>Aethyr dies to any other unit.</td></tr>
+<tr><td>Jevyan is destroyed after reading the forged treaty.</td><td>Jevyan dies while Aethyr is still alive.</td></tr>
+<tr><td>All enemy leaders except one orc are defeated.</td><td>Two or more orc leaders remain when Jevyan falls, or every orc leader is killed.</td></tr>
+<tr><td>The last orc escapes with the false belief that the elves possess the Ruby.</td><td>No witness survives to carry the deception back to the Green Isle.</td></tr>
+</tbody></table>
+<div class="callout"><strong>Final-scenario inversion.</strong> The player must control the order and authorship of deaths, not simply maximize kills. Overperforming tactically can invalidate the strategic objective.</div>
+</section>
+
+<section><h2>Map description</h2>
+<p>The 52 × 47 map is the campaign’s largest final battlefield. It mixes broad inland plains and forests with marshes, mountains, several island and coastal keeps, shallow and deep water, three destructible bridge systems, and seven staged galleons. Haldric begins in the northeastern interior; Jevyan holds the southeastern sea-castle region near 42,40. Four orc leaders occupy maritime, coastal, island, and northern positions.</p>
+<table><tr><th>Map system</th><th>Design role</th></tr>
+<tr><td>Six hostile leaders</td><td>Jevyan plus four orc witnesses and one additional sea-castle orc force.</td></tr>
+<tr><td>Four escape-boat routes</td><td>The surviving orc’s side selects a different extraction animation.</td></tr>
+<tr><td>Three bridges</td><td>Cuttle Fish may destroy them according to player proximity.</td></tr>
+<tr><td>Swamps around Jevyan</td><td>Provide random corpse-spawn terrain.</td></tr>
+<tr><td>Shallow water beside deep water</td><td>Provides legal skeleton arrival points from the sea.</td></tr></table>
+</section>
+
+<section><h2>Sides and difficulty scaling</h2>
+<table><tr><th>Side</th><th>Leader / roster</th><th>Gold / income</th><th>AI role</th></tr>
+<tr><td>1 — Refugees</td><td>Haldric and full surviving party</td><td>350 / 300 / 250</td><td>Human controlled; 8 / 6 / 4 villages</td></tr>
+<tr><td>2 — Jevyan</td><td>Jevyan Cloaked → Jevyan; broad undead roster</td><td>160 / 200 / 240; income 8 / 12 / 16</td><td>Passive leader protecting 42,40; more aggressive at night</td></tr>
+<tr><td>3 — Sea castle</td><td>Tan-Vragish, Orcish Warlord; Naga and bats</td><td>100 / 125 / 150; income 3 / 5 / 7</td><td>Night-aggressive maritime force</td></tr>
+<tr><td>4 — Coast orcs</td><td>Ut’Tan-Grorag, Orcish Warlord</td><td>150 / 180 / 210; income 4 / 8 / 12</td><td>Defensive grouping by day, offensive at night</td></tr>
+<tr><td>5 — Island orcs</td><td>Tan-Erinak, Orcish Warlord</td><td>150 / 180 / 210; income 3 / 5 / 7</td><td>Difficulty-expanded orc, goblin, and Troll roster</td></tr>
+<tr><td>6 — North orcs</td><td>Tan-Prodash, Orcish Warlord</td><td>150 / 180 / 210; income 3 / 5 / 7</td><td>Night aggression 0.75, zero caution, no grouping</td></tr></table>
+</section>
+
+<section><h2>Commander Aethyr as a carried objective</h2>
+<p><code>prestart</code> recalls Aethyr and attaches <code>misc/treaty-icon.png</code> as a unit overlay. The icon turns the forged document into a visible objective carried by an ordinary persistent unit.</p>
+<table><tr><th>Aethyr event</th><th>Result</th></tr>
+<tr><td>Attacks Jevyan</td><td>Dialogue reinforces that he is deliberately presenting himself as the treaty carrier.</td></tr>
+<tr><td>Attacked by any enemy</td><td>Jessene warns him to be careful.</td></tr>
+<tr><td>Last breath to a non-Jevyan killer</td><td>Immediate defeat because the treaty will not convince Jevyan.</td></tr>
+<tr><td>Last breath to Jevyan</td><td>Aethyr completes his sacrifice.</td></tr>
+<tr><td>Death to Jevyan</td><td>Jevyan discovers and reads the elven-script treaty, accepting the deception.</td></tr></table>
+</section>
+
+<section><h2>Jevyan and the survivor-order logic</h2>
+<ol>
+<li>The opening upgrades <code>Jevyan Cloaked</code> to the full Jevyan type.</li>
+<li>If Jevyan dies while Aethyr remains alive, the scenario ends in defeat.</li>
+<li>If Jevyan dies while at least two orc leaders remain, the orcs taunt the player and battle continues.</li>
+<li>When only Jevyan and one orc remain, the dying next orc triggers retreat dialogue but does not yet end the level.</li>
+<li>Once Jevyan is dead, Aethyr is dead, and exactly one orc remains, the survivor is stored, assigned a boat route, hidden, fake-moved to the coast, and carried away by a Transport Galleon.</li>
+<li>If the final orc is killed, the scenario ends in defeat.</li>
+</ol>
+</section>
+
+<section><h2>Side-specific escape routing</h2>
+<table><tr><th>Surviving side</th><th>Leader</th><th>Boat staging</th></tr>
+<tr><td>3</td><td>Tan-Vragish</td><td>5,38 → 1,38</td></tr>
+<tr><td>4</td><td>Ut’Tan-Grorag</td><td>21,35 → 14,42</td></tr>
+<tr><td>5</td><td>Tan-Erinak</td><td>38,27 → 12,27</td></tr>
+<tr><td>6</td><td>Tan-Prodash</td><td>6,19 → 1,24</td></tr></table>
+<p>The survivor’s current type and coordinates are stored in <code>last_orc_leader</code>; <code>escape_boat</code stores the selected ship route.</p>
+</section>
+
+<section><h2>Fallen allies rise again</h2>
+<p>Side-1 deaths, except Aethyr’s, invoke the campaign <code>RISE_UP_RISE_UP</code> macro when the killer does not already supply a corpse through its own plague behavior. The first allied death warns the player that Jevyan is raising the fallen.</p>
+</section>
+
+<section><h2>Bridge-destruction director</h2>
+<p>At every new turn, each of three bridge systems is checked independently. A named Cuttle Fish appears and destroys the bridge when:</p>
+<ul class="compact">
+<li>the bridge terrain still exists,</li>
+<li>a player unit is within radius 8,</li>
+<li>no player unit is within radius 2, and</li>
+<li>no unit occupies the bridge itself.</li>
+</ul>
+<table><tr><th>Cuttle Fish</th><th>Bridge area</th><th>Terrain result</th></tr>
+<tr><td>Squiddy</td><td>23,22–23</td><td>Shallow-water wreckage; ford-like on Easy</td></tr>
+<tr><td>Inky</td><td>43,17–18</td><td>Shallow-water wreckage; ford-like on Easy</td></tr>
+<tr><td>Beaky</td><td>42,30 and 41,31</td><td>Shallow-water wreckage; ford-like on Easy</td></tr></table>
+<p>The third event changes its dialogue depending on whether player units are north of the bridge: it can thwart an advance or a retreat.</p>
+</section>
+
+<section><h2>Recurring undead ecology</h2>
+<table><tr><th>System</th><th>Schedule</th><th>Spawn</th></tr>
+<tr><td>Corpses</td><td>Anchor turns 2, 9, 16, 23, 30, 37, 44 choose a random later turn in the next five-turn window.</td><td>3 / 6 / 9 Walking Corpses on empty swamp within radius 14 of Jevyan’s castle.</td></tr>
+<tr><td>Skeletons</td><td>Anchor turns 6, 16, 26, 36 choose a random later turn in the next four-turn window.</td><td>3 / 4 / 5 alternating Skeletons and Skeleton Archers in shallow water bordering deep water.</td></tr></table>
+<p>Both systems fire only while Jevyan remains alive. The random scheduling prevents the reinforcements from becoming completely predictable during an unlimited-turn battle.</p>
+</section>
+
+<section><h2>Additional escalation</h2>
+<table><tr><th>Trigger</th><th>Effect</th></tr>
+<tr><td>Turn 10</td><td>Abraxas and Naga Fighters arrive; side 3 gains Naga Fighter recruitment.</td></tr>
+<tr><td>Familiar dies while Jevyan lives</td><td>Jevyan gains 40 / 80 / 120 gold and immediately fires both corpse and skeleton spawn events.</td></tr>
+<tr><td>Any orc leader dies</td><td>Jevyan gains 40 / 80 / 120 gold through <code>JEVGOLD</code>.</td></tr></table>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Require a particular killer</td><td>Use <code>filter_second</code> in last-breath and death events to distinguish valid sacrifice from failure.</td></tr>
+<tr><td>Require one enemy survivor</td><td>Query living leaders after each death rather than relying on a normal defeat-all objective.</td></tr>
+<tr><td>Turn a unit into a physical objective</td><td>An overlay can show carried story information without a custom unit type.</td></tr>
+<tr><td>Destroy terrain conditionally</td><td>Proximity checks can alter routes only when the change will matter but is not instantly unfair.</td></tr>
+<tr><td>Use randomized windows in unlimited scenarios</td><td>Recurring pressure remains uncertain without a fixed deadline.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/22_The_Rise_of_Wesnoth.map">Map source</a> · <a href="../reference/endgame-kingdom-founding.html">Endgame study</a></p>
+<div class="prev-next"><a href="21-the-plan.html">← 21 — The Plan</a><a href="23-epilogue.html">23 — Epilogue →</a></div>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

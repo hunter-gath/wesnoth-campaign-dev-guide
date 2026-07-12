@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Campaign Flow</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>Campaign Flow</h1><p>Scenario transitions, persistent decisions, and the first route branch.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html" aria-current="page">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Campaign flow</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Campaign flow through Scenario 03</h2>
+<div class="flow">01 A Summer of Storms
+        │
+        ▼
+02 The Fall
+   ├── accept Lady Outlaw ── have_lady = 1; outlaw recruits unlocked
+   └── reject Lady Outlaw ── have_lady = 0; immediate gold
+        │
+        ▼
+03 A Harrowing Escape
+   ├── river road ── escape_choice = 1 ──► 04a The Swamp of Esten
+   └── Midlands   ── escape_choice = 2 ──► 04b The Midlands</div>
+</section>
+<section><h2>Transition table</h2>
+<table><tr><th>From</th><th>Trigger</th><th>State written</th><th>To</th></tr>
+<tr><td>01</td><td>Defeat Wesfolk leader</td><td><code>wesfolk_leader_store</code> carries experience/state</td><td>02</td></tr>
+<tr><td>02</td><td>Accept surrender</td><td><code>have_lady=1</code>; Lady Outlaw created; recruits allowed</td><td>03</td></tr>
+<tr><td>02</td><td>Reject surrender</td><td><code>have_lady=0</code>; immediate gold; <code>lady_store</code> prepared</td><td>03</td></tr>
+<tr><td>03</td><td>Choose river road</td><td><code>escape_choice=1</code></td><td>04a</td></tr>
+<tr><td>03</td><td>Choose Midlands</td><td><code>escape_choice=2</code></td><td>04b</td></tr></table>
+</section>
+<section><h2>Design reading</h2>
+<p>The first three scenarios move from a linear opening into two different kinds of agency:</p>
+<table><tr><th>Agency type</th><th>Scenario</th><th>What changes</th></tr>
+<tr><td>Party/roster agency</td><td>The Fall</td><td>Companion presence, recruit list, and immediate gold</td></tr>
+<tr><td>Route agency</td><td>A Harrowing Escape</td><td>Next map, environment, and story chapter</td></tr></table>
+<div class="callout"><strong>Design interpretation.</strong> The campaign waits until the player understands its central conflict before offering branches. The choices therefore modify an established journey instead of competing with the initial premise.</div>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg">Scenario 02 source</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg">Scenario 03 source</a></p>
+</section>
+
+
+<section id="release-043-flow"><h2>Scenario 04 convergence</h2>
+<div class="flow">03 A Harrowing Escape
+   ├── river road ──► 04a Swamp of Esten ── last_done = "River" ────┐
+   └── Midlands   ──► 04b The Midlands ── last_done = "Midlands" ──┤
+                                                                    ▼
+                                                             05 The Oldwood</div>
+<table><tr><th>Route</th><th>Durable additions</th><th>Convergence logic</th></tr>
+<tr><td>River</td><td>Minister Edren; Sir Ruddry; <code>last_done="River"</code> (transition marker)</td><td>Victory dialogue selects Oldwood because the river road is blocked.</td></tr>
+<tr><td>Midlands</td><td>Sir Ladoc; <code>last_done="Midlands"</code> (transition marker)</td><td>Victory dialogue selects Oldwood because the Southbay road is blocked.</td></tr></table>
+<p><a href="branch-comparison-04.html">Open the complete branch comparison.</a></p></section>
+
+
+<section id="release-044-flow"><h2>Oldwood arc flow</h2>
+<div class="flow">05 The Oldwood
+   ├── clears escape_choice and last_done
+   ├── protects Elilmaldur-Rithrandil
+   └── victory opens the catacombs
+          │
+          ▼
+06 Temple in the Deep
+   ├── Lenvan defeated
+   ├── Ruby retrieved by Haldric
+   └── both conditions required
+          │
+          ▼
+07 Return to Oldwood
+   ├── Lady Outlaw restored from lady_store
+   ├── earlier recruit state reconciled
+   ├── reconstructed as Lady Jessene
+   ├── have_lady and lady_store cleared
+   └── 100% gold carryover to Clearwater Port</div>
+<p><a href="oldwood-arc.html">Open the complete Oldwood arc architecture study.</a></p></section>
+
+
+<section id="release-045-flow"><h2>Port and Southbay approach</h2>
+<div class="flow">08 Clearwater Port
+   ├── board first / second / third ship
+   └── or defeat all enemy leaders
+        │
+        ▼
+09 Fallen Lich Point
+   ├── release Caror when ready
+   ├── have_book = 1 when Caror falls
+   ├── Haldric enters sewer
+   └── optional bonus: all leaders defeated
+        │
+        ▼
+10 Sewer of Southbay
+   ├── Haldric exits while wizards remain: standard victory
+   └── both wizards dead before exit: bonus victory
+        │
+        ▼
+11 Southbay in Winter</div>
+<p><a href="port-southbay-arc.html">Open the complete port-and-Southbay arc study.</a></p></section>
+
+
+<section id="release-046-flow"><h2>Southbay departure</h2>
+<div class="flow">11 Southbay in Winter
+   ├── Wesfolk admitted to Southbay
+   ├── translation begins
+   └── Haldric and Jessene appointed evacuation leaders
+        │
+        ▼
+12 A Final Spring
+   ├── Haldric receives Ruby attack
+   ├── Lord Typhon joins
+   ├── merfolk recruitment unlocked
+   ├── Jevyan reveals himself
+   └── final Green Isle army defeated
+        │
+        ▼
+13 Peoples in Decline
+   ├── fleet leaves Green Isle forever
+   ├── defeats drake chiefs for supplies
+   └── optional Storm Trident / Bitey encounter
+        │
+        ▼
+14 Rough Landing</div>
+<p><a href="southbay-departure-arc.html">Open the complete Southbay departure arc study.</a></p></section>
+
+
+<section id="release-047-flow"><h2>Great Continent arrival and Ka’lian hub</h2>
+<div class="flow">14 Rough Landing
+   └── fleet regroups
+        │
+        ▼
+15 A New Land
+   ├── first non-protected death ends battle
+   ├── Lady Dionli summons Haldric
+   └── initializes num_done + four flags + last_done
+        │
+        ▼
+16 The Ka’lian
+   ├──► 17a The Dragon ──────┐
+   ├──► 17b Lizard Beach ────┤
+   ├──► 17c Troll Hole ──────┤──► returns to 16 until num_done = 4
+   └──► 17d Cursed Isle ─────┘
+        │
+        ▼
+18 A Spy in the Woods</div>
+<p><a href="great-continent-arrival.html">Open the complete Great Continent arrival study.</a></p></section>
+
+
+<section id="release-048-flow"><h2>Ka’lian quest loop</h2>
+<div class="flow">16 The Ka’lian
+   ├── 17a Dragon: num_done+1; the_dragon=1; last_done="Dragon"
+   ├── 17b Beach: num_done+1; a_beach=1; last_done="Beach"
+   ├── 17c Hole: num_done+1; troll_hole=1; last_done="Hole"
+   └── 17d Isle: num_done+1; cursed_isle=1; last_done="Isle"
+
+Each branch returns to 16.
+When num_done = 4, Scenario 16 clears all hub variables and advances to 18.</div>
+<p><a href="kalian-quest-branches.html">Open the four-way branch comparison.</a></p></section>
+
+
+<section id="release-049-flow"><h2>Jevyan invasion opening</h2>
+<div class="flow">18 A Spy in the Woods
+   └── elves' conditional betrayal exposed
+        │
+        ▼
+19 The Vanguard
+   ├── ruby_of_fire removed from Haldric
+   ├── Lady Jessene stored in jessica_store
+   └── adaptive undead waves follow weakened fronts
+        │
+        ▼
+20 Return of the Fleet
+   ├── Jevyan imposes fog on turn 5
+   ├── Jessene unstored on turn 7
+   ├── fleet rendezvous secured
+   └── private plan begins
+        │
+        ▼
+21 The Plan</div>
+<p><a href="jevyan-invasion-opening.html">Open the complete invasion-opening study.</a></p></section>
+
+
+<section id="release-050-flow"><h2>Endgame and conclusion</h2>
+<div class="flow">21 The Plan
+   └── Aethyr accepts forged-treaty sacrifice
+        │
+        ▼
+22 The Rise of Wesnoth
+   ├── Aethyr dies to Jevyan
+   ├── Jevyan reads treaty
+   ├── Jevyan dies
+   ├── one orc leader escapes
+   └── all other enemy leaders defeated
+        │
+        ▼
+23 Epilogue
+   ├── Aethyr memorialized
+   ├── Ruby remains hidden
+   ├── companions choose future institutions
+   ├── Haldric and Jessene unite
+   └── Kingdom of Wesnoth founded</div>
+<p><a href="endgame-kingdom-founding.html">Open the complete endgame traceability study.</a></p></section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

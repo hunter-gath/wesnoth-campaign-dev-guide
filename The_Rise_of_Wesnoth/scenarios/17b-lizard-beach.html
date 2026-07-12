@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>17b — Lizard Beach</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>17b — Lizard Beach</h1><p>A coastal assault against two passive Saurian leaders, with progress-triggered Naga reinforcements, mutually funded keeps, and dividing Giant Mudcrawlers.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html" aria-current="page">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 17b</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>17b_Lizard_Beach</code></td></tr>
+<tr><th>Returns to</th><td><code>16_The_Kalian</code></td></tr>
+<tr><th>Map</th><td><code>17b_Lizard_Beach.map</code>, 37 × 27 hexes</td></tr>
+<tr><th>Turns</th><td>30 / 27 / 24</td></tr>
+<tr><th>Schedule</th><td>Default</td></tr>
+<tr><th>Carryover</th><td>40%, early-finish bonus</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Coastal assault / reinforcement race</td></tr>
+<tr><th>Story importance</th><td>Moderate</td></tr>
+<tr><th>WML complexity</th><td>Moderate</td></tr>
+<tr><th>AI complexity</th><td>Moderate defensive leaders</td></tr>
+<tr><th>Signature system</th><td>Naga reinforcements when humans reach the beach</td></tr></table></div>
+</div></section>
+
+<section><h2>Story and premise</h2>
+<p>Haldric reaches a sunny beach where Saurians are trading metal to their Naga allies. The Saurians call the refugees “monsters,” while Jessene points out the irony. The tactical premise is straightforward: defeat both leaders before their maritime support overwhelms the landing.</p>
+</section>
+
+<section><h2>Map description</h2>
+<p>The 37 × 27 map places ocean and beach terrain along the western edge, with sand, grass, forest, swamp, villages, roads, and two Saurian keeps inland. The refugees approach from the east. Reaching x-coordinate 16 or farther west represents breaking onto the beach and triggers the Naga counterlanding.</p>
+<table><tr><th>Map element</th><th>Design role</th></tr>
+<tr><td>Western ocean edge</td><td>Provides a believable entry lane for Naga reinforcements.</td></tr>
+<tr><td>Two inland keeps</td><td>Creates a paired leader objective with mutual financial support.</td></tr>
+<tr><td>Long east–west approach</td><td>Makes the reinforcement trigger a visible threshold in player progress.</td></tr>
+<tr><td>Mixed swamp and forest</td><td>Supports Saurian movement and Mudcrawler pressure.</td></tr></table>
+</section>
+
+<section><h2>Sides and AI</h2>
+<table><tr><th>Side</th><th>Leader</th><th>Gold / income</th><th>Behavior</th></tr>
+<tr><td>1</td><td>Haldric</td><td>210 / 180 / 150; income 4 / 2 / 0</td><td>Human controlled</td></tr>
+<tr><td>2</td><td>Tirasch — Saurian Flanker</td><td>100 / 125 / 150; income 3 / 5 / 7</td><td>Passive leader; mixed scout/archer/fighter/healer pattern</td></tr>
+<tr><td>3</td><td>Ssirk — Saurian Flanker</td><td>100 / 125 / 150; income 3 / 5 / 7</td><td>Passive leader; mirrors side 2</td></tr></table>
+<p>Easy uses Naga Fighters, Skirmishers, Mudcrawlers, Giant Mudcrawlers, and Augurs. Higher difficulties add Ambushers, Giant Scorpions, and advanced Saurian healers. Each enemy side is limited to 1 / 2 / 3 simultaneous Giant Mudcrawler recruits.</p>
+</section>
+
+<section><h2>Beach reinforcement event</h2>
+<p>The first side-1 unit entering x 1–16 triggers a fake Naga arrival from the western edge and creates:</p>
+<table><tr><th>Difficulty</th><th>New units</th></tr>
+<tr><td>Easy</td><td>Riaa, a loyal Naga Warrior for side 2; one Naga Fighter for each side</td></tr>
+<tr><td>Normal</td><td>Easy group plus one extra Naga Fighter for each side</td></tr>
+<tr><td>Hard</td><td>Riaa plus three Naga Fighters for each side</td></tr></table>
+<p>Riaa states the economic reason for the alliance: the Naga need the Saurians’ metal.</p>
+</section>
+
+<section><h2>Mutual leader funding</h2>
+<table><tr><th>Leader killed</th><th>Surviving side receives</th></tr>
+<tr><td>Tirasch</td><td>Side 3 gains 140 / 160 / 180 gold.</td></tr>
+<tr><td>Ssirk</td><td>Side 2 gains 140 / 160 / 180 gold.</td></tr></table>
+<p>This makes the second leader substantially harder and prevents the battle from collapsing after the first keep falls.</p>
+</section>
+
+<section><h2>Mudcrawler split</h2>
+<p>Every Giant Mudcrawler death creates one Mudcrawler for each enemy side at the death location. On Easy they are created without traits; on Normal and Hard they are loyal. The first split triggers Haldric’s warning line.</p>
+</section>
+
+<section><h2>Hub-state write</h2>
+<pre>{VARIABLE_OP num_done add 1}
+[set_variable]
+    name=a_beach
+    value=1
+[/set_variable]
+[set_variable]
+    name=last_done
+    value="Beach"
+[/set_variable]</pre>
+<p>The branch then ends with bonus victory and 40% carryover.</p>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Reinforcements tied to geographic progress</td><td>Escalate when the player reaches the strategically important zone.</td></tr>
+<tr><td>Passive leaders at a trade site</td><td>Keep both objectives anchored while recruited units defend outward.</td></tr>
+<tr><td>First leader funds the survivor</td><td>Preserve tension in paired-leader battles.</td></tr>
+<tr><td>Faction alliance explained economically</td><td>Let reinforcement composition communicate worldbuilding.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_Lizard_Beach.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/17b_Lizard_Beach.map">Map source</a> · <a href="../reference/kalian-quest-branches.html">Quest comparison</a></p>
+<div class="prev-next"><a href="17a-the-dragon.html">← 17a — The Dragon</a><a href="17c-troll-hole.html">17c — Troll Hole →</a></div>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

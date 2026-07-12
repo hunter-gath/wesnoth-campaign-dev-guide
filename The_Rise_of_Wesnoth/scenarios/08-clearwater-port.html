@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>08 — Clearwater Port</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>08 — Clearwater Port</h1><p>A timed coastal evacuation with four graded victories, three physical ship departures, escalating orc pressure, and the campaign’s first deeply stateful allied AI.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html" aria-current="page">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 08</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>08_Clearwater_Port</code></td></tr>
+<tr><th>Next scenario</th><td><code>09_Fallen_Lich_Point</code></td></tr>
+<tr><th>Map</th><td><code>08_Clearwater_Port.map</code>, 42 × 37 hexes</td></tr>
+<tr><th>Turns</th><td>32 on all difficulties</td></tr>
+<tr><th>Schedule</th><td>Default, plus illuminated lighthouse time area</td></tr>
+<tr><th>Automatic enemy victory</th><td>Disabled</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Timed evacuation defense</td></tr>
+<tr><th>Story importance</th><td>Critical</td></tr>
+<tr><th>WML complexity</th><td>Very high</td></tr>
+<tr><th>AI complexity</th><td>Very high; stateful allied defense</td></tr>
+<tr><th>Exit choices</th><td>First, second, third ship, or defeat all leaders</td></tr></table></div>
+</div>
+</section>
+
+<section><h2>Story & dialogue</h2>
+<p>Clearwater Port is already evacuating its population when Haldric arrives. Commander Aethyr explains that the local army initially drove the orcs back into the Swamp of Esten, but reinforcements destroyed the defense and killed the King of Clearwater. Three more shiploads are needed before the remaining population can escape.</p>
+<p>The opening conversation formalizes the Wesfolk as Haldric’s allies, introduces Aethyr as the local commander, and turns the scenario into a moral timing choice. The player may leave early, remain for a later ship, or fight until every enemy leader is dead. The longer the party remains, the more heroic—and mechanically rewarding—the outcome becomes.</p>
+<table><tr><th>Dialogue phase</th><th>Function</th></tr>
+<tr><td>Arrival briefing</td><td>Explains the port’s losses, missing fleet, and evacuation schedule.</td></tr>
+<tr><td>Wesfolk recognition</td><td>Publicly confirms Jessene’s people as allies rather than prisoners.</td></tr>
+<tr><td>Three ship announcements</td><td>Turn the timetable into character-delivered tactical information.</td></tr>
+<tr><td>Aethyr’s final decision</td><td>Leaves the commander behind as a tragic rear guard.</td></tr>
+<tr><td>Victory detour</td><td>Redirects the refugees to Fallen Lich Point for the Book of Fire and Darkness.</td></tr></table>
+</section>
+
+<section><h2>Map description</h2>
+<p>The 42 × 37 winter coastal map stretches from mountains and frozen inland approaches in the west to Clearwater’s harbor and open sea in the east. Haldric enters near the city, Aethyr’s forward castle and inner wall guard the eastern settlement, and three orc armies attack from the landward side. Bridges, shallow water, deep water, snow, hills, roads, villages, city terrain, and a lighthouse create several distinct defensive layers.</p>
+<table><tr><th>Map element</th><th>Design role</th></tr>
+<tr><td>Forward castle</td><td>Gives Aethyr’s AI a first defensive posture before falling back.</td></tr>
+<tr><td>Inner city wall</td><td>Supports a second defensive posture and evacuation pier.</td></tr>
+<tr><td>Harbor pier</td><td>Hosts three different Haldric-only boarding hexes.</td></tr>
+<tr><td>Large western land approach</td><td>Supports three enemy recruitment fronts and player counterattacks.</td></tr>
+<tr><td>Lighthouse at 34,8</td><td>Uses scenery, halo, and a local time schedule to simulate illumination.</td></tr>
+<tr><td>Four signposts</td><td>Connect the port to Dead-Man’s Ford, the River Road, and local geography.</td></tr></table>
+</section>
+
+<section><h2>Objectives and graded victory</h2>
+<table><thead><tr><th>Outcome</th><th>Requirement</th><th>Bonus</th></tr></thead><tbody>
+<tr><td>Cowardly</td><td>Haldric boards the first ship.</td><td>No early-finish bonus</td></tr>
+<tr><td>Normal</td><td>Haldric boards the second ship.</td><td>No early-finish bonus</td></tr>
+<tr><td>Heroic</td><td>Haldric boards the third ship.</td><td>Early-finish bonus</td></tr>
+<tr><td>Heroic</td><td>Defeat all three enemy leaders.</td><td>Early-finish bonus</td></tr>
+</tbody></table>
+<table><tr><th>Defeat condition</th><th>Reason</th></tr>
+<tr><td>Haldric dies</td><td>Campaign protagonist lost</td></tr>
+<tr><td>Lady Jessene dies</td><td>Required companion and translator lost</td></tr>
+<tr><td>Commander Aethyr dies</td><td>The port’s evacuation command collapses</td></tr>
+<tr><td>The last ship leaves</td><td>The refugees are trapped by winter</td></tr></table>
+<p>Every valid victory carries 40% gold. The third ship and total enemy defeat award the scenario’s early-finish bonus even though they occur later, because the objectives explicitly define heroic success rather than using elapsed turns alone.</p>
+</section>
+
+<section><h2>Sides and economy</h2>
+<table><tr><th>Side</th><th>Leader / roster</th><th>Gold and income</th><th>Role</th></tr>
+<tr><td>1 — Haldric</td><td>Noble Commander; campaign recruit list</td><td>240 / 210 / 180; income 5 / 3 / 1</td><td>Human-controlled relief force</td></tr>
+<tr><td>2 — Clearwater</td><td>Commander Aethyr, Lieutenant; Peasant, Bowman, Spearman</td><td>50 gold; income 8</td><td>Stateful allied garrison</td></tr>
+<tr><td>3 — Clearwater helper</td><td>No leader; hidden</td><td>No normal economy</td><td>Temporary side used during withdrawal attack handling</td></tr>
+<tr><td>4 — Orcs</td><td>Tan-Vragar, Orcish Warlord</td><td>180 / 225 / 270; income 5 / 7 / 9</td><td>Land army; gains Naga recruits on turn 3</td></tr>
+<tr><td>5 — Orcs</td><td>Tan-Burg, Orcish Warlord</td><td>180 / 225 / 270; income 5 / 7 / 9</td><td>Second land army</td></tr>
+<tr><td>6 — Orcs</td><td>Ut’Tan-Vrork, Orcish Warlord</td><td>240 / 300 / 360; income 8 / 12 / 16</td><td>Primary high-resource enemy army</td></tr></table>
+</section>
+
+<section><h2>Commander Aethyr’s stateful allied AI</h2>
+<p>Side 2 is reconfigured every one of its turns. The scenario records its posture in <code>previous_ai_position</code> and can move among four broad modes:</p>
+<div class="flow">FORWARD DEFENSE
+   ├── player pushes far west ─────────────► OFFENSIVE SUPPORT
+   └── 10+ orcs swarm forward castle
+          ├── first withdrawal turn ───────► RETREAT FIRSTTURN
+          ├── second withdrawal turn ──────► RETREAT SECONDTURN
+          └── withdrawal completed ────────► CITY-WALL DEFENSE</div>
+<table><tr><th>Mode</th><th>Implementation behavior</th></tr>
+<tr><td>Forward defense</td><td>Resets defensive AI, assigns high-value goal hexes in the outer castle, and avoids overextension.</td></tr>
+<tr><td>Full retreat</td><td>Uses extreme caution, disables ordinary attacking, and moves troops toward the inner city.</td></tr>
+<tr><td>Retreat attack workaround</td><td>Temporarily moves non-leader units to hidden side 3 for one turn so adjacent enemies can still be attacked without allowing forward movement.</td></tr>
+<tr><td>City-wall defense</td><td>Assigns weighted goal hexes along the wall and avoids advancing back into the field.</td></tr>
+<tr><td>Offensive support</td><td>If at least four player units are far forward, resets side 2 to an offensive posture so it can support them.</td></tr></table>
+</section>
+
+<section><h2>Dynamic allied recruitment</h2>
+<p>Aethyr normally recruits inexpensive Peasants, Bowmen, and Spearmen. Peasants are limited to two so the AI does not repeatedly expose fragile units along the wall. At the start of each side-2 turn, the scenario checks the garrison’s stored gold:</p>
+<table><tr><th>Gold state</th><th>Extra recruits</th></tr>
+<tr><td>60 or less</td><td>None</td></tr>
+<tr><td>More than 60</td><td>Heavy Infantryman, Longbowman, Javelineer, Pikeman, Swordsman</td></tr></table>
+<p>This allows the AI to spend accumulated resources on advanced defenders when the player has not captured its villages.</p>
+</section>
+
+<section><h2>Ship timetable and local macro</h2>
+<table><thead><tr><th>Ship</th><th>Arrives</th><th>Leaves</th><th>Boarding hex</th><th>Victory bonus</th></tr></thead><tbody>
+<tr><td>First</td><td>Turn 12</td><td>Turn 18</td><td>31,16</td><td>No</td></tr>
+<tr><td>Second</td><td>Turn 20</td><td>Turn 24</td><td>32,14</td><td>No</td></tr>
+<tr><td>Third</td><td>Turn 26</td><td>Time over</td><td>29,16</td><td>Yes</td></tr>
+</tbody></table>
+<p><code>BOARDING_EVENT SHIP_EVENT ABSCISSA ORDINATE BONUS</code> removes three nearly identical movement events. It validates that the moving unit is Haldric, checks whether the correct ship flag is active, ends the level with the specified bonus, or explains why boarding is currently invalid.</p>
+<pre>#define BOARDING_EVENT SHIP_EVENT ABSCISSA ORDINATE BONUS
+    [event]
+        name=moveto
+        first_time_only=no
+        ...
+        # Haldric + active ship flag -> victory
+        # Haldric + no ship -> wait and defend
+        # other unit -> Prince Haldric must board here
+    [/event]
+#enddef</pre>
+</section>
+
+<section><h2>Enemy escalation</h2>
+<table><tr><th>Trigger</th><th>Effect</th></tr>
+<tr><td>Turn 3</td><td>Side 4 gains Naga Fighter recruitment and receives 1 / 2 / 3 loyal Nagas.</td></tr>
+<tr><td>Turns 10, 16, 22, 28</td><td>On Normal and Hard, all three orc sides receive periodic gold.</td></tr>
+<tr><td>Turns 16, 22, 28</td><td>On Easy, the first reinforcement payment is omitted.</td></tr>
+<tr><td>Periodic payment</td><td>Sides 4–5 receive 30 / 40 / 50; side 6 receives 40 / 50 / 60.</td></tr>
+<tr><td>Leader defeated</td><td>Haldric receives 75, 75, or 125 loot depending on the leader.</td></tr></table>
+<p>All orc sides use night aggression 0.75, zero caution, and no grouping during dusk and the watches.</p>
+</section>
+
+<section><h2>Special events</h2>
+<table><tr><th>Trigger</th><th>Behavior</th></tr>
+<tr><td><code>prestart</code></td><td>Creates lighthouse time area and scenery, recalls the party, creates three angry Peasants, and installs graded objectives.</td></tr>
+<tr><td><code>start</code></td><td>Explains the evacuation and defense plan.</td></tr>
+<tr><td>Peasant attacks</td><td>Plays family-revenge dialogue.</td></tr>
+<tr><td>Jessene attacks</td><td>Answers Aethyr’s earlier suspicion of the Wesfolk.</td></tr>
+<tr><td>Ship arrival/departure</td><td>Animates a Transport Galleon, plays <code>ambient/ship.ogg</code>, and adds or removes the pier marker.</td></tr>
+<tr><td>Haldric boards active ship</td><td>Ends at the corresponding moral/tactical outcome.</td></tr>
+<tr><td>Enemies defeated</td><td>Ends with heroic bonus.</td></tr>
+<tr><td><code>victory</code></td><td>Plans the Fallen Lich Point detour, grants Peasant recruitment, clears ship flags, and leaves Aethyr behind.</td></tr></table>
+</section>
+
+<section><h2>State lifecycle</h2>
+<table><tr><th>Variable</th><th>Purpose</th><th>Cleanup</th></tr>
+<tr><td><code>previous_ai_position</code></td><td>Tracks Aethyr’s forward, retreat, defending, or attacking posture.</td><td>Cleared at victory.</td></tr>
+<tr><td><code>First_Ship</code></td><td>Marks first ship as boardable.</td><td>Cleared when it leaves or at victory.</td></tr>
+<tr><td><code>Second_Ship</code></td><td>Marks second ship as boardable.</td><td>Cleared when it leaves or at victory.</td></tr>
+<tr><td><code>Third_Ship</code></td><td>Marks final ship as boardable.</td><td>Cleared when boarded or at victory.</td></tr></table>
+</section>
+
+<section><h2>Assets and reuse</h2>
+<table><tr><th>Resource</th><th>Origin</th><th>Use</th></tr>
+<tr><td>No story panel</td><td>—</td><td>The scenario opens directly on the strategic crisis.</td></tr>
+<tr><td>Aethyr portrait and Haldric/Burin expression variants</td><td><span class="badge campaign">Campaign</span></td><td>Named commander and party dialogue</td></tr>
+<tr><td>Lighthouse scenery and aura; signposts; go-here marker</td><td><span class="badge core">Core/shared</span></td><td>Map landmark, interaction points, and ship boarding</td></tr>
+<tr><td>Transport Galleon image and fake-movement animation</td><td><span class="badge core">Core/shared</span></td><td>Three timed evacuation ships</td></tr>
+<tr><td><code>the_city_falls.ogg</code>, <code>undead_siege.ogg</code>, <code>battle.ogg</code>, <code>ambient/ship.ogg</code></td><td><span class="badge core">Core/shared</span></td><td>Battle score and ship sound</td></tr>
+<tr><td>All human, orc, goblin, Naga, and ship unit types</td><td><span class="badge core">Core</span></td><td>No scenario-specific unit definition required</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/08_Clearwater_Port.map">Map source</a> · <a href="../reference/ai-index.html">AI index</a></p>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<div class="callout"><strong>Design interpretation.</strong> The scenario turns time into an ethical difficulty selector. The player chooses when enough has been sacrificed, while the allied AI makes the city feel defended by an actual garrison rather than decorative units.</div>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Graded victories</td><td>Offer multiple valid exits with narrative labels and different rewards.</td></tr>
+<tr><td>Stateful allied AI</td><td>Track posture explicitly when an ally must perform recognizable military phases.</td></tr>
+<tr><td>Dynamic recruit quality</td><td>Let accumulated AI gold unlock stronger units instead of sitting unused.</td></tr>
+<tr><td>Schedule-driven physical transport</td><td>Animate arrivals and departures so the turn deadline exists on the map.</td></tr>
+<tr><td>Refactor repeated exits into a macro</td><td>Keep three boarding interactions consistent and easy to rebalance.</td></tr>
+<tr><td>Unlock a humble recruit through story</td><td>The new Peasant recruit records the port farmers’ support.</td></tr></table>
+<div class="prev-next"><a href="07-return-to-oldwood.html">← 07 — Return to Oldwood</a><a href="09-fallen-lich-point.html">09 — Fallen Lich Point →</a></div>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

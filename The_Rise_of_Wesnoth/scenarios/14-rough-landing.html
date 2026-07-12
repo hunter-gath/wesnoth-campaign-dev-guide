@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>14 — Rough Landing</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>14 — Rough Landing</h1><p>A compact amphibious fleet-regrouping battle where the first casualty from each Naga side schedules a safely spaced Sea Serpent reinforcement.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html" aria-current="page">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 14</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>14_Rough_Landing</code></td></tr>
+<tr><th>Next scenario</th><td><code>15_A_New_Land</code></td></tr>
+<tr><th>Map</th><td><code>14_Rough_Landing.map</code>, 27 × 32 hexes</td></tr>
+<tr><th>Turns</th><td>27 / 25 / 23</td></tr>
+<tr><th>Schedule</th><td>Default</td></tr>
+<tr><th>Carryover</th><td>40%, early-finish bonus</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Fleet-regrouping island battle</td></tr>
+<tr><th>Story importance</th><td>Moderate–high</td></tr>
+<tr><th>WML complexity</th><td>High</td></tr>
+<tr><th>AI complexity</th><td>Light declarative AI; advanced scripted sea spawns</td></tr>
+<tr><th>Enemy faction</th><td>Three Naga leaders</td></tr></table></div>
+</div>
+</section>
+
+<section><h2>Story and dialogue</h2>
+<p>A severe storm damages the <em>Eldaric</em> and scatters much of the refugee fleet. Lord Typhon recommends a group of small windswept islands where the ships can regroup and make landfall. The islands are Naga scavenging territory, however, and the local leaders immediately treat the fleet as prey.</p>
+<p>The victory dialogue restores the campaign’s forward motion: the fleet regroups, the next landfall should be the Great Continent, and Jevyan’s Familiar is seen following the refugees.</p>
+<table><tr><th>Dialogue beat</th><th>Function</th></tr>
+<tr><td>Burin’s seasickness</td><td>Provides comic continuity from the long voyage.</td></tr>
+<tr><td>Typhon’s warning</td><td>Explains beaches, Naga territory, and captured-ship scavenging.</td></tr>
+<tr><td>Naga attack</td><td>Turns logistical necessity into immediate combat.</td></tr>
+<tr><td>Familiar surveillance</td><td>Maintains Jevyan’s pressure during a scenario where he is not otherwise present.</td></tr></table>
+</section>
+
+<section><h2>Map description</h2>
+<p>The compact 27 × 32 map consists largely of deep ocean and shallow water surrounding several small sandy, scrub-covered islands. Haldric’s red galleon is placed near the southern landing area. The three Naga keeps are distributed across separate island positions, forcing the player to use coastal and aquatic movement rather than a single land front.</p>
+<table><tr><th>Map element</th><th>Design role</th></tr>
+<tr><td>Mostly ocean terrain</td><td>Rewards the recently unlocked merfolk roster and Lord Typhon.</td></tr>
+<tr><td>Three separated Naga keeps</td><td>Creates multiple amphibious objectives on a small map.</td></tr>
+<tr><td>Soft-sand landing areas</td><td>Supports the story reason for choosing these islands.</td></tr>
+<tr><td>Deep-ocean ring around the party</td><td>Provides legal spawn terrain for delayed Sea Serpents.</td></tr></table>
+</section>
+
+<section><h2>Objectives, sides, and balance</h2>
+<table><tr><th>Victory</th><th>Defeat all three enemy leaders.</th></tr>
+<tr><td>Defeat</td><td>Death of Haldric, Lady Jessene, or Lord Typhon; turns expire.</td></tr>
+<tr><td>Carryover</td><td>40%, with early-finish bonus.</td></tr></table>
+<table><tr><th>Side</th><th>Leader / roster</th><th>Gold and income</th><th>AI</th></tr>
+<tr><td>1 — Refugees</td><td>Haldric and all available companions</td><td>200 / 170 / 140; income 3 / 2 / 1</td><td>Human controlled</td></tr>
+<tr><td>2 — Naga</td><td>Abraxas, Naga Warrior</td><td>80 / 110 / 140; income 2 / 3 / 4</td><td>Aggression 0.60; no scouts</td></tr>
+<tr><td>3 — Naga</td><td>Xamalia, Naga Warrior</td><td>80 / 110 / 140; income 2 / 3 / 4</td><td>Same as side 2</td></tr>
+<tr><td>4 — Naga</td><td>Gaxmail, Naga Warrior</td><td>80 / 110 / 140; income 2 / 3 / 4</td><td>Same as side 2</td></tr></table>
+<p>Easy allows only Naga Fighter recruitment. Normal and Hard add Vampire Bats and use a scout/fighter-heavy recruitment pattern.</p>
+</section>
+
+<section><h2>Casualty-triggered Sea Serpents</h2>
+<p>The first casualty belonging to each enemy side schedules one named Sea Serpent for that side. A global delay counter spaces the three scheduled arrivals by one, two, and three turns in the order the sides first suffer a casualty.</p>
+<table><tr><th>Originating side</th><th>Serpent name</th><th>Message</th></tr>
+<tr><td>2</td><td>Chompey the Serpent</td><td>Growling roar</td></tr>
+<tr><td>3</td><td>Scaly the Serpent</td><td>Roar</td></tr>
+<tr><td>4</td><td>Toothey the Serpent</td><td>Hiss</td></tr></table>
+<p>The nested <code>new turn</code> event waits until its scheduled turn and searches deep-ocean hexes that:</p>
+<ul class="compact">
+<li>contain no unit,</li>
+<li>are within radius 10 of a side-1 unit, and</li>
+<li>are not within radius 9 of a side-1 unit.</li>
+</ul>
+<p>The resulting ring places the serpent exactly ten hexes from the nearest player unit, keeping the arrival visible and relevant without allowing an immediate one-turn attack.</p>
+</section>
+
+<section><h2>Local spawn-location macro</h2>
+<pre>#define POSSIBLE_SERPENT_SPAWN_LOCS_SLF
+    include_borders=no
+    terrain=Wo*
+    [not]
+        [filter]
+        [/filter]
+    [/not]
+    [not]
+        [filter]
+            side=1
+        [/filter]
+        radius=9
+    [/not]
+    [and]
+        [filter]
+            side=1
+        [/filter]
+        radius=10
+    [/and]
+#enddef</pre>
+<div class="callout"><strong>Implementation lesson.</strong> A local Standard Location Filter macro avoids duplicating the same multi-clause location logic in both the availability check and the actual location storage.</div>
+</section>
+
+<section><h2>Special events and state</h2>
+<table><tr><th>Trigger</th><th>Behavior</th></tr>
+<tr><td><code>prestart</code></td><td>Recalls Jessene, Burin, the route knight, Edren, and Typhon; places the galleon; installs objectives.</td></tr>
+<tr><td><code>start</code></td><td>Explains the emergency landfall and Naga threat.</td></tr>
+<tr><td>First casualty for each Naga side</td><td>Marks <code>side_N_serpent_triggered</code>, assigns the serpent identity, increments the global delay, and registers a nested spawn event.</td></tr>
+<tr><td>Scheduled new turn</td><td>Finds a random legal deep-ocean ring location, creates the serpent, and clears local search variables.</td></tr>
+<tr><td>Enemies defeated</td><td>Regroups the fleet, stages Familiar’s appearance, clears serpent-trigger variables, and ends with 40% carryover.</td></tr>
+<tr><td>Time over</td><td>Jessene reports that the scattered fleet will be lost across the world.</td></tr></table>
+</section>
+
+<section><h2>Assets and reuse</h2>
+<table><tr><th>Resource</th><th>Origin</th><th>Use</th></tr>
+<tr><td><code>story/trow_intro_05.webp</code></td><td><span class="badge campaign">Campaign</span></td><td>Storm and emergency-landfall panel</td></tr>
+<tr><td>Burin and Familiar portraits</td><td><span class="badge campaign">Campaign</span></td><td>Seasickness and surveillance</td></tr>
+<tr><td>Galleon, Naga units, bats, Sea Serpents, ocean/island terrain</td><td><span class="badge core">Core/shared</span></td><td>All battle and map presentation</td></tr>
+<tr><td><code>knolls.ogg</code>, <code>wanderer.ogg</code>, <code>water-blast.wav</code></td><td><span class="badge core">Core/shared</span></td><td>Score and serpent arrivals</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/14_Rough_Landing.map">Map source</a> · <a href="../reference/great-continent-arrival.html">Arc study</a></p>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Make casualties schedule later consequences</td><td>A battle can escalate because of progress without spawning everything immediately.</td></tr>
+<tr><td>Place arrivals in a distance ring</td><td>Keep reinforcements relevant while avoiding unfair immediate contact.</td></tr>
+<tr><td>Use the newly unlocked faction immediately</td><td>An ocean map validates the value of merfolk recruitment from Scenario 12.</td></tr>
+<tr><td>Keep surveillance as a short victory beat</td><td>Maintain antagonist continuity without changing the current objective.</td></tr></table>
+<div class="prev-next"><a href="13-peoples-in-decline.html">← 13 — Peoples in Decline</a><a href="15-a-new-land.html">15 — A New Land →</a></div>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

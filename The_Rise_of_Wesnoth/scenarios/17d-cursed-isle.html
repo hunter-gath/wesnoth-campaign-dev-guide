@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>17d — Cursed Isle</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>17d — Cursed Isle</h1><p>A fog-covered island quest with two visible Spectre leaders, randomized temple contents, core holy-water pickups, and an optional Vampire Queen whose appearance rewrites the objective.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html" aria-current="page">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 17d</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>17d_Cursed_Isle</code></td></tr>
+<tr><th>Returns to</th><td><code>16_The_Kalian</code></td></tr>
+<tr><th>Map</th><td><code>17d_Cursed_Isle.map</code>, 35 × 42 hexes</td></tr>
+<tr><th>Turns</th><td>30 / 27 / 24</td></tr>
+<tr><th>Schedule</th><td>Default</td></tr>
+<tr><th>Visibility</th><td>Fog</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Fog exploration / dynamic hidden boss</td></tr>
+<tr><th>Story importance</th><td>Moderate–high</td></tr>
+<tr><th>WML complexity</th><td>High randomized event layout</td></tr>
+<tr><th>AI complexity</th><td>Moderate defensive undead</td></tr>
+<tr><th>Signature system</th><td>Random Vampire Queen temple</td></tr></table></div>
+</div></section>
+
+<section><h2>Story and premise</h2>
+<p>Haldric travels by sea to the fog-covered Isle of Tears, where the long-dead members of an elven clan remain cursed. Jessene distinguishes these ancient elf-dead from the more utilitarian undead once used by the Wesfolk. Minister Edren treats the mission as a holy purge.</p>
+<p>Two Spectre leaders openly command the island. A Vampire Lady called the Midnight Queen is hidden in one of three central temples and appears only if the player enters her assigned temple. Her awakening changes the displayed objective.</p>
+</section>
+
+<section><h2>Map description</h2>
+<p>The 35 × 42 map is an elongated island surrounded by ocean, with beaches, grass, forest, swamp, villages, roads, water channels, two undead keeps, three central temples, and holy-water sites toward the southeastern approach. Fog conceals the temple identities and enemy distribution.</p>
+<table><tr><th>Map element</th><th>Design role</th></tr>
+<tr><td>Two Spectre keeps</td><td>Provide the visible baseline objective.</td></tr>
+<tr><td>Three temple hexes</td><td>Randomly hold the Queen, loot, and an empty or second-loot result.</td></tr>
+<tr><td>Fog</td><td>Protects the random temple assignment and island exploration.</td></tr>
+<tr><td>Holy water at 29,24</td><td>Provides a reusable anti-undead pickup.</td></tr>
+<tr><td>Second holy water on Easy</td><td>Softens the undead matchup without changing enemy logic.</td></tr></table>
+</section>
+
+<section><h2>Sides and AI</h2>
+<table><tr><th>Side</th><th>Leader / roster</th><th>Gold / income</th><th>AI</th></tr>
+<tr><td>1</td><td>Haldric</td><td>210 / 180 / 150; income 2 / 1 / 0</td><td>Human controlled; fog enabled</td></tr>
+<tr><td>2</td><td>Isorfilad — Spectre</td><td>100 / 125 / 150; income 2 / 4 / 6</td><td>Aggression 0.40; night aggression 0.75; protects central island location</td></tr>
+<tr><td>3</td><td>Tinoldor — Spectre</td><td>100 / 125 / 150; income 2 / 4 / 6</td><td>Same defensive structure</td></tr></table>
+<p>Easy rosters contain Ghosts, Ghouls, and Vampire Bats. Higher difficulties add Shadows or Wraiths and Necrophages. Each side begins with twelve villages.</p>
+</section>
+
+<section><h2>Random temple assignment</h2>
+<p>Three local macros generate the temple interactions:</p>
+<table><tr><th>Macro</th><th>Result</th></tr>
+<tr><td><code>TEMP_LOOT X Y</code></td><td>One-time 50-gold pickup.</td></tr>
+<tr><td><code>TEMP_QUEEN X Y</code></td><td>Creates the Midnight Queen, several Blood Bats, dialogue, objective refresh, and <code>queen_awake=1</code>.</td></tr>
+<tr><td><code>TEMP_EMPTY X Y</code></td><td>Reports an empty temple.</td></tr></table>
+<table><tr><th>Difficulty</th><th>Three-temple contents</th></tr>
+<tr><td>Easy</td><td>Queen + loot + loot</td></tr>
+<tr><td>Normal / Hard</td><td>Queen + loot + empty</td></tr></table>
+<p>A random value from 1 to 3 rotates these roles among temples at 11,13; 10,17; and 9,15.</p>
+</section>
+
+<section><h2>Dynamic objective rendering</h2>
+<table><tr><th>Queen state</th><th>Displayed win objective</th></tr>
+<tr><td>Not created</td><td>Defeat all enemy leaders, while Isorfilad or Tinoldor remains.</td></tr>
+<tr><td>Created</td><td>Defeat the Vampire Queen.</td></tr></table>
+<p>If both visible leaders die before the Queen is discovered, <code>queen_awake</code remains 0 and the scenario ends normally. If the Queen has appeared, killing the visible leaders is insufficient and the objectives are shown again.</p>
+</section>
+
+<section><h2>Midnight Queen encounter</h2>
+<p>Entering the selected temple:</p>
+<ol>
+<li>Creates the Midnight Queen as a Vampire Lady on side 2.</li>
+<li>Creates three Blood Bats, plus a fourth on Hard.</li>
+<li>Runs an enthrallment scene in which Jessene breaks Haldric’s fascination.</li>
+<li>Sets <code>queen_awake=1</code>.</li>
+<li>Refreshes objectives.</li>
+</ol>
+<p>When the Queen reaches last breath, she curses the party; Haldric observes that the remaining undead are fading. The scenario kills every side-2 and side-3 undead unit without firing their death events and immediately ends with bonus victory.</p>
+</section>
+
+<section><h2>Holy water and Minister Edren</h2>
+<p>The core <code>OBJ_POTION_HOLY_ALT</code> macro places holy water at 29,24, with a second pickup at 28,26 on Easy. Minister Edren also receives a special line whenever he kills an undead unit.</p>
+</section>
+
+<section><h2>Hub-state write</h2>
+<pre>{VARIABLE_OP num_done add 1}
+[set_variable]
+    name=cursed_isle
+    value=1
+[/set_variable]
+[set_variable]
+    name=last_done
+    value="Isle"
+[/set_variable]</pre>
+<p>The local <code>random</code> variable is cleared after assigning temples. The Queen flag is cleared when victory resolves.</p>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Randomize event identities among fixed landmarks</td><td>Preserve map readability while changing exploration outcomes.</td></tr>
+<tr><td>Change objectives when a hidden boss appears</td><td>Keep the UI synchronized with newly revealed requirements.</td></tr>
+<tr><td>Make discovery optional but consequential</td><td>A player who awakens the Queen must complete the stronger objective.</td></tr>
+<tr><td>Boss death dissolves the faction</td><td>Use a scripted cleanup when ordinary unit-by-unit victory would weaken the narrative.</td></tr>
+<tr><td>Difficulty changes resources and exploration rewards</td><td>The extra Easy holy water and second loot temple provide help without separate maps.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/17d_Cursed_Isle.map">Map source</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/core/macros/items.cfg">Core holy-water macro</a> · <a href="../reference/kalian-quest-branches.html">Quest comparison</a></p>
+<div class="prev-next"><a href="17c-troll-hole.html">← 17c — Troll Hole</a><a href="../reference/kalian-quest-branches.html">Quest comparison →</a></div>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

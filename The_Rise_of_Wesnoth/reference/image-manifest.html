@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Campaign Image Manifest</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>Campaign Image Manifest</h1><p>Every non-localized image file shipped inside The Rise of Wesnoth, grouped by directory and production family.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html" aria-current="page">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Campaign Image Manifest</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Verified manifest</h2>
+<div class="grid">
+<div class="card metric"><strong>154</strong>campaign-local image files</div>
+<div class="card metric"><strong>27</strong>portraits</div>
+<div class="card metric"><strong>20</strong>story images</div>
+<div class="card metric"><strong>103</strong>unit sprites and frames</div>
+<div class="card metric"><strong>2</strong>journey-map backgrounds</div>
+<div class="card metric"><strong>2</strong>root/misc interface images</div>
+</div>
+<p>The count excludes localized variants inside the <code>images/maps/l10n</code> and <code>images/story/l10n</code> directories. It includes every non-localized file visible in the official campaign image tree.</p>
+<table><thead><tr><th>Directory</th><th>Files</th><th>Examples</th></tr></thead><tbody><tr><td><code>images/</code></td><td>1</td><td>campaign_image.png</td></tr><tr><td><code>images/maps</code></td><td>2</td><td>great_continent.webp, green_isle.webp</td></tr><tr><td><code>images/misc</code></td><td>1</td><td>treaty-icon.png</td></tr><tr><td><code>images/portraits</code></td><td>27</td><td>addroran.webp, aethyr-first.webp, aethyr-second.webp, aryad.webp…</td></tr><tr><td><code>images/story</code></td><td>20</td><td>trow-logo.webp, trow_intro_01.webp, trow_intro_02.webp, trow_intro_03.webp…</td></tr><tr><td><code>images/units</code></td><td>91</td><td>autumn-shyde.png, familiar-1.png, familiar-2.png, familiar-3.png…</td></tr><tr><td><code>images/units/jevyan</code></td><td>12</td><td>jevyan-cloaked.png, jevyan-defend-1.png, jevyan-defend-2.png, jevyan-magic-1.png…</td></tr></tbody></table>
+</section>
+
+<section><h2>Production concentration</h2>
+<table><tr><th>Family</th><th>Files</th><th>Interpretation</th></tr>
+<tr><td>Noble line</td><td>26 sprite/animation frames</td><td>Haldric’s four-level line carries the largest bespoke human animation investment.</td></tr>
+<tr><td>Wesfolk line</td><td>50 frames</td><td>Three levels, masked and unmasked presentations, staff/sling attacks, defense, and leadership.</td></tr>
+<tr><td>Jevyan</td><td>12 frames</td><td>Separate cloaked, standing, melee, defense, and magical presentation.</td></tr>
+<tr><td>Familiar</td><td>5 frames</td><td>Small custom unit animation set paired with the campaign’s only local sound.</td></tr>
+<tr><td>Vampire Lady</td><td>8 frames</td><td>One-scenario boss receives a complete small combat set.</td></tr></table>
+<div class="callout"><strong>Asset strategy.</strong> Bespoke unit art is concentrated on Haldric, Jessene, Jevyan, and a few signature characters. Ordinary armies, terrain, scenery, items, ships, and most effects are supplied by core Wesnoth.</div>
+</section>
+
+<section><h2>Complete filenames</h2>
+<details class="manifest-group">
+<summary><strong>images/</strong> — 1 file</summary>
+<ul class="manifest-list"><li><code>campaign_image.png</code></li></ul></details><details class="manifest-group">
+<summary><strong>images/maps/</strong> — 2 files</summary>
+<ul class="manifest-list"><li><code>great_continent.webp</code></li>
+<li><code>green_isle.webp</code></li></ul></details><details class="manifest-group">
+<summary><strong>images/misc/</strong> — 1 file</summary>
+<ul class="manifest-list"><li><code>treaty-icon.png</code></li></ul></details><details class="manifest-group">
+<summary><strong>images/portraits/</strong> — 27 files</summary>
+<ul class="manifest-list"><li><code>addroran.webp</code></li>
+<li><code>aethyr-first.webp</code></li>
+<li><code>aethyr-second.webp</code></li>
+<li><code>aryad.webp</code></li>
+<li><code>burin-annoyed.webp</code></li>
+<li><code>burin.webp</code></li>
+<li><code>daellyn.webp</code></li>
+<li><code>dionli.webp</code></li>
+<li><code>edmond.webp</code></li>
+<li><code>eldaric.webp</code></li>
+<li><code>familiar.webp</code></li>
+<li><code>haldric-annoyed.webp</code></li>
+<li><code>haldric-mad.webp</code></li>
+<li><code>haldric-surprised.webp</code></li>
+<li><code>haldric.webp</code></li>
+<li><code>isomithir.webp</code></li>
+<li><code>jessica.webp</code></li>
+<li><code>jevyan.webp</code></li>
+<li><code>ladoc.webp</code></li>
+<li><code>lady_outlaw.webp</code></li>
+<li><code>logalmier.webp</code></li>
+<li><code>rithrandil-winter.webp</code></li>
+<li><code>rithrandil.webp</code></li>
+<li><code>ruddry.webp</code></li>
+<li><code>tinry.webp</code></li>
+<li><code>typhon.webp</code></li>
+<li><code>vampire_lady.webp</code></li></ul></details><details class="manifest-group">
+<summary><strong>images/story/</strong> — 20 files</summary>
+<ul class="manifest-list"><li><code>trow-logo.webp</code></li>
+<li><code>trow_intro_01.webp</code></li>
+<li><code>trow_intro_02.webp</code></li>
+<li><code>trow_intro_03.webp</code></li>
+<li><code>trow_intro_04.webp</code></li>
+<li><code>trow_intro_05.webp</code></li>
+<li><code>trow_intro_06.webp</code></li>
+<li><code>trow_intro_07.webp</code></li>
+<li><code>trow_intro_08.webp</code></li>
+<li><code>trow_intro_09.webp</code></li>
+<li><code>trow_intro_10.jpg</code></li>
+<li><code>trow_story_01-A_Summer_of_Storms.webp</code></li>
+<li><code>trow_story_02-The_Fall.jpg</code></li>
+<li><code>trow_story_03-A_Harrowing_Escape.webp</code></li>
+<li><code>trow_story_04-Fall_of_Eldaric.jpg</code></li>
+<li><code>trow_story_04a-The_Swamp_of_Esten.jpg</code></li>
+<li><code>trow_story_04b-The_Midlands.webp</code></li>
+<li><code>trow_story_06-Temple_in_the_Deep.webp</code></li>
+<li><code>trow_story_13-Peoples_in_Decline.webp</code></li>
+<li><code>trow_story_15-A_New_Land.webp</code></li></ul></details><details class="manifest-group">
+<summary><strong>images/units/</strong> — 91 files</summary>
+<ul class="manifest-list"><li><code>autumn-shyde.png</code></li>
+<li><code>familiar-1.png</code></li>
+<li><code>familiar-2.png</code></li>
+<li><code>familiar-3.png</code></li>
+<li><code>familiar-4.png</code></li>
+<li><code>familiar-5.png</code></li>
+<li><code>kalian-elvish-champion.png</code></li>
+<li><code>noble-commander-bow-1.png</code></li>
+<li><code>noble-commander-bow-2.png</code></li>
+<li><code>noble-commander-bow-3.png</code></li>
+<li><code>noble-commander-bow-defend.png</code></li>
+<li><code>noble-commander-bow.png</code></li>
+<li><code>noble-commander-defend.png</code></li>
+<li><code>noble-commander-leading.png</code></li>
+<li><code>noble-commander-sword-1.png</code></li>
+<li><code>noble-commander.png</code></li>
+<li><code>noble-fighter-attack.png</code></li>
+<li><code>noble-fighter-attack2.png</code></li>
+<li><code>noble-fighter-defend.png</code></li>
+<li><code>noble-fighter.png</code></li>
+<li><code>noble-lord-bow-1.png</code></li>
+<li><code>noble-lord-bow-2.png</code></li>
+<li><code>noble-lord-bow-3.png</code></li>
+<li><code>noble-lord-bow-defend.png</code></li>
+<li><code>noble-lord-bow.png</code></li>
+<li><code>noble-lord-defend.png</code></li>
+<li><code>noble-lord-leading.png</code></li>
+<li><code>noble-lord-sword-1.png</code></li>
+<li><code>noble-lord.png</code></li>
+<li><code>noble-youth-attack.png</code></li>
+<li><code>noble-youth-attack2.png</code></li>
+<li><code>noble-youth-defend.png</code></li>
+<li><code>noble-youth.png</code></li>
+<li><code>undead-vampirelady-bite-1.png</code></li>
+<li><code>undead-vampirelady-bite-2.png</code></li>
+<li><code>undead-vampirelady-bite-3.png</code></li>
+<li><code>undead-vampirelady-bite-4.png</code></li>
+<li><code>undead-vampirelady-defend.png</code></li>
+<li><code>undead-vampirelady-magic-1.png</code></li>
+<li><code>undead-vampirelady-magic-2.png</code></li>
+<li><code>undead-vampirelady.png</code></li>
+<li><code>wesfolk-lady-defend-1-1.png</code></li>
+<li><code>wesfolk-lady-defend-1-2.png</code></li>
+<li><code>wesfolk-lady-defend.png</code></li>
+<li><code>wesfolk-lady-masked-defend-1-1.png</code></li>
+<li><code>wesfolk-lady-masked-defend-1-2.png</code></li>
+<li><code>wesfolk-lady-masked-defend.png</code></li>
+<li><code>wesfolk-lady-masked-sling-1.png</code></li>
+<li><code>wesfolk-lady-masked-sling-2.png</code></li>
+<li><code>wesfolk-lady-masked-staff-1.png</code></li>
+<li><code>wesfolk-lady-masked-staff-2.png</code></li>
+<li><code>wesfolk-lady-masked.png</code></li>
+<li><code>wesfolk-lady-sling-1.png</code></li>
+<li><code>wesfolk-lady-sling-2.png</code></li>
+<li><code>wesfolk-lady-staff-1.png</code></li>
+<li><code>wesfolk-lady-staff-2.png</code></li>
+<li><code>wesfolk-lady.png</code></li>
+<li><code>wesfolk-leader-defend-1-1.png</code></li>
+<li><code>wesfolk-leader-defend-1-2.png</code></li>
+<li><code>wesfolk-leader-defend.png</code></li>
+<li><code>wesfolk-leader-leading.png</code></li>
+<li><code>wesfolk-leader-masked-defend-1-1.png</code></li>
+<li><code>wesfolk-leader-masked-defend-1-2.png</code></li>
+<li><code>wesfolk-leader-masked-defend.png</code></li>
+<li><code>wesfolk-leader-masked-leading.png</code></li>
+<li><code>wesfolk-leader-masked-sling-1.png</code></li>
+<li><code>wesfolk-leader-masked-sling-2.png</code></li>
+<li><code>wesfolk-leader-masked-staff-1.png</code></li>
+<li><code>wesfolk-leader-masked-staff-2.png</code></li>
+<li><code>wesfolk-leader-masked.png</code></li>
+<li><code>wesfolk-leader-sling-1.png</code></li>
+<li><code>wesfolk-leader-sling-2.png</code></li>
+<li><code>wesfolk-leader-staff-1.png</code></li>
+<li><code>wesfolk-leader-staff-2.png</code></li>
+<li><code>wesfolk-leader.png</code></li>
+<li><code>wesfolk-outcast-defend-1-1.png</code></li>
+<li><code>wesfolk-outcast-defend-1-2.png</code></li>
+<li><code>wesfolk-outcast-defend.png</code></li>
+<li><code>wesfolk-outcast-masked-defend-1-1.png</code></li>
+<li><code>wesfolk-outcast-masked-defend-1-2.png</code></li>
+<li><code>wesfolk-outcast-masked-defend.png</code></li>
+<li><code>wesfolk-outcast-masked-sling-1.png</code></li>
+<li><code>wesfolk-outcast-masked-sling-2.png</code></li>
+<li><code>wesfolk-outcast-masked-staff-1.png</code></li>
+<li><code>wesfolk-outcast-masked-staff-2.png</code></li>
+<li><code>wesfolk-outcast-masked.png</code></li>
+<li><code>wesfolk-outcast-sling-1.png</code></li>
+<li><code>wesfolk-outcast-sling-2.png</code></li>
+<li><code>wesfolk-outcast-staff-1.png</code></li>
+<li><code>wesfolk-outcast-staff-2.png</code></li>
+<li><code>wesfolk-outcast.png</code></li></ul></details><details class="manifest-group">
+<summary><strong>images/units/jevyan/</strong> — 12 files</summary>
+<ul class="manifest-list"><li><code>jevyan-cloaked.png</code></li>
+<li><code>jevyan-defend-1.png</code></li>
+<li><code>jevyan-defend-2.png</code></li>
+<li><code>jevyan-magic-1.png</code></li>
+<li><code>jevyan-magic-2.png</code></li>
+<li><code>jevyan-magic-3.png</code></li>
+<li><code>jevyan-melee-1.png</code></li>
+<li><code>jevyan-melee-2.png</code></li>
+<li><code>jevyan-stand-1.png</code></li>
+<li><code>jevyan-stand-2.png</code></li>
+<li><code>jevyan-stand-3.png</code></li>
+<li><code>jevyan.png</code></li></ul></details>
+</section>
+
+<section><h2>Official source directories</h2>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/images">Images root</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/images/portraits">Portraits</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/images/story">Story</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/images/units">Units</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/images/units/jevyan">Jevyan</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/images/maps">Journey maps</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/images/misc">Miscellaneous</a></p>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>04b — The Midlands</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>04b — The Midlands</h1><p>The Midlands branch: a wide three-leader orc assault, attack-triggered reserve waves, survivor funding, and Sir Ladoc.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html" aria-current="page">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 04b</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>04b_The_Midlands</code></td></tr>
+<tr><th>Previous branch</th><td><code>escape_choice=2</code> from Scenario 03</td></tr>
+<tr><th>Next scenario</th><td><code>05_The_Oldwood</code></td></tr>
+<tr><th>Map</th><td><code>04b_The_Midlands.map</code>, 42 × 40 hexes</td></tr>
+<tr><th>Turns</th><td>36 / 33 / 30</td></tr>
+<tr><th>Carryover</th><td>40%, early-finish bonus</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Open-field multi-front assault</td></tr>
+<tr><th>Story importance</th><td>High</td></tr>
+<tr><th>WML complexity</th><td>Moderate</td></tr>
+<tr><th>AI customization</th><td>Moderate declarative tuning and scripted reserves</td></tr>
+<tr><th>New companion</th><td>Sir Ladoc at victory</td></tr></table></div>
+</div>
+<div class="callout"><strong>Derived map dimensions.</strong> The map source contains 40 terrain rows, each with 42 hex entries.</div>
+</section>
+
+<section><h2>Story & dialogue</h2>
+<p>The shared first panel again closes the Stormvale chapter. The route-specific panel presents the Midlands as formerly prosperous hill-and-forest kingdoms—the Green Isle’s breadbasket and a supplier of lumber and gemstones—now being destroyed by the orc invasion.</p>
+<p>The opening dialogue is immediate and public rather than eerie: smoke is visible, Haldric condemns the sack, and the orc leaders joke about unexpectedly finding action behind the front. At victory, Sir Ladoc reports that the party has encountered only the orc rear guard and that the main army is moving on Southbay. As in the river route, the road ahead is too dangerous and Haldric turns toward Oldwood.</p>
+<table><tr><th>Dialogue phase</th><th>Function</th></tr>
+<tr><td>Shared exile panel</td><td>Maintains continuity with the alternate route.</td></tr>
+<tr><td>Midlands prosperity panel</td><td>Shows material and civilian consequences of invasion.</td></tr>
+<tr><td>Opening confrontation</td><td>Begins with mutual detection and clear battle lines.</td></tr>
+<tr><td>Reserve-leader lines</td><td>Give scripted reinforcement waves named commanders.</td></tr>
+<tr><td>Leader-death exchanges</td><td>Show rivalry and trigger reserve funding.</td></tr>
+<tr><td>Ladoc’s warning</td><td>Converges the story on Oldwood and Clearwater Port.</td></tr></table>
+</section>
+
+<section><h2>Map description</h2>
+<p>The 42 × 40 map is broader and more open than the swamp. It mixes grassland, dry grass, hills, deciduous and mixed forest, roads, villages, shallow water, swamp pockets, and burned/ruined settlement terrain. Haldric’s keep lies in the upper-right half, while the three orc leaders occupy separated keeps toward the left and lower portions. Two signposts point toward Southbay and Oldwood.</p>
+<table><tr><th>Spatial system</th><th>Design function</th></tr>
+<tr><td>Wide map with three keeps</td><td>Supports simultaneous fronts and flexible attack order.</td></tr>
+<tr><td>Road network</td><td>Creates visible strategic lanes through otherwise mixed terrain.</td></tr>
+<tr><td>Burned and ruined terrain</td><td>Turns the story’s devastation into map presentation.</td></tr>
+<tr><td>Two signposts</td><td>Locates Southbay and Oldwood within the strategic geography.</td></tr>
+<tr><td>Reserve entries from bottom edges</td><td>Threaten forces already committed against the distant chiefs.</td></tr></table>
+</section>
+
+<section><h2>Objectives and sides</h2>
+<table><tr><th>Type</th><th>Condition</th></tr>
+<tr><td>Victory</td><td>Defeat all three enemy leaders.</td></tr>
+<tr><td>Defeat</td><td>Death of Prince Haldric; turns expire.</td></tr></table>
+<table><tr><th>Side</th><th>Leader / roster</th><th>Gold / income</th><th>Notes</th></tr>
+<tr><td>1 — Refugees</td><td>Haldric, Noble Commander; Lady Outlaw and Burin recalled</td><td>160 / 140 / 120</td><td>Campaign recruit state carried forward</td></tr>
+<tr><td>2 — Orcs</td><td>Tan-Vrodis, Orcish Warrior</td><td>80 / 100 / 120</td><td>Nearest and intentionally softer leader</td></tr>
+<tr><td>3 — Orcs</td><td>Tan-Bok, Orcish Warlord</td><td>100 / 140 / 180; income 1 / 2 / 3</td><td>Night aggression and attack-triggered cavalry reserve</td></tr>
+<tr><td>4 — Orcs</td><td>Tan-Hogar, Orcish Warlord</td><td>100 / 140 / 180; income 1 / 2 / 3</td><td>Night aggression and attack-triggered assassin reserve</td></tr></table>
+<p>All enemy sides use <code>NO_SCOUTS</code> and a role pattern of <code>scout,fighter,fighter,mixed fighter,archer</code>. Sides 3 and 4 gain broader, higher-tier recruit lists on Normal and Hard.</p>
+</section>
+
+<section><h2>Special events</h2>
+<table><tr><th>Trigger</th><th>Behavior</th></tr>
+<tr><td><code>prestart</code></td><td>Places two signposts, recalls Lady Outlaw and Burin, and sets objectives.</td></tr>
+<tr><td><code>start</code></td><td>Runs the devastated-Midlands opening exchange.</td></tr>
+<tr><td>Move to signposts</td><td>Displays directions to Oldwood or Southbay and permits undo.</td></tr>
+<tr><td>First attack against Tan-Bok</td><td>Registers a <code>new turn</code> reserve event for side 3.</td></tr>
+<tr><td>First attack against Tan-Hogar</td><td>Registers a <code>new turn</code> reserve event for side 4.</td></tr>
+<tr><td>Tan-Bok dies</td><td>Tan-Hogar receives 60 / 70 / 80 reserve gold.</td></tr>
+<tr><td>Tan-Hogar dies</td><td>Tan-Bok receives 60 / 70 / 80 reserve gold.</td></tr>
+<tr><td>Enemies defeated</td><td>Ends with victory and 40% carryover.</td></tr>
+<tr><td><code>victory</code></td><td>Creates Sir Ladoc, redirects the party through Oldwood, and sets <code>last_done="Midlands"</code>.</td></tr></table>
+</section>
+
+<section><h2>Attack-triggered reserve waves</h2>
+<p>The two distant chiefs receive different scripted response forces after they are first attacked:</p>
+<table><tr><th>Chief attacked</th><th>Named commander</th><th>Base reserve</th><th>Hard addition</th></tr>
+<tr><td>Tan-Bok</td><td>Grilg, Goblin Knight</td><td>Two Wolf Riders</td><td>Goblin Pillager</td></tr>
+<tr><td>Tan-Hogar</td><td>Vrogar, Orcish Slayer</td><td>Two Orcish Assassins</td><td>Orcish Crossbowman</td></tr></table>
+<p>The reserve event occurs on the next turn, not instantly during the attack. This gives the player a readable cause-and-effect beat while preventing reinforcements from interrupting combat resolution.</p>
+</section>
+
+<section><h2>AI and reinforcement economy</h2>
+<table><tr><th>Technique</th><th>Effect</th></tr>
+<tr><td>Night aggression .75, caution 0, no grouping</td><td>Makes the two warlords surge aggressively during first and second watch.</td></tr>
+<tr><td>Passive absence not specified</td><td>Unlike earlier scenarios, leaders are not explicitly anchored by a passive-leader macro.</td></tr>
+<tr><td>Attack-triggered fixed reserves</td><td>Guarantees a thematic counterforce independent of recruitment luck.</td></tr>
+<tr><td>Surviving-chief gold injection</td><td>Compensates the remaining front when one major leader falls.</td></tr>
+<tr><td>Difficulty-expanded rosters</td><td>Adds Crossbowmen, Warriors, and Impalers on harder settings.</td></tr></table>
+</section>
+
+<section><h2>Difficulty scaling</h2>
+<table><tr><th>Element</th><th>Easy</th><th>Normal</th><th>Hard</th></tr>
+<tr><td>Turns</td><td>36</td><td>33</td><td>30</td></tr>
+<tr><td>Player gold</td><td>160</td><td>140</td><td>120</td></tr>
+<tr><td>Major chiefs’ gold</td><td>100</td><td>140</td><td>180</td></tr>
+<tr><td>Major chiefs’ income</td><td>1</td><td>2</td><td>3</td></tr>
+<tr><td>Reserve wave</td><td>Named leader + two supporting units</td><td>Same</td><td>Adds one advanced unit</td></tr>
+<tr><td>Survivor gold</td><td>60</td><td>70</td><td>80</td></tr></table>
+</section>
+
+<section><h2>Units and assets</h2>
+<table><tr><th>Resource</th><th>Origin</th><th>Use</th></tr>
+<tr><td><code>trow_story_04-Fall_of_Eldaric.jpg</code></td><td><span class="badge campaign">Campaign</span></td><td>Shared branch-opening panel</td></tr>
+<tr><td><code>trow_story_04b-The_Midlands.webp</code></td><td><span class="badge campaign">Campaign</span></td><td>Route-specific Midlands panel</td></tr>
+<tr><td>Haldric and Burin portrait variants; Ladoc portrait</td><td><span class="badge campaign">Campaign</span></td><td>Dialogue and new knight identity</td></tr>
+<tr><td>Orc portraits and signpost scenery</td><td><span class="badge core">Core/shared</span></td><td>Enemy presentation and map flavor</td></tr>
+<tr><td><code>wanderer.ogg</code>, <code>knolls.ogg</code>, <code>underground.ogg</code>, horse canter</td><td><span class="badge core">Core/shared</span></td><td>Story/game score and victory entrance</td></tr>
+<tr><td>All orc/goblin combat types and Knight</td><td><span class="badge core">Core</span></td><td>No new route-specific unit definitions required</td></tr></table>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<div class="callout"><strong>Design interpretation.</strong> The Midlands route is a pressure-and-response scenario. The player sees the enemies and chooses fronts openly, while scripted reserves and survivor funding prevent success on one front from making the rest trivial.</div>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Reinforcement triggered by attacking a leader</td><td>Make a boss feel defended without spawning units before they matter.</td></tr>
+<tr><td>Different reserve compositions per front</td><td>Give geographically similar objectives distinct tactical identities.</td></tr>
+<tr><td>Reinforce the surviving enemy</td><td>Maintain difficulty after a multi-leader battle begins to collapse.</td></tr>
+<tr><td>Map art tells civilian history</td><td>Ruins and burned terrain can carry exposition silently.</td></tr>
+<tr><td>Alternate branch with same convergence</td><td>Offer meaningful variety without doubling the entire later campaign.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/04b_The_Midlands.map">Map source</a> · <a href="../reference/branch-comparison-04.html">Compare both routes</a></p>
+</section>
+<div class="prev-next"><a href="04a-the-swamp-of-esten.html">← 04a — The Swamp of Esten</a><a href="../reference/branch-comparison-04.html">Branch comparison →</a></div>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

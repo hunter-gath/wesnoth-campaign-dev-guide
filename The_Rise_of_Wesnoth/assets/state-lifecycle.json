@@ -1,0 +1,266 @@
+[
+  {
+    "group": "Cross-scenario branch and party state",
+    "name": "wesfolk_leader_store",
+    "span": "01 \u2192 02",
+    "kind": "Stored unit",
+    "purpose": "Preserve Wesfolk leader XP/state",
+    "cleanup": "Consumed and cleared in 02"
+  },
+  {
+    "group": "Cross-scenario branch and party state",
+    "name": "have_lady",
+    "span": "02 \u2192 07",
+    "kind": "Boolean",
+    "purpose": "Whether Lady Outlaw is currently in the party",
+    "cleanup": "Cleared after Jessene reconstruction"
+  },
+  {
+    "group": "Cross-scenario branch and party state",
+    "name": "lady_store",
+    "span": "02/05 \u2192 07",
+    "kind": "Stored unit",
+    "purpose": "Preserve absent companion type/XP/variation",
+    "cleanup": "Cleared in 07"
+  },
+  {
+    "group": "Cross-scenario branch and party state",
+    "name": "escape_choice",
+    "span": "03 \u2192 route/05",
+    "kind": "Scalar",
+    "purpose": "Select 04a or 04b",
+    "cleanup": "Cleared in 05 prestart"
+  },
+  {
+    "group": "Cross-scenario branch and party state",
+    "name": "last_done",
+    "span": "04 or 17 \u2192 next hub/arc",
+    "kind": "String",
+    "purpose": "Identify most recently completed route/quest",
+    "cleanup": "Cleared after convergence"
+  },
+  {
+    "group": "Cross-scenario branch and party state",
+    "name": "jessica_store",
+    "span": "19 \u2192 20/21 fallback",
+    "kind": "Stored unit",
+    "purpose": "Remove canonical Jessene and restore later",
+    "cleanup": "Cleared after unstore"
+  },
+  {
+    "group": "Ka\u2019lian hub state",
+    "name": "num_done",
+    "span": "15 \u2192 16 loop",
+    "kind": "Counter",
+    "purpose": "Number of completed quests",
+    "cleanup": "Cleared at final Ka\u2019lian visit"
+  },
+  {
+    "group": "Ka\u2019lian hub state",
+    "name": "the_dragon",
+    "span": "15/17a \u2192 16",
+    "kind": "Boolean",
+    "purpose": "Dragon quest completion",
+    "cleanup": "Cleared at final Ka\u2019lian visit"
+  },
+  {
+    "group": "Ka\u2019lian hub state",
+    "name": "a_beach",
+    "span": "15/17b \u2192 16",
+    "kind": "Boolean",
+    "purpose": "Lizard Beach completion",
+    "cleanup": "Cleared at final Ka\u2019lian visit"
+  },
+  {
+    "group": "Ka\u2019lian hub state",
+    "name": "troll_hole",
+    "span": "15/17c \u2192 16",
+    "kind": "Boolean",
+    "purpose": "Troll Hole completion",
+    "cleanup": "Cleared at final Ka\u2019lian visit"
+  },
+  {
+    "group": "Ka\u2019lian hub state",
+    "name": "cursed_isle",
+    "span": "15/17d \u2192 16",
+    "kind": "Boolean",
+    "purpose": "Cursed Isle completion",
+    "cleanup": "Cleared at final Ka\u2019lian visit"
+  },
+  {
+    "group": "Scenario-local objective and phase state",
+    "name": "Have_Ruby",
+    "span": "06",
+    "kind": "Boolean",
+    "purpose": "Join lich-death and chest conditions",
+    "cleanup": "Cleared at victory"
+  },
+  {
+    "group": "Scenario-local objective and phase state",
+    "name": "previous_ai_position",
+    "span": "08",
+    "kind": "String state machine",
+    "purpose": "Clearwater allied posture",
+    "cleanup": "Cleared at victory"
+  },
+  {
+    "group": "Scenario-local objective and phase state",
+    "name": "First_Ship / Second_Ship / Third_Ship",
+    "span": "08",
+    "kind": "Booleans",
+    "purpose": "Boarding windows",
+    "cleanup": "Cleared on departure or victory"
+  },
+  {
+    "group": "Scenario-local objective and phase state",
+    "name": "lich_free",
+    "span": "09",
+    "kind": "Boolean",
+    "purpose": "Dormant lich faction activated",
+    "cleanup": "Cleared at scenario end"
+  },
+  {
+    "group": "Scenario-local objective and phase state",
+    "name": "have_book",
+    "span": "09",
+    "kind": "Boolean",
+    "purpose": "Gate Haldric\u2019s sewer exit",
+    "cleanup": "Cleared at scenario end"
+  },
+  {
+    "group": "Scenario-local objective and phase state",
+    "name": "dragon_awake / dragon_dead",
+    "span": "17a",
+    "kind": "Booleans",
+    "purpose": "Boss phase and completion",
+    "cleanup": "Cleared before hub return"
+  },
+  {
+    "group": "Scenario-local objective and phase state",
+    "name": "got_enemies / got_treasure",
+    "span": "17a",
+    "kind": "Booleans",
+    "purpose": "Full-clear and cave reward state",
+    "cleanup": "Cleared before hub return"
+  },
+  {
+    "group": "Scenario-local objective and phase state",
+    "name": "queen_awake",
+    "span": "17d",
+    "kind": "Boolean",
+    "purpose": "Switch Cursed Isle objective",
+    "cleanup": "Cleared at victory"
+  },
+  {
+    "group": "Scenario-local objective and phase state",
+    "name": "chest_obtained",
+    "span": "19",
+    "kind": "Boolean",
+    "purpose": "Random chest recovery",
+    "cleanup": "Cleared at victory"
+  },
+  {
+    "group": "Dynamic director working state",
+    "name": "random",
+    "span": "04a / 17c / 17d",
+    "kind": "Scalar",
+    "purpose": "Choose randomized setup permutation",
+    "cleanup": "Cleared after setup/victory"
+  },
+  {
+    "group": "Dynamic director working state",
+    "name": "triggered_scorpion_locs",
+    "span": "04a",
+    "kind": "Array/container",
+    "purpose": "Prevent repeat swamp ambushes",
+    "cleanup": "Cleared at victory"
+  },
+  {
+    "group": "Dynamic director working state",
+    "name": "possible_serpent_locs / serpent_loc_i",
+    "span": "14",
+    "kind": "Location array/index",
+    "purpose": "Choose fair serpent spawn",
+    "cleanup": "Cleared after spawn"
+  },
+  {
+    "group": "Dynamic director working state",
+    "name": "side_N_top_enemy_count",
+    "span": "19",
+    "kind": "Per-side scalar",
+    "purpose": "Approximate peak army strength",
+    "cleanup": "Cleared after trigger"
+  },
+  {
+    "group": "Dynamic director working state",
+    "name": "side_N_undead_backup_triggered",
+    "span": "19",
+    "kind": "Per-side boolean",
+    "purpose": "Allow one wave per front",
+    "cleanup": "Cleared at victory"
+  },
+  {
+    "group": "Dynamic director working state",
+    "name": "undead_spawns_so_far",
+    "span": "19",
+    "kind": "Counter",
+    "purpose": "Choose global wave composition",
+    "cleanup": "Cleared at victory"
+  },
+  {
+    "group": "Dynamic director working state",
+    "name": "next_corpse_spawn_turn / next_skeleton_spawn_turn",
+    "span": "22",
+    "kind": "Future-turn scalar",
+    "purpose": "Randomize recurring pressure",
+    "cleanup": "Cleared after firing"
+  },
+  {
+    "group": "Dynamic director working state",
+    "name": "wc_loc / skele_loc / skele_from / skele_type",
+    "span": "22",
+    "kind": "Working values",
+    "purpose": "Place recurring undead",
+    "cleanup": "Cleared after spawn"
+  },
+  {
+    "group": "Presentation and extraction state",
+    "name": "stored_Jessene",
+    "span": "18",
+    "kind": "Temporary stored copy",
+    "purpose": "Create Jessene in Hiding duplicate",
+    "cleanup": "Cleared inside cutscene"
+  },
+  {
+    "group": "Presentation and extraction state",
+    "name": "aethyr_store",
+    "span": "21",
+    "kind": "Temporary type store",
+    "purpose": "Animate Aethyr entrance",
+    "cleanup": "Cleared immediately"
+  },
+  {
+    "group": "Presentation and extraction state",
+    "name": "last_orc_leader",
+    "span": "22",
+    "kind": "Stored unit",
+    "purpose": "Preserve surviving witness for escape",
+    "cleanup": "Consumed during victory"
+  },
+  {
+    "group": "Presentation and extraction state",
+    "name": "escape_boat",
+    "span": "22",
+    "kind": "Coordinate container",
+    "purpose": "Select side-specific ship route",
+    "cleanup": "Consumed during victory"
+  },
+  {
+    "group": "Presentation and extraction state",
+    "name": "haldric_s",
+    "span": "23",
+    "kind": "Stored unit",
+    "purpose": "Animate current Haldric type into epilogue",
+    "cleanup": "Cleared after unstore"
+  }
+]

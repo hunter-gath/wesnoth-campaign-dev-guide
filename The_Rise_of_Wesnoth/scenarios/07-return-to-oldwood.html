@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>07 — Return to Oldwood</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>07 — Return to Oldwood</h1><p>A one-turn cutscene that reuses the Oldwood map, consumes stored party state, reveals Lady Jessene, repairs divergent recruit access, and carries all gold forward.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html" aria-current="page">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 07</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>07_Return_to_Oldwood</code></td></tr>
+<tr><th>Next scenario</th><td><code>08_Clearwater_Port</code></td></tr>
+<tr><th>Map</th><td>Reuses <code>05_The_Oldwood.map</code>, 32 × 32</td></tr>
+<tr><th>Turns</th><td>1</td></tr>
+<tr><th>Theme</th><td><code>Cutscene_Minimal</code></td></tr>
+<tr><th>Carryover</th><td>100%, no report</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>One-turn cutscene / state transformation</td></tr>
+<tr><th>Story importance</th><td>Critical</td></tr>
+<tr><th>WML complexity</th><td>Moderate–high</td></tr>
+<tr><th>Combat</th><td>None intended</td></tr>
+<tr><th>Character transition</th><td>Lady Outlaw → Lady Jessene</td></tr></table></div>
+</div>
+</section>
+
+<section><h2>Purpose of the scenario</h2>
+<p>This file is a full <code>[scenario]</code>, but functionally it is a cutscene. It returns to the Oldwood map after Lenvan’s defeat, establishes the approaching winter and the refugees’ unsustainable numbers, restores Lady Outlaw from storage, resolves the earlier trust branch through different dialogue, reveals her true identity as Lady Jessene, and selects Clearwater Port as the next destination.</p>
+<p>Using a scenario rather than a story panel gives the sequence access to unit placement, animation, stored-unit state, conditional dialogue, recruitment changes, map scenery, and full campaign carryover.</p>
+</section>
+
+<section><h2>Map reuse and visual continuity</h2>
+<p>Scenario 07 reuses the exact 32 × 32 map from Scenario 05. It replaces the battle’s orc sides with two Woses and the Ancient Wose leader, assigns all villages to side 4, places four named Wose guardians, and uses a winter portrait for Elilmaldur-Rithrandil. Ruin imagery is recreated to preserve the established environment.</p>
+<table><tr><th>Reused element</th><th>Changed meaning</th></tr>
+<tr><td>Oldwood map</td><td>From contested battlefield to temporary refugee camp and council chamber</td></tr>
+<tr><td>Temple at 23,22</td><td>From sealed quest entrance to recently completed expedition site</td></tr>
+<tr><td>Wose faction</td><td>From autonomous combat ally to hosts and advisors</td></tr>
+<tr><td>Cold-weather portrait</td><td>Signals seasonal progress without constructing a new map</td></tr></table>
+</section>
+
+<section><h2>Sides and setup</h2>
+<table><tr><th>Side</th><th>Unit</th><th>Role</th></tr>
+<tr><td>1 — Refugees</td><td>Prince Haldric, zero starting gold</td><td>Player perspective; no combat objective</td></tr>
+<tr><td>2 — Treefolk</td><td>Talodulborentan, Wose</td><td>Allied scene participant</td></tr>
+<tr><td>3 — Treefolk</td><td>Gullatendronnorbum, Wose</td><td>Allied scene participant</td></tr>
+<tr><td>4 — Treefolk</td><td>Elilmaldur-Rithrandil, Ancient Wose</td><td>Host and speaker; controls all starting villages</td></tr></table>
+<p><code>prestart</code> recalls Burin, the route-specific knight, and Minister Edren if they exist. Lady Outlaw is handled separately because she is currently stored off-map.</p>
+</section>
+
+<section><h2>Lady Outlaw restoration</h2>
+<p>The cutscene first stages an approach animation using the stored unit’s type, then updates the stored coordinates and visibility before unstoring it:</p>
+<pre>[move_unit_fake]
+    type=$lady_store.type
+    side=1
+    gender=female
+    x=8,7,6
+    y=30,26,22
+[/move_unit_fake]
+
+{VARIABLE lady_store.x 6}
+{VARIABLE lady_store.y 22}
+{VARIABLE lady_store.hidden no}
+[unstore_unit]
+    variable=lady_store
+[/unstore_unit]
+{FULL_HEAL id="Lady Outlaw"}</pre>
+<p>This preserves the unit’s advancement type and experience whether the player accepted her in Scenario 02 or rejected her and encountered her later through stored state.</p>
+</section>
+
+<section><h2>Conditional reconciliation</h2>
+<table><tr><th>Earlier state</th><th>Cutscene response</th><th>Mechanical repair</th></tr>
+<tr><td><code>have_lady=1</code></td><td>Haldric suspected she might have fled; she returns as the party’s scout.</td><td>No recruit correction needed because outlaw recruitment was already granted.</td></tr>
+<tr><td><code>have_lady=0</code></td><td>Haldric distrusts her and she proposes joining forces.</td><td><code>[allow_recruit]</code> grants Footpad, Poacher, Thief, and Thug now.</td></tr></table>
+<p>Both branches converge before the identity reveal. This is a clean example of resolving an earlier choice without discarding its dialogue consequences.</p>
+</section>
+
+<section><h2>Lady Outlaw → Lady Jessene transformation</h2>
+<p>The source does not merely rename the existing unit. It animates Lady Outlaw out, constructs Lady Jessene using preserved data, animates her in, then clears the stored object.</p>
+<table><tr><th>Preserved</th><th>Changed</th></tr>
+<tr><td>Unit type from <code>$lady_store.type</code></td><td>ID and display name become Lady Jessene</td></tr>
+<tr><td>Experience</td><td>Variation becomes <code>unmasked</code></td></tr>
+<tr><td>Coordinates and facing</td><td>Portrait becomes <code>portraits/jessica.webp</code></td></tr>
+<tr><td>Female gender and side 1</td><td>Traits are normalized to loyal hero</td></tr></table>
+<div class="callout"><strong>Why reconstruct rather than rename?</strong> Reconstruction makes the visual variation, portrait, identity, and trait package explicit while retaining only the progression fields the authors intend to preserve.</div>
+</section>
+
+<section><h2>Event outline</h2>
+<table><tr><th>Trigger</th><th>Behavior</th></tr>
+<tr><td><code>prestart</code></td><td>Restores Oldwood scenery, places Wose guardians, and recalls branch companions.</td></tr>
+<tr><td><code>start</code></td><td>Runs the complete cutscene: Ruby report, refugee crisis, Lady Outlaw return, conditional trust dialogue, recruit correction, Jessene reveal, route decision, and farewell.</td></tr>
+<tr><td>End of start event</td><td>Clears <code>have_lady</code> and ends in victory with 100% carryover, no carryover report, no linger mode, and no replay save.</td></tr></table>
+</section>
+
+<section><h2>State lifecycle</h2>
+<div class="flow">Scenario 02
+   ├── accepted: have_lady = 1; active Lady Outlaw
+   └── rejected: have_lady = 0; stored future Lady state
+
+Scenario 05
+   └── if active, store Lady Outlaw in lady_store and remove her for scouting
+
+Scenario 07
+   ├── unstore Lady Outlaw
+   ├── branch-specific dialogue / recruit correction
+   ├── reconstruct as Lady Jessene
+   ├── clear lady_store
+   └── clear have_lady</div>
+<p>After the reveal, the campaign no longer needs the old boolean. Future logic can address the permanent character directly by ID: <code>Lady Jessene</code>.</p>
+</section>
+
+<section><h2>Carryover and cutscene settings</h2>
+<table><tr><th>Setting</th><th>Purpose</th></tr>
+<tr><td><code>turns=1</code></td><td>Provides a valid scenario frame without a gameplay phase.</td></tr>
+<tr><td><code>theme=Cutscene_Minimal</code></td><td>Reduces normal gameplay UI.</td></tr>
+<tr><td><code>victory_when_enemies_defeated=no</code></td><td>Prevents an immediate automatic ending with no hostile sides.</td></tr>
+<tr><td><code>bonus=no</code></td><td>No early-finish reward for a scripted scene.</td></tr>
+<tr><td><code>NEW_GOLD_CARRYOVER 100</code></td><td>Passes all existing campaign gold through unchanged.</td></tr>
+<tr><td><code>carryover_report=no</code>, <code>linger_mode=no</code>, <code>replay_save=no</code></td><td>Avoids gameplay-oriented interstitial screens and files.</td></tr></table>
+</section>
+
+<section><h2>Assets and units</h2>
+<table><tr><th>Resource</th><th>Origin</th><th>Use</th></tr>
+<tr><td><code>portraits/rithrandil-winter.webp</code></td><td><span class="badge campaign">Campaign</span></td><td>Seasonal progression for the Ancient Wose</td></tr>
+<tr><td><code>portraits/jessica.webp</code></td><td><span class="badge campaign">Campaign</span></td><td>Lady Jessene identity reveal</td></tr>
+<tr><td>Temple and castle-ruin scenery</td><td><span class="badge core">Core/shared</span></td><td>Recreates the established map state</td></tr>
+<tr><td><code>traveling_minstrels.ogg</code></td><td><span class="badge core">Core/shared</span></td><td>Cutscene music</td></tr>
+<tr><td>Wose and Ancient Wose</td><td><span class="badge core">Core</span></td><td>Treefolk participants</td></tr>
+<tr><td>Lady Jessene’s unit type</td><td><span class="badge campaign">Dynamic reuse</span></td><td>Uses the stored Wesfolk progression type instead of a separate Jessene type</td></tr></table>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<div class="callout"><strong>Design interpretation.</strong> This cutscene is the payoff for state laid down five scenarios earlier. It proves that a non-combat scenario can do substantial engineering work: repair divergent recruit state, preserve advancement, reveal identity, clean obsolete variables, and redirect the plot.</div>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Reuse a battle map as a cutscene stage</td><td>Gain visual continuity and reduce map-production cost.</td></tr>
+<tr><td>Unstore, transform, and reconstruct a unit</td><td>Preserve progression while changing canonical identity and art.</td></tr>
+<tr><td>Repair mechanical convergence conditionally</td><td>Ensure both earlier choice paths reach a valid shared roster.</td></tr>
+<tr><td>Clear obsolete decision flags after identity becomes explicit</td><td>Replace indirect state with stable character IDs.</td></tr>
+<tr><td>Use cutscene-specific endlevel settings</td><td>Remove reports, linger screens, and replay artifacts that add no value.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/05_The_Oldwood.map">Reused map source</a> · <a href="../reference/oldwood-arc.html">Oldwood arc study</a></p>
+</section>
+<div class="prev-next"><a href="06-temple-in-the-deep.html">← 06 — Temple in the Deep</a><a href="../reference/oldwood-arc.html">Oldwood arc study →</a></div>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

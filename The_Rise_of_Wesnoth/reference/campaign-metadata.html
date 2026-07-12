@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Campaign Metadata</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>Campaign Metadata</h1><p>The exact campaign declaration, difficulty menu, timeline, entry point, credits, twenty-battle description, and narrow campaign-local art-license note.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html" aria-current="page">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Campaign Metadata</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Exact <code>[campaign]</code> metadata</h2>
+<table><tr><th>Key</th><th>Current value</th><th>Developer effect</th></tr>
+<tr><td><code>id</code></td><td><code>The_Rise_of_Wesnoth</code></td><td>Stable internal campaign identifier and command-line target.</td></tr>
+<tr><td><code>rank</code></td><td>150</td><td>Places the campaign in the intermediate mainline range.</td></tr>
+<tr><td><code>start_year</code> / <code>end_year</code></td><td><code>2 BW</code> → <code>1 YW</code></td><td>Timeline metadata for the campaign browser and chronology.</td></tr>
+<tr><td><code>name</code> / <code>abbrev</code></td><td>The Rise of Wesnoth / TRoW</td><td>Display name and save-name abbreviation.</td></tr>
+<tr><td><code>define</code></td><td><code>CAMPAIGN_THE_RISE_OF_WESNOTH</code></td><td>Activates the campaign’s units, utilities, and scenarios.</td></tr>
+<tr><td><code>first_scenario</code></td><td><code>01_A_Summer_of_Storms</code></td><td>Entry point for a new campaign.</td></tr>
+<tr><td><code>icon</code></td><td><code>images/units/noble-lord.png</code></td><td>Campaign-selection icon through a full data path.</td></tr>
+<tr><td><code>background</code></td><td><code>images/story/trow_story_04b-The_Midlands.webp</code></td><td>Campaign-browser backdrop.</td></tr>
+<tr><td>Additional macro</td><td><code>DISABLE_GRAND_MARSHAL</code></td><td>Must be included in schema-validation preprocess definitions.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/_main.cfg">Current _main.cfg</a></p>
+</section>
+
+<section><h2>Difficulty menu</h2>
+<table><thead><tr><th>Define</th><th>Flavor label</th><th>Displayed description</th><th>Image</th><th>Default</th></tr></thead><tbody>
+<tr><td><code>EASY</code></td><td>Fighter</td><td>Normal</td><td><code>noble-fighter.png</code></td><td>No</td></tr>
+<tr><td><code>NORMAL</code></td><td>Commander</td><td>Challenging</td><td><code>noble-commander.png</code></td><td>Yes</td></tr>
+<tr><td><code>HARD</code></td><td>Lord</td><td>Difficult</td><td><code>noble-lord.png</code></td><td>No</td></tr></tbody></table>
+<div class="callout"><strong>Terminology trap.</strong> The flavor labels are unit ranks, while the descriptions are player-facing difficulty descriptions. “Fighter” does not mean the preprocessor symbol is anything other than <code>EASY</code>.</div>
+</section>
+
+<section><h2>Why the description says “20 scenarios”</h2>
+<p>The source tree contains 27 scenario configuration files, but a complete playthrough contains exactly <strong>20 tactical scenarios</strong>:</p>
+<div class="flow">01, 02, 03, one 04 route, 05, 06, 08, 09, 10, 12,
+13, 14, 15, all four 17 quests, 19, 20, 22 = 20 battles</div>
+<p>The six non-tactical positions—07, 11, 16, 18, 21, and 23—are cutscenes, hub visits, or the epilogue. Alternate routes and quest files explain why the implementation-file count is 27.</p>
+</section>
+
+<section><h2>Credits encoded in <code>_main.cfg</code></h2>
+<table><tr><th>Section</th><th>Contributors</th></tr>
+<tr><td>Campaign Design</td><td>James Spencer (Shade)</td></tr>
+<tr><td>Campaign Maintenance</td><td>Dimitar Ilccov (Mythological); Lari Nieminen (zookeeper, former maintainer); Scott Klempner</td></tr>
+<tr><td>Artwork and Graphics Design</td><td>Blarumyrran; J.W. Bjerk (eleazar); Lari Nieminen (zookeeper); Emilien Rotival (LordBob); Michael Gil de Muro (grp21); pixelmind</td></tr>
+<tr><td>WML Contributors</td><td>Iris Morelle (Irydacea/shadowm); Lari Nieminen (zookeeper)</td></tr></table>
+</section>
+
+<section><h2>Campaign-local art-license note</h2>
+<p><code>ART_LICENSE.txt</code> is intentionally narrow. It attributes <code>images/units/jevyan/jevyan.png</code> and <code>jevyan-cloaked.png</code> to sleepwalker under GPL v2.0 or later, and the other animation frames in that directory to dalas under GPL v2.0 or later. It is not a complete license manifest for the whole campaign.</p>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/ART_LICENSE.txt">ART_LICENSE.txt</a></p>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Macros &amp; Event Patterns</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>Macros & Event Patterns</h1><p>Campaign utilities, core macros, scenario-local abstractions, and reusable event structures encountered through Scenario 03.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html" aria-current="page">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Macros & events</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Macro catalogue through Scenario 03</h2>
+<table><thead><tr><th>Macro / construct</th><th>Origin</th><th>Purpose in these scenarios</th></tr></thead><tbody>
+<tr><td><code>TROW_GI_TRACK</code> + journey macro</td><td><span class="badge campaign">Campaign utility</span></td><td>Updates the Green Isle journey presentation for each stage.</td></tr>
+<tr><td><code>TROW_DEATHS</code></td><td><span class="badge campaign">Campaign utility</span></td><td>Injects shared last-breath and defeat/vanish behavior for recurring heroes.</td></tr>
+<tr><td><code>TURNS</code>, <code>GOLD</code>, <code>INCOME</code>, <code>ON_DIFFICULTY</code></td><td><span class="badge core">Core</span></td><td>Difficulty-dependent balance values.</td></tr>
+<tr><td><code>NO_SCOUTS</code></td><td><span class="badge core">Core</span></td><td>Modifies AI recruitment behavior.</td></tr>
+<tr><td><code>STARTING_VILLAGES</code></td><td><span class="badge core">Core</span></td><td>Assigns initial village control.</td></tr>
+<tr><td><code>LOYAL_UNIT</code>, <code>GUARD_UNIT</code>, <code>GUARDIAN</code></td><td><span class="badge core">Core</span></td><td>Creates fixed, loyal, or stationary supporting units.</td></tr>
+<tr><td><code>LOOT</code>, <code>FULL_HEAL</code>, <code>NEW_GOLD_CARRYOVER</code></td><td><span class="badge core">Core</span></td><td>Rewards, escape handling, and campaign economy.</td></tr>
+<tr><td><code>NORTH_GUARD</code></td><td><span class="badge local">Scenario 02 local</span></td><td>Creates three named, difficulty-scaled loyal defenders.</td></tr>
+<tr><td><code>ESCAPE_VICTORY</code></td><td><span class="badge local">Scenario 03 local</span></td><td>Packages route-choice dialogue, state, and next-scenario overrides.</td></tr>
+</tbody></table>
+</section>
+<section><h2>Event-pattern catalogue</h2>
+<table><tr><th>Pattern</th><th>Example</th><th>Reusable purpose</th></tr>
+<tr><td><code>prestart</code> setup</td><td>Objectives, recalls, fixed units, images</td><td>Prepare state before the player sees the map.</td></tr>
+<tr><td><code>start</code> exposition</td><td>All three scenarios</td><td>Explain the immediate tactical situation after setup.</td></tr>
+<tr><td>Turn reminder</td><td>01 turn 5/20; 02 turn 14</td><td>Teach or reinforce urgency without changing objectives.</td></tr>
+<tr><td><code>last breath</code> decision</td><td>Wesfolk leader in 02</td><td>Run dialogue and choice before death resolution.</td></tr>
+<tr><td>Filtered killer</td><td>Orc leader loot; Wesfolk killed by orcs</td><td>Make result depend on who caused the death.</td></tr>
+<tr><td>Map-area movement trigger</td><td>Orcs enter Stormvale; Haldric finds Burin</td><td>Bind narrative to geography.</td></tr>
+<tr><td>First boss death escalation</td><td>03 reinforcement wave</td><td>Keep a multi-leader scenario challenging.</td></tr>
+<tr><td>Victory-time route menu</td><td>03 <code>ESCAPE_VICTORY</code></td><td>Select a branch after tactical success.</td></tr>
+<tr><td><code>allow_undo</code> flavor trigger</td><td>03 signposts</td><td>Permit reading flavor text without consuming a move.</td></tr></table>
+</section>
+<section><h2>Shared death utility behavior</h2>
+<p><code>TROW_DEATHS</code> is not just a list of defeat conditions. Different heroes receive different semantics: Haldric, Eldaric, Jessene, and Lord Typhon can cause defeat; Lady Outlaw vanishes and updates stored state; Burin and several later companions receive character-specific final lines.</p>
+<div class="callout"><strong>Architecture lesson.</strong> Centralizing recurring hero-death logic keeps scenario files focused and ensures consistent consequences across the campaign.</div>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg">TROW_DEATHS source</a> · <a href="https://github.com/wesnoth/wesnoth/tree/master/data/campaigns/The_Rise_Of_Wesnoth/utils">Utility directory</a></p>
+</section>
+
+
+<section id="release-043-macros"><h2>Scenario 04 macro and event patterns</h2>
+<table><tr><th>Construct</th><th>Route</th><th>Purpose</th></tr>
+<tr><td><code>TEMPLE_HELP</code>, <code>TEMPLE_TRAP</code>, <code>TEMPLE_LOOT</code></td><td>Swamp</td><td>Turn map coordinates into reusable, randomly assigned points of interest.</td></tr>
+<tr><td><code>RANDOM 1..3</code> plus conditional macro placement</td><td>Swamp</td><td>Produces three controlled exploration layouts.</td></tr>
+<tr><td>Nested <code>new turn</code> event inside <code>moveto</code></td><td>Swamp</td><td>Delays an adaptive ambush until the next turn.</td></tr>
+<tr><td><code>filter_vision</code> and adjacent visibility filters</td><td>Swamp</td><td>Finds the boundary between visible and hidden map areas.</td></tr>
+<tr><td><code>while</code> search-radius expansion</td><td>Swamp</td><td>Finds a valid ambush hex without assuming a fixed player route.</td></tr>
+<tr><td>Nested <code>new turn</code> event inside <code>attack</code></td><td>Midlands</td><td>Schedules a leader-specific reserve wave after combat begins.</td></tr>
+<tr><td>Leader <code>die</code> event funding the surviving side</td><td>Midlands</td><td>Maintains multi-front pressure after one chief falls.</td></tr></table></section>
+
+
+<section id="release-044-macros"><h2>Oldwood arc macros and event patterns</h2>
+<table><tr><th>Construct</th><th>Origin</th><th>Purpose</th></tr>
+<tr><td><code>GUARD_UNIT</code></td><td><span class="badge campaign">Campaign utility</span></td><td>Creates named loyal guardian units with <code>ai_special=guardian</code>.</td></tr>
+<tr><td><code>RISE_UP_RISE_UP</code></td><td><span class="badge campaign">Campaign utility</span></td><td>Raises a fallen ally as a hostile difficulty-scaled corpse while preserving undead variation.</td></tr>
+<tr><td><code>OBJ_POTION_HOLY_ALT</code></td><td><span class="badge core">Core item macro</span></td><td>Places an interactive holy-water pickup that appends arcane to melee attacks for the scenario.</td></tr>
+<tr><td><code>CLEAR_FOG</code> / <code>UNCLEAR_FOG</code></td><td><span class="badge core">Core</span></td><td>Temporarily reveals the Wose speaker for opening dialogue.</td></tr>
+<tr><td><code>modify_side share_vision=all</code></td><td>WML action</td><td>Synchronizes allied vision after the battle.</td></tr>
+<tr><td><code>victory_when_enemies_defeated=no</code></td><td>Scenario key</td><td>Supports compound objectives and cutscene-only scenarios.</td></tr>
+<tr><td><code>store_unit</code> / <code>unstore_unit</code></td><td>WML actions</td><td>Preserve a companion through an off-screen scouting interlude.</td></tr>
+<tr><td>Reconstruction from stored fields</td><td>Scenario 07 local pattern</td><td>Transforms Lady Outlaw into Lady Jessene while retaining intended progression data.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg">Campaign macro source</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/core/macros/items.cfg">Core item source</a></p></section>
+
+
+<section id="release-045-macros"><h2>Scenarios 08–10 macro and event patterns</h2>
+<table><tr><th>Construct</th><th>Scenario</th><th>Purpose</th></tr>
+<tr><td><code>BOARDING_EVENT</code></td><td>08 local</td><td>Generates three consistent Haldric-only boarding interactions.</td></tr>
+<tr><td><code>LIMIT_RECRUITS</code> and <code>set_extra_recruit</code></td><td>08</td><td>Restricts fragile recruits and unlocks advanced units based on gold.</td></tr>
+<tr><td>AI reset, goal locations, avoid regions, attack disabling</td><td>08</td><td>Implements posture-based allied defense.</td></tr>
+<tr><td><code>time_area</code> with custom schedule</td><td>08</td><td>Simulates lighthouse illumination in a local radius.</td></tr>
+<tr><td><code>PETRIFIED</code> and <code>PETRIFIED_UNIT</code></td><td>09 local</td><td>Creates a visible but dormant enemy army.</td></tr>
+<tr><td><code>unpetrify</code> plus upkeep conversion</td><td>09</td><td>Activates the lich faction without replacing its units.</td></tr>
+<tr><td>Haldric-only exit with temporary item flag</td><td>09</td><td>Requires both narrative artifact and protagonist staging.</td></tr>
+<tr><td>Twin death counterpart check</td><td>10</td><td>Funds the survivor or rewards the player after the second death.</td></tr>
+<tr><td>Exit event queries living enemy leaders</td><td>10</td><td>Selects standard or bonus victory without extra state variables.</td></tr>
+<tr><td><code>remove_shroud</code> as a combat reward</td><td>10</td><td>Turns boss defeat into navigation information.</td></tr></table>
+</section>
+
+
+<section id="release-046-macros"><h2>Scenarios 11–13 macro and event patterns</h2>
+<table><tr><th>Construct</th><th>Scenario</th><th>Purpose</th></tr>
+<tr><td><code>Cutscene_Minimal</code> + 100% carryover settings</td><td>11</td><td>Runs a council scene without gameplay reports or economic loss.</td></tr>
+<tr><td>Forever-duration <code>[object]</code> with <code>new_attack</code></td><td>12</td><td>Adds the Ruby attack to Haldric without changing unit type.</td></tr>
+<tr><td><code>SILENTLY_LIMIT_LEADER_MOVES</code></td><td>12</td><td>Keeps Addroran near defensive positions.</td></tr>
+<tr><td><code>MODIFY_AI_DELETE_CANDIDATE_ACTION</code> and repeated <code>RESET_SIDE_AI</code></td><td>12</td><td>Rebuilds the allied defense each turn.</td></tr>
+<tr><td><code>HERO</code> plus appended modifications</td><td>12</td><td>Creates Typhon with guaranteed signature equipment.</td></tr>
+<tr><td><code>LIVING_INTEL</code> and <code>UNDEAD_INTEL</code></td><td>12–13</td><td>Stages temporary information-gathering characters and antagonist visits.</td></tr>
+<tr><td><code>OBJ_TRIDENT_STORM</code></td><td>13, core</td><td>Provides a reusable eligible-unit pickup with a permanent magical attack.</td></tr>
+<tr><td>Nested <code>new turn</code> inside item-region <code>moveto</code></td><td>13</td><td>Delays a randomized Sea Serpent spawn until after the pickup turn.</td></tr></table></section>
+
+
+<section id="release-047-macros"><h2>Scenarios 14–16 macro and event patterns</h2>
+<table><tr><th>Construct</th><th>Scenario</th><th>Purpose</th></tr>
+<tr><td><code>POSSIBLE_SERPENT_SPAWN_LOCS_SLF</code></td><td>14 local</td><td>Reuses a deep-ocean distance-ring filter for both availability and storage.</td></tr>
+<tr><td>Nested delayed <code>new turn</code> events</td><td>14</td><td>Schedule one serpent per enemy side after its first casualty.</td></tr>
+<tr><td><code>MODIFY_AI_ADD_CANDIDATE_ACTION</code></td><td>15</td><td>Installs the campaign Lua no-suicide attack selector.</td></tr>
+<tr><td><code>MODIFY_AI_DELETE_CANDIDATE_ACTION</code></td><td>15</td><td>Removes competing standard combat actions.</td></tr>
+<tr><td><code>modify_turns</code> value then add</td><td>15</td><td>Transforms survived turns into early-finish bonus turns.</td></tr>
+<tr><td><code>DRAGON</code>, <code>BEACH</code>, <code>HOLE</code>, <code>ISLE</code></td><td>16 local</td><td>Define state-filtered hub destinations.</td></tr>
+<tr><td><code>QUESTS</code> / <code>QUEST_CHOICES</code></td><td>16 local</td><td>Render unfinished descriptions and selectable routes.</td></tr>
+<tr><td><code>GREET</code></td><td>16 local</td><td>Renders return dialogue from <code>last_done</code>.</td></tr>
+<tr><td><code>#undef</code> cleanup</td><td>16</td><td>Removes all seven local hub macros after preprocessing the file.</td></tr></table></section>
+
+
+<section id="release-048-macros"><h2>Scenario 17 branch macros and patterns</h2>
+<table><tr><th>Construct</th><th>Branch</th><th>Purpose</th></tr>
+<tr><td><code>GOLD_TO_BADDIES</code></td><td>Dragon local</td><td>Funds all Saurian sides consistently when the Dragon awakens.</td></tr>
+<tr><td>Approach event plus fallback turn event</td><td>Dragon</td><td>Creates one boss from either spatial or temporal trigger.</td></tr>
+<tr><td>Repeated Giant Mudcrawler death event</td><td>Dragon / Beach</td><td>Creates two smaller enemies from every large one.</td></tr>
+<tr><td><code>LIMIT_CONTEMPORANEOUS_RECRUITS</code></td><td>Beach / Hole</td><td>Caps high-impact unit density across one or several sides.</td></tr>
+<tr><td><code>SPIDER_TRAIT</code> with additive tags</td><td>Hole local</td><td>Appends difficulty-specific traits to <code>GUARD_UNIT</code> results.</td></tr>
+<tr><td><code>TEMP_LOOT</code>, <code>TEMP_QUEEN</code>, <code>TEMP_EMPTY</code></td><td>Isle local</td><td>Assign random interaction identities to fixed temple coordinates.</td></tr>
+<tr><td>Objective <code>show_if</code> by living units</td><td>Isle</td><td>Switches displayed victory requirement when the Queen is created.</td></tr>
+<tr><td>Boss-death faction cleanup</td><td>Isle</td><td>Kills remaining undead without firing individual death events.</td></tr>
+<tr><td><code>#undef</code> cleanup</td><td>Dragon / Hole / Isle</td><td>Removes local helper macros after the scenario.</td></tr></table></section>
+
+
+<section id="release-049-macros"><h2>Scenarios 18–20 event patterns</h2>
+<table><tr><th>Construct</th><th>Scenario</th><th>Purpose</th></tr>
+<tr><td><code>store_unit kill=no</code> then renamed <code>unstore_unit</code></td><td>18</td><td>Creates a temporary duplicate without moving the persistent hero.</td></tr>
+<tr><td><code>remove_object object_id=ruby_of_fire</code></td><td>19</td><td>Physically removes a permanent artifact attack.</td></tr>
+<tr><td>Dynamic variable names such as <code>side_$unit.side|_...</code></td><td>19</td><td>Runs one generic proportional-loss handler for three enemy sides.</td></tr>
+<tr><td>Nested <code>new turn delayed_variable_substitution=no</code></td><td>19</td><td>Preserves trigger context while evaluating future search variables later.</td></tr>
+<tr><td>Expanding-radius location search</td><td>19</td><td>Finds a legal front-related reinforcement point exactly 12 hexes from the player.</td></tr>
+<tr><td>Objective <code>show_if</code> with <code>have_unit</code></td><td>20</td><td>Displays Jessene’s defeat condition only after her return.</td></tr>
+<tr><td><code>modify_side fog=yes</code></td><td>20</td><td>Changes battlefield visibility during play.</td></tr>
+<tr><td>Geographic encounter plus <code>allow_recruit</code></td><td>20</td><td>Creates Saurians and permanently expands current enemy recruit lists.</td></tr></table></section>
+
+
+<section id="release-050-macros"><h2>Endgame event patterns</h2>
+<table><tr><th>Construct</th><th>Purpose</th></tr>
+<tr><td><code>unit_overlay</code></td><td>Turns Aethyr into a visible treaty carrier.</td></tr>
+<tr><td>Paired <code>last breath</code> and <code>die</code> with <code>filter_second</code></td><td>Distinguishes valid and invalid Aethyr deaths.</td></tr>
+<tr><td>Repeated leader-death queries</td><td>Enforces the exact-one-orc-survivor condition.</td></tr>
+<tr><td><code>switch</code> on stored side</td><td>Selects one of four boat escape routes.</td></tr>
+<tr><td>New-turn bridge condition checks</td><td>Destroy routes only when player proximity makes the event relevant.</td></tr>
+<tr><td>Random future-turn variables</td><td>Schedule recurring corpse and skeleton pressure inside bounded windows.</td></tr>
+<tr><td><code>random_placement allow_less=yes</code></td><td>Places as many legal undead reinforcements as the map state permits.</td></tr>
+<tr><td>Conditional companion epilogue block</td><td>Shows futures only when at least one optional companion survives.</td></tr></table>
+</section>
+
+
+<section id="release-060-utility-link"><h2>Utility-file catalogue</h2>
+<p>The new <a href="utility-catalogue.html">Utility & Macro Catalogue</a> inventories all six utility files, including the complete five-macro unit-construction surface, seven AI helper macros, shared death contract, journey-map system, and narrative reminder events.</p></section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

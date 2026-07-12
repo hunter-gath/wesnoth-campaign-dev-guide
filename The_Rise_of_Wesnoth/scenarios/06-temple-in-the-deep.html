@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>06 — Temple in the Deep</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>06 — Temple in the Deep</h1><p>A compact shrouded dungeon with two victory requirements, a protagonist-only artifact pickup, aggressive undead AI, and event-driven reanimation of fallen allies.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html" aria-current="page">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 06</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>06_Temple_in_the_Deep</code></td></tr>
+<tr><th>Next scenario</th><td><code>07_Return_to_Oldwood</code></td></tr>
+<tr><th>Map</th><td><code>06_Temple_in_the_Deep.map</code>, 27 × 27 hexes</td></tr>
+<tr><th>Turns</th><td>37 / 34 / 31</td></tr>
+<tr><th>Schedule</th><td>Underground</td></tr>
+<tr><th>Automatic enemy victory</th><td>Disabled</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Dungeon quest / two-part victory gate</td></tr>
+<tr><th>Story importance</th><td>Critical</td></tr>
+<tr><th>WML complexity</th><td>High</td></tr>
+<tr><th>AI customization</th><td>Simple but maximally aggressive</td></tr>
+<tr><th>Key artifact</th><td>Ruby of Fire</td></tr></table></div>
+</div>
+</section>
+
+<section><h2>Story & dialogue</h2>
+<p>A single story panel follows Haldric into the catacombs beneath the forest temple. Lich-Lord Lenvan interprets the opening of the seal as his release and immediately raises his forces. Burin welcomes being underground again, while Haldric frames the task as giving the monsters their final rest.</p>
+<p>The scenario’s story is carried primarily by mechanics rather than long conversation: the sealed enemy, the buried chest, the central pools and tentacles, the raising of dead allies, and the requirement that Haldric personally retrieve the Ruby all communicate the dungeon’s danger and artifact importance.</p>
+<table><tr><th>Story beat</th><th>Implementation</th></tr>
+<tr><td>Descent into the roots of the world</td><td>One campaign-specific story image</td></tr>
+<tr><td>Lenvan’s release</td><td><code>start</code> dialogue and aggressive undead side</td></tr>
+<tr><td>Unnatural pools</td><td>Tentacle sighting event</td></tr>
+<tr><td>Ruby discovery</td><td>Haldric-only chest interaction with sound and narration</td></tr>
+<tr><td>Necromantic threat</td><td>Fallen side-1 units are raised as hostile corpses while Lenvan lives</td></tr></table>
+</section>
+
+<section><h2>Map description</h2>
+<p>The compact 27 × 27 underground map places Lenvan’s keep near the upper center and Haldric’s keep near the lower center. Narrow cave passages, impassable cave walls, underground villages, rough cave ground, water, chasms, bridges, fungus, and a broad central pool produce a vertically oriented push toward the chest at hex 13,1.</p>
+<table><tr><th>Map element</th><th>Design role</th></tr>
+<tr><td>Opposed top and bottom keeps</td><td>Creates a direct dungeon ascent toward the lich and artifact.</td></tr>
+<tr><td>Central water complex</td><td>Houses the Tentacles of the Deep and interrupts the main route.</td></tr>
+<tr><td>Shroud</td><td>Makes the dungeon reveal itself incrementally.</td></tr>
+<tr><td>Chest flanked by dragon statues</td><td>Visually marks the Ruby objective at the map’s far end.</td></tr>
+<tr><td>Holy-water pickup at 13,19</td><td>Supplies a core anti-undead tool near the player’s half of the map.</td></tr></table>
+</section>
+
+<section><h2>Objectives and victory logic</h2>
+<table><tr><th>Type</th><th>Condition</th></tr>
+<tr><td>Victory requirement 1</td><td>Defeat Lich-Lord Lenvan.</td></tr>
+<tr><td>Victory requirement 2</td><td>Retrieve the Fire Ruby with Prince Haldric.</td></tr>
+<tr><td>Defeat</td><td>Death of Prince Haldric; turns expire.</td></tr></table>
+<p><code>victory_when_enemies_defeated=no</code> prevents the engine from ending the scenario when Lenvan dies. Victory can occur in either order:</p>
+<div class="flow">Lenvan dies first
+   └── scenario continues until Haldric opens chest
+       └── victory
+
+Haldric opens chest first
+   └── Have_Ruby = yes
+       └── Lenvan's later last-breath event ends scenario</div>
+<div class="callout"><strong>Quest-design lesson.</strong> A compound objective is implemented as two independent completion events joined by one temporary state flag.</div>
+</section>
+
+<section><h2>Sides and AI</h2>
+<table><tr><th>Side</th><th>Leader / roster</th><th>Gold and income</th><th>AI</th></tr>
+<tr><td>1 — Refugees</td><td>Haldric; Burin and Minister Edren recalled</td><td>160 / 140 / 120</td><td>Human controlled; shroud enabled</td></tr>
+<tr><td>2 — Undead</td><td>Lich-Lord Lenvan; Revenant, Deathblade, Bone Shooter, Skeleton, Skeleton Archer</td><td>240 / 300 / 360; income 6 / 10 / 14</td><td>Aggression 1.0, <code>NO_SCOUTS</code>, fighter/archer pattern</td></tr></table>
+<p>The enemy AI is deliberately uncomplicated. Scenario identity comes from map structure, fixed tentacles, shroud, objective gating, and death events rather than a custom controller.</p>
+</section>
+
+<section><h2>Difficulty scaling</h2>
+<table><tr><th>Element</th><th>Easy</th><th>Normal</th><th>Hard</th></tr>
+<tr><td>Turns</td><td>37</td><td>34</td><td>31</td></tr>
+<tr><td>Player gold</td><td>160</td><td>140</td><td>120</td></tr>
+<tr><td>Lenvan gold</td><td>240</td><td>300</td><td>360</td></tr>
+<tr><td>Lenvan income</td><td>6</td><td>10</td><td>14</td></tr>
+<tr><td>Fixed Tentacles of the Deep</td><td>4</td><td>6</td><td>8</td></tr>
+<tr><td>Raised former allies</td><td>Walking Corpse</td><td>Walking Corpse</td><td>Soulless</td></tr></table>
+</section>
+
+<section><h2>Special events</h2>
+<table><tr><th>Trigger</th><th>Behavior</th></tr>
+<tr><td><code>prestart</code></td><td>Places difficulty-scaled tentacles, chest, dragon statues, and holy water; recalls Burin and Edren; installs compound objectives.</td></tr>
+<tr><td><code>start</code></td><td>Lenvan celebrates his freedom and the party commits to destroying him.</td></tr>
+<tr><td>First sighting of a Tentacle</td><td>The discovering unit comments on the pool.</td></tr>
+<tr><td>Move to chest with non-Haldric unit</td><td>Plays a defensive animation, asks for somebody else, and permits undo.</td></tr>
+<tr><td>Move to chest with Haldric</td><td>Sets <code>Have_Ruby=yes</code>, plays <code>open-chest.wav</code>, narrates the Ruby, and checks whether Lenvan is already dead.</td></tr>
+<tr><td>Move to chest after Ruby obtained</td><td>Reports that Haldric already has it and permits undo.</td></tr>
+<tr><td>Lenvan last breath</td><td>Ends the scenario only if <code>Have_Ruby=yes</code>.</td></tr>
+<tr><td>Side-1 unit dies while Lenvan lives</td><td>Haldric comments once; repeatable event raises a hostile “Former Friend” when the killer lacks its own plague result.</td></tr>
+<tr><td><code>victory</code></td><td>Confirms both tasks and clears the temporary <code>Have_Ruby</code> flag.</td></tr></table>
+</section>
+
+<section><h2>Campaign utility: <code>RISE_UP_RISE_UP</code></h2>
+<p>The macro is defined in <code>utils/trow-macros.cfg</code>. At the fallen unit’s coordinates, it creates a loyal side-2 unit named “A Former Friend,” preserves the dead unit’s undead variation, disables its remaining moves and attacks for the current turn, and animates its arrival. The created type is Walking Corpse on Easy and Normal, and Soulless on Hard.</p>
+<pre>#define RISE_UP_RISE_UP
+    [unit]
+        name= _ "A Former Friend"
+        type={ON_DIFFICULTY "Walking Corpse" "Walking Corpse" "Soulless"}
+        side=2
+        x=$x1
+        y=$y1
+        moves=0
+        attacks_left=0
+        variation=$unit.undead_variation
+        animate=yes
+        ...
+    [/unit]
+#enddef</pre>
+<div class="callout"><strong>Why use an event instead of the normal plague special?</strong> The scenario wants Lenvan’s continuing presence to be the cause, wants a difficulty-dependent result, and wants the newly raised unit to inherit an appropriate visual variation.</div>
+</section>
+
+<section><h2>Core utility reuse: holy water</h2>
+<p><code>OBJ_POTION_HOLY_ALT 13 19 (holy_helper)</code> comes from the core item macros. It places a one-use holy-water pickup which can be taken by a side-1 unit with a non-arcane melee attack. For the current scenario, the macro appends the arcane weapon special to that unit’s melee attacks.</p>
+<table><tr><th>Provided by core</th><th>Campaign contribution</th></tr>
+<tr><td>Pickup logic, eligibility filters, take/leave menu, sound, item removal, temporary object, attack effect</td><td>Coordinates and a unique item ID</td></tr></table>
+</section>
+
+<section><h2>Artifact-state design</h2>
+<p><code>Have_Ruby</code> is cleared at victory even though the Ruby remains in the story. That is intentional state minimization:</p>
+<table><tr><th>Need</th><th>State solution</th></tr>
+<tr><td>Track whether both objectives are complete inside Scenario 06</td><td>Temporary boolean <code>Have_Ruby</code></td></tr>
+<tr><td>Track possession after Scenario 06</td><td>No variable required; every valid exit from the scenario guarantees the Ruby was taken.</td></tr></table>
+<div class="callout"><strong>Authoring principle.</strong> Do not persist a flag merely because an event matters narratively. Persist it only when later code must distinguish multiple possible states.</div>
+</section>
+
+<section><h2>Assets and units</h2>
+<table><tr><th>Resource</th><th>Origin</th><th>Use</th></tr>
+<tr><td><code>story/trow_story_06-Temple_in_the_Deep.webp</code></td><td><span class="badge campaign">Campaign</span></td><td>Catacomb descent story panel</td></tr>
+<tr><td>Haldric portrait variants</td><td><span class="badge campaign">Campaign</span></td><td>Combat and discovery dialogue</td></tr>
+<tr><td>Chest, dragon statues, holy-water image, Wesnoth icon</td><td><span class="badge core">Core/shared</span></td><td>Quest and pickup presentation</td></tr>
+<tr><td><code>knalgan_theme.ogg</code>, <code>underground.ogg</code>, <code>open-chest.wav</code>, holy-water sound list</td><td><span class="badge core">Core/shared</span></td><td>Music and interaction audio</td></tr>
+<tr><td>Lich, skeleton line, Tentacle of the Deep, Walking Corpse, Soulless</td><td><span class="badge core">Core</span></td><td>Entire dungeon enemy set</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/06_Temple_in_the_Deep.map">Map source</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg">Campaign macro source</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/core/macros/items.cfg">Core item macros</a></p>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Two objectives completable in either order</td><td>Disable automatic victory and let each event check the other condition.</td></tr>
+<tr><td>Protagonist-only artifact pickup</td><td>Use a unit filter, a clear feedback animation, and <code>allow_undo</code> for invalid visitors.</td></tr>
+<tr><td>Temporary story-state flag</td><td>Clear it after the scenario when later code cannot encounter an alternative state.</td></tr>
+<tr><td>Reanimate fallen allies through a utility macro</td><td>Centralize repeated unit creation and preserve visual variations.</td></tr>
+<tr><td>Use core item macros</td><td>A complete interactive pickup may require only coordinates and an ID.</td></tr></table>
+<div class="prev-next"><a href="05-the-oldwood.html">← 05 — The Oldwood</a><a href="07-return-to-oldwood.html">07 — Return to Oldwood →</a></div>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

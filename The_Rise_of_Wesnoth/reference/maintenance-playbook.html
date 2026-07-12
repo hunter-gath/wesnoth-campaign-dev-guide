@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Maintenance Playbook</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>Maintenance Playbook</h1><p>A repeatable Xubuntu workflow for formatting, linting, scope analysis, three-difficulty schema validation, preprocessing, targeted launches, live inspection, and branch regression.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html" aria-current="page">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Maintenance Playbook</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Safe edit loop on Xubuntu</h2>
+<div class="flow">clean Git branch
+   ↓
+edit WML / Lua / maps / assets
+   ↓
+wmlindent
+   ↓
+wmllint --dryrun
+   ↓
+wmlscope
+   ↓
+three schema-validation runs
+   ↓
+targeted scenario launch with --nocache
+   ↓
+branch-order and save-state regression
+   ↓
+review git diff and generated files</div>
+</section>
+
+<section><h2>1. Start from a clean worktree</h2>
+<pre>git status --short
+git switch -c trow/your-change
+git diff --check</pre>
+<p>Several Wesnoth maintenance tools can rewrite files or create backups. A clean branch makes every generated change visible and reversible.</p>
+</section>
+
+<section><h2>2. Format and statically inspect WML</h2>
+<pre>python3 data/tools/wmlindent data/campaigns/The_Rise_Of_Wesnoth
+
+python3 data/tools/wmllint --dryrun   data/campaigns/The_Rise_Of_Wesnoth
+
+python3 data/tools/wmlscope   data/core   data/campaigns/The_Rise_Of_Wesnoth</pre>
+<table><tr><th>Tool</th><th>Role</th><th>Caution</th></tr>
+<tr><td><code>wmlindent</code></td><td>Normalizes WML indentation.</td><td>Review the diff; formatting can touch many lines.</td></tr>
+<tr><td><code>wmllint</code></td><td>Checks and ports WML constructs.</td><td>Use <code>--dryrun</code> first. Write mode creates <code>-bak</code> backups and can modify files.</td></tr>
+<tr><td><code>wmlscope</code></td><td>Finds unresolved macro, unit, and resource references.</td><td>Place mainline WML before the campaign so core symbols are known.</td></tr></table>
+</section>
+
+<section><h2>3. Validate every difficulty</h2>
+<p>From a Wesnoth source tree or with paths adjusted to the installed data directory:</p>
+<pre>wesnoth --validate data/_main.cfg   --preprocess-defines=EASY,CAMPAIGN_THE_RISE_OF_WESNOTH,DISABLE_GRAND_MARSHAL
+
+wesnoth --validate data/_main.cfg   --preprocess-defines=NORMAL,CAMPAIGN_THE_RISE_OF_WESNOTH,DISABLE_GRAND_MARSHAL
+
+wesnoth --validate data/_main.cfg   --preprocess-defines=HARD,CAMPAIGN_THE_RISE_OF_WESNOTH,DISABLE_GRAND_MARSHAL</pre>
+<p>Campaign validation must be repeated because preprocessor branches can produce different WML on each difficulty. Depending on how the executable was installed or built, add <code>--data-dir</code> and <code>--userconfig-dir</code>.</p>
+</section>
+
+<section><h2>4. Inspect the preprocessor output</h2>
+<pre>rm -rf /tmp/trow-preprocessed
+
+wesnoth -p data/campaigns/The_Rise_Of_Wesnoth   /tmp/trow-preprocessed   --preprocess-defines=NORMAL,CAMPAIGN_THE_RISE_OF_WESNOTH,DISABLE_GRAND_MARSHAL</pre>
+<p>This is the fastest way to answer “what did this macro actually produce?” It is especially valuable for Scenario 16’s option macros, Scenario 19’s dynamic variables, and difficulty-specific recruit lists.</p>
+</section>
+
+<section><h2>5. Launch a target scenario</h2>
+<pre>wesnoth --nocache   --campaign=The_Rise_of_Wesnoth   --campaign-scenario=19_The_Vanguard</pre>
+<p>If no difficulty is supplied, the difficulty selector can appear. Add <code>--campaign-difficulty=1</code>, <code>2</code>, or <code>3</code> for a fixed run. <code>--campaign-skip-story</code> can shorten repeated scenario debugging.</p>
+<p>From the main menu, F5 also reloads changed WML. <code>--nocache</code> is safer for scripted repeatability.</p>
+</section>
+
+<section><h2>6. Inspect live state</h2>
+<table><tr><th>Technique</th><th>Use</th></tr>
+<tr><td>Run with <code>--debug</code></td><td>Enables extra command-mode operations.</td></tr>
+<tr><td><code>:inspect</code></td><td>View WML variables, units, recall lists, sides, and AI configuration.</td></tr>
+<tr><td><code>:help</code></td><td>Lists commands supported by the current build.</td></tr>
+<tr><td>Save at transition points</td><td>Verify stored units and branch variables before and after scenario changes.</td></tr></table>
+</section>
+
+<section><h2>7. Regression matrix</h2>
+<table><tr><th>Change area</th><th>Minimum tests</th></tr>
+<tr><td>Any shared utility or unit type</td><td>All three difficulties plus one early, middle, and late scenario using it.</td></tr>
+<tr><td>Scenario 03–05 routing</td><td>Both 04a and 04b, then Scenario 05 cleanup.</td></tr>
+<tr><td>Jessene identity/storage</td><td>Accept and reject in Scenario 02; Scenario 07 reconstruction; Scenarios 18–21 storage paths.</td></tr>
+<tr><td>Ka’lian hub</td><td>Each quest first and last; exhaustive order testing is 24 permutations.</td></tr>
+<tr><td>Persistent object</td><td>Acquire, advance the bearer, save/load, remove the object, and enter the next scenario.</td></tr>
+<tr><td>Final battle</td><td>Every required failure: wrong Aethyr killer, Jevyan too early, zero or two surviving orcs, plus all four escape routes.</td></tr></table>
+</section>
+
+<section><h2>8. Final review</h2>
+<pre>git status --short
+git diff --check
+find data/campaigns/The_Rise_Of_Wesnoth -name '*-bak' -o -name '*.bak'
+git diff --stat
+git diff</pre>
+<div class="callout warn"><strong>Do not commit tool debris.</strong> Remove or deliberately revert wmllint backup files, preprocessor output, debug saves, and editor temporary files.</div>
+<p class="source-note"><a href="https://wiki.wesnoth.org/ValidationFAQ">ValidationFAQ</a> · <a href="https://wiki.wesnoth.org/Maintenance_tools">Maintenance tools</a> · <a href="https://wiki.wesnoth.org/Preprocessorref">Preprocessor reference</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/tools/wmllint">Current wmllint source</a></p>
+</section>
+
+<section id="release-100-tools"><h2>Bundled maintenance tools</h2>
+<p>After checking out Wesnoth locally, run <code>tools/trow_unit_dependency_audit.py</code> to refresh the custom-unit closure. Run <code>tools/validate_reference.py</code> before packaging the site.</p></section>
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>

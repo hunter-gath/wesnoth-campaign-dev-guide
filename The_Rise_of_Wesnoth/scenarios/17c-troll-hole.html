@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>17c — Troll Hole</title>
+<link rel="stylesheet" href="../assets/site.css"></head>
+<body>
+<header class="site-header"><div class="kicker">Source-first reverse engineering of a mainline Battle for Wesnoth campaign</div>
+<h1>17c — Troll Hole</h1><p>A shrouded square dungeon where prestart randomization chooses two Troll leaders and replaces the other two corners with difficulty-traited Giant Spiders.</p></header>
+<div class="shell"><aside class="sidebar"><div class="brand">Developer Reference</div><form class="sidebar-search" action="../reference/search.html" method="get"><label class="visually-hidden" for="sidebar-search">Search the reference</label><input id="sidebar-search" type="search" name="q" placeholder="Search the guide…" autocomplete="off"></form><nav><div class="group">Release</div><a href="../index.html">Home</a><a href="../reference/search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-a-summer-of-storms.html">01 — A Summer of Storms</a><a href="../scenarios/02-the-fall.html">02 — The Fall</a><a href="../scenarios/03-a-harrowing-escape.html">03 — A Harrowing Escape</a><a href="../scenarios/04a-the-swamp-of-esten.html">04a — The Swamp of Esten</a><a href="../scenarios/04b-the-midlands.html">04b — The Midlands</a><a href="../scenarios/05-the-oldwood.html">05 — The Oldwood</a><a href="../scenarios/06-temple-in-the-deep.html">06 — Temple in the Deep</a><a href="../scenarios/07-return-to-oldwood.html">07 — Return to Oldwood</a><a href="../scenarios/08-clearwater-port.html">08 — Clearwater Port</a><a href="../scenarios/09-fallen-lich-point.html">09 — Fallen Lich Point</a><a href="../scenarios/10-sewer-of-southbay.html">10 — Sewer of Southbay</a><a href="../scenarios/11-southbay-in-winter.html">11 — Southbay in Winter</a><a href="../scenarios/12-a-final-spring.html">12 — A Final Spring</a><a href="../scenarios/13-peoples-in-decline.html">13 — Peoples in Decline</a><a href="../scenarios/14-rough-landing.html">14 — Rough Landing</a><a href="../scenarios/15-a-new-land.html">15 — A New Land</a><a href="../scenarios/16-the-kalian.html">16 — The Ka’lian</a><a href="../scenarios/17a-the-dragon.html">17a — The Dragon</a><a href="../scenarios/17b-lizard-beach.html">17b — Lizard Beach</a><a href="../scenarios/17c-troll-hole.html" aria-current="page">17c — Troll Hole</a><a href="../scenarios/17d-cursed-isle.html">17d — Cursed Isle</a><a href="../scenarios/18-a-spy-in-the-woods.html">18 — A Spy in the Woods</a><a href="../scenarios/19-the-vanguard.html">19 — The Vanguard</a><a href="../scenarios/20-return-of-the-fleet.html">20 — Return of the Fleet</a><a href="../scenarios/21-the-plan.html">21 — The Plan</a><a href="../scenarios/22-the-rise-of-wesnoth.html">22 — The Rise of Wesnoth</a><a href="../scenarios/23-epilogue.html">23 — Epilogue</a><div class="group">Arc studies</div><a href="../reference/branch-comparison-04.html">Scenario 04 branches</a><a href="../reference/oldwood-arc.html">The Oldwood arc</a><a href="../reference/port-southbay-arc.html">Port & Southbay approach</a><a href="../reference/southbay-departure-arc.html">Southbay departure</a><a href="../reference/great-continent-arrival.html">Great Continent arrival</a><a href="../reference/kalian-quest-branches.html">Ka’lian quest branches</a><a href="../reference/jevyan-invasion-opening.html">Jevyan invasion opening</a><a href="../reference/endgame-kingdom-founding.html">Endgame & kingdom founding</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Complete unit catalogue</a><a href="../reference/utility-catalogue.html">Utility & macro catalogue</a><a href="../reference/map-inventory.html">Map inventory & reuse</a><a href="../reference/image-manifest.html">Campaign image manifest</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency & call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/achievements.html">Achievements surface</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle-atlas.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><div class="group">Release closure</div><a href="../reference/core-dependency-closure.html">Core dependency closure</a><a href="../reference/inherited-unit-audio.html">Inherited unit audio</a><a href="../reference/source-snapshot.html">Pinned source snapshot</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/ai-index.html">AI index</a><a href="../reference/unit-index.html">Unit index</a><a href="../reference/artifact-index.html">Artifacts & modifications</a><a href="../reference/state-index.html">State & variables</a><a href="../reference/macro-event-index.html">Macros & events</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content"><div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Scenario 17c</div>
+<button class="theme-button" type="button" data-theme-toggle>Toggle theme</button></div>
+
+<section><h2>Identity</h2>
+<div class="grid">
+<div class="card"><table>
+<tr><th>WML ID</th><td><code>17c_Troll_Hole</code></td></tr>
+<tr><th>Returns to</th><td><code>16_The_Kalian</code></td></tr>
+<tr><th>Map</th><td><code>17c_Troll_Hole.map</code>, 32 × 32 hexes</td></tr>
+<tr><th>Turns</th><td>33 / 30 / 27</td></tr>
+<tr><th>Schedule</th><td>Underground</td></tr>
+<tr><th>Visibility</th><td>Shroud</td></tr></table></div>
+<div class="card"><table>
+<tr><th>Archetype</th><td>Randomized underground multi-leader hunt</td></tr>
+<tr><th>Story importance</th><td>Moderate</td></tr>
+<tr><th>WML complexity</th><td>High prestart randomization</td></tr>
+<tr><th>AI complexity</th><td>Moderate symmetric Troll sides</td></tr>
+<tr><th>Signature system</th><td>Random leader-versus-spider corner layout</td></tr></table></div>
+</div></section>
+
+<section><h2>Story and premise</h2>
+<p>An elven guide leads Haldric into the Brown Hills and down a large cave mouth. Burin supplies the essential tactical warning: Trolls are strong, hostile, and regenerate rapidly. The elves have assigned a direct extermination task, and Haldric later recognizes that they delegated a particularly unpleasant job.</p>
+</section>
+
+<section><h2>Map description</h2>
+<p>The 32 × 32 shrouded cave is broadly square and organized around four outer corner regions, a central underground-water complex, narrow cave passages, villages, fungus, rubble, and impassable walls. Four Troll sides are defined, but only two leaders remain after randomized prestart setup. The other two corners receive Giant Spider guardians named Fang.</p>
+<table><tr><th>Map system</th><th>Design role</th></tr>
+<tr><td>Four potential corner keeps</td><td>Supports multiple randomized leader arrangements on one map.</td></tr>
+<tr><td>Central water and Tentacles</td><td>Creates neutral-looking passage hazards assigned to Troll sides.</td></tr>
+<tr><td>Shroud</td><td>Prevents the player from knowing which corners contain Troll leaders.</td></tr>
+<tr><td>Four rubble images</td><td>Marks cave damage and helps differentiate approaches.</td></tr></table>
+</section>
+
+<section><h2>Randomized corner layout</h2>
+<p>A random value from 1 to 4 removes two adjacent Troll leaders and replaces their corners with Giant Spiders. The remaining two Troll Warriors are the scenario’s actual leaders.</p>
+<table><tr><th>Random result</th><th>Leaders removed</th><th>Surviving leaders</th></tr>
+<tr><td>1</td><td>Erart and Raol</td><td>Rilg and Gulg</td></tr>
+<tr><td>2</td><td>Raol and Rilg</td><td>Erart and Gulg</td></tr>
+<tr><td>3</td><td>Rilg and Gulg</td><td>Erart and Raol</td></tr>
+<tr><td>4</td><td>Gulg and Erart</td><td>Raol and Rilg</td></tr></table>
+<p>Each removed leader is replaced by a Giant Spider named Fang on another Troll side, retaining hostility without keeping all four recruitment centers active.</p>
+</section>
+
+<section><h2>Difficulty-specific Spider trait</h2>
+<table><tr><th>Difficulty</th><th>Fang receives</th></tr>
+<tr><td>Easy</td><td>Aged</td></tr>
+<tr><td>Normal</td><td>Slow</td></tr>
+<tr><td>Hard</td><td>Resilient</td></tr></table>
+<p>The local <code>SPIDER_TRAIT</code> macro uses additive <code>[+unit]</code> and <code>[+modifications]</code> tags so it can append a trait immediately after each <code>GUARD_UNIT</code> expansion.</p>
+</section>
+
+<section><h2>Sides and AI</h2>
+<table><tr><th>Sides</th><th>Leaders</th><th>Gold / income</th><th>AI</th></tr>
+<tr><td>2–3</td><td>Erart and Raol — Troll Warriors</td><td>90 / 120 / 150; income 0 / 2 / 4</td><td>No scouts; fighter-heavy pattern; aggression 0.69 / 0.72 / 0.75</td></tr>
+<tr><td>4–5</td><td>Rilg and Gulg — Troll Warriors</td><td>80 / 140 / 200; income 2 / 5 / 8</td><td>Same pattern and aggression scaling</td></tr></table>
+<p>All four sides can recruit Troll Whelps, Trolls, and Troll Rocklobbers. Across the combined sides, simultaneous Troll and Rocklobber recruits are each limited to 1 / 2 / 3.</p>
+</section>
+
+<section><h2>Fixed hazards and rewards</h2>
+<table><tr><th>Difficulty</th><th>Tentacles of the Deep</th></tr>
+<tr><td>Easy</td><td>2</td></tr>
+<tr><td>Normal</td><td>4</td></tr>
+<tr><td>Hard</td><td>6</td></tr></table>
+<p>Every Troll leader killed in play grants 70 / 60 / 50 gold. Because two leaders are removed before the battle, the practical maximum leader loot is two payments.</p>
+</section>
+
+<section><h2>Hub-state write</h2>
+<pre>{VARIABLE_OP num_done add 1}
+[set_variable]
+    name=troll_hole
+    value=1
+[/set_variable]
+[set_variable]
+    name=last_done
+    value="Hole"
+[/set_variable]
+{CLEAR_VARIABLE random}</pre>
+</section>
+
+<section><h2>Lessons for campaign authors</h2>
+<table><tr><th>Pattern</th><th>Reuse lesson</th></tr>
+<tr><td>Randomize which leaders exist, not the entire map</td><td>Gain replay variation while preserving tested geography.</td></tr>
+<tr><td>Replace removed leaders with guardians</td><td>Keep every corner tactically relevant.</td></tr>
+<tr><td>Use shroud to protect the random reveal</td><td>Prevent pre-battle inspection from solving the layout immediately.</td></tr>
+<tr><td>Append traits to macro-generated units</td><td>Use additive WML tags when the source macro does not expose every desired field.</td></tr>
+<tr><td>Scale regeneration-heavy foes through economy and aggression</td><td>Difficulty need not require custom Troll mechanics.</td></tr></table>
+<p class="source-note"><a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg">Scenario WML</a> · <a href="https://github.com/wesnoth/wesnoth/blob/master/data/campaigns/The_Rise_Of_Wesnoth/maps/17c_Troll_Hole.map">Map source</a> · <a href="../reference/kalian-quest-branches.html">Quest comparison</a></p>
+<div class="prev-next"><a href="17b-lizard-beach.html">← 17b — Lizard Beach</a><a href="17d-cursed-isle.html">17d — Cursed Isle →</a></div>
+</section>
+
+<footer>Release 1.0.0. Source snapshot: Wesnoth <code>6ab3fc1</code>, accessed July 12, 2026. This site has no external runtime dependencies and can be opened directly from disk.</footer>
+</main></div><script src="../assets/site.js"></script></body></html>
