@@ -1,0 +1,33 @@
+border_size=1
+usage=map
+
+Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu
+Xu, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uu^Tf, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uu^Vu, Uue, Uue, Uue, Uue, Uh, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uu^Tf, Uue, Uue, Uue, Uue, Uh, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uu^Vu, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uh, Uu^Tf, Urb, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uh, Xoc, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uu^Tf, Xoc, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Urb^Ebn, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Urb^Ebn, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uh, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uu^Vu, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Xoc, Uue, Uh, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Xoc, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Xoc, Isr, Isr, Uue, Uu^Vu, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Xoc, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Xoc, Isr, Isr, Uue, Uue, Uh, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Xoc, Uue, Uue, Uu^Vu, Uu^Tf, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Xoc, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Xoc, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Xoc, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Xoc, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Cud, Cud, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Xoc, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uh, Uue, Xoc, Isr, Isr, Isr, Isr, Uue, Uue, Cud, Cud, Uu^Tf, Uue, Uue, Xu
+Xu, Urb, Cud, Kud, Cud, Isr, Isr, Urb^Edb, Isr, Isr, Uue, Uue, Xoc, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Xoc, Isr, Isr, Isr, Isr, Uue, Uue, Cud, Kud, Cud, Uue, Uue, Xu
+Xu, Uue, Uue, Cud, Cud, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Ur, Tb, Tb, Tb, Tb, Tb, Tb, Tb, Tb, Tb, Tb, Tb, Tb, Ur, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Cud, Cud, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Uue, Uh, Uue, Uue, Uue, Isr, Isr, Xoc, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Xoc, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Uu^Vu, Uue, Uue, Uue, Xu
+Xu, Uue, Uu^Tf, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Xoc, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Xoc, Uue, Uue, Uue, Uh, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uh, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Xoc, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Xoc, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uu^Vu, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Xoc, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Xoc, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Urb^Ebn, Xoc, Uue, Uu^Vu, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Urb^Ebn, Xoc, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Uh, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Xoc, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Xoc, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Xoc, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Xoc, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uh, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Urb, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Uue, Isr, Isr, Isr, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uu^Tf, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uh, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Uue, Uue, Uu^Vu, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uu^Tf, Uue, Uue, Uue, Xu
+Xu, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Uue, Xu
+Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu, Xu

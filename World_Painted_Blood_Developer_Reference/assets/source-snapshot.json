@@ -1,0 +1,262 @@
+{
+  "campaign": "World Painted Blood",
+  "version": "0.1.0",
+  "generated": "July 19, 2026",
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 968,
+      "sha256": "b2d6df2a85d381eba2026940749750e7e3250920f39a0d1475d815dcfbfa6d4b"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 17984,
+      "sha256": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6"
+    },
+    {
+      "path": "README.md",
+      "bytes": 29426,
+      "sha256": "862952480e5c5ad29df6b47ba4bdbd08193d14c38afdb31b4cb87eb051e0b262"
+    },
+    {
+      "path": "_main.cfg",
+      "bytes": 1870,
+      "sha256": "4a9d9fffd0e9c060cd37f382073bb7a772b4632be0fc68188e8a4c694947c083"
+    },
+    {
+      "path": "docs/BUILD_MANIFEST.json",
+      "bytes": 2049,
+      "sha256": "5b02448b3afe66a45dcd1668b08963a36c3018ba079f11a49327c3c87631aaf6"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_NOTES.md",
+      "bytes": 1822,
+      "sha256": "4e5dcb0f824fa73f5acbdd8e3cc6e18c1854c108e1aa7f3bb6a363e0ea919b4f"
+    },
+    {
+      "path": "docs/SOUND_ASSET_MANIFEST.md",
+      "bytes": 1636,
+      "sha256": "60598a53b5887bf751b8b44892c45a86b809707cc9613b5da1712cc5ddc618e2"
+    },
+    {
+      "path": "docs/VALIDATION_REPORT.md",
+      "bytes": 2095,
+      "sha256": "1eebefebc39144a11f3d41a51be191d95199d09ff761ccf9bb052d38dd6c3c69"
+    },
+    {
+      "path": "maps/01_When_the_Stillness_Comes.map",
+      "bytes": 4716,
+      "sha256": "0e686a631419bc34a197892cb4f7c3e3112d6ba3dd603922a9a5a0c39ceddc5b"
+    },
+    {
+      "path": "maps/02_Cast_the_First_Stone.map",
+      "bytes": 5410,
+      "sha256": "01e353ce4914b76a14629d4d7df2bbc287f63bce8b9f3f61f5af77bdd9fd4428"
+    },
+    {
+      "path": "maps/03_Here_Comes_the_Pain.map",
+      "bytes": 5235,
+      "sha256": "1fbe01f35176d10d3bf0379728670216180f33704652f09991f60d5bdf1a7dd1"
+    },
+    {
+      "path": "maps/04_Show_No_Mercy.map",
+      "bytes": 4439,
+      "sha256": "f8d5e1cd79a8683cd20f5d48808e762fcea8774851cbfe1744e38ab42e64d8a9"
+    },
+    {
+      "path": "maps/05_At_Dawn_They_Sleep.map",
+      "bytes": 5070,
+      "sha256": "524bcb0981c6ffd984c1858f50f2b8df131da7b7e697135b1d4e48c92b7f9569"
+    },
+    {
+      "path": "maps/06_Die_by_the_Sword.map",
+      "bytes": 5678,
+      "sha256": "c29264ccf10ce4199b64ee59bd7661403a87cd11f6d2df8bd62f05b451163880"
+    },
+    {
+      "path": "maps/07_You_Against_You.map",
+      "bytes": 6229,
+      "sha256": "885aff1133958dba9e916007c766a4e0f532dda7bdc97fb42c9732780d6ada26"
+    },
+    {
+      "path": "maps/08_Raining_Blood.map",
+      "bytes": 5606,
+      "sha256": "33b8fbd1e2f233ebae01d19a5b968d64347c58288aab309123385104afed42f9"
+    },
+    {
+      "path": "maps/09_Unguarded_Instinct.map",
+      "bytes": 5243,
+      "sha256": "62a2fb86cea224970020e42aa3e5eee70cba0b691e5515551c07c73ba2a2d2d7"
+    },
+    {
+      "path": "maps/10_Born_of_Fire.map",
+      "bytes": 6011,
+      "sha256": "d1aec7dbb0f91691c465f1059edaec9e65c3e101cd7b538972ece60e105f0461"
+    },
+    {
+      "path": "maps/11_Fictional_Reality.map",
+      "bytes": 6749,
+      "sha256": "f3eb96734c6106cda4aece0a7700f5af9eae9f0a2d44c94b3c30ae9449c3a2c6"
+    },
+    {
+      "path": "maps/12_Read_Between_the_Lies.map",
+      "bytes": 4958,
+      "sha256": "89d7466adee5e6293b6b1f826227fbb270458e3b22a924007afce62b6c45eac1"
+    },
+    {
+      "path": "maps/13_Aggressive_Perfector.map",
+      "bytes": 5591,
+      "sha256": "53915937f9a0647174ab77fff1db7ac8c1878eb711919c5d91669ef404409802"
+    },
+    {
+      "path": "maps/14_Ghosts_of_War.map",
+      "bytes": 6318,
+      "sha256": "32f099a6d90a259925efd828ff6116b78cc64c0c616e9c30333abe0988fc0b98"
+    },
+    {
+      "path": "maps/15_Tormentor.map",
+      "bytes": 5843,
+      "sha256": "bcd64b2a74609a8392eea8eeadd46849e285c138c78b22fdbac333e264ef74d5"
+    },
+    {
+      "path": "maps/16_War_Ensemble.map",
+      "bytes": 8542,
+      "sha256": "4e8c8936c2bacca3b6c4e6302bb23591a77734ed147ff8069470a658a1d9c2a9"
+    },
+    {
+      "path": "maps/17_Repentless.map",
+      "bytes": 5991,
+      "sha256": "c933f589df86d1738e309ef04728dcffa4a05e9b00107e8986a25332859e7c28"
+    },
+    {
+      "path": "maps/18_Eyes_of_the_Insane.map",
+      "bytes": 5400,
+      "sha256": "ce68ab8a042666316f7a14cd6622f6370663aab1a2de62d1a6e4e000f323c3e4"
+    },
+    {
+      "path": "maps/19_Spirit_in_Black.map",
+      "bytes": 6225,
+      "sha256": "ba43cf06ac0d36312c15861a87a4249edc654bad6d52385e90c9deeef0d7053f"
+    },
+    {
+      "path": "maps/20_The_Final_Command.map",
+      "bytes": 9882,
+      "sha256": "55523d293b01434e83fb16f6131cc0a6788856179d7e66f094dcc3b4b6096028"
+    },
+    {
+      "path": "scenarios/01_When_the_Stillness_Comes.cfg",
+      "bytes": 10745,
+      "sha256": "8d41f8963cf366fec0156d2899136f81fac89ae94e41ed70378e1192a0d014c8"
+    },
+    {
+      "path": "scenarios/02_Cast_the_First_Stone.cfg",
+      "bytes": 11828,
+      "sha256": "970e85f922c887b4cea35b3b3271fd6074d236e26d7f74399e3427eb7af1ae6b"
+    },
+    {
+      "path": "scenarios/03_Here_Comes_the_Pain.cfg",
+      "bytes": 13103,
+      "sha256": "2bcf733ba97797a31544c521233b5ea944625f56a6e30e0da0f5f0b094236234"
+    },
+    {
+      "path": "scenarios/04_Show_No_Mercy.cfg",
+      "bytes": 11674,
+      "sha256": "c5b36c1ef776cd8dee0364f0f932140329c2d9a7bcc494dfc49c7ff7b7f40e12"
+    },
+    {
+      "path": "scenarios/05_At_Dawn_They_Sleep.cfg",
+      "bytes": 14239,
+      "sha256": "0ab360815765bd3a623e84660a5aea9f50d7cd522ab434cfb95aed0dbbe94961"
+    },
+    {
+      "path": "scenarios/06_Die_by_the_Sword.cfg",
+      "bytes": 11753,
+      "sha256": "d1f4f7c4fcb131240aedcb4ce8fd3862573e54407d0ecebbc8fbbdc5f48f3f7c"
+    },
+    {
+      "path": "scenarios/07_You_Against_You.cfg",
+      "bytes": 11785,
+      "sha256": "692c1140cde104398673a0fb55766d940182ac292714c93cd4f4a673f988c5d4"
+    },
+    {
+      "path": "scenarios/08_Raining_Blood.cfg",
+      "bytes": 15706,
+      "sha256": "90bd3cab7a92fce437ce782d91c0337b89cc7bbc83af3cd9b04b04a653c6381b"
+    },
+    {
+      "path": "scenarios/09_Unguarded_Instinct.cfg",
+      "bytes": 13504,
+      "sha256": "00de70b189d8b73f1d8e46c4144a3e1819ccc5f82ce9d9ed5893629d288be55c"
+    },
+    {
+      "path": "scenarios/10_Born_of_Fire.cfg",
+      "bytes": 14063,
+      "sha256": "bde4a4559f18751b53540f53a3505f8b74807e0511fb2a85bd827586b5fc1156"
+    },
+    {
+      "path": "scenarios/11_Fictional_Reality.cfg",
+      "bytes": 14637,
+      "sha256": "e64c6e5ea75f8d7de861fec8a021371695417af8339f4678176791315f3af925"
+    },
+    {
+      "path": "scenarios/12_Read_Between_the_Lies.cfg",
+      "bytes": 13029,
+      "sha256": "d885ed51cc50d895042e5d79055761bce77545260054d146c1f58cb7e8865573"
+    },
+    {
+      "path": "scenarios/13_Aggressive_Perfector.cfg",
+      "bytes": 13040,
+      "sha256": "fa0ec43e62a54422246214e316b194f7a0a97d8527dbcb750fbcf555597bc7bd"
+    },
+    {
+      "path": "scenarios/14_Ghosts_of_War.cfg",
+      "bytes": 13390,
+      "sha256": "786c7fdf240c623a999cfb6e2ba479a0ea5646c6c82abad3692886f8d8c6d7dc"
+    },
+    {
+      "path": "scenarios/15_Tormentor.cfg",
+      "bytes": 13014,
+      "sha256": "600b4430afcd05e5e1a767b5377edb81cd0d50c8cc69bfb06268195f8f669124"
+    },
+    {
+      "path": "scenarios/16_War_Ensemble.cfg",
+      "bytes": 13483,
+      "sha256": "b40febbdc15050de43bd5fd0532e8f950ac4dc6932b2df4975b9496c420581eb"
+    },
+    {
+      "path": "scenarios/17_Repentless.cfg",
+      "bytes": 13191,
+      "sha256": "e4ae718fa3c869075f6723450591d3fd75e65642cd65b797d32cfd3e2d5e0319"
+    },
+    {
+      "path": "scenarios/18_Eyes_of_the_Insane.cfg",
+      "bytes": 13061,
+      "sha256": "3d6021b5ab64c269c75f7512429255969540292196e379119f09c577e6a4f319"
+    },
+    {
+      "path": "scenarios/19_Spirit_in_Black.cfg",
+      "bytes": 14622,
+      "sha256": "d6db43bdc8c71b7fb0377797b96c697aa877dbe829d3b54eb4145dc8e52bec98"
+    },
+    {
+      "path": "scenarios/20_The_Final_Command.cfg",
+      "bytes": 23075,
+      "sha256": "e94d284fc99ade35d3360cb5e325046f875d162079f02df99094b2e19f65eaf3"
+    },
+    {
+      "path": "tools/validate_wpb.py",
+      "bytes": 10696,
+      "sha256": "339d8caa0340b239d6b4ec59c51b015ae5bca7ddfb823d54af19c03a6ac793ff"
+    },
+    {
+      "path": "units/Hunter.cfg",
+      "bytes": 519,
+      "sha256": "2e20f09388abd6d5e56ec2c20549f609c430a79303f44f844858251f86469f50"
+    },
+    {
+      "path": "utils/macros.cfg",
+      "bytes": 1912,
+      "sha256": "92c4dfa8ac80bbcaa6f2815517d36e197ccce5c69f8818be50b928403efbd499"
+    }
+  ]
+}

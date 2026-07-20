@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="All campaign-local macros and their scenario call sites.">
+<title>Utility &amp; Macro Catalogue — World Painted Blood Developer Reference</title>
+<link rel="stylesheet" href="../assets/site.css">
+<script defer src="../assets/site.js"></script>
+</head>
+<body>
+<header class="site-header">
+<div class="kicker">Source-first developer reference for a Battle for Wesnoth horror campaign</div>
+<h1>Utility &amp; Macro Catalogue</h1>
+<p>All campaign-local macros and their scenario call sites.</p>
+</header>
+<div class="shell">
+<aside class="sidebar"><div class="brand">World Painted Blood</div><form class="sidebar-search" action="../search.html" method="get"><label class="visually-hidden" for="sidebar-q">Search the reference</label><input id="sidebar-q" name="q" type="search" placeholder="Search the reference" aria-label="Search the reference"></form><nav aria-label="Reference navigation"><div class="group">Release</div><a href="../index.html">Home</a><a href="../search.html">Search</a><div class="group">Detailed scenarios</div><a href="../scenarios/01-when-the-stillness-comes.html">01 — When the Stillness Comes</a><a href="../scenarios/02-cast-the-first-stone.html">02 — Cast the First Stone</a><a href="../scenarios/03-here-comes-the-pain.html">03 — Here Comes the Pain</a><a href="../scenarios/04-show-no-mercy.html">04 — Show No Mercy</a><a href="../scenarios/05-at-dawn-they-sleep.html">05 — At Dawn They Sleep</a><a href="../scenarios/06-die-by-the-sword.html">06 — Die by the Sword</a><a href="../scenarios/07-you-against-you.html">07 — You Against You</a><a href="../scenarios/08-raining-blood.html">08 — Raining Blood</a><a href="../scenarios/09-unguarded-instinct.html">09 — Unguarded Instinct</a><a href="../scenarios/10-born-of-fire.html">10 — Born of Fire</a><a href="../scenarios/11-fictional-reality.html">11 — Fictional Reality</a><a href="../scenarios/12-read-between-the-lies.html">12 — Read Between the Lies</a><a href="../scenarios/13-aggressive-perfector.html">13 — Aggressive Perfector</a><a href="../scenarios/14-ghosts-of-war.html">14 — Ghosts of War</a><a href="../scenarios/15-tormentor.html">15 — Tormentor</a><a href="../scenarios/16-war-ensemble.html">16 — War Ensemble</a><a href="../scenarios/17-repentless.html">17 — Repentless</a><a href="../scenarios/18-eyes-of-the-insane.html">18 — Eyes of the Insane</a><a href="../scenarios/19-spirit-in-black.html">19 — Spirit in Black</a><a href="../scenarios/20-the-final-command.html">20 — The Final Command</a><div class="group">Arc studies</div><a href="../reference/descent-and-survival.html">Descent &amp; Survival Arc</a><a href="../reference/industry-and-corruption.html">Industry &amp; Corruption Arc</a><a href="../reference/deception-and-memory.html">Deception &amp; Memory Arc</a><a href="../reference/war-and-final-command.html">War &amp; Final Command Arc</a><a href="../reference/moral-state-architecture.html">Moral-state architecture</a><div class="group">Technical catalogues</div><a href="../reference/source-architecture.html">Source architecture</a><a href="../reference/unit-catalogue.html">Unit catalogue</a><a href="../reference/macro-catalogue.html" aria-current="page">Utility &amp; macro catalogue</a><a href="../reference/map-inventory.html">Map inventory</a><a href="../reference/audio-catalogue.html">Scenario audio catalogue</a><a href="../reference/dependency-matrix.html">Dependency &amp; call-site matrix</a><a href="../reference/consistency-report.html">Consistency report</a><div class="group">Maintenance & extension</div><a href="../reference/campaign-metadata.html">Campaign metadata</a><a href="../reference/playtest-howto.html">Playtest HOWTO</a><a href="../reference/maintenance-playbook.html">Maintenance playbook</a><a href="../reference/state-lifecycle.html">State lifecycle atlas</a><a href="../reference/extension-recipes.html">Extension recipes</a><a href="../reference/completion-scope.html">Completion scope</a><div class="group">Cross-reference</div><a href="../reference/campaign-flow.html">Campaign flow</a><a href="../reference/character-index.html">Character index</a><a href="../reference/event-index.html">Event index</a><a href="../reference/state-index.html">State &amp; variables</a><a href="../reference/asset-index.html">Asset index</a></nav></aside>
+<main class="content">
+<div class="toolbar"><div class="breadcrumbs"><a href="../index.html">Home</a> / Utility &amp; Macro Catalogue</div><button class="theme-button" type="button" data-theme-toggle>Use light theme</button></div>
+
+<section><h2>Campaign-local utility surface</h2><div class="table-scroll"><table><thead><tr><th>Macro</th><th>Contract</th><th>Scenario call sites</th></tr></thead><tbody><tr><td><code>WPB_ENSURE_VARIABLES</code></td><td>Initializes persistent campaign variables once.</td><td>01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</td></tr><tr><td><code>WPB_HUNTER_DEATH</code></td><td>Installs the universal Hunter last-breath defeat event.</td><td>01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</td></tr><tr><td><code>WPB_TIME_OVER</code></td><td>Installs a campaign-standard time-over line.</td><td>01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</td></tr><tr><td><code>WPB_GOLD_CARRYOVER</code></td><td>Adds 40% bonus carryover to the objective panel.</td><td>01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</td></tr><tr><td><code>WPB_RECRUIT_NOTE</code></td><td>Adds the persistent moral-choice explanation to objectives.</td><td>01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20</td></tr></tbody></table></div></section>
+<section><h2>State initialization</h2><div class="flow">wpb_initialized
+├── wpb_rescued = 0
+├── wpb_conscripted = 0
+├── wpb_sacrificed = 0
+├── wpb_corruption = 0
+├── wpb_truth = 0
+└── wpb_alliance_strength = 0</div></section>
+<section><h2>Maintenance guidance</h2><p>Keep campaign-local macros prefixed with <code>WPB_</code>. When a repeated event grows beyond a small objective or death helper, move it into a separate utility file rather than expanding <code>macros.cfg</code> indefinitely.</p></section>
+<p class="source-note"><a href="../source/utils/macros.cfg">Utility source</a></p>
+<footer>Release 0.1.0. Source snapshot: <em>World Painted Blood</em> 0.1.0, generated July 19, 2026. No external runtime dependencies; open <code>index.html</code> directly from disk. Theme CSS matches the companion <em>Rise of Wesnoth</em> developer reference and retains its solid <code>#333</code> header.</footer>
+</main>
+</div>
+</body>
+</html>
